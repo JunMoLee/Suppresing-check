@@ -83,7 +83,7 @@ Param::Param() {
 	processNode = 32;	// Technology node (nm)
 	clkFreq = 2e9;		// Clock frequency (Hz)
 
-	RefreshRate = 100;
+	RefreshRate = 2000;
  
 }
 
