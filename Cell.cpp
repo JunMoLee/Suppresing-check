@@ -259,7 +259,7 @@ void IdealDevice::Write(double deltaWeightNormalized, double weight, double minW
 /* Real Device */
 RealDevice::RealDevice(int x, int y) {
 	this->x = x; this->y = y;	// Cell location: x (column) and y (row) start from index 0
-	maxConductance = 3.8462e-8;		// Maximum cell conductance (S)
+	maxConductance = 3.0769e-9*12.5;		// Maximum cell conductance (S)
 	minConductance = 3.0769e-9;	// Minimum cell conductance (S)
 	//maxConductance = 1/4.71e6;
 	//minConductance = maxConductance / 19.6;
@@ -277,8 +277,8 @@ RealDevice::RealDevice(int x, int y) {
 	writePulseWidthLTP = 300e-6;	// Write pulse width (s) for LTP or weight increase
 	writePulseWidthLTD = 300e-6;	// Write pulse width (s) for LTD or weight decrease
 	writeEnergy = 0;	// Dynamic variable for calculation of write energy (J)
-	maxNumLevelLTP = 100;	// Maximum number of conductance states during LTP or weight increase
-	maxNumLevelLTD = 100;	// Maximum number of conductance states during LTD or weight decrease
+	maxNumLevelLTP = 128;	// Maximum number of conductance states during LTP or weight increase
+	maxNumLevelLTD = 128;	// Maximum number of conductance states during LTD or weight decrease
 	numPulse = 0;	// Number of write pulses used in the most recent write operation (dynamic variable)
 	cmosAccess = true;	// True: Pseudo-crossbar (1T1R), false: cross-point
     FeFET = false;		// True: FeFET structure (Pseudo-crossbar only, should be cmosAccess=1)
