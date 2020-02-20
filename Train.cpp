@@ -1032,7 +1032,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					}
 				}
 			}
-			if (batchSize % param->RefreshRate == 0) { //ERASE
+			if (batchSize % param->RefreshRate == param->RefreshRate-1) { //ERASE
 				for (int j = 0; j < param->nHide; j++) {
 					for (int k = 0; k < param->nInput; k++) {
 						arrayIH->EraseCell(j,k);
