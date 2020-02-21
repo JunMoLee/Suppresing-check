@@ -106,10 +106,11 @@ momentumPrev2(param->nOutput, std::vector<double>(param->nHide));
 /* # of correct prediction */
 int correct = 0;
 
+/*random number generator engine */
 /* Synaptic array between input and hidden layer */
-Array *arrayIH = new Array(param->nHide, param->nInput, param->arrayWireWidth);
+Array *arrayIH = new Array(param->nHide, param->nInput, param->arrayWireWidth, param->param_gp, param->param_gn);
 /* Synaptic array between hidden and output layer */
-Array *arrayHO = new Array(param->nOutput, param->nHide, param->arrayWireWidth);
+Array *arrayHO = new Array(param->nOutput, param->nHide, param->arrayWireWidth, param->param_gp, param->param_gn);
 
 /* Random number generator engine */
 std::mt19937 gen;
