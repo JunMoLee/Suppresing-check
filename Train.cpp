@@ -530,8 +530,93 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             }
                             */
                             
+							
+                            
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])) {	// Analog eNVM
-							    arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true);
+								
+								if (param->ReverseUpdate){
+								if (param->newUpdateRate<param->nnewUpdateRate){
+								
+								
+								
+
+								
+								
+								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1)){
+									
+									
+								if((batchSize % param->nnewUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1)){
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false, false, param->dominance);}	
+								else
+									
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, true);
+									
+									
+								}
+									
+								else{
+								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);
+									
+									
+									
+								}
+								
+									
+								}
+								
+								else if (param->newUpdateRate>param->nnewUpdateRate){
+									
+								if((batchSize % param->nnewUpdateRate)*param->ReverseUpdate==(param->nnewUpdateRate-1)){
+									
+									
+								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->nnewUpdateRate-1)){
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, true, false, param->dominance);}	
+								else
+									
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false);
+									
+									
+								}	
+									
+									
+								else{
+								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);
+									
+									
+									
+								}	
+									
+									
+									
+									
+								}
+								
+								else if (param->newUpdateRate==param->nnewUpdateRate)
+									
+								{
+								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1))	
+								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false, true);
+									
+								else{
+								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);
+									
+									
+									
+								}
+									
+								}
+								
+								}
+							else {
+							arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);
+							}
+									
+									
+							
+								
+								
+								
+								
 							    weight1[jj][k] = arrayIH->ConductanceToWeight(jj, k, param->maxWeight, param->minWeight); 
                                 weightChangeBatch = weightChangeBatch || static_cast<AnalogNVM*>(arrayIH->cell[jj][k])->numPulse;
                                 if(fabs(static_cast<AnalogNVM*>(arrayIH->cell[jj][k])->numPulse) > maxPulseNum)
@@ -840,10 +925,94 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                         */			
 				
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])) { // Analog eNVM
-                                arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true);
-							    weight2[jj][k] = arrayHO->ConductanceToWeight(jj, k, param->maxWeight, param->minWeight);
+								if (param->ReverseUpdate){
+								if (param->newUpdateRate<param->nnewUpdateRate){
+								
+								
+								
+
+								
+								
+								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1)){
+									
+									
+								if((batchSize % param->nnewUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1)){
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false, false, param->dominance);}	
+								else
+									
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, true);
+									
+									
+								}
+									
+								else{
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false);
+									
+									
+									
+								}
+								
+									
+								}
+								
+								else if (param->newUpdateRate>param->nnewUpdateRate){
+									
+								if((batchSize % param->nnewUpdateRate)*param->ReverseUpdate==(param->nnewUpdateRate-1)){
+									
+									
+								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->nnewUpdateRate-1)){
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, true, false, param->dominance);}	
+								else
+									
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false);
+									
+									
+								}	
+									
+									
+								else{
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false);
+									
+									
+									
+								}	
+									
+									
+									
+									
+								}
+								
+								else if (param->newUpdateRate==param->nnewUpdateRate)
+									
+								{
+								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1))	
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false, true);
+									
+								else{
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false);
+									
+									
+									
+								}
+									
+								}
+								
+								}
+							
+								else{
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false);
+								}
+								
+								
+								
+								
+								
+								
+								
+								
+						                weight2[jj][k] = arrayHO->ConductanceToWeight(jj, k, param->maxWeight, param->minWeight);
 								weightChangeBatch = weightChangeBatch || static_cast<AnalogNVM*>(arrayHO->cell[jj][k])->numPulse;
-                                if(fabs(static_cast<AnalogNVM*>(arrayIH->cell[jj][k])->numPulse) > maxPulseNum)
+								
                                 {
                                     maxPulseNum=fabs(static_cast<AnalogNVM*>(arrayIH->cell[jj][k])->numPulse);
                                 }
@@ -1032,7 +1201,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					}
 				}
 			}
-			if (batchSize % param->RefreshRate == param->RefreshRate-1) { //ERASE
+			/// conductance saturation management: Full-Reset /// 
+			if(!stopreset&&(param -> FullRefresh)){
+				
+			if (batchSize % param->RefreshRate == (param->RefreshRate-1)) { //ERASE
 				for (int j = 0; j < param->nHide; j++) {
 					for (int k = 0; k < param->nInput; k++) {
 						arrayIH->EraseCell(j,k);
@@ -1056,12 +1228,27 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						arrayHO->WriteCell(j, k, weight2[j][k], weight2[j][k], param->maxWeight, param->minWeight,false);
 					}
 				}
+				
 
 			}
+				
+			}
+			/// conductance saturation management: Full-Reset (end) /// 
+			
+			/// new conductance saturation management ///
+			
+			/* if(param -> RefreshAlgorithm = "Refresh"){
+				
+		
+				
+			} */
+			
+		       /// new conductance saturation management (end) ///
+			
+			
 		}
     }
 }
-
 double SGD(double gradient, double learning_rate){
     return -learning_rate * gradient; 
 }
