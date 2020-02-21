@@ -170,7 +170,7 @@ public:
 
 class IdealDevice: public AnalogNVM {
 public:
-	IdealDevice(int x, int y, double  p, double  n);
+	IdealDevice(int x, int y);
         double NL_LTP_Gp;
         double NL_LTP_Gn;
 	double Read(double voltage);	// Return read current (A)
@@ -221,7 +221,7 @@ public:
         double NL_LTP_Gn;
 	double NL_LTN_Gp;
 	double NL_LTN_Gn;
-	MeasuredDevice(int x, int y, double  p, double  n);
+	MeasuredDevice(int x, int y);
 	double Read(double voltage);	// Return read current (A)
 	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight);
 };
