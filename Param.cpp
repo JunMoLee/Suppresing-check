@@ -35,7 +35,6 @@
 *                     
 *   Xiaochen Peng   Email: xpeng15 at asu dot edu
 ********************************************************************************/
-
 #include <string>
 #include "math.h"
 #include "Param.h"
@@ -44,7 +43,16 @@ Param::Param() {
 	/* MNIST dataset */
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
-	
+	const double
+        l=40;
+	const double
+	ll=60;
+	const double
+	dl=30;
+	const double
+	pdl=10;
+	const double
+	rdl=300/25;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
@@ -52,14 +60,39 @@ Param::Param() {
 	nInput = 400;     // # of neurons in input layer
 	nHide = 100;      // # of neurons in hidden layer
 	nOutput = 10;     // # of neurons in output layer
-	alpha1 = 0.4;	// Learning rate for the weights from input to hidden layer
-	alpha2 = 0.2;	// Learning rate for the weights from hidden to output layer
+	alpha1 = l/100.0;	// Learning rate for the weights from input to hidden layer
+	alpha2 = l/2.0/100.0;	// Learning rate for the weights from hidden to output layer
+	dalpha = dl/100;
+	pdalpha = dl/rdl*10/100;
+	nalpha1 = l/100;
+	nalpha2 = l/2.0/100;
+	tp = 12.5;
+	tn = 12.5;
+	kp=128;
+	kd=128;
+	knp=97;
+	knd=97;
+	kc=64;
+	pp= 1;
+	pd=-1; 
+	np=1;
+	nd=-1;
+	cp=1;
+	cp=-1;
+	const int
+	dom=1;
+	dominance=dom;
 	maxWeight = 1;	// Upper bound of weight value
 	minWeight = -1;	// Lower bound of weight value
     /*Optimization method 
     Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
     optimization_type = "SGD";
-
+	const int
+	nuc=0;
+        ReverseUpdate = nuc;
+	const int 
+        frc=1;
+	FullRefresh= frc;
 
 	/* Hardware parameters */
 	useHardwareInTrainingFF = true;   // Use hardware in the feed forward part of training or not (true: realistic hardware, false: ideal software)
@@ -82,8 +115,72 @@ Param::Param() {
 	arrayWireWidth = 100;	// Array wire width (nm)
 	processNode = 32;	// Technology node (nm)
 	clkFreq = 2e9;		// Clock frequency (Hz)
+        const int 
+	frr=2000;
+	RefreshRate = frr;
+	const int 
+	nur=2;
+	const int 
+	rnur=3;
+	const int
+	nurn=3;
+	newUpdateRate = nurn*rnur; // rate of new update algorithm implementation (per # of images)
+	nnewUpdateRate =nurn;
+const int
+a=2;
+	
 
-	RefreshRate = 2000;
- 
+switch(a){
+case 0:
+param_gp=1;
+param_gn=-9;
+break;
+case 1:
+param_gp=1;
+param_gn=-3;
+break;
+case 2:
+param_gp=1;
+param_gn=-1;
+break;
+case 3:
+param_gp=2;
+param_gn=-5;
+break;
+case 4:
+param_gp=4;
+param_gn=-7;
+break;
+case 5:
+param_gp=3;
+param_gn=-3;
+break;
+case 6:
+param_gp=3;
+param_gn=-1;
+break;
+case 7:
+param_gp=9;
+param_gn=-1;
+break;
+case 8:
+param_gp=8;
+param_gn=-1;
+break;
+case 9:
+param_gp=5;
+param_gn=-1;
+break;
+case 10:
+param_gp=5;
+param_gn=-3;
+break;
+case 11:
+param_gp=1;
+param_gn=-8;
+break;
+}
+	
+	
 }
 
