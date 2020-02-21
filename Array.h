@@ -58,26 +58,32 @@ public:
 	double writeEnergySRAMCell;	// Write energy per SRAM cell (will move this to SRAM cell level in the future)
 	bool **weightChange;	// Specify if the weight value will change or not during weight update (for SRAM and digital eNVM)
     int refColumnNumber;
+	double p;
+        double n;
 	/* Constructor */
     // code modified
-	Array(int arrayColSize, int arrayRowSize, int wireWidth) {  
+		Array(int arrayColSize, int arrayRowSize, int wireWidth, double lp, double ln)
+	{  
         this->arrayRowSize = arrayRowSize;
         this->arrayColSize = arrayColSize;
         this->wireWidth = wireWidth;
-		readEnergy = 0;
-		writeEnergy = 0;
+        this-> p=lp;
+        this-> n=ln; //code modified
+        readEnergy = 0;
+        writeEnergy = 0;
         transferReadEnergy = transferWriteEnergy = 0;
         transferEnergy = 0;
 
-		/* Initialize weightChange */
-		weightChange = new bool*[arrayColSize];
-		for (int col=0; col<arrayColSize; col++) {
-			weightChange[col] = new bool[arrayRowSize];
-		}
+        /* Initialize weightChange */
+	weightChange = new bool*[arrayColSize];
+	for (int col=0; col<arrayColSize; col++) {
+	weightChange[col] = new bool[arrayRowSize];
+	}
+		
 	}
 
 	template <class memoryType>
-	void Initialization(int numCellPerSynapse=1,bool refColumn = false) { // default value is 1
+	void Initialization(int numCellPerSynapse=1,bool refColumn = false){ // default value is 1
 		/* Determine number of cells per synapse (SRAM and DigitalNVM) */
 		this->numCellPerSynapse = numCellPerSynapse;
 
@@ -91,9 +97,10 @@ public:
 		for (int col=0; col<cellsPerRow; col++) {
 			cell[col] = new Cell*[arrayRowSize];
 			for (int row=0; row<arrayRowSize; row++) {
-				cell[col][row] = new memoryType(col, row);
+				cell[col][row] = new memoryType(col, row, this-> p, this-> n);
 			}
 		}
+		
         // initialize the conductance of the reference column
         if(refColumn = true)
         {
@@ -106,7 +113,7 @@ public:
                     static_cast<DigitalNVM*>(this->cell[refColumnNumber+1][row])->conductance = static_cast<DigitalNVM*>(this->cell[refColumnNumber+1][row])->maxConductance;
                 }
             }    
-        }
+        } 
 		
 		/* Initialize interconnect wires */
 		double AR;	// Aspect ratio of wire height to wire width
@@ -140,7 +147,7 @@ public:
 	}
 
 	double ReadCell(int x, int y,char*mode=NULL);	// x (column) and y (row) start from index 0
-	void WriteCell(int x, int y, double deltaWeight, double weight, double maxWeight, double minWeight, bool regular);
+	void WriteCell(int x, int y, double deltaWeight, double weight, double maxWeight, double minWeight, bool regular, bool newupdate= 0, bool PositiveUpdate=0, bool regularupdate=0, bool dominance=0);
 	double GetMaxCellReadCurrent(int x, int y, char*mode=NULL);
 	double GetMinCellReadCurrent(int x, int y, char*mode=NULL);
 	double GetMediumCellReadCurrent(int x, int y);
