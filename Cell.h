@@ -35,7 +35,6 @@
 *                     
 *   Xiaochen Peng   Email: xpeng15 at asu dot edu
 ********************************************************************************/
-
 #ifndef CELL_H_
 #define CELL_H_
 
@@ -62,15 +61,19 @@ public:
 	double writeEnergy;	// Dynamic variable for calculation of write energy (J)
 	double conductance;	// Current conductance (S) (Dynamic variable) at on-chip Vr (different than the Vr in the reported measurement data)
 	double conductanceGp;
-	double conductanceGn;
-	double conductanceRef;
+	double conductanceGn;        
+	double pminConductance=0;
+	double pmaxConductance=0;
+	double nminConductance=0;
+	double nmaxConductance=0;
+	double refConductance=0;
 	double conductancePrev;	// Previous conductance (S) (Dynamic variable) at on-chip Vr (different than the Vr in the reported measurement data)
 	double maxConductance;	// Maximum cell conductance (S)
 	double minConductance;	// Minimum cell conductance (S)
 	double avgMaxConductance;   // Average maximum cell conductance (S)
 	double avgMinConductance;   // Average minimum cell conductance (S)
 	bool cmosAccess;	// True: Pseudo-crossbar (1T1R), false: cross-point
-    bool isSTTMRAM; // if it is a STTMRAM device
+        bool isSTTMRAM; // if it is a STTMRAM device
     // modified above
 	bool FeFET;			// True: FeFET structure (Pseudo-crossbar only, should be cmosAccess=1)
 	double resistanceAccess;	// The resistance of transistor (Ohm) in Pseudo-crossbar array when turned ON
@@ -114,8 +117,12 @@ public:
 
 class AnalogNVM: public eNVM {
 public:
-	int maxNumLevelLTP;	// Maximum number of conductance states during LTP or weight increase
-	int maxNumLevelLTD;	// Maximum number of conductance states during LTD or weight decrease
+	int maxNumLevelpLTP;	// Maximum number of conductance states during LTP or weight increase
+	int maxNumLevelpLTD;	// Maximum number of conductance states during LTD or weight decrease
+	int maxNumLevelnLTP;
+	int maxNumLevelnLTD;
+	int maxNumLevelLTP;
+	int maxNumLevelLTD;
 	int numPulse;   // Number of write pulses used in the most recent write operation (Positive number: LTP, Negative number: LTD) (dynamic variable)
 	double writeLatencyLTP;	// Write latency of a cell during LTP or weight increase (different cells use different # write pulses, thus latency values are different). writeLatency will be calculated for each cell first, and then replaced by the maximum one in the batch write.
 	double writeLatencyLTD;	// Write latency of a cell during LTD or weight decrease (different cells use different # write pulses, thus latency values are different). writeLatency will be calculated for each cell first, and then replaced by the maximum one in the batch write.
@@ -163,7 +170,9 @@ public:
 
 class IdealDevice: public AnalogNVM {
 public:
-	IdealDevice(int x, int y);
+	IdealDevice(int x, int y, double  p, double  n);
+        double NL_LTP_Gp;
+        double NL_LTP_Gn;
 	double Read(double voltage);	// Return read current (A)
 	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight);
 };
@@ -183,12 +192,21 @@ public:
 
 	/*PCM*/
 	double NL_LTP_Gp;
+	double NL_LTD_Gp;
 	double NL_LTP_Gn;
+	double NL_LTD_Gn;
 	double paramAGp;
+	double paramAGpd;
 	double paramAGn;
-	RealDevice(int x, int y);
+	double paramAGnd;
+	double paramBGp;
+	double paramBGpd;
+	double paramBGn;
+	double paramBGnd;
+	RealDevice(int x, int y, double p, double  n);
 	double Read(double voltage);	// Return read current (A)
 	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight);
+	void newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate);
 	void Erase();
 };
 
@@ -199,8 +217,11 @@ public:
 	double xPulse;		// Conductance state in terms of the pulse number (doesn't need to be integer)
 	std::vector<double> dataConductanceLTP;	// LTP conductance data at different pulse number
 	std::vector<double> dataConductanceLTD;	// LTD conductance data at different pulse number
-
-	MeasuredDevice(int x, int y);
+        double NL_LTP_Gp;
+        double NL_LTP_Gn;
+	double NL_LTN_Gp;
+	double NL_LTN_Gn;
+	MeasuredDevice(int x, int y, double  p, double  n);
 	double Read(double voltage);	// Return read current (A)
 	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight);
 };
