@@ -175,44 +175,71 @@ void Array::WriteCell(int x, int y, double deltaWeight, double weight, double ma
 	if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(**cell)) // Analog eNVM
     { 
 		//printf("Writing cell....\n");
-        if (regular) 
+       if (regular) 
         {	// Regular write
+		if(!newupdate){
 			static_cast<AnalogNVM*>(cell[x][y])->Write(deltaWeight, weight, minWeight, maxWeight);
+		}
+		// Reverse update
+		else {  if(!regularupdate&&!dominance)
+			static_cast<RealDevice*>(cell[x][y])->newWrite(deltaWeight, weight, minWeight, maxWeight, positiveupdate);
+		      else
+			static_cast<RealDevice*>(cell[x][y])->newWrite(deltaWeight, weight, minWeight, maxWeight, deltaweightsign);
+			      
+		}
+		
+		
 		} 
         else 
         {	// Preparation stage (ideal write)
             //printf("initialize the conductance\n");
-			double conductance = 0;
-			double maxConductance = static_cast<eNVM*>(cell[x][y])->maxConductance;
-			double minConductance = static_cast<eNVM*>(cell[x][y])->minConductance;
+			
+		        double avgMaxConductance = static_cast<eNVM*>(cell[x][y])->avgMaxConductance;
+			double avgMinConductance = static_cast<eNVM*>(cell[x][y])->avgMinConductance;
+			double pmaxConductance = static_cast<eNVM*>(cell[x][y])->pmaxConductance;
+			double pminConductance = static_cast<eNVM*>(cell[x][y])->pminConductance;
+		        double nmaxConductance = static_cast<eNVM*>(cell[x][y])->nmaxConductance;
+			double nminConductance = static_cast<eNVM*>(cell[x][y])->nminConductance;
 			double conductanceGp = static_cast<eNVM*>(cell[x][y])->conductanceGp;
 			double conductanceGn = static_cast<eNVM*>(cell[x][y])->conductanceGn;
-			double conductanceRef = static_cast<eNVM*>(cell[x][y])->conductanceRef;
+		        double refConductance= static_cast<eNVM*>(cell[x][y])->refConductance;
+			double totalcondrange = pmaxConductance + nmaxConductance - pminConductance - nminConductance;
+	                double pcondrange = pmaxConductance - pminConductance;
+	                double ncondrange = nmaxConductance - nminConductance;
+		        double conductance = 0;
+		        
+		        
+		      
             // ? should add "+minConductance"?
 			//deltaWeight = 2 * deltaWeight;
 			if (deltaWeight > 0) {
-				conductanceGp += deltaWeight* (maxConductance - minConductance);
-				if (conductanceGp > maxConductance)
+			conductanceGp += deltaWeight * (pmaxConductance - pminConductance);
+				
+				if (conductanceGp > pmaxConductance)
 				{
-					conductanceGp = maxConductance;
+					conductanceGp = pmaxConductance;
 				}
-				else if (conductanceGp < minConductance)
+				else if (conductanceGp < pminConductance)
 				{
-					conductanceGp = minConductance;
+					conductanceGp = pminConductance;
 				}
 			}
 			else {
-				conductanceGn -= deltaWeight * (maxConductance - minConductance);
-				if (conductanceGn > maxConductance)
+				
+			conductanceGn -= deltaWeight * (nmaxConductance - nminConductance);
+				
+				if (conductanceGn > nmaxConductance)
 				{
-					conductanceGn = maxConductance;
+					conductanceGn =nmaxConductance;
 				}
-				else if (conductanceGn < minConductance)
+				else if (conductanceGn < nminConductance)
 				{
-					conductanceGn = minConductance;
+					conductanceGn = nminConductance;
 				}
 			}
-			conductance = conductanceGp - conductanceGn + conductanceRef;
+		
+		
+			conductance = conductanceGp - conductanceGn + refConductance;
 			static_cast<eNVM*>(cell[x][y])->conductanceGp = conductanceGp;
 			static_cast<eNVM*>(cell[x][y])->conductanceGn = conductanceGn;
 			static_cast<eNVM*>(cell[x][y])->conductance = conductance;
