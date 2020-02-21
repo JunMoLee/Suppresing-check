@@ -128,37 +128,42 @@ int main() {
 	srand(0);	// Pseudorandom number seed
 
 	double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
-	double NL_LTP_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gn;
-	int CS = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelLTP;
-	double LA = param->alpha1;
-	printf("opt: %s NL_GP:%.1f NL_Gn:%.1f CS: %d LA: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTP_Gn, CS, LA);
-	string filename;
-	filename.append(param->optimization_type);
-	char tempfile[10];
-	sprintf(tempfile, "%.1f", NL_LTP_Gp);
-	filename.append(tempfile);
-	// filename.append("/");
-	sprintf(tempfile, "%.1f", NL_LTP_Gn);
-	filename.append(tempfile);
-	// filename.append("/");
-	sprintf(tempfile, "%d", CS);
-	filename.append(tempfile);
-	// filename.append("/");
-	sprintf(tempfile, "%.2f", LA);
-	filename.append(tempfile);
-	// filename.append("/");
-	// filename.append(".csv");
-	ofstream mywriteoutfile;    
-	mywriteoutfile.open(filename+".csv");
-                                                                                         
-	
-	for (int i=1; i<=param->totalNumEpochs/param->interNumEpochs; i++) {
-        //cout << "Training Epoch : " << i << endl;
+	        double NL_LTD_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gp;
+		double NL_LTP_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gn;
+	        double NL_LTD_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gn;
+		int kp = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelpLTP;
+		int kd = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelpLTD;
+		int knp = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelnLTP;
+		int knd = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelnLTD;
+		double pof = static_cast<RealDevice*>(arrayIH->cell[0][0])->pmaxConductance/static_cast<RealDevice*>(arrayIH->cell[0][0])->pminConductance;
+		double nof = static_cast<RealDevice*>(arrayIH->cell[0][0])->nmaxConductance/static_cast<RealDevice*>(arrayIH->cell[0][0])->nminConductance;
+	        double LAp = param->alpha1;
+	        double LAd = param->dalpha;
+	        double pLAd = param->pdalpha;
+	        int newUpdateRate = param->newUpdateRate;
+	        int RefreshRate =param->RefreshRate;
+	        int FullRefresh =param->FullRefresh;
+	        int ReverseUpdate =param->ReverseUpdate;
+	        int nnewUpdateRate= param->nnewUpdateRate;
+	        int dominance = param ->dominance;
+
+
+														               
+		printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f\n newUpdateRate(Gp): %d\n newUpdateRate(Gn): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance);
+		bool write_or_not=1;
+		fstream read;
+		read.open("NPO9.csv",fstream::app);                                                         
+																	
+		for (int i=1; i<=20; i++) {
+		cout << "Training Epoch : " << i << endl; 
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type);
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
-		mywriteoutfile << i*param->interNumEpochs << ", " << (double)correct/param->numMnistTestImages*100 << endl;
+		if(write_or_not){
+
+		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<LAp<<", "<<LAd<<", "<<pLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << endl;
 		
+		}
 		printf("%.2f\n", (double)correct/param->numMnistTestImages*100);
 		/*printf("\tRead latency=%.4e s\n", subArrayIH->readLatency + subArrayHO->readLatency);
 		printf("\tWrite latency=%.4e s\n", subArrayIH->writeLatency + subArrayHO->writeLatency);
@@ -166,7 +171,8 @@ int main() {
 		printf("\tWrite energy=%.4e J\n", arrayIH->writeEnergy + subArrayIH->writeDynamicEnergy + arrayHO->writeEnergy + subArrayHO->writeDynamicEnergy);*/
 	}
 	printf("\n");
+        printf("\n");
+
 	return 0;
 }
-
 
