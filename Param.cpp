@@ -48,11 +48,11 @@ Param::Param() {
 	const double
 	ll=60;
 	const double
-	dl=30;
+	dl=25;
 	const double
 	pdl=10;
 	const double
-	rdl=300/25;
+	rdl=10;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
@@ -88,7 +88,7 @@ Param::Param() {
     Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
     optimization_type = "SGD";
 	const int
-	nuc=0;
+	nuc=1;
         ReverseUpdate = nuc;
 	const int 
         frc=1;
@@ -123,7 +123,7 @@ Param::Param() {
 	const int 
 	rnur=10000;
 	const int
-	nurn=2;
+	nurn=23;
 	newUpdateRate = nurn*rnur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
