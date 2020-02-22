@@ -535,7 +535,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])) {	// Analog eNVM
 								
 								/* new update */
-								if (param->ReverseUpdate==TRUE){
+								if (param->ReverseUpdate==true){
 								if (param->newUpdateRate<param->nnewUpdateRate){
 								
 								
@@ -930,7 +930,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])) { // Analog eNVM
 								
 								/* new update */
-								if (param->ReverseUpdate==TRUE){
+								if (param->ReverseUpdate==true){
 								if (param->newUpdateRate<param->nnewUpdateRate){
 								
 								
