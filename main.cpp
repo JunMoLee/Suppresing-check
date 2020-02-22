@@ -154,7 +154,7 @@ int main() {
 		fstream read;
 		read.open("NPO9.csv",fstream::app);                                                         
 																	
-		for (int i=1; i<=20; i++) {
+		for (int i=1; i<=125; i++) {
 		cout << "Training Epoch : " << i << endl; 
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type);
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
