@@ -261,8 +261,8 @@ void IdealDevice::Write(double deltaWeightNormalized, double weight, double minW
 /* Real Device */
 RealDevice::RealDevice(int x, int y, double p, double n) {
 	this->x = x; this->y = y;	// Cell location: x (column) and y (row) start from index 0
-	maxConductance= nmaxConductance; // in case of unwanted situations
-	minConductance=0;
+	maxConductance= 3.0769e-9*12.5; // in case of unwanted situations
+	minConductance=3.0769e-9;
 	pminConductance = 3.0769e-9;
 	pmaxConductance = 3.0769e-9 * param->tp;		// Maximum cell conductance (S)
 	const double
@@ -329,8 +329,8 @@ RealDevice::RealDevice(int x, int y, double p, double n) {
 	localGen.seed(std::time(0));
 	
 	/* Device-to-device weight update variation */
-	NL_LTP = 2.4;	// LTP nonlinearity
-	NL_LTD = -4.88;	// LTD nonlinearity
+	NL_LTP = 1;	// LTP nonlinearity
+	NL_LTD = -1;	// LTD nonlinearity
 
    
 
