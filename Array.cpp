@@ -185,12 +185,12 @@ void Array::WriteCell(int x, int y, double deltaWeight, double weight, double ma
 			static_cast<AnalogNVM*>(cell[x][y])->Write(deltaWeight, weight, minWeight, maxWeight);
 		}
 		// Reverse update
-		/* else {  if(!regularupdate&&!dominance)
+		/**/ else {  if(!regularupdate&&!dominance)
 			static_cast<RealDevice*>(cell[x][y])->newWrite(deltaWeight, weight, minWeight, maxWeight, positiveupdate);
 		      else
 			static_cast<RealDevice*>(cell[x][y])->newWrite(deltaWeight, weight, minWeight, maxWeight, deltaweightsign);
 			      
-		} */
+		} /**/
 		
 		
 		} 
