@@ -121,9 +121,9 @@ Param::Param() {
 	const int 
 	nur=2;
 	const int 
-	rnur=3;
+	rnur=10000;
 	const int
-	nurn=3;
+	nurn=2;
 	newUpdateRate = nurn*rnur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
