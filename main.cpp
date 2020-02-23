@@ -140,7 +140,7 @@ int main() {
 	        double LAp = param->alpha1;
 	        double LAd = param->dalpha;
 	        double pLAd = param->pdalpha;
-	        double wv = (param ->maxConductance - param->minConductance)*0.015
+	        double wv = (param ->maxConductance - param->minConductance)*0.015;
 	        int newUpdateRate = param->newUpdateRate;
 	        int RefreshRate =param->RefreshRate;
 	        int FullRefresh =param->FullRefresh;
