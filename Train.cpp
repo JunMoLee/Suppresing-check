@@ -468,11 +468,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             gradt = s1[jj] * Input[i][k];
                             gradSum1[jj][k] += gradt; // sum over the gradient over all the training samples in this batch
                             if (optimization_type == "SGD"){
-                                deltaWeight1[jj][k] = SGD(gradt, param->alpha1);                        
+                                deltaWeight1[jj][k] = SGD(gradt, param->alpha1)/adLA;                        
                              }   
                             else if(optimization_type=="Momentum")
                             {
-                                deltaWeight1[jj][k] = SGD(gradt, param->alpha1); // only add momentum once every batch                       
+                                deltaWeight1[jj][k] = SGD(gradt, param->alpha1)/adLA; // only add momentum once every batch                       
                                 if (batchSize % numTrain == 0)
                                 {
                                     deltaWeight1[jj][k] = Momentum(gradt, param->alpha1,momentumPrev1[jj][k]);
@@ -856,10 +856,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             gradt = s2[jj] * a1[k];
                             gradSum2[jj][k] += gradt; // sum over the gradient over all the training samples in this batch
                          if (optimization_type == "SGD") 
-                            deltaWeight2[jj][k] = SGD(gradt, param->alpha2);                        
+                            deltaWeight2[jj][k] = SGD(gradt, param->alpha2)/adLA;                        
                             else if(optimization_type=="Momentum")
                                     {
-                                        deltaWeight2[jj][k] = SGD(gradt, param->alpha2);                        
+                                        deltaWeight2[jj][k] = SGD(gradt, param->alpha2)/adLA;                        
                                         if (batchSize % numTrain == 0){                                            
                                             deltaWeight2[jj][k] = Momentum(gradt, param->alpha2,momentumPrev2[jj][k]);
                                             momentumPrev2[jj][k] = GAMA*momentumPrev2[jj][k]+param->alpha2*gradSum2[jj][k];
@@ -1256,7 +1256,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
     }
 }
 double SGD(double gradient, double learning_rate){
-    return -learning_rate/adLA * gradient; 
+    return -learning_rate * gradient; 
 }
 
 double Momentum(double gradient, double learning_rate, double momentumPrev, double GAMA){
