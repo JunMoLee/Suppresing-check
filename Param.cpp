@@ -44,11 +44,11 @@ Param::Param() {
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	const double
-        l=40;
+        l=30;
 	const double
 	ll=60;
 	const double
-	dl=25;
+	dl=30;
 	const double
 	pdl=10;
 	const double
@@ -116,14 +116,14 @@ Param::Param() {
 	processNode = 32;	// Technology node (nm)
 	clkFreq = 2e9;		// Clock frequency (Hz)
         const int 
-	frr=2000;
+	frr=4000;
 	RefreshRate = frr;
 	const int 
 	nur=2;
 	const int 
 	rnur=1;
 	const int
-	nurn=23;
+	nurn=2;
 	newUpdateRate = nurn*rnur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
