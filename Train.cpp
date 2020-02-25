@@ -536,17 +536,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								
 								/* new update */
 								if (param->ReverseUpdate){
-								if (param->newUpdateRate<param->nnewUpdateRate){
+								if (param->newUpdateRate/adNur<param->nnewUpdateRate/adNur){
 								
 								
 								
 
 								
 								
-								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1)){
+								if((batchSize % param->newUpdateRate/adNur)*param->ReverseUpdate==(param->newUpdateRate/adNur-1)){
 									
 									
-								if((batchSize % param->nnewUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1)){
+								if((batchSize % param->nnewUpdateRate/adNur)*param->ReverseUpdate==(param->newUpdateRate/adNur-1)){
 							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false, false, param->dominance);}	
 								else
 									
@@ -565,12 +565,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 								}
 								
-								else if (param->newUpdateRate>param->nnewUpdateRate){
+								else if (param->newUpdateRate/adNur>param->nnewUpdateRate/adNur){
 									
-								if((batchSize % param->nnewUpdateRate)*param->ReverseUpdate==(param->nnewUpdateRate-1)){
+								if((batchSize % param->nnewUpdateRate/adNur)*param->ReverseUpdate==(param->nnewUpdateRate/adNur-1)){
 									
 									
-								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->nnewUpdateRate-1)){
+								if((batchSize % param->newUpdateRate/adNur)*param->ReverseUpdate==(param->nnewUpdateRate/adNur-1)){
 							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, true, false, param->dominance);}	
 								else
 									
@@ -592,10 +592,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 								}
 								
-								else if (param->newUpdateRate==param->nnewUpdateRate)
+								else if (param->newUpdateRate/adNur==param->nnewUpdateRate/adNur)
 									
 								{
-								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1))	
+								if((batchSize % param->newUpdateRate/adNur)*param->ReverseUpdate==(param->newUpdateRate/adNur-1))	
 								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false, true);
 									
 								else{
@@ -931,17 +931,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								
 								/* new update */
 								if (param->ReverseUpdate){
-								if (param->newUpdateRate<param->nnewUpdateRate){
+								if (param->newUpdateRate/adNur<param->nnewUpdateRate/adNur){
 								
 								
 								
 
 								
 								
-								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1)){
+								if((batchSize % param->newUpdateRate/adNur)*param->ReverseUpdate==(param->newUpdateRate/adNur-1)){
 									
 									
-								if((batchSize % param->nnewUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1)){
+								if((batchSize % param->nnewUpdateRate/adNur)*param->ReverseUpdate==(param->newUpdateRate/adNur-1)){
 							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false, false, param->dominance);}	
 								else
 									
@@ -960,12 +960,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 								}
 								
-								else if (param->newUpdateRate>param->nnewUpdateRate){
+								else if (param->newUpdateRate/adNur>param->nnewUpdateRate/adNur){
 									
-								if((batchSize % param->nnewUpdateRate)*param->ReverseUpdate==(param->nnewUpdateRate-1)){
+								if((batchSize % param->nnewUpdateRate/adNur)*param->ReverseUpdate==(param->nnewUpdateRate/adNur-1)){
 									
 									
-								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->nnewUpdateRate-1)){
+								if((batchSize % param->newUpdateRate/adNur)*param->ReverseUpdate==(param->nnewUpdateRate/adNur-1)){
 							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, true, false, param->dominance);}	
 								else
 									
@@ -987,10 +987,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 								}
 								
-								else if (param->newUpdateRate==param->nnewUpdateRate)
+								else if (param->newUpdateRate/adNur==param->nnewUpdateRate/adNur)
 									
 								{
-								if((batchSize % param->newUpdateRate)*param->ReverseUpdate==(param->newUpdateRate-1))	
+								if((batchSize % param->newUpdateRate/adNur)*param->ReverseUpdate==(param->newUpdateRate/adNur-1))	
 								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false, true);
 									
 								else{
@@ -1208,7 +1208,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				}
 			}
 			/// conductance saturation management: Full-Reset /// 
-			if(!stopreset&&(param -> FullRefresh)){
+			if(!stopreset&&(param -> FullRefresh)/adFrr){
 				
 			if (batchSize % param->RefreshRate == (param->RefreshRate-1)) { //ERASE
 				for (int j = 0; j < param->nHide; j++) {
