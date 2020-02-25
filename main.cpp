@@ -158,7 +158,10 @@ int main() {
 																	
 		for (int i=1; i<=125; i++) {
 		cout << "Training Epoch : " << i << endl; 
-		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type);
+		if(i<=20)
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,1);
+		else
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);	
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
 		if(write_or_not){
