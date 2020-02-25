@@ -101,7 +101,7 @@ double RMSprop(double gradient, double learning_rate, double gradSquarePrev,doub
 double Adam(double gradient, double learning_rate, double momentumPreV, double velocityPrev, double BETA1=0.1, double BETA2=0.7, double EPSILON=2E-1);
 
 
-void Train(const int numTrain, const int epochs, char *optimization_type, bool stopreset) {
+void Train(const int numTrain, const int epochs, char *optimization_type, bool stopreset, int adLA, int adCS, int adFrr, int adNur) {
 int numBatchReadSynapse;	    // # of read synapses in a batch read operation (decide later)
 int numBatchWriteSynapse;	// # of write synapses in a batch write operation (decide later)
 double outN1[param->nHide]; // Net input to the hidden layer [param->nHide]
@@ -1256,7 +1256,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
     }
 }
 double SGD(double gradient, double learning_rate){
-    return -learning_rate * gradient; 
+    return -adLA*learning_rate * gradient; 
 }
 
 double Momentum(double gradient, double learning_rate, double momentumPrev, double GAMA){
