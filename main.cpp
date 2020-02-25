@@ -155,7 +155,7 @@ int main() {
 		bool write_or_not=1;
 		fstream read;
 		read.open("hybridtest+1-1.csv",fstream::app);                                                         
-																	
+		cout << "Adaptive Training Information: refresh 4000 after epoch 20"<<endl;															
 		for (int i=1; i<=125; i++) {
 		cout << "Training Epoch : " << i << endl; 
 		if(i<=20)
