@@ -154,14 +154,18 @@ int main() {
 		printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f\n newUpdateRate(Gp): %d\n newUpdateRate(Gn): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
 		bool write_or_not=1;
 		fstream read;
-		read.open("hybridtest+1-1.csv",fstream::app);                                                         
+		read.open("reverseonly_adaptivecase.csv",fstream::app);                                                         
 		cout << "Adaptive Training Information: refresh 4000 after epoch 20"<<endl;															
 		for (int i=1; i<=125; i++) {
 		cout << "Training Epoch : " << i << endl; 
 		if(i<=20)
-		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,1);
+		param->ChangeLearningrate(0.35-0.15/20*i, 0.35-0.15/20*i, 0.35-0.15/20*i);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
+		cout<< param->alpha1 <<param->dalpha<<param->nalpha;
 		else
+		param->ChangeLearningrate(0.2, 0.2, 0.2);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);	
+		cout<< param->alpha1 <<param->dalpha<<param->nalpha;
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
 		if(write_or_not){
