@@ -165,8 +165,8 @@ int main() {
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/0.2)<<endl;}
 		else
 		{
-		param->ChangeLearningraNte(0.2, 0.2, 0.2, 0.2);
-		Train(param->numTrainImagesPerEpoch, param->interumEpochs,param->optimization_type,0);
+		param->ChangeLearningrate(0.2, 0.2, 0.2, 0.2);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/0.2)<<endl;}
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
