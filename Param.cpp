@@ -44,11 +44,11 @@ Param::Param() {
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	const double
-        l=20;
+        l=30;
 	const double
 	ll=60;
 	const double
-	dl=30;
+	dl=20;
 	const double
 	pdl=10;
 	const double
