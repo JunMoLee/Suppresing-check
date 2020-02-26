@@ -160,11 +160,11 @@ int main() {
 		cout << "Training Epoch : " << i << endl; 
 		if(i<=20)
 		{
-		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0,1);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<endl;}
 		else
 		{
-		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,1);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,1,0);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<endl;}
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
