@@ -184,3 +184,8 @@ break;
 	
 }
 
+Param::ChangeLearningrate(double dalph, double nalph){
+	this->dalpha=dalph;
+	this->nalpha1=nalph;
+}
+
