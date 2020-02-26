@@ -48,7 +48,7 @@ Param::Param() {
 	const double
 	ll=60;
 	const double
-	dl=35;
+	dl=30;
 	const double
 	pdl=10;
 	const double
