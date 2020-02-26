@@ -44,7 +44,7 @@ Param::Param() {
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	const double
-        l=30;
+        l=35;
 	const double
 	ll=60;
 	const double
@@ -62,8 +62,8 @@ Param::Param() {
 	nOutput = 10;     // # of neurons in output layer
 	alpha1 = l/100.0;	// Learning rate for the weights from input to hidden layer
 	alpha2 = l/2.0/100.0;	// Learning rate for the weights from hidden to output layer
-	dalpha = dl/100;
-	pdalpha = dl/rdl*10/100;
+	dalpha = l/100;
+	pdalpha = l/100;
 	nalpha1 = l/100;
 	nalpha2 = l/2.0/100;
 	tp = 12.5;
@@ -91,7 +91,7 @@ Param::Param() {
 	nuc=1;
         ReverseUpdate = nuc;
 	const int 
-        frc=1;
+        frc=0;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
@@ -184,7 +184,8 @@ break;
 	
 }
 
-void Param::ChangeLearningrate(double dalph, double nalph){
+void Param::ChangeLearningrate(double alph1 double dalph, double nalph){
+	this->alpha1=alph1
 	this->dalpha=dalph;
 	this->nalpha1=nalph;
 }
