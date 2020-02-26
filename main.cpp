@@ -159,12 +159,12 @@ int main() {
 		for (int i=1; i<=125; i++) {
 		cout << "Training Epoch : " << i << endl; 
 		if(i<=20)
-		{param->ChangeLearningrate(0.3-0.1/20*(i-1), 0.2, 0);
+		{
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<endl;}
 		else
-		{param->ChangeLearningrate(0.2, 0.2, 0);
-		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
+		{
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,1);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<endl;}
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
