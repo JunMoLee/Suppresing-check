@@ -48,7 +48,7 @@ Param::Param() {
 	const double
 	ll=60;
 	const double
-	dl=30;
+	dl=20;
 	const double
 	pdl=10;
 	const double
@@ -62,8 +62,8 @@ Param::Param() {
 	nOutput = 10;     // # of neurons in output layer
 	alpha1 = l/100.0;	// Learning rate for the weights from input to hidden layer
 	alpha2 = l/2.0/100.0;	// Learning rate for the weights from hidden to output layer
-	dalpha = l/100;
-	pdalpha = l/100;
+	dalpha = dl/100;
+	pdalpha = dl/100;
 	nalpha1 = l/100;
 	nalpha2 = l/2.0/100;
 	tp = 12.5;
