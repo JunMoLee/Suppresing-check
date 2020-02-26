@@ -91,7 +91,7 @@ Param::Param() {
 	nuc=1;
         ReverseUpdate = nuc;
 	const int 
-        frc=0;
+        frc=1;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
