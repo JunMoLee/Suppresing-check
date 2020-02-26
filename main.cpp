@@ -155,17 +155,17 @@ int main() {
 		bool write_or_not=1;
 		fstream read;
 		read.open("reverseonly_adaptivecase.csv",fstream::app);                                                         
-		cout << "Adaptive Training Information: refresh 4000 after epoch 20"<<endl;															
+		cout << "Adaptive Training Information:LA20 after epoch 20"<<endl;															
 		for (int i=1; i<=125; i++) {
 		cout << "Training Epoch : " << i << endl; 
 		if(i<=20)
 		{param->ChangeLearningrate(0.35-0.15/20*i, 0.35-0.15/20*i, 0.35-0.15/20*i);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
-		cout<< param->alpha1 <<param->dalpha<<param->nalpha1;}
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<endl;}
 		else
 		{param->ChangeLearningrate(0.2, 0.2, 0.2);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
-		cout<< param->alpha1 <<param->dalpha<<param->nalpha1;}
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<endl;}
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
 		if(write_or_not){
