@@ -162,7 +162,7 @@ int main() {
 		{
 	        param->ChangeLearningrate(0.2, 0, 0);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0,0,1,1,0.2);
-		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" nur "<<param->newUpdateRate<<endl;}
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" nur "<<(int)(param->newUpdateRate/0.2)<<endl;}
 		else
 		{
 		param->ChangeLearningrate(0.2, 0, 0);
