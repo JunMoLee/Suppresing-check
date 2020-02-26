@@ -44,7 +44,7 @@
 class Param {
 public:
 	Param();
-	void ChangeLearningrate(double dalph, double nalph);
+	
 
 	/* MNIST dataset */
 	int numMnistTrainImages;// # of training images in MNIST
@@ -110,6 +110,7 @@ public:
 	int nnewUpdateRate;
 	int dominance=0;
 	int ReverseUpdate;
+	void ChangeLearningrate(double dalph, double nalph);
 };
 
 #endif
