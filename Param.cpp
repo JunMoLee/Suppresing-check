@@ -184,9 +184,10 @@ break;
 	
 }
 
-void Param::ChangeLearningrate(double alph1, double dalph, double nalph){
+void Param::ChangeLearningrate(double alph1, double nalph, double dalph, double pdalph){
 	this->alpha1=alph1;
 	this->dalpha=dalph;
 	this->nalpha1=nalph;
+	this->pdalpha=pdalph;
 }
 
