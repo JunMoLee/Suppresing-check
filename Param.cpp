@@ -44,15 +44,15 @@ Param::Param() {
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	const double
-        l=20;
+        l=35;
 	const double
-	ll=20;
+	ll=35;
 	const double
-	dl=20;
+	dl=35;
 	const double
-	pdl=10;
+	pdl=35;
 	const double
-	rdl=10;
+	rdl=35;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
