@@ -333,11 +333,18 @@ RealDevice::RealDevice(int x, int y, double p, double n) {
 	NL_LTD = -1;	// LTD nonlinearity
 
    
-
+        if(param->useLTD){
+	NL_LTP_Gp=p;
+	NL_LTD_Gp=n;
+	NL_LTP_Gn=p;
+	NL_LTD_Gn=n;}
+	
+	else{
 	NL_LTP_Gp=p;
 	NL_LTD_Gp=p;
 	NL_LTP_Gn=n;
 	NL_LTD_Gn=n;
+	}
 
 	sigmaDtoD = 0;	// Sigma of device-to-device weight update vairation in gaussian distribution
 	gaussian_dist2 = new std::normal_distribution<double>(0, sigmaDtoD);	// Set up mean and stddev for device-to-device weight update vairation
