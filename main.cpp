@@ -160,6 +160,10 @@ int main() {
 	        int nnewUpdateRate= param->nnewUpdateRate;
 	        int dominance = param ->dominance;
 		cout << "Training Epoch : " << i << endl; 
+			
+		switch(param->selectsim){
+		case 0:
+		{ //input simuation case 0
 		if(i<=20)
 		{
 	        param->ChangeLearningrate(0.1+0.1*(i-1)/20, 0.3-0.1*(i-1)/20, 0.2, 0.2);
@@ -167,9 +171,28 @@ int main() {
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/0.2)<<endl;}
 		else
 		{
-		param->ChangeLearningrate(0.2, 0.2, 0.2, 0.2);
+		param->ChangeLearningrate(0.2-0.1*(i-21)/104, 0.20.2-0.1*(i-21)/104, 0.2, 0.2);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/0.2)<<endl;}
+		}
+		break;
+				
+		case 1:
+				{//input simuation case 1
+				}
+				break;
+		case 2:
+				{//input simuation case 2
+				}
+				break;
+		
+				
+		}
+			
+			
+			
+			
+			
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
 		if(write_or_not){
