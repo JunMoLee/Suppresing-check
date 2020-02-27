@@ -54,6 +54,7 @@ Param::Param() {
 	pdl=35;
 	const double
 	rdl=35;
+	selectsim=0;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
