@@ -166,12 +166,12 @@ int main() {
 		{ //input simuation case 0
 		if(i<=20)
 		{
-	        param->ChangeLearningrate(0.1+0.1*(i-1)/20, 0.3-0.1*(i-1)/20, 0.2, 0.2);
+	        param->ChangeLearningrate(0.35-0.15*(i-1)/20,0.35-0.15*(i-1)/20, 0.35-0.15*(i-1)/20, 0.35-0.15*(i-1)/20);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/0.2)<<endl;}
 		else
 		{
-		param->ChangeLearningrate(0.2-0.1*(i-21)/104, 0.20.2-0.1*(i-21)/104, 0.2, 0.2);
+		param->ChangeLearningrate(0.2-0.1*(i-21)/104, 0.2-0.1*(i-21)/104, 0.2-0.1*(i-21)/104, 0.2-0.1*(i-21)/104);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/0.2)<<endl;}
 		}
