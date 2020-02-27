@@ -140,7 +140,7 @@ int main() {
 	        double LAp = param->alpha1;
 	        double LAd = param->dalpha;
 	        double pLAd = param->pdalpha;
-	        double nLA = param->ndalpha1;
+	        double nLA = param->nalpha1;
 	        double wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
 	        int newUpdateRate = param->newUpdateRate;
 	        int RefreshRate =param->RefreshRate;
