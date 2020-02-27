@@ -127,7 +127,18 @@ int main() {
 
 	srand(0);	// Pseudorandom number seed
 
-	double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
+	       
+	 
+
+
+														               
+		printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f nLA: %.2f\n newUpdateRate(Gp): %d\n newUpdateRate(Gn): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, nLA, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
+		bool write_or_not=1;
+		fstream read;
+		read.open("refresh_51_adaptivecase.csv",fstream::app);                                                         
+		cout << "Adaptive Training Information: Gp Gn refresh only 51 case adaptive starting from LA 0.1 0.3"<<endl;															
+		for (int i=1; i<=125; i++) {
+		double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
 	        double NL_LTD_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gp;
 		double NL_LTP_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gn;
 	        double NL_LTD_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gn;
@@ -148,16 +159,6 @@ int main() {
 	        int ReverseUpdate =param->ReverseUpdate;
 	        int nnewUpdateRate= param->nnewUpdateRate;
 	        int dominance = param ->dominance;
-	 
-
-
-														               
-		printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f nLA: %.2f\n newUpdateRate(Gp): %d\n newUpdateRate(Gn): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, nLA, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
-		bool write_or_not=1;
-		fstream read;
-		read.open("refresh_51_adaptivecase.csv",fstream::app);                                                         
-		cout << "Adaptive Training Information: Gp Gn refresh only 51 case adaptive starting from LA 0.1 0.3"<<endl;															
-		for (int i=1; i<=125; i++) {
 		cout << "Training Epoch : " << i << endl; 
 		if(i<=20)
 		{
