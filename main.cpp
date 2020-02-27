@@ -155,12 +155,12 @@ int main() {
 		bool write_or_not=1;
 		fstream read;
 		read.open("refresh_51_adaptivecase.csv",fstream::app);                                                         
-		cout << "Adaptive Training Information:LA20 after epoch 20"<<endl;															
+		cout << "Adaptive Training Information: Gp Gn refresh only 51 case adaptive starting from LA 0.1 0.3"<<endl;															
 		for (int i=1; i<=125; i++) {
 		cout << "Training Epoch : " << i << endl; 
 		if(i<=20)
 		{
-	        param->ChangeLearningrate(0.35-0.15*(i-1)/20, 0.35-0.15*(i-1)/20, 0.35-0.15*(i-1)/20, 0.35-0.15*(i-1)/20);
+	        param->ChangeLearningrate(0.1+0.1*(i-1)/20, 0.3-0.1*(i-1)/20, 0.2, 0.2);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,0);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/0.2)<<endl;}
 		else
