@@ -111,6 +111,7 @@ public:
 	int nnewUpdateRate;
 	int dominance=0;
 	int ReverseUpdate;
+	int selectsim=0;
 	void ChangeLearningrate(double alph1, double nalph, double dalph, double pdalph);
 };
 
