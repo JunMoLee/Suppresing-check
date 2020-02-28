@@ -135,7 +135,7 @@ int main() {
 		
 		bool write_or_not=1;
 		fstream read;
-		read.open("refresh_51_adaptivecase.csv",fstream::app);                                                         
+		read.open("adaptivecasecheck1-13.csv",fstream::app);                                                         
 		cout << "Adaptive Training Information: +1-1 hybrid case adaptive starting from LA 0.35 0.35 and keep decreasing until epoch=125"<<endl;															
 		for (int i=1; i<=125; i++) {
 		double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
