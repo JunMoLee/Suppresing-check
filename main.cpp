@@ -219,6 +219,16 @@ int main() {
 				//end of simulation case 2	
 				}
 				break;
+				
+		case 14:
+				{// input simulation case 3 : +1 -1 accuracy optimization
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,0,0,0.1/(0.1-0.05*(i-1)/124));
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;			
+		
+					
+				// end of simulation case 3
+				}
+				break;
 		
 				
 		}
