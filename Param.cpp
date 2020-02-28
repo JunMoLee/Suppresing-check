@@ -45,13 +45,13 @@ Param::Param() {
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=30;
+        l=20;
 	const double
-	ll=30;
+	ll=20;
 	const double
-	dl=30;
+	dl=10;
 	const double
-	pdl=30;
+	pdl=8;
 	const double
 	rdl=10;
 	const double
@@ -67,7 +67,7 @@ Param::Param() {
 	alpha1 = l/100.0;	// Learning rate for the weights from input to hidden layer
 	alpha2 = alpha1/2;	// Learning rate for the weights from hidden to output layer
 	dalpha = l/100;
-	pdalpha = l/100;
+	pdalpha = pdl/100;
 	nalpha1 = ll/100;
 	nalpha2 = ll/2.0/100;
 	tp = 12.5;
@@ -127,11 +127,11 @@ Param::Param() {
 	const int 
 	rnur=1;
 	const int
-	nurn=2;
+	nurn=200;
 	newUpdateRate = nurn*rnur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
-a=2;
+a=0;
 	
 
 switch(a){
