@@ -185,9 +185,10 @@ int main() {
 				{//input simuation case 1
 					
 		if(i<=18)
-		{ if(i%2==1){
-		int k = (i+1)/2;}
-		else int k =i/2;
+		{ int k =0;
+		if(i%2==1){
+		k = (i+1)/2;}
+		else k=i/2;
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,0,0,0.3/(0.3-0.1*(k-1)/8), 1, 2/(k+1));
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/(2/(k+1)))<<endl;
 		
