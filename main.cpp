@@ -190,13 +190,13 @@ int main() {
 		k = (i+1)/2;}
 		else k=i/2;
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,0,0,0.3/(0.3-0.1*(k-1)/8), 1, 2/(k+1));
-		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/(2/(k+1)))<<endl;
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate)<<endl;
 		
 		}
 				
 		else{
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,0,0,0.3/(0.2-0.05*(i-19)/106), 1, 1/5);
-		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate*5)<<endl;
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate)<<endl;
 		
 		}
 				//end of simulation case 1
@@ -205,14 +205,15 @@ int main() {
 		case 2:
 				{//input simuation case 2 : +1-9 case
 		if(i<=10)
-		{Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,1,0,1, 1, 50);
-		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/(2/(k+1)))<<endl;
+		{Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,1,0,1,1,50);
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
 		}
 		else
 		{
 		param->ChangeLearningrate(0.2, 0.2, 0.1, 0.1);
+		param->ChangeNur(200,1);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
-		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/(2/(k+1)))<<endl;
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
 		}
 					
 				//end of simulation case 2	
