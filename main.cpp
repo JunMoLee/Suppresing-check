@@ -135,7 +135,7 @@ int main() {
 		
 		bool write_or_not=1;
 		fstream read;
-		read.open("adaptivecasecheck1-13.csv",fstream::app);                                                         
+		read.open("adaptivecasecheck1-14.csv",fstream::app);                                                         
 		cout << "Adaptive Training Information: +1-1 hybrid case adaptive starting from LA 0.35 0.35 and keep decreasing until epoch=125"<<endl;															
 		for (int i=1; i<=125; i++) {
 		double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
@@ -230,9 +230,30 @@ int main() {
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
 			//end of simulation case 3
 		}
-		break;		
+		break;	
 				
-		case 14:
+		case 4: {//input simulation case 4
+		if(i<=15)
+		{
+		param->ChangeLearningrate(0.3, 0.3, 0.3, 0.15);
+		param->ChangeNur(2,4);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,1);
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
+		}
+		else
+		{
+		param->ChangeLearningrate(0.2-0.03*(i-16)/109, 0.2-0.03*(i-16)/109, 0.1-0.015*(i-16)/109, (0.1-0.015*(i-16)/109)*0.9);
+		param->ChangeNur(200,1);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
+		
+		}
+			
+			
+		// end of simmulation case 4
+		}
+		break;		
+		case 15:
 				{// input simulation case 3 : +1 -1 accuracy optimization
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,0,0,0.1/(0.1-0.05*(i-1)/124));
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;			
