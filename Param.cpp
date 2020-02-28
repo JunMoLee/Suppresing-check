@@ -45,13 +45,13 @@ Param::Param() {
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=35;
+        l=10;
 	const double
-	ll=35;
+	ll=10;
 	const double
-	dl=35;
+	dl=10;
 	const double
-	pdl=35;
+	pdl=10;
 	const double
 	rdl=35;
 	const double
@@ -95,7 +95,7 @@ Param::Param() {
 	nuc=1;
         ReverseUpdate = nuc;
 	const int 
-        frc=0;
+        frc=1;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
@@ -120,14 +120,14 @@ Param::Param() {
 	processNode = 32;	// Technology node (nm)
 	clkFreq = 2e9;		// Clock frequency (Hz)
         const int 
-	frr=125;
+	frr=1000;
 	RefreshRate = frr;
 	const int 
-	nur=2;
+	nur=100;
 	const int 
 	rnur=1;
 	const int
-	nurn=2;
+	nurn=100;
 	newUpdateRate = nurn*rnur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
