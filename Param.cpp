@@ -195,3 +195,8 @@ void Param::ChangeLearningrate(double alph1, double nalph, double dalph, double 
 	this->pdalpha=pdalph;
 }
 
+void Param::ChangeNur(double nurn, double rnur){
+	this->newUpdateRate=(int)rnur*nurn;
+	this->nnewUpdateRate=(int)nurn;
+}
+
