@@ -55,7 +55,7 @@ Param::Param() {
 	const double
 	rdl=10;
 	const double
-	ss=1;
+	ss=3;
 	selectsim=ss;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
@@ -66,7 +66,7 @@ Param::Param() {
 	nOutput = 10;     // # of neurons in output layer
 	alpha1 = l/100.0;	// Learning rate for the weights from input to hidden layer
 	alpha2 = alpha1/2;	// Learning rate for the weights from hidden to output layer
-	dalpha = l/100;
+	dalpha = dl/100;
 	pdalpha = pdl/100;
 	nalpha1 = ll/100;
 	nalpha2 = ll/2.0/100;
