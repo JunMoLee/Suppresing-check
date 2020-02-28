@@ -190,7 +190,7 @@ int main() {
 		k = (i+1)/2;}
 		else k=i/2;
 		param->ChangeLearningrate((0.3-0.1*(k-1)/8),(0.3-0.1*(k-1)/8),(0.3-0.1*(k-1)/8),(0.3-0.1*(k-1)/8));
-		param->ChangeNur(K+1,1);
+		param->ChangeNur(k+1,1);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate)<<endl;
 		
