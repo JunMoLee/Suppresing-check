@@ -45,17 +45,17 @@ Param::Param() {
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=20;
+        l=30;
 	const double
-	ll=20;
+	ll=30;
 	const double
-	dl=10;
+	dl=30;
 	const double
-	pdl=8;
+	pdl=15;
 	const double
 	rdl=10;
 	const double
-	ss=3;
+	ss=4;
 	selectsim=ss;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
@@ -84,7 +84,7 @@ Param::Param() {
 	cp=1;
 	cp=-1;
 	const int
-	dom=1;
+	dom=0;
 	dominance=dom;
 	maxWeight = 1;	// Upper bound of weight value
 	minWeight = -1;	// Lower bound of weight value
