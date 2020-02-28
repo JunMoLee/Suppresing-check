@@ -203,7 +203,19 @@ int main() {
 	         }
 				break;
 		case 2:
-				{//input simuation case 2
+				{//input simuation case 2 : +1-9 case
+		if(i<=10)
+		{Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,1,0,1, 1, 50);
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/(2/(k+1)))<<endl;
+		}
+		else
+		{
+		param->ChangeLearningrate(0.2, 0.2, 0.1, 0.1);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate/(2/(k+1)))<<endl;
+		}
+					
+				//end of simulation case 2	
 				}
 				break;
 		
