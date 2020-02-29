@@ -253,6 +253,28 @@ int main() {
 		// end of simmulation case 4
 		}
 		break;		
+				
+		case 5: {///start  //dom = 1 
+param->ChangeLearningrate(0.4, 0.4, 0.2, 0.2);
+param->ChangeNur(200,2);
+Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
+			
+			///end
+		}
+				break;
+		case 6:{ ///start
+			
+			
+			///end
+		}
+				break;
+		case 6:{ ///start
+			
+			
+			///end
+		}
+				break;
 		case 15:
 				{// input simulation case 3 : +1 -1 accuracy optimization
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,0,0,0.1/(0.1-0.05*(i-1)/124));
