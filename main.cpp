@@ -412,27 +412,7 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 				
 		}
 			
-		NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
-	        NL_LTD_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gp;
-		NL_LTP_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gn;
-	        NL_LTD_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gn;
-		kp = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelpLTP;
-		kd = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelpLTD;
-		knp = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelnLTP;
-		knd = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelnLTD;
-		pof = static_cast<RealDevice*>(arrayIH->cell[0][0])->pmaxConductance/static_cast<RealDevice*>(arrayIH->cell[0][0])->pminConductance;
-		nof = static_cast<RealDevice*>(arrayIH->cell[0][0])->nmaxConductance/static_cast<RealDevice*>(arrayIH->cell[0][0])->nminConductance;
-	        LAp = param->alpha1;
-	        LAd = param->dalpha;
-	        pLAd = param->pdalpha;
-	        nLA = param->nalpha1;
-	        wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
-	        newUpdateRate = param->newUpdateRate;
-	        RefreshRate =param->RefreshRate;
-	        FullRefresh =param->FullRefresh;
-	        ReverseUpdate =param->ReverseUpdate;
-	        nnewUpdateRate= param->nnewUpdateRate;
-	        dominance = param ->dominance;	
+		
 			
 			
 			
