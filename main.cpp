@@ -263,18 +263,142 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			///end
 		}
 				break;
-		case 6:{ ///start
+		case 6:{ ///start //+1-3
+			if(i<=20)
+			{param->ChangeLearningrate(0.2, 0.2, 0.15, 0.1);
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
+			}
+			else
+			{
+			param->ChangeLearningrate(0.2-0.05*(i-21)/104, 0.2-0.05*(i-21)/104, 0.15-0.05*3/4*(i-21)/104, 2/3*(0.15-0.05*3/4(i-21)/104));
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;	
+				
+				
+			}
+				
+				
 			
 			
 			///end
 		}
 				break;
-		case 6:{ ///start
+		case 7:{ ///start
+			if(i<=20)
+			{param->ChangeLearningrate(0.2, 0.2, 0.15, 0.1);
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
+			}
+			else
+			{
+			param->ChangeLearningrate(0.2, 0.2, 0.15, 0.1);
+			param->ChangeNur(10+76*(i-21)/104,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;	
+			}
+			
+			///end
+		}
+				break;
+		
+		case 8:{ ///start
+			if(i<=20)
+			{param->ChangeLearningrate(0.4-0.2*(i-1)/19, 0.4-0.2*(i-1)/19, (0.4-0.2*(i-1)/19)*3/4, (0.4-0.2*(i-1)/19)/2);
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
+			}
+			else if (20<i<=60)
+			{
+			param->ChangeLearningrate(0.2, 0.2, 0.15, 0.1);
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;	
+			}
+			
+			else
+			{
+			param->ChangeLearningrate(0.2-0.05*(i-61)/64, 0.2-0.05*(i-61)/64, (0.2-0.05*(i-61)/64)*3/4, (0.2-0.05*(i-61)/64)/2);
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;	
+				
+			}
 			
 			
 			///end
 		}
 				break;
+				
+		case 9:{ ///start
+			if(i<=60)
+			{param->ChangeLearningrate(0.2, 0.2, 0.15-0.05*(i-1)/59, 0.1-0.02*(i-1)/59);
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
+			}
+			else if (60<i<=100)
+			{
+			param->ChangeLearningrate(0.2, 0.2, 0.1, 0.08);
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;	
+			}
+			
+			else 
+			{
+			param->ChangeLearningrate(0.2, 0.2, 0.1-0.05*(i-101)/24, 4/5*(0.1-0.05*(i-101)/24));
+			param->ChangeNur(10,1);
+			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;	
+			}
+			///end
+		}
+				break;	
+				
+		case 10:{ ///start
+			
+			
+			///end
+		}
+				break;	
+				
+		
+		case 11:{ ///start
+			
+			
+			///end
+		}
+				break;
+				
+				
+		case 12:{ ///start
+			
+			
+			///end
+		}
+				break;	
+				
+				
+		case 13:{ ///start
+			
+			
+			///end
+		}
+				break;
+				
+				
+		case 14:{ ///start
+			
+			
+			///end
+		}
+				break;
+				
 		case 15:
 				{// input simulation case 3 : +1 -1 accuracy optimization
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i,0,0,0.1/(0.1-0.05*(i-1)/124));
