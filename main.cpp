@@ -255,7 +255,7 @@ int main() {
 		break;		
 				
 		case 5: {///start  //dom = 1 
-param->ChangeLearningrate(0.4, 0.4, 0.2, 0.2);
+param->ChangeLearningrate(0.3-0.1*(i-1)/124, 0.3-0.1*(i-1)/124, 0.15-0.05*(i-1)/124, 0.15-0.05*(i-1)/124);
 param->ChangeNur(200,2);
 Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
 cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
