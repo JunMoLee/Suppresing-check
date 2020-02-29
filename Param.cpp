@@ -84,7 +84,7 @@ Param::Param() {
 	cp=1;
 	cp=-1;
 	const int
-	dom=0;
+	dom=1;
 	dominance=dom;
 	maxWeight = 1;	// Upper bound of weight value
 	minWeight = -1;	// Lower bound of weight value
@@ -125,7 +125,7 @@ Param::Param() {
 	const int 
 	nur=100;
 	const int 
-	rnur=1;
+	rnur=2;
 	const int
 	nurn=200;
 	newUpdateRate = nurn*rnur; // rate of new update algorithm implementation (per # of images)
