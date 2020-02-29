@@ -272,7 +272,7 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			}
 			else
 			{
-			param->ChangeLearningrate(0.2-0.05*(i-21)/104, 0.2-0.05*(i-21)/104, 0.15-0.05*3/4*(i-21)/104, 2/3*(0.15-0.05*3/4(i-21)/104));
+			param->ChangeLearningrate(0.2-0.05*(i-21)/104, 0.2-0.05*(i-21)/104, 0.15-0.05*3/4*(i-21)/104, 2/3*(0.15-0.05*3/4*(i-21)/104));
 			param->ChangeNur(10,1);
 			Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
 cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;	
