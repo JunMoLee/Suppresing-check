@@ -224,7 +224,7 @@ int main() {
 				}
 				break;
 		case 3:{//input simulation case 3
-		param->ChangeLearningrate(0.4-0.2*(i-1)/124, 0.4-0.2*(i-1)/124, 0.2-0.1*(i-1)/124, 4/5*(0.2-0.1*(i-1)/124));
+		param->ChangeLearningrate(0.4-0.2*(i-1)/124, 0.4-0.2*(i-1)/124, 0.2-0.1*(i-1)/124, 4.0/5.0*(0.2-0.1*(i-1)/124));
 		param->ChangeNur(200,1);
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);	
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(param->newUpdateRate)<<" nurn "<<(param->nnewUpdateRate)<<endl;
