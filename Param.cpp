@@ -55,7 +55,7 @@ Param::Param() {
 	const double
 	rdl=10;
 	const double
-	ss=4;
+	ss=3;
 	selectsim=ss;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
@@ -148,8 +148,8 @@ param_gp=1;
 param_gn=-1;
 break;
 case 3:
-param_gp=2;
-param_gn=-5;
+param_gp=1;
+param_gn=-9;
 break;
 case 4:
 param_gp=4;
