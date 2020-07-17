@@ -137,7 +137,7 @@ int main() {
 		fstream read;
 		read.open("SI_200717_PCMreverseLRasymmetry.csv",fstream::app);                                                         
 		cout << "Adaptive Training Information: +1-1 hybrid case adaptive starting from LA 0.35 0.35 and keep decreasing until epoch=125"<<endl;															
-		for (int i=1; i<=125; i++) {
+		for (int i=1; i<=60; i++) {
 		double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
 	        double NL_LTD_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gp;
 		double NL_LTP_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gn;
