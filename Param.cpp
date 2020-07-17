@@ -51,11 +51,11 @@ Param::Param() {
 	const double
 	dl=30;
 	const double
-	pdl=15;
+	pdl=30;
 	const double
 	rdl=10;
 	const double
-	ss=3;
+	ss=0;
 	selectsim=ss;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
@@ -95,7 +95,7 @@ Param::Param() {
 	nuc=1;
         ReverseUpdate = nuc;
 	const int 
-        frc=1;
+        frc=0;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
@@ -123,11 +123,11 @@ Param::Param() {
 	frr=4000;
 	RefreshRate = frr;
 	const int 
-	nur=100;
+	nur=3;
 	const int 
-	rnur=2;
+	rnur=1;
 	const int
-	nurn=200;
+	nurn=4;
 	newUpdateRate = nurn*rnur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int

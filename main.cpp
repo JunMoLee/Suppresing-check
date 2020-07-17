@@ -165,17 +165,10 @@ int main() {
 			
 		switch(param->selectsim){
 		case 0:
-		{ //input simuation case 0
-		if(i<=20)
-		{
-	        param->ChangeLearningrate(0.35-0.15*(i-1)/20,0.35-0.15*(i-1)/20, 0.35-0.15*(i-1)/20, 0.35-0.15*(i-1)/20);
+		{ //input simuation case 0 = default case		
+	     
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
-		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate)<<endl;}
-		else
-		{
-		param->ChangeLearningrate(0.2-0.1*(i-21)/104, 0.2-0.1*(i-21)/104, 0.2-0.1*(i-21)/104, 0.2-0.1*(i-21)/104);
-		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
-		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate)<<endl;}
+		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate)<<endl;
 		
 		//end of simulation case 0
 		}
