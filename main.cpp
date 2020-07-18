@@ -180,12 +180,13 @@ int main() {
 		
 		if (i>=101)
 		{       accuracy[(size_t)i-101] = (double)correct/param->numMnistTestImages*100
-			averagesum += accuracy[(size_t)i-101]
+			averagesum += accuracy[(size_t)i-101];
 			cout<<"accumulated average accuracy : "<<averagesum/(i-100)<<endl;
-		        for((size_t)j=101; j<=i;j++){
-			stdsum += ( accuracy[(size_t)i-101] - averagesum/(i-100) ) * ( accuracy[(size_t)i-101] - averagesum/(i-100) )
-			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-100))<<endl;
+		        for(size_t j=101; j<=i;j++){
+			stdsum += ( accuracy[(size_t)j-101] - averagesum/(i-100) ) * ( accuracy[(size_t)j-101] - averagesum/(i-100) );
 			}
+			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-100))<<endl;
+			
 		}
 		//end of simulation case 0
 		}
