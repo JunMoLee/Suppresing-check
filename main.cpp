@@ -39,6 +39,7 @@
 #include <cstdio>
 #include <iostream>
 #include <fstream>
+#include <cmath>
 #include <sstream>
 #include <string>
 #include <stdlib.h>
@@ -136,7 +137,7 @@ int main() {
 		bool write_or_not=1;
 		fstream read;
 		read.open("SI_200718_PCMrefresh-onlycheck.csv",fstream::app);                                                         
-		cout << "Adaptive Training Information: +1-1 hybrid case adaptive starting from LA 0.35 0.35 and keep decreasing until epoch=125"<<endl;															
+																
 		for (int i=1; i<=125; i++) {
 		double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
 	        double NL_LTD_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gp;
@@ -152,6 +153,9 @@ int main() {
 	        double LAd = param->dalpha;
 	        double pLAd = param->pdalpha;
 	        double nLA = param->nalpha1;
+		vector <double> accuracy (25,0);
+		double averagesum=0;
+		double stdsum=0;
 	        double wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
 	        int newUpdateRate = param->newUpdateRate;
 	        int RefreshRate =param->RefreshRate;
@@ -159,19 +163,30 @@ int main() {
 	        int ReverseUpdate =param->ReverseUpdate;
 	        int nnewUpdateRate= param->nnewUpdateRate;
 	        int dominance = param ->dominance;
-		if (i==1)
-		{printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f nLA: %.2f\n newUpdateRate(Gp): %d\n newUpdateRate(Gn): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, nLA, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
-		read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"LAp"<<", "<<"LAd"<<", "<<"pLAd"<<","<<"nLA"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" << endl;
-		}
-		 cout << "Training Epoch : " << i << endl; 	
+	
 			
 		switch(param->selectsim){
 		case 0:
 		{ //input simuation case 0 = default case		
-	     
+	        
+		if (i==1)
+		{printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f nLA: %.2f\n newUpdateRate(Gp): %d\n newUpdateRate(Gn): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, nLA, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
+		 cout << "default algorithm"<<endl;
+		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"LAp"<<", "<<"LAd"<<", "<<"pLAd"<<","<<"nLA"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" << endl;
+		}
+		 cout << "Training Epoch : " << i << endl; 	
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate)<<endl;
 		
+		if (i>=101)
+		{       accuracy[(size_t)i-101] = (double)correct/param->numMnistTestImages*100
+			averagesum += accuracy[(size_t)i-101]
+			cout<<"accumulated average accuracy : "<<averagesum/(i-100)<<endl;
+		        for((size_t)j=101; j<=i;j++){
+			stdsum += ( accuracy[(size_t)i-101] - averagesum/(i-100) ) * ( accuracy[(size_t)i-101] - averagesum/(i-100) )
+			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-100))<<endl;
+			}
+		}
 		//end of simulation case 0
 		}
 		break;
