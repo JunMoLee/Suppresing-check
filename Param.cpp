@@ -45,7 +45,7 @@ Param::Param() {
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=10;
+        l=25;
 	const double
 	ll=30;
 	const double
