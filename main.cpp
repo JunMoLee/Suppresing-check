@@ -139,6 +139,8 @@ int main() {
 		read.open("SI_200720_PCMhybridrefresh4000.csv");                                                         
 		vector <double> accuracy (25,0);
 	
+	        double averagesum=0;
+	
 		for (int i=1; i<=125; i++) {
 		double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
 	        double NL_LTD_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gp;
@@ -154,9 +156,9 @@ int main() {
 	        double LAd = param->dalpha;
 	        double pLAd = param->pdalpha;
 	        double nLA = param->nalpha1;
-		
-		double averagesum=0;
 		double stdsum=0;
+		
+		
 	        double wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
 	        int newUpdateRate = param->newUpdateRate;
 	        int RefreshRate =param->RefreshRate;
