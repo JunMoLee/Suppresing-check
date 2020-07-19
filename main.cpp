@@ -173,7 +173,7 @@ int main() {
 		{ //input simuation case 0 = default case		
 	        
 		if (i==1)
-		{printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f nLA: %.2f\n newUpdateRate(Gp): %d\n newUpdateRate(Gn): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, nLA, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
+		{printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f nLA: %.2f\n newUpdateRate(+): %d\n newUpdateRate(-): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, nLA, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
 		 cout << "default algorithm"<<endl;
 		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"LAp"<<", "<<"LAd"<<", "<<"pLAd"<<","<<"nLA"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" << endl;
 		}
