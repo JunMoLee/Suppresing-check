@@ -135,8 +135,8 @@ int main() {
 														               
 		
 		bool write_or_not=1;
-		fstream read;
-		read.open("SI_200718_PCMrefresh-onlycheck.txt",fstream::app);                                                         
+		ofstream read;
+		read.open("SI_200720_PCMhybridrefresh4000.csv");                                                         
 		vector <double> accuracy (25,0);
 	
 		for (int i=1; i<=125; i++) {
