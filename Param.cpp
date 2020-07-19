@@ -45,13 +45,13 @@ Param::Param() {
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=40;
+        l=20;
 	const double
 	ll=30;
 	const double
-	dl=10;
+	dl=8;
 	const double
-	pdl=10;
+	pdl=8;
 	const double
 	rdl=10;
 	const double
@@ -92,7 +92,7 @@ Param::Param() {
     Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
     optimization_type = "SGD";
 	const int
-	nuc=0;
+	nuc=1;
         ReverseUpdate = nuc;
 	const int 
         frc=1;
@@ -123,11 +123,11 @@ Param::Param() {
 	frr=4000;
 	RefreshRate = frr;
 	const int 
-	nur=6;
+	nur=200;
 	const int 
 	rnur=1;
 	const int
-	nurn=6;
+	nurn=200;
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
