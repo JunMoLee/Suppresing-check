@@ -1253,6 +1253,36 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			
 		}
+	if(param->weighttrack==1)
+		fstream read1;
+		read1.open("weightIH.csv",fstream::app);                                                         	
+             													
+		for (int m=0; m<param->nHide; m++) {
+			for (int n=0; n<param->nInput;n++){
+				
+		read1<<endl;
+		read1 <<EpochCount<<", "<<m<<", "<<n<<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductance - (static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance ) / 2 )<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc;
+			
+			}
+		}
+		
+				
+				
+		fstream read2;
+	        read2.open("weightHO.csv",fstream::app);    
+		
+				
+		for (int m=0; m<param->nOutput; m++) {
+		for (int n=0; n<param->nHide;n++){
+				
+		read2 << endl;		
+		read2 <<EpochCount<<", "<<m<<", "<<n<<", "<<(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductance - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance ) / 2 )<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc;
+			
+			}
+		}
+		
+	}
+		
     }
 }
 double SGD(double gradient, double learning_rate){
