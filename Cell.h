@@ -96,6 +96,9 @@ public:
 	bool conductanceRangeVar;	// Consider variation of conductance range or not
 	double maxConductanceVar;	// Sigma of maxConductance variation (S)
 	double minConductanceVar;	// Sigma of minConductance variation (S)
+	int upc=0;
+	int unc=0;
+	int uzc=0;
 };
 
 class SRAM: public Cell {
