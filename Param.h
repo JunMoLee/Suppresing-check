@@ -112,6 +112,7 @@ public:
 	int dominance=0;
 	int ReverseUpdate;
 	int selectsim=0;
+	bool weighttrack=0;
 	void ChangeLearningrate(double alph1, double nalph, double dalph, double pdalph);
 	void ChangeNur(double nurn, double rnur);
 };
