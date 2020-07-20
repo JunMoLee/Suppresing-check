@@ -137,7 +137,7 @@ int main() {
 		bool write_or_not=1;
 		ofstream read;
 		read.open("SI_200720_PCMhybridrefresh4000.csv");                                                         
-		vector <double> accuracy (25,0);
+		vector <double> accuracy (125,0);
 	
 	        double averagesum=0;
 	
@@ -166,8 +166,8 @@ int main() {
 	        int ReverseUpdate =param->ReverseUpdate;
 	        int nnewUpdateRate= param->nnewUpdateRate;
 	        int dominance = param ->dominance;
-	
-			
+	  
+	        /* select algorithm */		
 		switch(param->selectsim){
 		case 0:
 		{ //input simuation case 0 = default case		
@@ -175,7 +175,7 @@ int main() {
 		if (i==1)
 		{printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LAp: %.2f LAd: %.2f pLAd: %.2f nLA: %.2f\n newUpdateRate(+): %d\n newUpdateRate(-): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, LAp, LAd, pLAd, nLA, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
 		 cout << "default algorithm"<<endl;
-		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"LAp"<<", "<<"LAd"<<", "<<"pLAd"<<","<<"nLA"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" << endl;
+		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"LAp"<<", "<<"LAd"<<", "<<"pLAd"<<","<<"nLA"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" <<", "<<"average accuracy"<<", "<<"standard deviation"<< endl;
 		}
 		 cout << "Training Epoch : " << i << endl; 	
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
@@ -443,22 +443,25 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			
 		if (!param->useHardwareInTraining && param->useHardwareInTestingFF) { WeightToConductance(); }
 		Validate();
-		if(write_or_not){
 
-		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<LAp<<", "<<LAd<<", "<<pLAd<<","<<nLA<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << endl;
-		
-		}
 		printf("%.2f\n", (double)correct/param->numMnistTestImages*100);
-		if (i>=101)
-		{       accuracy[(size_t)i-101] = (double)correct/param->numMnistTestImages*100;
-			averagesum += accuracy[(size_t)i-101];
-			cout<<"accumulated average accuracy : "<<averagesum/(i-100)<<endl;
-		        for(size_t j=101; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-101] - averagesum/(i-100) ) * ( accuracy[(size_t)j-101] - averagesum/(i-100) );
+		if (i>=1)
+		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+			averagesum += accuracy[(size_t)i-1];
+			cout<<"accumulated average accuracy : "<<averagesum/(i)<<endl;
+		        for(size_t j=1; j<=i;j++){
+			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
 			}
-			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-100))<<endl;
+			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i))<<endl;
 			
 		}
+									
+		if(write_or_not){
+
+		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<LAp<<", "<<LAd<<", "<<pLAd<<","<<nLA<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum/(i)<<", "<<sqrt(stdsum/(i))<< endl;
+		
+		}
+									
 		/*printf("\tRead latency=%.4e s\n", subArrayIH->readLatency + subArrayHO->readLatency);
 		printf("\tWrite latency=%.4e s\n", subArrayIH->writeLatency + subArrayHO->writeLatency);
 		printf("\tRead energy=%.4e J\n", arrayIH->readEnergy + subArrayIH->readDynamicEnergy + arrayHO->readEnergy + subArrayHO->readDynamicEnergy);
