@@ -49,9 +49,9 @@ Param::Param() {
 	const double
 	ll=30;
 	const double
-	dl=8;
+	dl=10;
 	const double
-	pdl=8;
+	pdl=10;
 	const double
 	rdl=10;
 	const double
@@ -96,7 +96,7 @@ Param::Param() {
 	nuc=1;
         ReverseUpdate = nuc;
 	const int 
-        frc=1;
+        frc=0;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
@@ -124,11 +124,11 @@ Param::Param() {
 	frr=4000;
 	RefreshRate = frr;
 	const int 
-	nur=200;
+	nur=5;
 	const int 
 	rnur=1;
 	const int
-	nurn=200;
+	nurn=5;
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
