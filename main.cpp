@@ -139,7 +139,11 @@ int main() {
 		read.open("SI_200720_PCMhybridrefresh4000.csv");                                                         
 		vector <double> accuracy (125,0);
 	
-	        double averagesum=0;
+	        double averagesum1=0;
+	        double averagesum2=0;
+	        double averagesum3=0;
+	        double averagesum4=0;
+	        double averagesum5=0;
 	
 		for (int i=1; i<=125; i++) {
 		double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
@@ -445,15 +449,51 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 		Validate();
 
 		printf("%.2f\n", (double)correct/param->numMnistTestImages*100);
-		if (i>=1)
+		if (i>=1 && i<=25)
 		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
-			averagesum += accuracy[(size_t)i-1];
-			cout<<"accumulated average accuracy : "<<averagesum/(i)<<endl;
+			averagesum1 += accuracy[(size_t)i-1];
+			cout<<"accumulated average accuracy : "<<averagesum1/(i)<<endl;
 		        for(size_t j=1; j<=i;j++){
 			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i))<<endl;
 			
+		}
+		else if (26<=i && i<=50)
+		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+			averagesum2 += accuracy[(size_t)i-1];
+			cout<<"accumulated average accuracy : "<<averagesum2/(i-25)<<endl;
+		        for(size_t j=26; j<=i;j++){
+			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			}
+			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-25))<<endl;
+		}
+		else if (51<=i && i<=75)
+		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+			averagesum3 += accuracy[(size_t)i-1];
+			cout<<"accumulated average accuracy : "<<averagesum2/(i-50)<<endl;
+		        for(size_t j=51; j<=i;j++){
+			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			}
+			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-50))<<endl;
+		}
+		else if (76<=i && i<=100)
+		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+			averagesum3 += accuracy[(size_t)i-1];
+			cout<<"accumulated average accuracy : "<<averagesum2/(i-75)<<endl;
+		        for(size_t j=76; j<=i;j++){
+			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			}
+			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-75))<<endl;
+		}
+		else (101<=i && i<=125)
+		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+			averagesum3 += accuracy[(size_t)i-1];
+			cout<<"accumulated average accuracy : "<<averagesum2/(i-100)<<endl;
+		        for(size_t j=101; j<=i;j++){
+			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			}
+			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-100))<<endl;
 		}
 									
 		if(write_or_not){
