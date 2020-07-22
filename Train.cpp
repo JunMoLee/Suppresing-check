@@ -41,6 +41,7 @@
 #include <vector>
 #include <random>
 #include <string>
+#include <fstream>
 #include "formula.h"
 #include "Param.h"
 #include "Array.h"
