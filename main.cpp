@@ -454,7 +454,7 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			averagesum1 += accuracy[(size_t)i-1];
 			cout<<"accumulated average accuracy : "<<averagesum1/(i)<<endl;
 		        for(size_t j=1; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			stdsum += ( accuracy[(size_t)j-1] - averagesum1/(i) ) * ( accuracy[(size_t)j-1] - averagesum1/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i))<<endl;
 			
@@ -464,34 +464,34 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			averagesum2 += accuracy[(size_t)i-1];
 			cout<<"accumulated average accuracy : "<<averagesum2/(i-25)<<endl;
 		        for(size_t j=26; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			stdsum += ( accuracy[(size_t)j-1] - averagesum2/(i) ) * ( accuracy[(size_t)j-1] - averagesum2/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-25))<<endl;
 		}
 		else if (51<=i && i<=75)
 		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
 			averagesum3 += accuracy[(size_t)i-1];
-			cout<<"accumulated average accuracy : "<<averagesum2/(i-50)<<endl;
+			cout<<"accumulated average accuracy : "<<averagesum3/(i-50)<<endl;
 		        for(size_t j=51; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			stdsum += ( accuracy[(size_t)j-1] - averagesum3/(i) ) * ( accuracy[(size_t)j-1] - averagesum3/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-50))<<endl;
 		}
 		else if (76<=i && i<=100)
 		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
-			averagesum3 += accuracy[(size_t)i-1];
-			cout<<"accumulated average accuracy : "<<averagesum2/(i-75)<<endl;
+			averagesum4 += accuracy[(size_t)i-1];
+			cout<<"accumulated average accuracy : "<<averagesum4/(i-75)<<endl;
 		        for(size_t j=76; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			stdsum += ( accuracy[(size_t)j-1] - averagesum4/(i) ) * ( accuracy[(size_t)j-1] - averagesum4/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-75))<<endl;
 		}
 		else (101<=i && i<=125)
 		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
-			averagesum3 += accuracy[(size_t)i-1];
-			cout<<"accumulated average accuracy : "<<averagesum2/(i-100)<<endl;
+			averagesum5 += accuracy[(size_t)i-1];
+			cout<<"accumulated average accuracy : "<<averagesum5/(i-100)<<endl;
 		        for(size_t j=101; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum/(i) ) * ( accuracy[(size_t)j-1] - averagesum/(i) );
+			stdsum += ( accuracy[(size_t)j-1] - averagesum5/(i) ) * ( accuracy[(size_t)j-1] - averagesum5/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-100))<<endl;
 		}
