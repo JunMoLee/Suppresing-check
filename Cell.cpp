@@ -440,7 +440,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		}
 	} else {	// LTD weight update
 		if(deltaWeightNormalized == 0)
-		unz++;
+		uzc++;
 		else
 		unc++;
 		GpGnCell = false;
@@ -557,7 +557,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	
 	else if (positiveupdate && (deltaWeightNormalized <= 0)) {	// LTP weight update
 		if(deltaWeightNormalized == 0)
-		unz++;
+		uzc++;
 		else
 		unc++;
 	        GpGnCell = false;
@@ -582,7 +582,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	else if (!positiveupdate && (deltaWeightNormalized <= 0)){	// LTD weight newupdate
 		
 		if(deltaWeightNormalized == 0)
-		unz++;
+		uzc++;
 		else
 		unc++;
 		
