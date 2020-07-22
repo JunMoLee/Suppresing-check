@@ -136,7 +136,7 @@ int main() {
 		
 		bool write_or_not=1;
 		ofstream read;
-		read.open("SI_200720_PCMhybridrefresh4000.csv");                                                         
+		read.open("SI_200720_PCMhybridrefresh4000.csv", ios_base::app);                                                         
 		vector <double> accuracy (125,0);
 	
 	        double averagesum1=0;
