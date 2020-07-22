@@ -182,7 +182,7 @@ int main() {
 		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"LAp"<<", "<<"LAd"<<", "<<"pLAd"<<","<<"nLA"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" <<", "<<"average accuracy"<<", "<<"standard deviation"<< endl;
 		}
 		 cout << "Training Epoch : " << i << endl; 	
-		Train(param->numTrainImagesPerEpoch, param->interNumEpochs,param->optimization_type,i);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs, param->optimization_type, i);
 		cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param->nalpha1<<" pdalpha "<<param->pdalpha<<" nur "<<(int)(param->newUpdateRate)<<endl;
 		
 		
