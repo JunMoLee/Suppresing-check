@@ -1253,7 +1253,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			
 		}
-	if(param->weighttrack==1)
+	if(param->weighttrack==1){
 		fstream read1;
 		read1.open("weightIH.csv",fstream::app);                                                         	
              													
