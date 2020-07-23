@@ -1256,18 +1256,31 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			
 		}
+		
+	/* track weights */
+		
+	char tempfile[200][10];
+	
+		
 	if(param->weighttrack==1){
-		ofstream readA;
-		readA.open("weightIH.csv",std::ios_base::app);                                                         	
-             													
+                                                      	
+             												
 		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
+		
+		
+		
+		ofstream readA;
+		readA.open("weightIH.csv",std::ios_base::app);   
 				
 		readA<<endl;
 		readA<<epochcount<<", "<<m<<", "<<n<<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductance - (static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance ) / 2 )<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
 			
 			}
 		}
+		
+		
+		
 		
 				
 				
@@ -1284,6 +1297,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			}
 		}
 		
+		
+
 	}
 		
     }
