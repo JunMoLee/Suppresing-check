@@ -65,12 +65,25 @@ Param::Param() {
 	nInput = 400;     // # of neurons in input layer
 	nHide = 100;      // # of neurons in hidden layer
 	nOutput = 10;     // # of neurons in output layer
+	
+	/* learning rate */
+	
 	alpha1 = l/100.0;	// Learning rate for the weights from input to hidden layer
 	alpha2 = alpha1/2;	// Learning rate for the weights from hidden to output layer
-	dalpha = dl/100;
-	pdalpha = pdl/100;
-	nalpha1 = l/100;
-	nalpha2 = l/2.0/100;
+	
+	dalpha = dl/100;        // LTD learning rate (-)
+	pdalpha = pdl/100;      // LTD learning rate (+)
+	
+	nalpha1 = l/100;        // LTP learning rate (-) for IH weights
+	nalpha2 = l/2.0/100;    // LTP learning rate (-) for HO weights
+	
+	LTPIHasf = nalpha1/palpha1;                    // asymmetry factor of LTD curve for IH defined by (-)/(+)
+	LTPHOasf = nalpha1/palpha1;                // asymmetry factor of LTD curve for IH defined by (-)/(+)
+	LTDIHasf = dalpha/pdalpha;                // asymmetry factor of LTD curve for IH defined by (-)/(+)
+	LTDHOasf = dalpha/pdalpha;                  // asymmetry factor of LTD curve for HO defined by (-)/(+)
+	
+	
+	
 	tp = 12.5;
 	tn = 12.5;
 	kp=128;
