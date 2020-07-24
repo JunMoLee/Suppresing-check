@@ -623,7 +623,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				                           /* arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);*/
 								
-							    weight1[jj][k] = arrayIH->ConductanceToWeight(jj, k, param->maxWeight, param->minWeight); 
+				weight1[jj][k] = arrayIH->ConductanceToWeight(jj, k, param->maxWeight, param->minWeight); 
                                 weightChangeBatch = weightChangeBatch || static_cast<AnalogNVM*>(arrayIH->cell[jj][k])->numPulse;
                                 if(fabs(static_cast<AnalogNVM*>(arrayIH->cell[jj][k])->numPulse) > maxPulseNum)
                                 {
@@ -1210,7 +1210,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					}
 				}
 			}
-			/// conductance saturation management: Full-Reset /// 
+			
+	      /// conductance saturation management: Full-Reset /// 
 			if(!stopreset&&(int)(param -> FullRefresh)/adFrr){
 				
 			if ((batchSize+numTrain*(epochcount-1)) % param->RefreshRate == (param->RefreshRate-1)) { //ERASE
@@ -1258,25 +1259,36 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		}
 		
 	/* track weights */
-		
-	char tempfile[200][10];
+	
+	// define name for file & parameters
+	char fileIH[4];
+	char fileHO[4];
+        string filenameA="weightIH";
+        string filenameB="weightHO";
 	
 		
 	if(param->weighttrack==1){
                                                       	
              												
 		for (int m=0; m<param->nHide; m++) {
-			for (int n=0; n<param->nInput;n++){
+		  for (int i=0; i<4;i++){
+			for (int n=100*i; n<100*(i+1);n++){
 		
 		
-		
+	        
+	        sprintf(fileIH, "%d", i)
+	        filenameA.append(fileIH)
 		ofstream readA;
-		readA.open("weightIH.csv",std::ios_base::app);   
-				
+		readA.open(filenameA + ".csv",std::ios_base::app);   		
 		readA<<endl;
-		readA<<epochcount<<", "<<m<<", "<<n<<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductance - (static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance ) / 2 )<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
+		readA<<epochcount<<", "<<m<<", "<<n; //write Cell index
+		readA <<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductance - (static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance ) / 2 );
+		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp<<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn;
+		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
+		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->a1[m];
 			
 			}
+		   }
 		}
 		
 		
@@ -1289,14 +1301,25 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		
 				
 		for (int m=0; m<param->nOutput; m++) {
-		for (int n=0; n<param->nHide;n++){
-				
+		for (int i=0; i<4; i++){
+		for (int n=25*i; n<25*(i+1);n++){
+			
+		
+	        sprintf(fileHO, "%d", i)
+	        filenameB.append(fileHO)
+		ofstream readA;
+			
+		readB.open(filenameB + ".csv",std::ios_base::app);  			
 		readB << endl;		
-		readB <<epochcount<<", "<<m<<", "<<n<<", "<<(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductance - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance ) / 2 )<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->uzc;
+		readB <<epochcount<<", "<<m<<", "<<n; // write cell index
+		readB <<", "<<(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductance - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance ) / 2 );
+	        readB <<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn;
+		readB <<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->uzc
+	        readB <<a2[m];
 			
 			}
 		}
-		
+		}
 		
 
 	}
