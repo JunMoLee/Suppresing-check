@@ -73,6 +73,9 @@ public:
 	double LTDIHasf ;                   // asymmetry factor of LTD curve for IH defined by (-)/(+)
 	double LTDHOasf ;                   // asymmetry factor of LTD curve for HO defined by (-)/(+)
 	
+	double learningrateIH[4][4];   // 0: LTP (+) 1: LTP (-) 2: LTD (+) 3: LTD (-)
+	double learningrateHO[4][4];   // 0: LTP (+) 1: LTP (-) 2: LTD (+) 3: LTD (-)
+	
 	
 	double maxWeight;	// Upper bound of weight value
 	double minWeight;	// Lower bound of weight value
