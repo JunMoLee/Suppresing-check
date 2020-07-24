@@ -1285,7 +1285,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		readA <<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductance - (static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance ) / 2 );
 		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp<<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn;
 		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
-		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->a1[m];
+		readA <<", "<<a1[m];
 			
 			}
 		   }
@@ -1314,7 +1314,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		readB <<epochcount<<", "<<m<<", "<<n; // write cell index
 		readB <<", "<<(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductance - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance ) / 2 );
 	        readB <<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn;
-		readB <<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->uzc
+		readB <<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->uzc;
 	        readB <<a2[m];
 			
 			}
