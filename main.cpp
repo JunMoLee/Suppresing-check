@@ -437,7 +437,7 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 				
 		}
 			
-		/* redefine name to write in file */
+		/* redeclaration of variables to write updated values in file */
 		NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
 	        NL_LTD_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gp;
 		NL_LTP_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gn;
@@ -455,10 +455,10 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 	        nnewUpdateRate= param->nnewUpdateRate;
 	        dominance = param ->dominance;	
 			
-	        double pLA = param->alpha1; // positive set Learning rate
-		double nLA = param->nalpha1; // negative set Learning rate
-		double pLAd = param->pdalpha; // positive reset Learning rate
-	        double nLAd = param->dalpha; // negative set Learning rate
+	        pLA = param->alpha1; // positive set Learning rate
+		nLA = param->nalpha1; // negative set Learning rate
+		pLAd = param->pdalpha; // positive reset Learning rate
+	        nLAd = param->dalpha; // negative set Learning rate
 	        
 	   
 	        wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
