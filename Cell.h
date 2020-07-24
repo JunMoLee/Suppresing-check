@@ -41,6 +41,8 @@
 #include <random>
 #include <vector>
 
+extern Param *param;
+
 class Cell {
 public:
 	int x, y;	// Cell location: x (column) and y (row) start from index 0
@@ -210,8 +212,8 @@ public:
 	double paramBGnd;
 	RealDevice(int x, int y, double p, double  n);
 	double Read(double voltage);	// Return read current (A)
-	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight , double* learningrate = Param->defaultlearningrate[0]);
-	void newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate, double* learningrate = Param->defaultlearningrate[0]);
+	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight , double* learningrate = param->defaultlearningrate[0]);
+	void newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate, double* learningrate = param->defaultlearningrate[0]);
 	void Erase();
 };
 
