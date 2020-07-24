@@ -79,9 +79,9 @@ Param::Param() {
 	nalpha2 = l/2.0/100;    // LTP learning rate (-) for HO weights
 	
 	LTPIHasf = nalpha1/palpha;                    // asymmetry factor of LTD curve for IH defined by (-)/(+)
-	LTPHOasf = (nalpha1/speed)/(palpha/speed);                // asymmetry factor of LTD curve for IH defined by (-)/(+)
+	LTPHOasf = (nalpha1/speed)/(alpha1/speed);                // asymmetry factor of LTD curve for IH defined by (-)/(+)
 	LTDIHasf = dalpha/pdalpha;                // asymmetry factor of LTD curve for IH defined by (-)/(+)
-	LTDHOasf = (dalpha/speed)/(pdalpha/speed);                  // asymmetry factor of LTD curve for HO defined by (-)/(+)
+	LTDHOasf = (dalpha/speed)/(pddalpha/speed);                  // asymmetry factor of LTD curve for HO defined by (-)/(+)
 	
 	defaultlearningrate[0][0]= alpha1;
 	defaultlearningrate[0][1]= nalpha1;
