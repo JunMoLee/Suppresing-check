@@ -227,7 +227,7 @@ double IdealDevice::Read(double voltage) {
 	}
 }
 
-void IdealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight) {
+void IdealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double* learningrate) {
 	extern std::mt19937 gen;
 	if (deltaWeightNormalized >= 0) {
 		deltaWeightNormalized = deltaWeightNormalized/(maxWeight-minWeight);
@@ -815,7 +815,7 @@ double MeasuredDevice::Read(double voltage) {	// Return read current (A)
 	}
 }
 
-void MeasuredDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight) {
+void MeasuredDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double* learningrate) {
 	double conductanceNew;
 	if (deltaWeightNormalized > 0) {    // LTP
 		deltaWeightNormalized = deltaWeightNormalized/(maxWeight-minWeight);
