@@ -75,7 +75,7 @@ public:
 	
 	double learningrateIH[4][4];   // 0: LTP (+) 1: LTP (-) 2: LTD (+) 3: LTD (-)
 	double learningrateHO[4][4];   // 0: LTP (+) 1: LTP (-) 2: LTD (+) 3: LTD (-)
-	double defaultlearningrate[1][4]; // same as above but for the default case
+	double defaultlearningrate[2][4]; // same as above but for the default case 1 for the IH 2 for the HO
 	
 	
 	double maxWeight;	// Upper bound of weight value
