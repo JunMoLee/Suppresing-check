@@ -199,7 +199,7 @@ int main() {
 		}
 		 cout << "Training Epoch : " << i << endl; 	
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs, param->optimization_type, i);
-		cout<<"LTP alpha(+) "<< param->alpha1 <<" LTP alpha(-) "<<param->nalpha1<<" LTD alpha(+) "<<param->pdalpha<<" LTD alpha(-) "<<param->dalpha<<" nur(+) "<<(int)(param->newUpdateRate)<< " nur(-) " << (int)(param->nnewUpdateRate) endl;
+		cout<<"LTP alpha(+) "<< param->alpha1 <<" LTP alpha(-) "<<param->nalpha1<<" LTD alpha(+) "<<param->pdalpha<<" LTD alpha(-) "<<param->dalpha<<" nur(+) "<<(int)(param->newUpdateRate)<< " nur(-) " << (int)(param->nnewUpdateRate)<<endl;
 		
 		
 		//end of simulation case 0
