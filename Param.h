@@ -57,12 +57,23 @@ public:
 	int nInput;     // # of neurons in input layer
 	int nHide;      // # of neurons in hidden layer
 	int nOutput;	// # of neurons in output layer
+	
+	
 	double alpha1;		// Learning rate for the synapses from input to hidden layer
 	double alpha2;		// Learning rate for the synapses from hidden to output layer
+	
 	double nalpha1;
 	double nalpha2;
-	double dalpha;
-	double pdalpha;
+	 
+	double dalpha;          // learning rate for LTD (-)
+	double pdalpha;         // learning rate for LTD (+)
+	
+	double LTPIHasf ;                    // asymmetry factor of LTD curve for IH defined by (-)/(+)
+	double LTPHOasf ;                   // asymmetry factor of LTD curve for IH defined by (-)/(+)
+	double LTDIHasf ;                   // asymmetry factor of LTD curve for IH defined by (-)/(+)
+	double LTDHOasf ;                   // asymmetry factor of LTD curve for HO defined by (-)/(+)
+	
+	
 	double maxWeight;	// Upper bound of weight value
 	double minWeight;	// Lower bound of weight value
 	double tp; // p on off ratio
