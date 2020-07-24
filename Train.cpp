@@ -1263,8 +1263,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	// define name for file & parameters
 	char fileIH[4];
 	char fileHO[4];
-        string filenameA="weightIH";
-        string filenameB="weightHO";
+        
+        
 	
 		
 	if(param->weighttrack==1){
@@ -1277,6 +1277,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		
 	        
 	        sprintf(fileIH, "%d", i);
+		string filenameA="weightIH";
 	        filenameA.append(fileIH);
 		ofstream readA;
 		readA.open(filenameA + ".csv",std::ios_base::app);   		
@@ -1306,6 +1307,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 		
 	        sprintf(fileHO, "%d", i);
+		string filenameB="weightHO";
 	        filenameB.append(fileHO);
 		ofstream readA;
 			
