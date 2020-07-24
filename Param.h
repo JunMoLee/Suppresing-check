@@ -141,7 +141,7 @@ public:
 	
 	/* for adaptive learning */ 
 	void ChangeLearningrate(double alph1, double nalph, double dalph, double pdalph);  // adaptive learning rate
-	void ChangeNur(double nurn, double rnur);  // adaptive new update rate
+	void ChangeNur(double nurn, double rnur);  // adaptive reverse update rate
 };
 
 #endif
