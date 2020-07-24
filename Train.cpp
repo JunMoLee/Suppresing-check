@@ -1276,8 +1276,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		
 		
 	        
-	        sprintf(fileIH, "%d", i)
-	        filenameA.append(fileIH)
+	        sprintf(fileIH, "%d", i);
+	        filenameA.append(fileIH);
 		ofstream readA;
 		readA.open(filenameA + ".csv",std::ios_base::app);   		
 		readA<<endl;
@@ -1305,8 +1305,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		for (int n=25*i; n<25*(i+1);n++){
 			
 		
-	        sprintf(fileHO, "%d", i)
-	        filenameB.append(fileHO)
+	        sprintf(fileHO, "%d", i);
+	        filenameB.append(fileHO);
 		ofstream readA;
 			
 		readB.open(filenameB + ".csv",std::ios_base::app);  			
