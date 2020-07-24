@@ -68,6 +68,7 @@ Param::Param() {
 	
 	/* learning rate */
 	
+	speed = 2; 
 	alpha1 = l/100.0;	// Learning rate for the weights from input to hidden layer
 	alpha2 = alpha1/2;	// Learning rate for the weights from hidden to output layer
 	
@@ -78,18 +79,15 @@ Param::Param() {
 	nalpha2 = l/2.0/100;    // LTP learning rate (-) for HO weights
 	
 	LTPIHasf = nalpha1/palpha1;                    // asymmetry factor of LTD curve for IH defined by (-)/(+)
-	LTPHOasf = nalpha1/palpha1;                // asymmetry factor of LTD curve for IH defined by (-)/(+)
+	LTPHOasf = (nalpha1/speed)/(palpha1/speed);                // asymmetry factor of LTD curve for IH defined by (-)/(+)
 	LTDIHasf = dalpha/pdalpha;                // asymmetry factor of LTD curve for IH defined by (-)/(+)
-	LTDHOasf = dalpha/pdalpha;                  // asymmetry factor of LTD curve for HO defined by (-)/(+)
+	LTDHOasf = (dalpha/speed)/(pdalpha/speed);                  // asymmetry factor of LTD curve for HO defined by (-)/(+)
 	
 	defaultlearningrate[0][0]= alpha1;
 	defaultlearningrate[0][1]= nalpha1;
 	defaultlearningrate[0][2]= pdalpha;
 	defaultlearningrate[0][3]= dalpha;
-	defaultlearningrate[1][0]= alpha1/2;
-	defaultlearningrate[1][1]= nalpha1/2;
-	defaultlearningrate[1][2]= pdalpha/2;
-	defaultlearningrate[1][3]= dalpha/2;	
+
 	
 	tp = 12.5;
 	tn = 12.5;
