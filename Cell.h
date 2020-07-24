@@ -151,7 +151,7 @@ public:
 	double writeVoltageSquareSum;   // Sum of V^2 of non-identical pulses (for weight update energy calculation in subcircuits)
 
 	virtual double Read(double voltage) = 0;
-	virtual void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double learningrate [] = learningrate = param -> defaultlearningrate[0]) = 0;
+	virtual void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double learningrate [] = param -> defaultlearningrate[0]) = 0;
 	double GetMaxReadCurrent(){
 		if (cmosAccess)
 			return readVoltage * 1 / (1 / avgMaxConductance);//+resistanceAccess);
