@@ -172,10 +172,10 @@ int main() {
 	        int nnewUpdateRate= param->nnewUpdateRate;
 	        int dominance = param ->dominance;
 			
-	        pLA = param->alpha1; // positive set Learning rate
-		nLA = param->nalpha1; // negative set Learning rate
-		pLAd = param->pdalpha; // positive reset Learning rate
-	        nLAd = param->dalpha; // negative set Learning rate
+	        double  pLA = param->alpha1; // positive set Learning rate
+	        double nLA = param->nalpha1; // negative set Learning rate
+		double pLAd = param->pdalpha; // positive reset Learning rate
+	        double nLAd = param->dalpha; // negative set Learning rate
 			
 		double stdsum=0; // standard deviation of certain epochs
 		
@@ -455,10 +455,10 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 	        nnewUpdateRate= param->nnewUpdateRate;
 	        dominance = param ->dominance;	
 			
-	        pLA = param->alpha1; // positive set Learning rate
-		nLA = param->nalpha1; // negative set Learning rate
-		pLAd = param->pdalpha; // positive reset Learning rate
-	        nLAd = param->dalpha; // negative set Learning rate
+	        double pLA = param->alpha1; // positive set Learning rate
+		double nLA = param->nalpha1; // negative set Learning rate
+		double pLAd = param->pdalpha; // positive reset Learning rate
+	        double nLAd = param->dalpha; // negative set Learning rate
 	        
 	   
 	        wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
