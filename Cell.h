@@ -41,7 +41,7 @@
 #include <random>
 #include <vector>
 
-extern Param *param;
+
 
 class Cell {
 public:
