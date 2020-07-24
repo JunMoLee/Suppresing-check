@@ -227,7 +227,7 @@ double IdealDevice::Read(double voltage) {
 	}
 }
 
-void IdealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double [] learningrate) {
+void IdealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double  learningrate []) {
 	extern std::mt19937 gen;
 	if (deltaWeightNormalized >= 0) {
 		deltaWeightNormalized = deltaWeightNormalized/(maxWeight-minWeight);
@@ -419,7 +419,7 @@ double RealDevice::Read(double voltage) {	// Return read current (A)
 	}
 }
 
-void RealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double[] learningrate) {
+void RealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double learningrate []) {
 	double conductanceNew = conductance;	// =conductance if no update
 	double conductanceNewGp = conductanceGp;
 	double conductanceNewGn = conductanceGn;
@@ -533,7 +533,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 
 ////////new write/////////////
 
-void RealDevice::newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate, double [] learningrate) {
+void RealDevice::newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate, double  learningrate []) {
 	double conductanceNew = conductance;	// =conductance if no update
 	double conductanceNewGp = conductanceGp;
 	double conductanceNewGn = conductanceGn;
@@ -815,7 +815,7 @@ double MeasuredDevice::Read(double voltage) {	// Return read current (A)
 	}
 }
 
-void MeasuredDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double [] learningrate) {
+void MeasuredDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double learningrate []) {
 	double conductanceNew;
 	if (deltaWeightNormalized > 0) {    // LTP
 		deltaWeightNormalized = deltaWeightNormalized/(maxWeight-minWeight);
