@@ -1265,14 +1265,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	char fileHO[4];
         
 	// define range of conductance for simplicity //
-	double minconGpIH = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pminConductance;
-	double minconGnIH = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nminConductance;
-	double minconGpHO = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pminConductance;
-	double minconGnHO = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nminConductance;
-	double rangeGpIH = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pmaxConductance - static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pminConductance;
-	double rangeGnIH = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nmaxConductance - static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nminConductance;
-	double rangeGpHO = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pmaxConductance - static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pminConductance;
-	double rangeGnHO = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nmaxConductance - static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nminConductance;
+	double minconGpIH = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->pminConductance;
+	double minconGnIH = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->nminConductance;
+	double minconGpHO = static_cast<AnalogNVM*>(arrayHO->cell[0][0])->pminConductance;
+	double minconGnHO = static_cast<AnalogNVM*>(arrayHO->cell[0][0])->nminConductance;
+	double rangeGpIH = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->pmaxConductance - static_cast<AnalogNVM*>(arrayIH->cell[m][n])->pminConductance;
+	double rangeGnIH = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->nmaxConductance - static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nminConductance;
+	double rangeGpHO = static_cast<AnalogNVM*>(arrayHO->cell[0][0])->pmaxConductance - static_cast<AnalogNVM*>(arrayHO->cell[m][n])->pminConductance;
+	double rangeGnHO = static_cast<AnalogNVM*>(arrayHO->cell[0][0])->nmaxConductance - static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nminConductance;
 	
         
 	
