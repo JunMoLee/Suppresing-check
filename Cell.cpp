@@ -44,7 +44,7 @@
 #include "Cell.h"
 #include "Param.h"
 
-extern Param *param;
+
 
 /* General eNVM */
 void AnalogNVM::WriteEnergyCalculation(double wireCapCol) {
