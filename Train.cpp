@@ -1296,7 +1296,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		readA<<epochcount<<", "<<m<<", "<<n; //write Cell index
 		readA <<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductance - (static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance ) / 2 );
 		readA <<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp - minconGpIH) / rangeGpIH <<", "<< (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn - minconGnIH) /rangeGnIH;
-		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
+		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc<<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc<<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
 		readA <<", "<<a1[m];
 			
 			}
