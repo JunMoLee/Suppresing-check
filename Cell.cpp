@@ -288,13 +288,19 @@ RealDevice::RealDevice(int x, int y, double p, double n) {
 	writePulseWidthLTD = 300e-6;	// Write pulse width (s) for LTD or weight decrease
 	writeEnergy = 0;	// Dynamic variable for calculation of write energy (J)
 
+	
+	/*  conductance steps */
 	maxNumLevelpLTP = param->kp;	// Maximum number of conductance states during LTP or weight increase
 	maxNumLevelpLTD = param->kd;	// Maximum number of conductance states during LTD or weight decrease
 
 	maxNumLevelnLTP = param->kp;
 	maxNumLevelnLTD = param->kd;
+	
+	
         maxNumLevelLTP= (maxNumLevelpLTP >  maxNumLevelnLTP)? maxNumLevelpLTP : maxNumLevelnLTP;
 	maxNumLevelLTD= (maxNumLevelpLTD >  maxNumLevelnLTD)? maxNumLevelpLTD : maxNumLevelnLTD;
+	
+	
 	numPulse = 0;	// Number of write pulses used in the most recent write operation (dynamic variable)
 	cmosAccess = true;	// True: Pseudo-crossbar (1T1R), false: cross-point
     FeFET = false;		// True: FeFET structure (Pseudo-crossbar only, should be cmosAccess=1)
@@ -413,7 +419,7 @@ double RealDevice::Read(double voltage) {	// Return read current (A)
 	}
 }
 
-void RealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight) {
+void RealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double* learningrate) {
 	double conductanceNew = conductance;	// =conductance if no update
 	double conductanceNewGp = conductanceGp;
 	double conductanceNewGn = conductanceGn;
@@ -444,7 +450,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		else
 		unc++;
 		GpGnCell = false;
-		deltaWeightNormalized = -param->nalpha1 / param->alpha1 * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
+		deltaWeightNormalized = -learningrate[1] / learningrate[0] * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelnLTP);
 		numPulse = deltaWeightNormalized * maxNumLevelnLTP;
 		if (numPulse > maxNumLevelnLTP) {
@@ -527,7 +533,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 
 ////////new write/////////////
 
-void RealDevice::newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate) {
+void RealDevice::newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate, double* learningrate) {
 	double conductanceNew = conductance;	// =conductance if no update
 	double conductanceNewGp = conductanceGp;
 	double conductanceNewGn = conductanceGn;
@@ -539,7 +545,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	if (positiveupdate && (deltaWeightNormalized > 0)) {	// LTP weight newupdate
 		upc++;
 		GpGnCell = false;
-		deltaWeightNormalized = param->pdalpha / param->alpha1 * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
+		deltaWeightNormalized = learningrate[2] / learningrate[0] * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelnLTD);
 		numPulse = deltaWeightNormalized * maxNumLevelnLTD;
 		if (numPulse > maxNumLevelnLTD) {
@@ -561,7 +567,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		else
 		unc++;
 	        GpGnCell = false;
-		deltaWeightNormalized = -param->nalpha1 / param->alpha1 * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
+		deltaWeightNormalized = - learningrate[1] / learningrate[0] * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelnLTP);
 		numPulse = deltaWeightNormalized * maxNumLevelnLTP;
 		if (numPulse > maxNumLevelnLTP) {
@@ -587,7 +593,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		unc++;
 		
 		GpGnCell = true;
-		deltaWeightNormalized = -param->dalpha / param->alpha1 * totalcondrange/pcondrange*deltaWeightNormalized/(maxWeight-minWeight);
+		deltaWeightNormalized = - learningrate[3] / learningrate[0] * totalcondrange/pcondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelpLTD);
 		numPulse = deltaWeightNormalized * maxNumLevelpLTD;
 		if (numPulse > maxNumLevelpLTD) {
