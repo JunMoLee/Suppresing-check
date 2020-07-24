@@ -61,7 +61,7 @@ public:
 	
 	double alpha1;		// Learning rate for the synapses from input to hidden layer
 	double alpha2;		// Learning rate for the synapses from hidden to output layer
-	
+	double speed;           // speed ratio between different layers : in this case, (learning rate of IH) / (learning rate of HO)
 	double nalpha1;
 	double nalpha2;
 	 
@@ -82,19 +82,23 @@ public:
 	double minWeight;	// Lower bound of weight value
 	double tp; // p on off ratio
 	double tn; // n on off ratio
+	
 	double kp; // mNL pP
 	double kd; // mNL pD
 	double knp; // mNL nP
 	double knd; // mNL nD
+	
 	double kc;
+	
 	double pp; // NL of pP
 	double pd; // NL of pD
 	double np; // NL of nP
 	double nd; //NL of nD
+	
 	double cp; // common NL of P
 	double cd; // common NL of D
 	
-    char* optimization_type;
+        char* optimization_type;
 
 	/* Hardware parameters */
 	bool useHardwareInTrainingFF;   // Use hardware in the feed forward part of training or not (true: realistic hardware, false: ideal software)
@@ -117,19 +121,27 @@ public:
 	double arrayWireWidth;	// Array wire width (nm)
 	int processNode;	// Technology node (nm)
 	double clkFreq;		// Clock frequency (Hz)
-        double param_gp;
-        double param_gn;
-	bool useLTD;
-	int FullRefresh;
-	int RefreshRate;
-	int newUpdateRate;
-	int nnewUpdateRate;
-	int dominance=0;
-	int ReverseUpdate;
-	int selectsim=0;
-	bool weighttrack=0;
-	void ChangeLearningrate(double alph1, double nalph, double dalph, double pdalph);
-	void ChangeNur(double nurn, double rnur);
+	
+        double param_gp;       // for nonlinearity definition - exact definition depends on code
+        double param_gn;       // for nonlinearity definition - exact definition depends on code
+	
+	bool useLTD;  // using LTD curve if true
+	
+	int FullRefresh;    // use refresh if true
+	int ReverseUpdate;  // use reverse update if true
+	
+	int RefreshRate;    // refreshrate
+	
+	int newUpdateRate;   // reverseupdate (+)
+	int nnewUpdateRate;   // reverseupdate (-)
+	int dominance=0;      // additional definition for reverse update
+	
+	int selectsim=0;  // select algorithm 
+	bool weighttrack=0;  // track weight & store in files if true
+	
+	/* for adaptive learning */ 
+	void ChangeLearningrate(double alph1, double nalph, double dalph, double pdalph);  // adaptive learning rate
+	void ChangeNur(double nurn, double rnur);  // adaptive new update rate
 };
 
 #endif
