@@ -45,19 +45,19 @@ Param::Param() {
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=20;
+        l=30;
 	const double
 	ll=30;
 	const double
-	dl=10;
+	dl=20;
 	const double
-	pdl=10;
+	pdl=15;
 	const double
 	rdl=10;
 	const double
 	ss=0;
 	selectsim=ss;
-	weighttrack=0;
+	weighttrack=1;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
@@ -124,11 +124,11 @@ Param::Param() {
 	frr=4000;
 	RefreshRate = frr;
 	const int 
-	nur=5;
+	nur=6;
 	const int 
 	rnur=1;
 	const int
-	nurn=5;
+	nurn=2;
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
