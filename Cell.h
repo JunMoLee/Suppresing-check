@@ -151,7 +151,7 @@ public:
 	double writeVoltageSquareSum;   // Sum of V^2 of non-identical pulses (for weight update energy calculation in subcircuits)
 
 	virtual double Read(double voltage) = 0;
-	virtual void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double* learningrate = 0) = 0;
+	virtual void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double [] learningrate = learningrate = param -> defaultlearningrate[0]) = 0;
 	double GetMaxReadCurrent(){
 		if (cmosAccess)
 			return readVoltage * 1 / (1 / avgMaxConductance);//+resistanceAccess);
@@ -184,7 +184,7 @@ public:
         double NL_LTP_Gp;
         double NL_LTP_Gn;
 	double Read(double voltage);	// Return read current (A)
-	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double* learningrate = param -> defaultlearningrate[0]);
+	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double [] learningrate = param -> defaultlearningrate[0]);
 };
 
 class RealDevice: public AnalogNVM {
@@ -215,7 +215,7 @@ public:
 	double paramBGnd;
 	RealDevice(int x, int y, double p, double  n);
 	double Read(double voltage);	// Return read current (A)
-	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight , double* learningrate = param -> defaultlearningrate[0]);
+	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight , double [] learningrate = param -> defaultlearningrate[0]);
 	void newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate, double* learningrate = param -> defaultlearningrate[0]);
 	void Erase();
 };
@@ -233,7 +233,7 @@ public:
 	double NL_LTN_Gn;
 	MeasuredDevice(int x, int y);
 	double Read(double voltage);	// Return read current (A)
-	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double* learningrate = param -> defaultlearningrate[0]);
+	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double [] learningrate = param -> defaultlearningrate[0]);
 };
 
 #endif
