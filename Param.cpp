@@ -82,7 +82,14 @@ Param::Param() {
 	LTDIHasf = dalpha/pdalpha;                // asymmetry factor of LTD curve for IH defined by (-)/(+)
 	LTDHOasf = dalpha/pdalpha;                  // asymmetry factor of LTD curve for HO defined by (-)/(+)
 	
-	
+	defaultlearningrate[0][0]= alpha1;
+	defaultlearningrate[0][1]= nalpha1;
+	defaultlearningrate[0][2]= pdalpha;
+	defaultlearningrate[0][3]= dalpha;
+	defaultlearningrate[1][0]= alpha1/2;
+	defaultlearningrate[1][1]= nalpha1/2;
+	defaultlearningrate[1][2]= pdalpha/2;
+	defaultlearningrate[1][3]= dalpha/2;	
 	
 	tp = 12.5;
 	tn = 12.5;
