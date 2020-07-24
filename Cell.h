@@ -184,7 +184,7 @@ public:
         double NL_LTP_Gp;
         double NL_LTP_Gn;
 	double Read(double voltage);	// Return read current (A)
-	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight);
+	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, double* learningrate = 0);
 };
 
 class RealDevice: public AnalogNVM {
