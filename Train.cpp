@@ -1211,7 +1211,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				}
 			}
 			
-	      /// conductance saturation management: Full-Reset /// 
+	      /* conductance saturation management: Full-Reset */ 
 			if(!stopreset&&(int)(param -> FullRefresh)/adFrr){
 				
 			if ((batchSize+numTrain*(epochcount-1)) % param->RefreshRate == (param->RefreshRate-1)) { //ERASE
@@ -1242,21 +1242,54 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 			}
 				
-			}
-			/// conductance saturation management: Full-Reset (end) /// 
+			} // end of full-reset code	
+
+	/* track weight distribution */
 			
-			/// new conductance saturation management ///
-			
-			/* if(param -> RefreshAlgorithm = "Refresh"){
+	int positiveweight1 ,positiveweight2;
+	int negativeweight1, negativeweight2;
+	int zeroweight1, positiveweight2;
+	int weightsum1=0, weightsum2=0;
+	
+	
+	 /* default distribution tracking -> total weight track */
+      	  for (int m=0; m<param->nHide; m++) {
+			for (int n=0; n<param->nInput;n++){
+			/* count polarity of weight */
+				if (weight[m][n] > 0) positiveweight1++;
+				else if (weight[m][n] ==0) zeroweight1++;
+				else negativeweight1++;
+			/* see if polarity of total sum of weight accords with the maximum polarity count of individual weight */
+				weightsum1 += weight1[m][n];
+				cout << (weightsum1>0) << " " << (positiveweight1>negativeweight1);
+		              
 				
 		
+	  }
+	  }  // weightIH
+			
+			for (int m=0; m<param->nOutput; m++) {
+			for (int n=0; n<param->nHide;n++){
+			/* count polarity of weight */
+				if (weight[m][n] > 0) positiveweight2++;
+				else if (weight[m][n] ==0) zeroweight2++;
+				else negativeweight2++;
+			/* see if polarity of total sum of weight accords with the maximum polarity count of individual weight */
+				weightsum2 += weight2[m][n];
+				cout << (weightsum2>0) << " " << (positiveweight2>negativeweight2);
+		              
 				
-			} */
+		
+	  }
+	  }  // weightHO
 			
-		       /// new conductance saturation management (end) ///
 			
-			
-		}
+	ofstream weightdis;
+	weightdis.open("weightdistribution.csv",std::ios_base::app);  
+	weightdis << epochcount << ", " << batchSize << ", " << batchSize+numTrain*(epochcount-1) <<", "
+	    	
+	}   // end of weight update code for 1 epoch
+		
 		
 	/* track weights */
 	
@@ -1294,7 +1327,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		readA.open(filenameA + ".csv",std::ios_base::app);   		
 		readA<<endl;
 		readA<<epochcount<<", "<<m<<", "<<n; //write Cell index
-		readA <<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductance - (static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayIH->cell[m][n]) -> avgMinConductance ) / 2 );
+		readA <<", "<<weight1[m][n];
 		readA <<", "<<(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp - minconGpIH) / rangeGpIH <<", "<< (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn - minconGnIH) /rangeGnIH;
 		readA <<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc<<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc<<", "<<static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
 		readA <<", "<<a1[m];
@@ -1325,20 +1358,22 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		readB.open(filenameB + ".csv",std::ios_base::app);  			
 		readB << endl;		
 		readB <<epochcount<<", "<<m<<", "<<n; // write cell index
-		readB <<", "<<(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductance - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance )/2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance )/2) / ( ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMaxConductance ) / 2 - ( static_cast<AnalogNVM*>(arrayHO->cell[m][n]) -> avgMinConductance ) / 2 );
+		readB <<", "<<weight2[m][n];
 	        readB <<", "<<(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp -minconGpHO)/ rangeGpHO<<", "<< (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn - minconGnHO) / rangeGnHO;
 		readB <<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc<<", "<<static_cast<AnalogNVM*>(arrayHO->cell[m][n])->uzc;
 	        readB <<", "<<a2[m];
 			
-			}
+		}
 		}
 		}
 		
 
-	}
+	} // end of weight tracking code
+	
 		
-    }
-}
+	
+    }  // end of interepoch code (default -> iterate once)
+}  // end of Train function
 double SGD(double gradient, double learning_rate){
     return -learning_rate * gradient; 
 }
