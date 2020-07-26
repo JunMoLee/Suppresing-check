@@ -106,6 +106,11 @@ public:
 	int upc=0; // for positive signal
 	int unc=0; // for negative signal
 	int uzc=0; // for zero signal
+	
+	/* track saturation counter for positive and negative */
+	int possat=0;
+	int negsat=0;
+	void ResetCounter();
 };
 
 class SRAM: public Cell {
