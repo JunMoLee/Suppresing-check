@@ -154,6 +154,8 @@ void AnalogNVM::WriteEnergyCalculation(double wireCapCol) {
     //printf("writeEnergy is %.4e\n", writeEnergy);
 }
 
+
+
 /* Ideal device (no weight update nonlinearity) */
 IdealDevice::IdealDevice(int x, int y) {
 	this->x = x; this->y = y;	// Cell location: x (column) and y (row) start from index 0
@@ -256,6 +258,11 @@ void IdealDevice::Write(double deltaWeightNormalized, double weight, double minW
 	
 	conductancePrev = conductance;
 	conductance = conductanceNew;
+}
+/* Reset counter */
+void eNVM::ResetCounter(){
+possat=0;
+negsat=0;
 }
 
 /* Real Device */
