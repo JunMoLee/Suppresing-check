@@ -471,7 +471,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             gradt = s1[jj] * Input[i][k];
                             gradSum1[jj][k] += gradt; // sum over the gradient over all the training samples in this batch
                             if (optimization_type == "SGD"){
-                                deltaWeight1[jj][k] = SGD(gradt, param->alpha1)/adLA;                        
+                                deltaWeight1[jj][k] = SGD(gradt, 1)/adLA;                        
                              }   
                             else if(optimization_type=="Momentum")
                             {
@@ -859,7 +859,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             gradt = s2[jj] * a1[k];
                             gradSum2[jj][k] += gradt; // sum over the gradient over all the training samples in this batch
                          if (optimization_type == "SGD") 
-                            deltaWeight2[jj][k] = SGD(gradt, param->alpha2)/adLA;                        
+                            deltaWeight2[jj][k] = SGD(gradt, 1/param->speed)/adLA;                        
                             else if(optimization_type=="Momentum")
                                     {
                                         deltaWeight2[jj][k] = SGD(gradt, param->alpha2)/adLA;                        
