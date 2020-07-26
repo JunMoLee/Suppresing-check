@@ -1263,10 +1263,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 			
 			cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
-			cout <<"average IH positive saturation : "<< possatsum1/param->RefreshRate/40000*100<<"%";
-			cout <<" average IH negative saturation : "<< negsatsum1/param->RefreshRate/40000*100<<"%";
-			cout <<" average HO positive saturation : "<< negsatsum2/param->RefreshRate/1000*100<<"%";
-			cout <<" average HO negative saturation : "<< negsatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<"average IH positive saturation : "<< possatsum1/param->RefreshRate/40000<< ", "<<possatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<" average IH negative saturation : "<< negsatsum1/param->RefreshRate/40000<<", "<<negsatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<" average HO positive saturation : "<< possatsum2/param->RefreshRate/1000<<", "<<possatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<" average HO negative saturation : "<< negsatsum2/param->RefreshRate/1000<<", "<<negsatsum2/param->RefreshRate/1000*100<<"%";
 			cout <<endl;
 				
 				
