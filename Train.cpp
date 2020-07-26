@@ -533,7 +533,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             }
                             */
                             
-							
+							/* weight IH update */
                             
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])) {	// Analog eNVM
 								
@@ -928,7 +928,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             {
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
-                        */			
+                        */			        /* weight HO update */
+				                           int areanumber;
+				                           int learningrateHO [4];
+				                             
+				                           
+				                               
+				                           
+				                           switch (areanumber)
+					                    case 0:// setting learning rate for each area
 				
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])) { // Analog eNVM
 								
