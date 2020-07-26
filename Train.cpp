@@ -1248,7 +1248,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			  for (int n=0; n<param->nInput;n++){
 				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
 				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
-				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter; 
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 			    }
 			    }
 				
@@ -1257,7 +1257,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			  for (int n=0; n<param->nHide;n++){
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
 				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
-				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter;
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
 			    }
