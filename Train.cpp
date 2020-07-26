@@ -1272,7 +1272,44 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 			} // end of if code
 				
-			} // end of full-reset code	
+			} // end of full-reset code
+		else {   
+			if ((batchSize+numTrain*(epochcount-1)) % param->RefreshRate == (param->RefreshRate-1)){
+			 /* saturation count */
+			double possatsum1=0, possatsum2=0;
+			double negsatsum1=0, negsatsum2=0;
+				
+			 // weight IH
+	                  for (int m=0; m<param->nHide; m++) {
+			  for (int n=0; n<param->nInput;n++){
+				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
+				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
+			    }
+			    }
+				
+			  // weight HO
+		          for (int m=0; m<param->nOutput; m++) {
+			  for (int n=0; n<param->nHide;n++){
+				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
+				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
+				
+			    }
+			    }
+			
+			cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
+			cout <<"average IH positive saturation : "<< possatsum1/param->RefreshRate/40000<< ", "<<possatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<" average IH negative saturation : "<< negsatsum1/param->RefreshRate/40000<<", "<<negsatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<" average HO positive saturation : "<< possatsum2/param->RefreshRate/1000<<", "<<possatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<" average HO negative saturation : "<< negsatsum2/param->RefreshRate/1000<<", "<<negsatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<endl;
+				
+			} // end of if
+		
+		     }  // saturation count if no refresh
+			
+				
 
 	/* track weight distribution */
 			
