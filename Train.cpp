@@ -1240,15 +1240,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				}
 				
                          /* saturation count */
-			int possatsum1=0, possatsum2=0;
-			int negsatsum1=0, negsatsum2=0;
+			double possatsum1=0, possatsum2=0;
+			double negsatsum1=0, negsatsum2=0;
 				
 			 // weight IH
 	                  for (int m=0; m<param->nHide; m++) {
 			  for (int n=0; n<param->nInput;n++){
 				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
 				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
-				
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter; 
 			    }
 			    }
 				
@@ -1257,6 +1257,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			  for (int n=0; n<param->nHide;n++){
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
 				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter;
 				
 			    }
 			    }
