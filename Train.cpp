@@ -1239,27 +1239,56 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					}
 				}
 				
-
-			}
+                         /* saturation count */
+			int possatsum1=0, possatsum2=0;
+			int negsatsum1=0, negsatsum2=0;
+				
+			 // weight IH
+	                  for (int m=0; m<param->nHide; m++) {
+			  for (int n=0; n<param->nInput;n++){
+				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
+				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
+				
+			    }
+			    }
+				
+			  // weight HO
+		          for (int m=0; m<param->nOutput; m++) {
+			  for (int n=0; n<param->nHide;n++){
+				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
+				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
+				
+			    }
+			    }
+			
+			cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
+			cout <<"average IH positive saturation : "<< possatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<" average IH negative saturation : "<< negsatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<" average HO positive saturation : "<< negsatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<" average HO negative saturation : "<< negsatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<endl;
+				
+				
+			} // end of if code
 				
 			} // end of full-reset code	
 
 	/* track weight distribution */
 			
-	int positiveweight1 ,positiveweight2;
+ /*	int positiveweight1 ,positiveweight2;
 	int negativeweight1, negativeweight2;
 	int zeroweight1, positiveweight2;
 	int weightsum1=0, weightsum2=0;
 	
 	
-	 /* default distribution tracking -> total weight track */
+	 // default distribution tracking -> total weight track 
       	  for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
-			/* count polarity of weight */
+			// count polarity of weight 
 				if (weight[m][n] > 0) positiveweight1++;
 				else if (weight[m][n] ==0) zeroweight1++;
 				else negativeweight1++;
-			/* see if polarity of total sum of weight accords with the maximum polarity count of individual weight */
+			// see if polarity of total sum of weight accords with the maximum polarity count of individual weight 
 				weightsum1 += weight1[m][n];
 				cout << (weightsum1>0) << " " << (positiveweight1>negativeweight1);
 		              
@@ -1270,11 +1299,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			for (int m=0; m<param->nOutput; m++) {
 			for (int n=0; n<param->nHide;n++){
-			/* count polarity of weight */
+			// count polarity of weight 
 				if (weight[m][n] > 0) positiveweight2++;
 				else if (weight[m][n] ==0) zeroweight2++;
 				else negativeweight2++;
-			/* see if polarity of total sum of weight accords with the maximum polarity count of individual weight */
+			// see if polarity of total sum of weight accords with the maximum polarity count of individual weight 
 				weightsum2 += weight2[m][n];
 				cout << (weightsum2>0) << " " << (positiveweight2>negativeweight2);
 		              
@@ -1286,7 +1315,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 	ofstream weightdis;
 	weightdis.open("weightdistribution.csv",std::ios_base::app);  
-	weightdis << epochcount << ", " << batchSize << ", " << batchSize+numTrain*(epochcount-1) <<", "
+	weightdis << epochcount << ", " << batchSize << ", " << batchSize+numTrain*(epochcount-1) <<", "<<(weightsum1>0)<<", "<<(positiveweight1>negativeweight1)<<", "<< (weightsum2>0) << ", " << (positiveweight2>negativeweight2); */
 	    	
 	}   // end of weight update code for 1 epoch
 		
