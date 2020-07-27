@@ -73,7 +73,7 @@ public:
 	double LTDIHasf ;                   // asymmetry factor of LTD curve for IH defined by (-)/(+)
 	double LTDHOasf ;                   // asymmetry factor of LTD curve for HO defined by (-)/(+)
 	
-	double learningrate[2][4]  // 0: LTP (+) 1: LTP (-) 2: LTD (+) 3: LTD (-) */
+	double learningrate[2][4]; // 0: LTP (+) 1: LTP (-) 2: LTD (+) 3: LTD (-) */
 	
 	double defaultlearningrate[1][4]; // same as above but for the default case 
 	
