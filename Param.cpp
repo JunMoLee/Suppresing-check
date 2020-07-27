@@ -88,7 +88,17 @@ Param::Param() {
 	defaultlearningrate[0][2]= pdalpha;
 	defaultlearningrate[0][3]= dalpha;
 
-	
+	/* setting learning rate for designated areas */
+	learningrate[0][0] = alpha1;
+	learningrate[0][1] = nalpha1;
+	learningrate[0][2] = pdalpha;
+	learningrate[0][3] = dalpha;
+		
+	learningrate[1][0] = alpha1;
+	learningrate[1][1] = 0.2
+	learningrate[1][2] = pdalpha;
+	learningrate[1][3] = dalpha;
+		
 	tp = 12.5;
 	tn = 12.5;
 	kp=128;
