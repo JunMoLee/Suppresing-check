@@ -111,6 +111,10 @@ public:
 	int possat=0;
 	int negsat=0;
 	void ResetCounter();
+	
+	/* track average step update */
+	int posstep=0;
+	int negstep=0;
 };
 
 class SRAM: public Cell {
