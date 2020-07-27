@@ -43,7 +43,7 @@
 #include "Cell.h"
 #include "Param.cpp"
 
-extern Param* param
+extern Param* param;
 
 class Array {
 public:
