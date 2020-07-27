@@ -992,7 +992,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								}
 									
 								else{
-								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learingrateHO);
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learningrateHO);
 									
 									
 									
