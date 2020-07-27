@@ -266,6 +266,8 @@ negsat=0;
 upc=0;
 unc=0;
 uzc=0;
+posstep=0;
+negstep=0;
 	
 }
 
@@ -448,6 +450,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelpLTP);
 		numPulse = deltaWeightNormalized * maxNumLevelpLTP;
+		posstep +=numPulse;
 		if (numPulse > maxNumLevelpLTP) {
 			numPulse = maxNumLevelpLTP;
 		}
@@ -470,6 +473,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelnLTP);
 		numPulse = deltaWeightNormalized * maxNumLevelnLTP;
+		negstep += numPulse;
 		if (numPulse > maxNumLevelnLTP) {
 			numPulse = maxNumLevelnLTP;
 		} 
@@ -570,6 +574,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelnLTD);
 		numPulse = deltaWeightNormalized * maxNumLevelnLTD;
+		posstep+=numPulse;
 		if (numPulse > maxNumLevelnLTD) {
 			numPulse = maxNumLevelnLTD;
 		}
@@ -594,6 +599,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelnLTP);
 		numPulse = deltaWeightNormalized * maxNumLevelnLTP;
+		negstep += numPulse;
 		if (numPulse > maxNumLevelnLTP) {
 			numPulse = maxNumLevelnLTP;
 		} 
@@ -621,6 +627,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		deltaWeightSign = deltaWeightNormalized;
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelpLTD);
 		numPulse = deltaWeightNormalized * maxNumLevelpLTD;
+		negstep += numPulse;
 		if (numPulse > maxNumLevelpLTD) {
 			numPulse = maxNumLevelpLTD;
 		}
@@ -643,6 +650,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		deltaWeightSign = deltaWeightNormalized;
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelpLTP);
 		numPulse = deltaWeightNormalized * maxNumLevelpLTP;
+		posstep += numPulse;
 		if (numPulse > maxNumLevelpLTP) {
 			numPulse = maxNumLevelpLTP;
 		}
