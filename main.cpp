@@ -199,7 +199,9 @@ int main() {
 		if (i==1)
 		{ /* print out explanation for results */
 		 cout<<endl;
+
 		 printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LA(+): %.2f LA(-): %.2f LAd(+): %.2f LAd(-): %.2f\n newUpdateRate(+): %d\n newUpdateRate(-): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, pLA, nLA, pLAd, nLAd, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
+		 cout <<endl;
 		 cout << "default algorithm"<<endl;
 		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"pLA"<<", "<<"nLA"<<", "<<"pLAd"<<","<<"nLAd"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" <<", "<<"average accuracy"<<", "<<"standard deviation"<< endl;
 		}
@@ -213,7 +215,7 @@ int main() {
 		cout<<"HO"<<endl;
 		cout<<"LTP alpha(+) "<< param->learningrate[1][0] <<" LTP alpha(-) "<<param->learningrate[1][1];
 		cout<<" LTD alpha(+) "<<param->learningrate[1][2]<<" LTD alpha(-) "<<param->learningrate[1][3]<<endl;
-		cout<<" nur(+) "<<(int)(param->newUpdateRate)<< " nur(-) " << (int)(param->nnewUpdateRate)<<endl;
+		cout<<"nur(+) "<<(int)(param->newUpdateRate)<< " nur(-) " << (int)(param->nnewUpdateRate)<<endl;
 		//end of simulation case 0
 		}
 		break;
