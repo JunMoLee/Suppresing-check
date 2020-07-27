@@ -1308,11 +1308,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: "/* << possatsum1/param->RefreshRate/40000<< ", " */<<possatsum1/param->RefreshRate/40000*100<<"%";
-			cout <<"avg IH negative sat: "/* << negsatsum1/param->RefreshRate/40000<<", " */<<negsatsum1/param->RefreshRate/40000*100<<"%";
-			cout <<"avg HO positive sat: "/* << possatsum2/param->RefreshRate/1000<<", " */<<possatsum2/param->RefreshRate/1000*100<<"%";
-			cout <<"avg HO negative sat: "/* << negsatsum2/param->RefreshRate/1000<<", " */<<negsatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<" avg IH negative sat: "/* << negsatsum1/param->RefreshRate/40000<<", " */<<negsatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<" avg HO positive sat: "/* << possatsum2/param->RefreshRate/1000<<", " */<<possatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<" avg HO negative sat: "/* << negsatsum2/param->RefreshRate/1000<<", " */<<negsatsum2/param->RefreshRate/1000*100<<"%";
 			cout <<endl;
 			cout <<"pos step IH: "<<posstepcount1<<" neg step IH: "<<negstepcount1<<" pos step HO: "<<posstepcount2<<" neg step HO: "<<negstepcount2;
+			cout <<endl;
 			} // end of if code
 				
 			} // end of full-reset code
@@ -1349,11 +1350,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: "/* << possatsum1/param->RefreshRate/40000<< ", " */<<possatsum1/param->RefreshRate/40000*100<<"%";
-			cout <<"avg IH negative sat: "/* << negsatsum1/param->RefreshRate/40000<<", " */<<negsatsum1/param->RefreshRate/40000*100<<"%";
-			cout <<"avg HO positive sat: "/* << possatsum2/param->RefreshRate/1000<<", " */<<possatsum2/param->RefreshRate/1000*100<<"%";
-			cout <<"avg HO negative sat: "/* << negsatsum2/param->RefreshRate/1000<<", " */<<negsatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<" avg IH negative sat: "/* << negsatsum1/param->RefreshRate/40000<<", " */<<negsatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<" avg HO positive sat: "/* << possatsum2/param->RefreshRate/1000<<", " */<<possatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<" avg HO negative sat: "/* << negsatsum2/param->RefreshRate/1000<<", " */<<negsatsum2/param->RefreshRate/1000*100<<"%";
 			cout <<endl;
 			cout <<"pos step IH: "<<posstepcount1<<" neg step IH: "<<negstepcount1<<" pos step HO: "<<posstepcount2<<" neg step HO: "<<negstepcount2;
+			cout <<endl;
 				
 			} // end of if
 		
