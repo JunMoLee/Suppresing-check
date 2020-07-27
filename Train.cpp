@@ -1277,15 +1277,19 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					}
 				}
 				
-                         /* saturation count */
+			 /* saturation count */
 			double possatsum1=0, possatsum2=0;
 			double negsatsum1=0, negsatsum2=0;
+			double posstepcount1=0, posstepcount2=0;
+			double negstepcount1=0, negstepcount2=0;
 				
 			 // weight IH
 	                  for (int m=0; m<param->nHide; m++) {
 			  for (int n=0; n<param->nInput;n++){
 				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
 				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
+				posstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
+				 negstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
 				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 			    }
 			    }
@@ -1295,19 +1299,20 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			  for (int n=0; n<param->nHide;n++){
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
 				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
+				 posstepcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep; 
+				negstepcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep; 
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
 			    }
 			
 			cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
-			cout <<"average IH positive saturation : "<< possatsum1/param->RefreshRate/40000<< ", "<<possatsum1/param->RefreshRate/40000*100<<"%";
-			cout <<" average IH negative saturation : "<< negsatsum1/param->RefreshRate/40000<<", "<<negsatsum1/param->RefreshRate/40000*100<<"%";
-			cout <<" average HO positive saturation : "<< possatsum2/param->RefreshRate/1000<<", "<<possatsum2/param->RefreshRate/1000*100<<"%";
-			cout <<" average HO negative saturation : "<< negsatsum2/param->RefreshRate/1000<<", "<<negsatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<"avg IH positive sat: "/* << possatsum1/param->RefreshRate/40000<< ", " */<<possatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<"avg IH negative sat: "/* << negsatsum1/param->RefreshRate/40000<<", " */<<negsatsum1/param->RefreshRate/40000*100<<"%";
+			cout <<"avg HO positive sat: "/* << possatsum2/param->RefreshRate/1000<<", " */<<possatsum2/param->RefreshRate/1000*100<<"%";
+			cout <<"avg HO negative sat: "/* << negsatsum2/param->RefreshRate/1000<<", " */<<negsatsum2/param->RefreshRate/1000*100<<"%";
 			cout <<endl;
-				
-				
+			cout <<"pos step IH: "<<posstepcount1<<" neg step IH: "<<negstepcount1<<" pos step HO: "<<posstepcount2<<" neg step HO: "<<negstepcount2;
 			} // end of if code
 				
 			} // end of full-reset code
