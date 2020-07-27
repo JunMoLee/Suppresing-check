@@ -1331,7 +1331,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			cout <<"possig IH: "<<possigcount1<<" negsig IH: "<<negsigcount1<<" zeorsig IH: "<<zerosigcount1<<" possig HO: "<<possigcount2<<" negsig HO: "<<negsigcount2<<" zerosig HO: "<<zerosigcount2;
 			cout <<endl;
 			cout <<"weightsum IH: "<<weightsum1<<" weightsum HO:"<<weightsum2;
-			cout <<<endl;
+			cout <<endl;
 			} // end of if code
 				
 			} // end of full-reset code
@@ -1389,7 +1389,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			cout <<"possig IH: "<<possigcount1<<" negsig IH: "<<negsigcount1<<" zeorsig IH: "<<zerosigcount1<<" possig HO: "<<possigcount2<<" negsig HO: "<<negsigcount2<<" zerosig HO: "<<zerosigcount2;
 			cout <<endl;
 			cout <<"weightsum IH: "<<weightsum1<<" weightsum HO:"<<weightsum2;
-			cout <<<endl;
+			cout <<endl;
 			} // end of if
 		
 		     }  // saturation count if no refresh
