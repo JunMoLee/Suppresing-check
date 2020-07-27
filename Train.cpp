@@ -1280,7 +1280,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			 
 			 
 		       /* saturation count */
-		       int k=5; // k=kernel size;
+		       int k=2; // k=kernel size;
                           
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 		         cout << "IH"<<endl;
@@ -1363,7 +1363,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		else {   
 			if ((batchSize+numTrain*(epochcount-1)) % param->RefreshRate == (param->RefreshRate-1)){
 					    /* saturation count */
-		       int k=5; // k=kernel size;
+		       int k=2; // k=kernel size;
                           
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 		         cout << "IH"<<endl;
