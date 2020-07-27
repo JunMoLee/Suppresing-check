@@ -193,12 +193,15 @@ int main() {
 	        
 		if (i==1)
 		{ /* print out explanation for results */
+		 cout<<endl;
 		 printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LA(+): %.2f LA(-): %.2f LAd(+): %.2f LAd(-): %.2f\n newUpdateRate(+): %d\n newUpdateRate(-): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, pLA, nLA, pLAd, nLAd, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
 		 cout << "default algorithm"<<endl;
 		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"pLA"<<", "<<"nLA"<<", "<<"pLAd"<<","<<"nLAd"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" <<", "<<"average accuracy"<<", "<<"standard deviation"<< endl;
 		}
+		cout <<endl;
 		 cout << "Training Epoch : " << i << endl; 	
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs, param->optimization_type, i);
+		cout<<endl;
 		cout<<"LTP alpha(+) "<< param->alpha1 <<" LTP alpha(-) "<<param->nalpha1<<" LTD alpha(+) "<<param->pdalpha<<" LTD alpha(-) "<<param->dalpha<<" nur(+) "<<(int)(param->newUpdateRate)<< " nur(-) " << (int)(param->nnewUpdateRate)<<endl;
 		
 		
