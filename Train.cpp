@@ -534,7 +534,28 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             */
                             
 							/* weight IH update */
+				
+				
+				    
+				                           int areanumber1;
+				                           int learningrateIH [4];
+				                           // classify area by index
+				                             if ((jj>=0) && (jj<=100) && (k>=0) && (k<=400)) // default case = HO total synapses
+							     { areanumber1 = 0;
+							     }
+								     
+				                               
+				                           
+				                           switch (areanumber1) // allocate learning rate for each area
+					                    case 0:// setting learning rate for each area
+				                            { learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];
+							      learningrateIH[2] = param->learningrate[0][2];
+							      learningrateIH[3] = param->learningrate[0][3];
+							      break;
+							    }
                             
+				
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])) {	// Analog eNVM
 								
 								/* new update */
@@ -550,16 +571,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 									
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->nnewUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false, false, param->dominance);}	
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true/*regular*/, true/*newupdate*/, false/*PositiveUpdate*/, false/*regularupdate*/, param->dominance/*dominance*/, learningrateIH);}	
 								else
 									
-							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, true);
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, true, false, false, learningrateIH);
 									
 									
 								}
 									
 								else{
-								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);
+								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learningrateIH);
 									
 									
 									
@@ -574,17 +595,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 									
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->nnewUpdateRate/adNur-1))){
-							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, true, false, param->dominance);}	
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, true, false, param->dominance, learningrateIH);}	
 								else
 									
-							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false);
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false, false, false, learningrateIH);
 									
 									
 								}	
 									
 									
 								else{
-								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);
+								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learningrateIH);
 									
 									
 									
@@ -599,10 +620,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 								{
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1)))	
-								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false, true);
+								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, true, false, true, false, learningrateIH);
 									
 								else{
-								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);
+								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learningrateIH);
 									
 									
 									
@@ -612,7 +633,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								
 								}
 							else {
-							arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false);
+							arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learningrateIH);
 							}
 									
 									
@@ -929,14 +950,23 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
                         */			        /* weight HO update */
-				                           int areanumber;
+				                           int areanumber2;
 				                           int learningrateHO [4];
-				                             
-				                           
+				                           // classify area by index
+				                             if ((jj>=0) && (jj<=10) && (k>=0) && (k<=100)) // default case = HO total synapses
+							     { areanumber2 = 0;
+							     }
+								     
 				                               
 				                           
-				                           switch (areanumber)
+				                           switch (areanumber2) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
+				                            { learningrateHO[0] = param->learningrate[1][0];
+							      learningrateHO[1] = param->learningrate[1][1];
+							      learningrateHO[2] = param->learningrate[1][2];
+							      learningrateHO[3] = param->learningrate[1][3];
+							      break;
+							    }
 				
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])) { // Analog eNVM
 								
@@ -953,16 +983,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 									
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->nnewUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false, false, param->dominance);}	
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true/*regular*/, true/*newupdate*/, false/*PositiveUpdate*/, false/*regularupdate*/, param->dominance/*dominance*/, learningrateHO);}	
 								else
 									
-							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, true);
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, true, false, false, learningrateHO);
 									
 									
 								}
 									
 								else{
-								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false);
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learingrateHO);
 									
 									
 									
@@ -977,17 +1007,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 									
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==(int)(param->nnewUpdateRate/adNur-1)){
-							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, true, false, param->dominance);}	
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, true, false, param->dominance, learningrateHO);}	
 								else
 									
-							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false);
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false, false, false, learningrateHO);
 									
 									
 								}	
 									
 									
 								else{
-								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false);
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learningrateHO);
 									
 									
 									
@@ -1002,10 +1032,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 								{
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1)))	
-								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false, true);
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, true, false, true, false, learningrateHO);
 									
 								else{
-								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false);
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learningrateHO);
 									
 									
 									
@@ -1016,7 +1046,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								}
 							
 								else{
-								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false);
+								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false, false, false, false, learningrateHO);
 								}
 								
 								
