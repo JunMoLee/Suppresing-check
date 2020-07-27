@@ -538,7 +538,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				    
 				                           int areanumber1;
-				                           int learningrateIH [4];
+				                           double learningrateIH [4];
 				                           // classify area by index
 				                             if ((jj>=0) && (jj<=100) && (k>=0) && (k<=400)) // default case = HO total synapses
 							     { areanumber1 = 0;
@@ -951,7 +951,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             }
                         */			        /* weight HO update */
 				                           int areanumber2;
-				                           int learningrateHO [4];
+				                           double learningrateHO [4];
 				                           // classify area by index
 				                             if ((jj>=0) && (jj<=10) && (k>=0) && (k<=100)) // default case = HO total synapses
 							     { areanumber2 = 0;
