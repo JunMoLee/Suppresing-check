@@ -1325,7 +1325,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				 
 			    }
-				    cout<<"area "<<areanum<<" "<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
+				    cout<<"area "<<areanum<<" "<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possatsum1-negsatsum1)>0)<<"    "<<possatsum1<<" "<<negsatsum1<<endl;
 				    areanum++;
 				    
 			    }
@@ -1357,7 +1357,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<"area "<<areanum<<" "<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
+				cout<<"area "<<areanum<<" "<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<"    "<<possatsum2<<" "<<negsatsum2<<endl;
 				areanum++;
 			    }
 			  }
