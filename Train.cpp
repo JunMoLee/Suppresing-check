@@ -1347,7 +1347,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				 
 			    }
-			cout<<"area "<<areanum<<" "<<((prevposstepcount1[area]-prevnegstepcount1[area])>0)<<(prevweightsum1[area]>0)<<((prevpossatsum1[area]-prevnegsatsum1[area])>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0)<<endl;
+			cout<<"area "<<areanum<<" "<<((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0)<<(prevweightsum1[areanum]>0)<<((prevpossatsum1[areanum]-prevnegsatsum1[areanum])>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0)<<endl;
 				    prevpossatsum1[area] = possatsum1;
 				    prevnegsatsum1[area] = negsatsum1;
 				    prevposstepcount1[area] = posstepcount1;
@@ -1355,7 +1355,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				  /*  prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
 				    prevweightsum1[area] = weightsum1;
-				    prevzerosigcount1[area] = zerosigcount1;
+				   /* prevzerosigcount1[area] = zerosigcount1; */
 				    areanum++;
 				    
 			    }
@@ -1390,7 +1390,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<"area "<<areanum<<" "<<((prevposstepcount2[area]-prevnegstepcount2[area])>0)<<(prevweightsum2[area]>0)<<((prevpossatsum2[area]-prevnegsatsum2[area])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0)<<endl;
+				cout<<"area "<<areanum<<" "<<((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0)<<(prevweightsum2[areanum]>0)<<((prevpossatsum2[areanum]-prevnegsatsum2[areanum])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0)<<endl;
 				    prevpossatsum2[area] = possatsum2;
 				    prevnegsatsum2[area] = negsatsum2;
 				    prevposstepcount2[area] = posstepcount2;
@@ -1398,7 +1398,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				  /*  prevpossigcount2= possigcount2;
 				    prevnegsigcount2= negsigcount2; */
 				    prevweightsum2[area] = weightsum2;
-				    prevzerosigcount2[area] = zerosigcount2;
+				   /* prevzerosigcount2[area] = zerosigcount2; */
 				    areanum++;
 
 			    }
