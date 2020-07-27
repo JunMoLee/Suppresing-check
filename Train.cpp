@@ -1349,6 +1349,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				cout<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
 			    }
+			    }
 			
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: " << possatsum1/param->RefreshRate/40000<< ", " <<possatsum1/param->RefreshRate/40000*100<<"%";
@@ -1437,7 +1438,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				cout<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
 			    }
-			
+			  }
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: " << possatsum1/param->RefreshRate/40000<< ", " <<possatsum1/param->RefreshRate/40000*100<<"%";
 			cout <<" avg IH negative sat: " << negsatsum1/param->RefreshRate/40000<<", " <<negsatsum1/param->RefreshRate/40000*100<<"%";
