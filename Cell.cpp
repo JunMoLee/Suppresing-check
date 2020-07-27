@@ -464,7 +464,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		uzc++;
 		else
 		{unc++;
-		 deltaWeightSign = deltaWeightNormalized; // saturation count}
+		 deltaWeightSign = deltaWeightNormalized;} // saturation count
 		GpGnCell = false;
 		deltaWeightNormalized = -learningrate[1]  * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		
