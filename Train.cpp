@@ -1312,6 +1312,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 
 			    }
 				    cout<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possigcount1-negsigcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
+				    cout<<endl;
 			    }
 				 
 			    }
@@ -1392,6 +1393,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 
 			    }
 				    cout<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possigcount1-negsigcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
+				    cout<<endl;
 			    }
 				 
 			    }
