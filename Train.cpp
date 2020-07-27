@@ -1326,7 +1326,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			double negstepcount1=0, negstepcount2=0;
 			double possigcount1=0, negsigcount1=0;
 			double possigcount2=0, negsigcount2=0;
-			double zerosigcount2=0, zerosigcount2=0;
+			double zerosigcount1=0, zerosigcount2=0;
 				
 			 // weight IH
 	                  for (int m=0; m<param->nHide; m++) {
