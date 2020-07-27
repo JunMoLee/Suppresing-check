@@ -1291,6 +1291,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		       int k=2; // k=kernel size;
 		       int h=2; // h=number of hidden layer slice
 		       int hiddenpiece= param->nHide/h;
+		       int areanum=0;
                           
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 		         cout << "IH"<<endl;
@@ -1324,7 +1325,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				 
 			    }
-				    cout<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
+				    cout<<"area "<<areanum<<" "<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
+				    areanum++;
 				    
 			    }
 				 
@@ -1355,7 +1357,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
+				cout<<"area "<<areanum<<" "<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
+				areanum++;
 			    }
 			  }
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
