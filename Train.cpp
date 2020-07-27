@@ -1281,10 +1281,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			 
 		       /* saturation count */
 		       int k=5; // k=kernel size;
-
-				
+                          
+			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
+		         cout << "IH"<<endl;
 			 // weight IH
-	                  
+	                   
 			   for (int i=0; i<20; i+=k){
 			    for (int j=i; j<400; j+=20*k){ // classify area
 				 double possatsum1=0, negsatsum1=0;
@@ -1318,7 +1319,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				cout<<endl;
 			  // weight HO
-				
+			  
+		         cout << "OH"<<endl;	
 		          for (int m=0; m<param->nOutput; m++) {
 				double possatsum2=0, negsatsum2=0;
 				double posstepcount2=0, negstepcount2=0;
@@ -1360,12 +1362,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			} // end of full-reset code
 		else {   
 			if ((batchSize+numTrain*(epochcount-1)) % param->RefreshRate == (param->RefreshRate-1)){
-					       /* saturation count */
+					    /* saturation count */
 		       int k=5; // k=kernel size;
-
-				
+                          
+			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
+		         cout << "IH"<<endl;
 			 // weight IH
-	                  
+	                   
 			   for (int i=0; i<20; i+=k){
 			    for (int j=i; j<400; j+=20*k){ // classify area
 				 double possatsum1=0, negsatsum1=0;
@@ -1397,8 +1400,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				 
 			    }
-				    cout<<endl;
+				cout<<endl;
 			  // weight HO
+			  
+		         cout << "OH"<<endl;	
 		          for (int m=0; m<param->nOutput; m++) {
 				double possatsum2=0, negsatsum2=0;
 				double posstepcount2=0, negstepcount2=0;
