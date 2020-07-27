@@ -93,6 +93,20 @@ extern Subtractor subtractorHO;
 extern double totalWeightUpdate=0; // track the total weight update (absolute value) during the whole training process
 extern double totalNumPulse=0;// track the total number of pulse for the weight update process; for Analog device only
 
+
+/*Weight track variables */
+			 	 double prevpossatsum2=0, prevnegsatsum2=0;
+				 double prevposstepcount2=0, prevnegstepcount2=0;
+				 double prevpossigcount2=0, prevnegsigcount2=0;
+				 double prevweightsum2=0;
+				 double prevzerosigcount2=0; 
+
+	                   	 double prevpossatsum1=0, prevnegsatsum1=0;
+				 double prevposstepcount1=0, prevnegstepcount1=0;
+				 double prevpossigcount1=0, prevnegsigcount1=0;
+				 double prevweightsum1=0;
+				 double prevzerosigcount1=0;
+				
 /*Optimization functions*/
 double gradt;
 double GAMA=0.9;
@@ -1296,12 +1310,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 		         cout << "IH"<<endl;
 			 // weight IH
-	                   	 double prevpossatsum1=0, prevnegsatsum1=0;
-				 double prevposstepcount1=0, prevnegstepcount1=0;
-				 double prevpossigcount1=0, prevnegsigcount1=0;
-				 double prevweightsum1=0;
-				 double prevzerosigcount1=0;
-				
+
 				
 				
 			   for (int i=0; i<20; i+=k){
@@ -1352,11 +1361,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				cout<<endl;
 			  // weight HO
 				
-			 	 double prevpossatsum2=0, prevnegsatsum2=0;
-				 double prevposstepcount2=0, prevnegstepcount2=0;
-				 double prevpossigcount2=0, prevnegsigcount2=0;
-				 double prevweightsum2=0;
-				 double prevzerosigcount2=0; 
+
 				
 		         cout << "OH"<<endl;	
 				
