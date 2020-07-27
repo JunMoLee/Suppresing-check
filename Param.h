@@ -129,7 +129,7 @@ public:
 	
 	int FullRefresh;    // use refresh if true
 	int ReverseUpdate;  // use reverse update if true
-	
+	int TrackRate;
 	int RefreshRate;    // refreshrate
 	
 	int newUpdateRate;   // reverseupdate (+)
