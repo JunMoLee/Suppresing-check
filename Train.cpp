@@ -1324,6 +1324,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			double negsatsum1=0, negsatsum2=0;
 			double posstepcount1=0, posstepcount2=0;
 			double negstepcount1=0, negstepcount2=0;
+			double possigcount1=0, negsigcount1=0;
+			double possigcount2=0, negsigcount2=0;
+			double zerosigcount2=0, zerosigcount2=0;
 				
 			 // weight IH
 	                  for (int m=0; m<param->nHide; m++) {
@@ -1332,6 +1335,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
 				posstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
 				 negstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
+				 possigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc;
+				 negsigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc;
+				 zerosigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
 				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 			    }
 			    }
@@ -1343,6 +1349,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
 				 posstepcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep; 
 				negstepcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep; 
+				 possigcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc;
+				 negsigcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc;
+				 zerosigcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->uzc;
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
@@ -1356,7 +1365,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			cout <<endl;
 			cout <<"pos step IH: "<<posstepcount1<<" neg step IH: "<<negstepcount1<<" pos step HO: "<<posstepcount2<<" neg step HO: "<<negstepcount2;
 			cout <<endl;
-				
+			cout <<"possig IH: "<<possigcount1<<" negsig IH: "<<negsigcount1<<" zeorsig IH: "<<zerosigcount1<<" possig HO: "<<possigcount2<<" negsig HO: "<<negsigcount2<<" zerosig HO: "<<zerosigcount2;
+			cout <<endl;	
 			} // end of if
 		
 		     }  // saturation count if no refresh
