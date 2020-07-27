@@ -1296,7 +1296,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 		         cout << "IH"<<endl;
 			 // weight IH
-	                   
+	                   	 double prevpossatsum1=0, prevnegsatsum1=0;
+				 double prevposstepcount1=0, prevnegstepcount1=0;
+				 double prevpossigcount1=0, prevnegsigcount1=0;
+				 double prevweightsum1=0;
+				 double prevzerosigcount1=0;
+				
+				
+				
 			   for (int i=0; i<20; i+=k){
 			    for (int j=i; j<400; j+=20*k){ // classify input layer area
 
@@ -1318,6 +1325,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 negsigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc;
 				 zerosigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
 				 weightsum1+=weight1[m][n];
+				      
+
 				 
 				 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 				 
@@ -1325,8 +1334,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				 
 			    }
-				    cout<<"area "<<areanum<<" "<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possatsum1-negsatsum1)>0)<<"    "<<possatsum1<<" "<<negsatsum1<<endl;
+				    cout<<"area "<<areanum<<" "<<(prevweightsum1>0)<<((prevposstepcount1-prevnegstepcount1)>0)<<((prevpossatsum1-prevnegsatsum1)>0)<<"    "<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
 				    areanum++;
+				    prevpossatsum1 = possatsum1;
+				    prevnegsatsum1 = negsatsum1;
+				    prevposstepcount1 = posstepcount1;
+				    prevnegstepcount1 = negstepcount1;
+				    prevpossigcount1= possigcount1;
+				    prevnegsigcount1= negsigcount1;
+				    prevweightsum1 = weightsum1;
+				    prevzerosigcount1 = zerosigcount1;
 				    
 			    }
 				 
@@ -1334,8 +1351,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				cout<<endl;
 			  // weight HO
-			  
+				
+			 	 double prevpossatsum2=0, prevnegsatsum2=0;
+				 double prevposstepcount2=0, prevnegstepcount2=0;
+				 double prevpossigcount2=0, prevnegsigcount2=0;
+				 double prevweightsum2=0;
+				 double prevzerosigcount2=0; 
+				
 		         cout << "OH"<<endl;	
+				
 		          for (int m=0; m<param->nOutput; m++) { // classify output area
 			    for (int t=0; t<h; t++) {  // classify hidden layer area
 				double possatsum2=0, negsatsum2=0;
@@ -1357,8 +1381,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<"area "<<areanum<<" "<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<"    "<<possatsum2<<" "<<negsatsum2<<endl;
+				cout<<"area "<<areanum<<" "<<(prevweightsum2>0)<<((prevposstepcount2-prevnegstepcount2)>0)<<((prevpossatsum2-prevnegsatsum2)>0)<<"    "<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
 				areanum++;
+				    prevpossatsum2 = possatsum2;
+				    prevnegsatsum2 = negsatsum2;
+				    prevposstepcount2 = posstepcount2;
+				    prevnegstepcount2 = negstepcount2;
+				    prevpossigcount2= possigcount2;
+				    prevnegsigcount2= negsigcount2;
+				    prevweightsum2 = weightsum2;
+				    prevzerosigcount2 = zerosigcount2;
 			    }
 			  }
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
