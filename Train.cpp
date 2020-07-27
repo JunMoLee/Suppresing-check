@@ -1280,7 +1280,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			 
 			 
 		       /* saturation count */
-		       int k=10; // k=kernel size;
+		       int k=5; // k=kernel size;
 
 				
 			 // weight IH
@@ -1312,11 +1312,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 
 			    }
 				    cout<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possigcount1-negsigcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
-				    cout<<endl;
+				    
 			    }
 				 
 			    }
-				
+				cout<<endl;
 			  // weight HO
 				
 		          for (int m=0; m<param->nOutput; m++) {
@@ -1361,7 +1361,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		else {   
 			if ((batchSize+numTrain*(epochcount-1)) % param->RefreshRate == (param->RefreshRate-1)){
 					       /* saturation count */
-		       int k=10; // k=kernel size;
+		       int k=5; // k=kernel size;
 
 				
 			 // weight IH
@@ -1393,11 +1393,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 
 			    }
 				    cout<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possigcount1-negsigcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
-				    cout<<endl;
+				    
 			    }
 				 
 			    }
-				
+				    cout<<endl;
 			  // weight HO
 		          for (int m=0; m<param->nOutput; m++) {
 				double possatsum2=0, negsatsum2=0;
