@@ -1367,7 +1367,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 			} // end of full-reset code
 		else {   
-			if ((batchSize+numTrain*(epochcount-1)) % param->RefreshRate == (param->RefreshRate-1)){
+			if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
   /* saturation count */
 		       int k=2; // k=kernel size;
 		       int h=2; // h=number of hidden layer slice
