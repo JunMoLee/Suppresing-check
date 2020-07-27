@@ -95,17 +95,21 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 
 
 /*Weight track variables */
-			 	 double prevpossatsum2=0, prevnegsatsum2=0;
-				 double prevposstepcount2=0, prevnegstepcount2=0;
-				 double prevpossigcount2=0, prevnegsigcount2=0;
-				 double prevweightsum2=0;
-				 double prevzerosigcount2=0; 
+			        vector <double> prevpossatsum2;
+                                vector <double> prevnegsatsum2;
+				vector <double> prevposstepcount2;
+				vector <double> prevnegstepcount2;
+				/* double prevpossigcount2=0, prevnegsigcount2=0; */
+				vector <double> prevweightsum2;
+				/* double prevzerosigcount2=0; */
 
-	                   	 double prevpossatsum1=0, prevnegsatsum1=0;
-				 double prevposstepcount1=0, prevnegstepcount1=0;
-				 double prevpossigcount1=0, prevnegsigcount1=0;
-				 double prevweightsum1=0;
-				 double prevzerosigcount1=0;
+			        vector <double> prevpossatsum1;
+                                vector <double> prevnegsatsum1;
+				vector <double> prevposstepcount1;
+				vector <double> prevnegstepcount1;
+				/* double prevpossigcount1=0, prevnegsigcount1=0; */
+				vector <double> prevweightsum1;
+				/* double prevzerosigcount1=0; */
 				
 /*Optimization functions*/
 double gradt;
@@ -1343,16 +1347,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				 
 			    }
-				    cout<<"area "<<areanum<<" "<<((prevposstepcount1-prevnegstepcount1)>0)<<(prevweightsum1>0)<<((prevpossatsum1-prevnegsatsum1)>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0)<<endl;
+			cout<<"area "<<areanum<<" "<<((prevposstepcount1[area]-prevnegstepcount1[area])>0)<<(prevweightsum1[area]>0)<<((prevpossatsum1[area]-prevnegsatsum1[area])>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0)<<endl;
+				    prevpossatsum1[area] = possatsum1;
+				    prevnegsatsum1[area] = negsatsum1;
+				    prevposstepcount1[area] = posstepcount1;
+				    prevnegstepcount1[area] = negstepcount1;
+				  /*  prevpossigcount1= possigcount2;
+				    prevnegsigcount1= negsigcount2; */
+				    prevweightsum1[area] = weightsum1;
+				    prevzerosigcount1[area] = zerosigcount1;
 				    areanum++;
-				    prevpossatsum1 = possatsum1;
-				    prevnegsatsum1 = negsatsum1;
-				    prevposstepcount1 = posstepcount1;
-				    prevnegstepcount1 = negstepcount1;
-				    prevpossigcount1= possigcount1;
-				    prevnegsigcount1= negsigcount1;
-				    prevweightsum1 = weightsum1;
-				    prevzerosigcount1 = zerosigcount1;
 				    
 			    }
 				 
@@ -1386,16 +1390,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<"area "<<areanum<<" "<<((prevposstepcount2-prevnegstepcount2)>0)<<(prevweightsum2>0)<<((prevpossatsum2-prevnegsatsum2)>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0)<<endl;
-				areanum++;
-				    prevpossatsum2 = possatsum2;
-				    prevnegsatsum2 = negsatsum2;
-				    prevposstepcount2 = posstepcount2;
-				    prevnegstepcount2 = negstepcount2;
-				    prevpossigcount2= possigcount2;
-				    prevnegsigcount2= negsigcount2;
-				    prevweightsum2 = weightsum2;
-				    prevzerosigcount2 = zerosigcount2;
+				cout<<"area "<<areanum<<" "<<((prevposstepcount2[area]-prevnegstepcount2[area])>0)<<(prevweightsum2[area]>0)<<((prevpossatsum2[area]-prevnegsatsum2[area])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0)<<endl;
+				    prevpossatsum2[area] = possatsum2;
+				    prevnegsatsum2[area] = negsatsum2;
+				    prevposstepcount2[area] = posstepcount2;
+				    prevnegstepcount2[area] = negstepcount2;
+				  /*  prevpossigcount2= possigcount2;
+				    prevnegsigcount2= negsigcount2; */
+				    prevweightsum2[area] = weightsum2;
+				    prevzerosigcount2[area] = zerosigcount2;
+				    areanum++;
+
 			    }
 			  }
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
