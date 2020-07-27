@@ -1316,8 +1316,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			 /* saturation count */
 			double possatsum1=0, possatsum2=0;
 			double negsatsum1=0, negsatsum2=0;
-			double posstepcount1=0; posstepcount2=0;
-			double negstepcount1=0; negstepcount2=0;
+			double posstepcount1=0, posstepcount2=0;
+			double negstepcount1=0, negstepcount2=0;
 				
 			 // weight IH
 	                  for (int m=0; m<param->nHide; m++) {
