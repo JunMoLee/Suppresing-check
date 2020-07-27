@@ -57,8 +57,12 @@ Param::Param() {
 	const double
 	ss=0;
 	selectsim=ss;
+	
+	/* Weight track variables */
 	weighttrack=1;
-	TrackRate=2000;
+	TrackRate=500;
+	
+	
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
@@ -122,10 +126,10 @@ Param::Param() {
     Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
     optimization_type = "SGD";
 	const int
-	nuc=1;
+	nuc=0;
         ReverseUpdate = nuc;
 	const int 
-        frc=0;
+        frc=1;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
@@ -150,7 +154,7 @@ Param::Param() {
 	processNode = 32;	// Technology node (nm)
 	clkFreq = 2e9;		// Clock frequency (Hz)
         const int 
-	frr=4000;
+	frr=1000;
 	RefreshRate = frr;
 	const int 
 	nur=6;
@@ -161,7 +165,7 @@ Param::Param() {
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
-a=0;
+a=3;
 	
 
 switch(a){
@@ -178,7 +182,7 @@ param_gp=1;
 param_gn=-1;
 break;
 case 3:
-param_gp=1;
+param_gp=0;
 param_gn=-9;
 break;
 case 4:
