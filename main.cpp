@@ -172,10 +172,15 @@ int main() {
 	        int nnewUpdateRate= param->nnewUpdateRate;
 	        int dominance = param ->dominance;
 			
-	        double  pLA = param->alpha1; // positive set Learning rate
-	        double nLA = param->nalpha1; // negative set Learning rate
-		double pLAd = param->pdalpha; // positive reset Learning rate
-	        double nLAd = param->dalpha; // negative set Learning rate
+	        double  pLA = param->learningrate[0][0]; // positive set Learning rate
+	        double nLA = param->learningrate[0][1]; // negative set Learning rate
+		double pLAd = param->learningrate[0][2]; // positive reset Learning rate
+	        double nLAd = param->learningrate[0][3]; // negative set Learning rate
+			
+	        double  pLA2 = param->learningrate[1][0]; // positive set Learning rate
+	        double nLA2 = param->learningrate[1][1]; // negative set Learning rate
+		double pLAd2 = param->learningrate[1][2]; // positive reset Learning rate
+	        double nLAd2 = param->learningrate[1][3]; // negative set Learning rate
 			
 		double stdsum=0; // standard deviation of certain epochs
 		
@@ -202,9 +207,13 @@ int main() {
 		 cout << "Training Epoch : " << i << endl; 	
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs, param->optimization_type, i);
 		cout<<endl;
-		cout<<"LTP alpha(+) "<< param->alpha1 <<" LTP alpha(-) "<<param->nalpha1<<" LTD alpha(+) "<<param->pdalpha<<" LTD alpha(-) "<<param->dalpha<<" nur(+) "<<(int)(param->newUpdateRate)<< " nur(-) " << (int)(param->nnewUpdateRate)<<endl;
-		
-		
+		cout<<"IH"<<endl;
+		cout<<"LTP alpha(+) "<< param->learningrate[0][0] <<" LTP alpha(-) "<<param->learningrate[0][1];
+		cout<<" LTD alpha(+) "<<param->learningrate[0][2]<<" LTD alpha(-) "<<param->learningrate[0][3]<<endl;
+		cout<<"HO"<<endl;
+		cout<<"LTP alpha(+) "<< param->learningrate[1][0] <<" LTP alpha(-) "<<param->learningrate[1][1];
+		cout<<" LTD alpha(+) "<<param->learningrate[1][2]<<" LTD alpha(-) "<<param->learningrate[1][3]<<endl;
+		cout<<" nur(+) "<<(int)(param->newUpdateRate)<< " nur(-) " << (int)(param->nnewUpdateRate)<<endl;
 		//end of simulation case 0
 		}
 		break;
@@ -458,11 +467,16 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 	        nnewUpdateRate= param->nnewUpdateRate;
 	        dominance = param ->dominance;	
 			
-	        pLA = param->alpha1; // positive set Learning rate
-		nLA = param->nalpha1; // negative set Learning rate
-		pLAd = param->pdalpha; // positive reset Learning rate
-	        nLAd = param->dalpha; // negative set Learning rate
-	        
+                pLA = param->learningrate[0][0]; // positive set Learning rate
+	        nLA = param->learningrate[0][1]; // negative set Learning rate
+		pLAd = param->learningrate[0][2]; // positive reset Learning rate
+	        nLAd = param->learningrate[0][3]; // negative set Learning rate
+		
+	          pLA2 = param->learningrate[1][0]; // positive set Learning rate
+	         nLA2 = param->learningrate[1][1]; // negative set Learning rate
+		 pLAd2 = param->learningrate[1][2]; // positive reset Learning rate
+	         nLAd2 = param->learningrate[1][3]; // negative set Learning rate
+			
 	   
 	        wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
 		// cycle to cycle variation 
