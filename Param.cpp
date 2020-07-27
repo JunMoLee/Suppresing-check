@@ -95,7 +95,7 @@ Param::Param() {
 	learningrate[0][3] = dalpha;
 		
 	learningrate[1][0] = alpha1;
-	learningrate[1][1] = 0.2
+	learningrate[1][1] = 0.2;
 	learningrate[1][2] = pdalpha;
 	learningrate[1][3] = dalpha;
 		
