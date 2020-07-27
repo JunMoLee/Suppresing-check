@@ -588,7 +588,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		uzc++;
 		else
 		{unc++;
-		 deltaWeightSign = deltaWeightNormalized; // saturation count}
+		 deltaWeightSign = deltaWeightNormalized;} // saturation count
 	        GpGnCell = false;
 		deltaWeightNormalized = - learningrate[1]  * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		
@@ -615,7 +615,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		uzc++;
 		else
 		{unc++;
-		 deltaWeightSign = 0; // reverse update}
+		 deltaWeightSign = 0;} // reverse update
 		GpGnCell = true;
 		deltaWeightNormalized = - learningrate[3]  * totalcondrange/pcondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		deltaWeightSign = deltaWeightNormalized;
