@@ -1334,7 +1334,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 				 
 			    }
-				    cout<<"area "<<areanum<<" "<<(prevweightsum1>0)<<((prevposstepcount1-prevnegstepcount1)>0)<<((prevpossatsum1-prevnegsatsum1)>0)<<"    "<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
+				    cout<<"area "<<areanum<<" "<<((prevposstepcount1-prevnegstepcount1)>0)<<(prevweightsum1>0)<<((prevpossatsum1-prevnegsatsum1)>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0)<<endl;
 				    areanum++;
 				    prevpossatsum1 = possatsum1;
 				    prevnegsatsum1 = negsatsum1;
@@ -1381,7 +1381,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<"area "<<areanum<<" "<<(prevweightsum2>0)<<((prevposstepcount2-prevnegstepcount2)>0)<<((prevpossatsum2-prevnegsatsum2)>0)<<"    "<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
+				cout<<"area "<<areanum<<" "<<((prevposstepcount2-prevnegstepcount2)>0)<<(prevweightsum2>0)<<((prevpossatsum2-prevnegsatsum2)>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0)<<endl;
 				areanum++;
 				    prevpossatsum2 = possatsum2;
 				    prevnegsatsum2 = negsatsum2;
