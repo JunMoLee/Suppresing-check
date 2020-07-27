@@ -1293,7 +1293,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 double weightsum1=0;
 				 double zerosigcount1=0;
 		             for (int m=0; m<param->nHide; m++) {
-			     for (int a=0; a<k; k+=1){
+			     for (int a=0; a<k; a+=1){
 			      for (int b=0; b<20*k; b+=20){
 				int n = j+a+b;
 				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
@@ -1373,7 +1373,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 double weightsum1=0;
 				 double zerosigcount1=0;
 		             for (int m=0; m<param->nHide; m++) {
-			     for (int a=0; a<k; k+=1){
+			     for (int a=0; a<k; a+=1){
 			      for (int b=0; b<20*k; b+=20){
 				int n = j+a+b;
 				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
