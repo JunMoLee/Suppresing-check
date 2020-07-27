@@ -1303,11 +1303,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 negsigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc;
 				 zerosigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
 				 weightsum1+=weight1[m][n];
-				 cout<<(weightsum1>0)<<((posstepcount1-negstepcount1)>0)<<((possigcount1-negsigcount1)>0)<<((possatsum1-negsatsum1)>0)<<endl;
+				 
 				 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 				 
 			    }
 			    }
+				    
 			    }
 			    }
 				 
@@ -1331,10 +1332,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 negsigcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc;
 				 zerosigcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->uzc;
 				 weightsum2+=weight2[m][n];
-				 cout<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possigcount2-negsigcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
+				 
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
+				 cout<<(weightsum2>0)<<((posstepcount2-negstepcount2)>0)<<((possigcount2-negsigcount2)>0)<<((possatsum2-negsatsum2)>0)<<endl;
 			    }
 			
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
