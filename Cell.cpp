@@ -441,7 +441,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		
 	bool GpGnCell = true;
 	if (deltaWeightNormalized > 0) {	// Gp update (+ update)
-		deltaWeightSign = deltaWeightNormalized;
+		deltaWeightSign = deltaWeightNormalized; // saturation count
 		upc++;
 		GpGnCell = true;
 		deltaWeightNormalized = learningrate[0]  * totalcondrange/pcondrange*deltaWeightNormalized/(maxWeight-minWeight);
@@ -464,7 +464,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		uzc++;
 		else
 		{unc++;
-		 deltaWeightSign = deltaWeightNormalized;}
+		 deltaWeightSign = deltaWeightNormalized; // saturation count}
 		GpGnCell = false;
 		deltaWeightNormalized = -learningrate[1]  * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		
@@ -553,7 +553,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 ////////new write/////////////
 
 void RealDevice::newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate, double  learningrate []) {
-	double conductanceNew = conductance;	// =conductance if no update
+	double conductanceNew = conductance;	// conductance if no update
 	double conductanceNewGp = conductanceGp;
 	double conductanceNewGn = conductanceGn;
 	double totalcondrange = pmaxConductance + nmaxConductance - pminConductance - nminConductance;
@@ -562,7 +562,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	double deltaWeightSign;
 	
 	bool GpGnCell = true;
-	if (positiveupdate && (deltaWeightNormalized > 0)) {	// LTP weight newupdate
+	if (positiveupdate && (deltaWeightNormalized > 0)) {	// + reverse update
 		deltaWeightSign = 0; // reverse update
 		upc++;
 		GpGnCell = false;
@@ -583,7 +583,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	
 	} 
 	
-	else if (positiveupdate && (deltaWeightNormalized <= 0)) {	// LTP weight update
+	else if (positiveupdate && (deltaWeightNormalized <= 0)) {	// Gn normal update
 		if(deltaWeightNormalized == 0)
 		uzc++;
 		else
@@ -609,7 +609,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 
 	
 	
-	else if (!positiveupdate && (deltaWeightNormalized <= 0)){	// LTD weight newupdate
+	else if (!positiveupdate && (deltaWeightNormalized <= 0)){	// - reverse update
 		
 		if(deltaWeightNormalized == 0)
 		uzc++;
@@ -635,7 +635,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		
 	}
 	
-	else if (!positiveupdate && (deltaWeightNormalized > 0)){	// LTD weight update
+	else if (!positiveupdate && (deltaWeightNormalized > 0)){	// Gp normal update
 		deltaWeightSign = deltaWeightNormalized;
 		upc++;
 		GpGnCell = true;
