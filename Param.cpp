@@ -58,6 +58,7 @@ Param::Param() {
 	ss=0;
 	selectsim=ss;
 	weighttrack=1;
+	TrackRate=2000;
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
