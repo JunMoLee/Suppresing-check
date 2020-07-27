@@ -499,13 +499,13 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 		}
 	}
 	
-	if (conductanceNewGp >= pmaxConductance) {
+	if (conductanceNewGp > pmaxConductance) {
 		if(deltaWeightSign >0) possat++;
 		conductanceNewGp = pmaxConductance;
 	} else if (conductanceNewGp < pminConductance) {
 		conductanceNewGp = pminConductance;
 	}
-	if (conductanceNewGn >= nmaxConductance) {
+	if (conductanceNewGn > nmaxConductance) {
 		if(deltaWeightSign <0) negsat++;
 		conductanceNewGn = nmaxConductance;
 	}
@@ -680,13 +680,13 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		}
 	}
 	
-	if (conductanceNewGp >= pmaxConductance) {
+	if (conductanceNewGp > pmaxConductance) {
 		if(deltaWeightSign>0) possat++;
 		conductanceNewGp = pmaxConductance;
 	} else if (conductanceNewGp < pminConductance) {
 		conductanceNewGp = pminConductance;
 	}
-	if (conductanceNewGn >= nmaxConductance) {
+	if (conductanceNewGn > nmaxConductance) {
 		if(deltaWeightSign <0) negsat++;
 		conductanceNewGn = nmaxConductance;
 	}
