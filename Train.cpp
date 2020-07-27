@@ -1280,7 +1280,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			 
 			 
 		       /* saturation count */
-		        double k=10; // k=kernel size;
+		       int k=10; // k=kernel size;
 
 				
 			 // weight IH
@@ -1355,7 +1355,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		else {   
 			if ((batchSize+numTrain*(epochcount-1)) % param->RefreshRate == (param->RefreshRate-1)){
 					       /* saturation count */
-		        double k=10; // k=kernel size;
+		       int k=10; // k=kernel size;
 
 				
 			 // weight IH
@@ -1501,10 +1501,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
              												
 		for (int m=0; m<param->nHide; m++) {
 		  for (int i=0; i<4;i++){
-			for (int n=100*i; n<100*(i+1);n++){
-		
-		
-		
+			for (int n=100*i; n<100*(i+1);n++){	
 	        
 	        sprintf(fileIH, "%d", i);
 		string filenameA="weightIH";
