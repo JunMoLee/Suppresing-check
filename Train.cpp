@@ -1348,13 +1348,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 
 			    }
 			cout<<"area "<<areanum<<" "<<((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0)<<(prevweightsum1[areanum]>0)<<((prevpossatsum1[areanum]-prevnegsatsum1[areanum])>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0)<<endl;
-				    prevpossatsum1[area] = possatsum1;
-				    prevnegsatsum1[area] = negsatsum1;
-				    prevposstepcount1[area] = posstepcount1;
-				    prevnegstepcount1[area] = negstepcount1;
+				    prevpossatsum1[areanum] = possatsum1;
+				    prevnegsatsum1[areanum] = negsatsum1;
+				    prevposstepcount1[areanum] = posstepcount1;
+				    prevnegstepcount1[areanum] = negstepcount1;
 				  /*  prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
-				    prevweightsum1[area] = weightsum1;
+				    prevweightsum1[areanum] = weightsum1;
 				   /* prevzerosigcount1[area] = zerosigcount1; */
 				    areanum++;
 				    
@@ -1391,13 +1391,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 			    }
 				cout<<"area "<<areanum<<" "<<((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0)<<(prevweightsum2[areanum]>0)<<((prevpossatsum2[areanum]-prevnegsatsum2[areanum])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0)<<endl;
-				    prevpossatsum2[area] = possatsum2;
-				    prevnegsatsum2[area] = negsatsum2;
-				    prevposstepcount2[area] = posstepcount2;
-				    prevnegstepcount2[area] = negstepcount2;
+				    prevpossatsum2[areanum] = possatsum2;
+				    prevnegsatsum2[areanum] = negsatsum2;
+				    prevposstepcount2[areanum] = posstepcount2;
+				    prevnegstepcount2[areanum] = negstepcount2;
 				  /*  prevpossigcount2= possigcount2;
 				    prevnegsigcount2= negsigcount2; */
-				    prevweightsum2[area] = weightsum2;
+				    prevweightsum2[areanum] = weightsum2;
 				   /* prevzerosigcount2[area] = zerosigcount2; */
 				    areanum++;
 
