@@ -584,14 +584,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								    
 				                           if ((areanumber1==5)||(areanumber1==7))
 							    { learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1]-0.1;
+							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
 							 
 							    }     
 				                           else 
-						           {  learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
+						           {  learningrateIH[0] = param->learningrate[0][0]-0.1;
+							      learningrateIH[1] = param->learningrate[0][1]+0.1;
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
 							 
