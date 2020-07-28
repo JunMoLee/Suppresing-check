@@ -138,6 +138,9 @@ double s1[param->nHide];    // Output delta from input layer to the hidden layer
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
 	
 	for (int t = 0; t < epochs; t++) {
+		       int k=2; // k=kernel size;
+		       int h=2; // h=number of hidden layer slice
+		       int hiddenpiece= param->nHide/h;
 		for (int batchSize = 0; batchSize < numTrain; batchSize++) {
 
 			int i = rand() % param->numMnistTrainImages;  // Randomize sample
