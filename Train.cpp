@@ -574,14 +574,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			                                         for (int a=0; a<kernel; a+=1){
 			                                          for (int b=0; b<20*kernel; b+=20){
 				                                   int n = u+a+b;
-							            /* if((jj==m) && (k==n)) */ {areanumber1 = x+ ( 400/(20*kernel)*(w/kernel)+(u-w)/(20*kernel) )*h; break;}
+							             if((jj==m) && (k==n))  {areanumber1 = x+ ( 400/(20*kernel)*(w/kernel)+(u-w)/(20*kernel) )*h; break;}
 								    }
 								     }
 								      }
 							               }
 							                }
 							                 }  
-								    cout<<areanumber1<<endl; 
+								    
 				                           if ((areanumber1==3)||(areanumber1==7)||(areanumber1==9)||(areanumber1==13)||(areanumber1==17)||(areanumber1==21)||(areanumber1==23)||(areanumber1==25)||(areanumber1==27)||(areanumber1==29))
 							    { learningrateIH[0] = param->learningrate[0][0]*0.5;
 							      learningrateIH[1] = param->learningrate[0][1]*1.5;
