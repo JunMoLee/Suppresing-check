@@ -577,8 +577,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							                }
 							                 }  
 								     
-				                           if ((areanumber1==7)||(areanumber1==9)||(areanumber1==17)||(areanumber1==25)||(areanumber1==29)||(areanumber1==35)||(areanumber1==39)||(areanumber1==41)
-							       (areanumber1==43)||(areanumber1==45)||(areanumber1==49)||(areanumber1==51)||(areanumber1==53)||(areanumber1==99)||(areanumber1==105))
+				                           if ((areanumber1==7)||(areanumber1==9)||(areanumber1==17)||(areanumber1==25)||(areanumber1==29)||(areanumber1==35)||(areanumber1==39)||(areanumber1==41)||(areanumber1==43)||(areanumber1==45)||(areanumber1==49)||(areanumber1==51)||(areanumber1==53)||(areanumber1==99)||(areanumber1==105))
 							    { learningrateIH[0] = param->learningrate[0][0]*0.5;
 							      learningrateIH[1] = param->learningrate[0][1]*1.5;
 							      learningrateIH[2] = param->learningrate[0][2];
