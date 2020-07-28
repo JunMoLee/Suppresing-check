@@ -95,20 +95,20 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 
 
 /*Weight track variables */
-			        vector <int> prevpossatsum2(220,0);
-                                vector <int> prevnegsatsum2(220,0);
-				vector <int> prevposstepcount2(220,0);
-				vector <int> prevnegstepcount2(220,0);
+			        vector <double> prevpossatsum2(220,0);
+                                vector <double> prevnegsatsum2(220,0);
+				vector <double> prevposstepcount2(220,0);
+				vector <double> prevnegstepcount2(220,0);
 				/* double prevpossigcount2=0, prevnegsigcount2=0; */
-				vector <int> prevweightsum2(220,0);
+				vector <double> prevweightsum2(220,0);
 				/* double prevzerosigcount2=0; */
 
-			        vector <int> prevpossatsum1(220,0);
-                                vector <int> prevnegsatsum1(220,0);
-				vector <int> prevposstepcount1(220,0);
-				vector <int> prevnegstepcount1(220,0);
+			        vector <double> prevpossatsum1(220,0);
+                                vector <double> prevnegsatsum1(220,0);
+				vector <double> prevposstepcount1(220,0);
+				vector <double> prevnegstepcount1(220,0);
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
-				vector <int> prevweightsum1(220,0);
+				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
 				
 /*Optimization functions*/
@@ -1326,6 +1326,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 double possigcount1=0, negsigcount1=0;
 				 double weightsum1=0;
 				 double zerosigcount1=0;
+				 areanum = t+ ( 400/(20*k)*(i/k)+(j-i)/(20*k) )*h;
 			      for (int m=t*hiddenpiece; m<t*(hiddenpiece+1); m++)  {
 			      for (int a=0; a<k; a+=1){
 			      for (int b=0; b<20*k; b+=20){
@@ -1356,7 +1357,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegsigcount1= negsigcount2; */
 				    prevweightsum1[areanum] = weightsum1;
 				   /* prevzerosigcount1[area] = zerosigcount1; */
-				    areanum++;
+				    
 				    
 			    }
 				 
@@ -1376,6 +1377,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				double possigcount2=0, negsigcount2=0;
 				double zerosigcount2=0;
 				double weightsum2=0;
+				areanum = (400/(20*k)*(20/k))*h + m*h +t;
 			      for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
 				  
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
@@ -1399,7 +1401,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegsigcount2= negsigcount2; */
 				    prevweightsum2[areanum] = weightsum2;
 				   /* prevzerosigcount2[area] = zerosigcount2; */
-				    areanum++;
+				    
 
 			    }
 			  }
