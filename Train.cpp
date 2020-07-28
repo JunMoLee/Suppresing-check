@@ -562,6 +562,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                                            int areanumber1=0;
 				                           double learningrateIH [4];
 				                          // classify area by index
+				                        cout<<"test1"<<endl;
 			                               for (int i=0; i<20; i+=k){
 			                                      for (int u=i; u<400; u+=20*k){ // classify input layer area
 		                                               for (int t=0; t<h; t++) {  // classify hidden layer area
