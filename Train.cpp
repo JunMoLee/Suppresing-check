@@ -561,8 +561,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    
                                                            int areanumber1=0;
 				                           double learningrateIH [4];
+				
+				
+				
+
 				                          // classify area by index
-				                        cout<<"test1"<<endl;
+				                        
 			                               for (int i=0; i<20; i+=k){
 			                                      for (int u=i; u<400; u+=20*k){ // classify input layer area
 		                                               for (int t=0; t<h; t++) {  // classify hidden layer area
@@ -577,7 +581,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							               }
 							                }
 							                 }  
-								     
+								    cout<<areanumber1<<endl; 
 				                           if ((areanumber1==3)||(areanumber1==7)||(areanumber1==9)||(areanumber1==13)||(areanumber1==17)||(areanumber1==21)||(areanumber1==23)||(areanumber1==25)||(areanumber1==27)||(areanumber1==29))
 							    { learningrateIH[0] = param->learningrate[0][0]*0.5;
 							      learningrateIH[1] = param->learningrate[0][1]*1.5;
@@ -586,7 +590,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							 
 							    }     
 				                           else 
-						           { learningrateIH[0] = param->learningrate[0][0];
+						           {  learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
@@ -1008,7 +1012,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			        }    */
 								     
 				                               
-				                         cout<<"test2"<<endl;  
+				                         
 				                      switch (areanumber2) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
 				                            { learningrateHO[0] = param->learningrate[1][0];
