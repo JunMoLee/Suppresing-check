@@ -1016,7 +1016,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							  learningrateHO[1] = param->learningrate[1][1];
 							  learningrateHO[2] = param->learningrate[1][2];
 							  learningrateHO[3] = param->learningrate[1][3];
-						       } /*
+						       } */
 				
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])) { // Analog eNVM
 								
