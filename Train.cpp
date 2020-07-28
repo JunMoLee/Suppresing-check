@@ -584,15 +584,21 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateIH[3] = param->learningrate[0][3];
 							 
 							    }     
-				                           
-				                        switch (areanumber1) // allocate learning rate for each area
+				                           else 
+						           { learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];
+							      learningrateIH[2] = param->learningrate[0][2];
+							      learningrateIH[3] = param->learningrate[0][3];
+							 
+							    } 
+				                       /* switch (areanumber1) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
 				                            { learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
 							      break;
-							    } 
+							    } */
                             
 				
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])) {	// Analog eNVM
