@@ -136,7 +136,7 @@ double a2[param->nOutput];  // Net output of output layer [param->nOutput]
 
 double s1[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
-		       int k=5; // k=kernel size;
+		       int k=2; // k=kernel size;
 		       int h=2; // h=number of hidden layer slice
 		       int hiddenpiece= param->nHide/h;	
 	for (int t = 0; t < epochs; t++) {
@@ -567,14 +567,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				                          // classify area by index
 				                        
-			                               for (int i=0; i<20; i+=k){
-			                                      for (int u=i; u<400; u+=20*k){ // classify input layer area
-		                                               for (int t=0; t<h; t++) {  // classify hidden layer area
-							        for (int m=t*hiddenpiece; m<t*(hiddenpiece+1); m++)  {
+			                                     for (int w=0; w<20; w+=k){
+			                                      for (int u=w; u<400; u+=20*k){ // classify input layer area
+		                                               for (int x=0; x<h; x++) {  // classify hidden layer area
+							        for (int m=x*hiddenpiece; m<x*(hiddenpiece+1); m++)  {
 			                                         for (int a=0; a<k; a+=1){
 			                                          for (int b=0; b<20*k; b+=20){
 				                                   int n = u+a+b;
-							            /* if((jj==m) && (k==n)) */ {areanumber1 = t+ ( 400/(20*k)*(i/k)+(u-i)/(20*k) )*h; break;}
+							            /* if((jj==m) && (k==n)) */ {areanumber1 = x+ ( 400/(20*k)*(w/k)+(u-w)/(20*k) )*h; break;}
 								    }
 								     }
 								      }
