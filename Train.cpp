@@ -1003,13 +1003,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           int areanumber2;
 				                           double learningrateHO [4];
 				                           // classify area by index
-                  	for (int m=0; m<param->nOutput; m++) { // classify output area
+                  /*	for (int m=0; m<param->nOutput; m++) { // classify output area
 			 for (int z=0; z<h; z++) {  // classify hidden layer area
 			   for (int n=t*hiddenpiece; n<z*(hiddenpiece+1); n++)  {
 			       if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*h+h*m+z; break;}
 			      }
 			       }
-			        }    
+			        }    */
 								     
 				                               
 				                         
