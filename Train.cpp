@@ -569,7 +569,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			                                         for (int a=0; a<k; a+=1){
 			                                          for (int b=0; b<20*k; b+=20){
 				                                   int n = j+a+b;
-							            if((jj==m) && (k==n)) {areanumber1 = t+ ( 400/(20*k)*(i/k)+(j-i)/(20*k) )*h; break;}
+							            if((jj==m) && (k==n)) {areanumber1 = t+ ( 400/(20*k)*(i/k)+(j-i)/(20*k) )*h;}
 								    }
 								     }
 								      }
