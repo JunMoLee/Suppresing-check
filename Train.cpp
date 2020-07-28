@@ -1008,7 +1008,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			        }    */
 								     
 				                               
-				                           
+				                         cout<<"test2"<<endl;  
 				                      switch (areanumber2) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
 				                            { learningrateHO[0] = param->learningrate[1][0];
