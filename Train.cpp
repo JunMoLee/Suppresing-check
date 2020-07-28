@@ -561,7 +561,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    
                                                            int areanumber1=0;
 				                           double learningrateIH [4];
-				                 /*          // classify area by index
+				                          // classify area by index
 			                                     for (int i=0; i<20; i+=k){
 			                                      for (int j=i; j<400; j+=20*k){ // classify input layer area
 		                                               for (int t=0; t<h; t++) {  // classify hidden layer area
@@ -575,18 +575,25 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								      }
 							               }
 							                }
-							                 }  */
+							                 }  
 								     
-				                               
+				                           if ((areanumber1==7)||(areanumber1==9)||(areanumber1==17)||(areanumber1==25)||(areanumber1==29)||(areanumber1==35)||(areanumber1==39)||(areanumber1==41)
+							       (areanumber1==43)||(areanumber1==45)||(areanumber1==49)||(areanumber1==51)||(areanumber1==53)||(areanumber1==99)||(areanumber1==105))
+							    { learningrateIH[0] = param->learningrate[0][0]*0.5;
+							      learningrateIH[1] = param->learningrate[0][1]*1.5;
+							      learningrateIH[2] = param->learningrate[0][2];
+							      learningrateIH[3] = param->learningrate[0][3];
+							 
+							    }     
 				                           
-				                           switch (areanumber1) // allocate learning rate for each area
+				                       /*    switch (areanumber1) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
 				                            { learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
 							      break;
-							    }
+							    } */
                             
 				
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])) {	// Analog eNVM
