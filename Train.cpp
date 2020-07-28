@@ -988,7 +988,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                      	for (int m=0; m<param->nOutput; m++) { // classify output area
 			 for (int t=0; t<h; t++) {  // classify hidden layer area
 			   for (int n=t*hiddenpiece; n<t*(hiddenpiece+1); n++)  {
-			       if((jj==m) && (k==n)) {areanumber2 = (400/(20*k)*(20/k))*h+h*m+t; break;}
+			       if((jj==m) && (k==n)) {areanumber2 = (400/(20*k)*(20/k))*h+h*m+t;}
 			      }
 			       }
 			        }    
