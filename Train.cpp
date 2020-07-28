@@ -110,6 +110,9 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
 				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
+		       int k=2; // k=kernel size;
+		       int h=2; // h=number of hidden layer slice
+		       int hiddenpiece= param->nHide/h;
 				
 /*Optimization functions*/
 double gradt;
@@ -1335,9 +1338,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
 
-		       int k=2; // k=kernel size;
-		       int h=2; // h=number of hidden layer slice
-		       int hiddenpiece= param->nHide/h;
+
 		       int areanum=0;
                           
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
