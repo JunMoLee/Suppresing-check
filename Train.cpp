@@ -570,7 +570,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			                                     for (int w=0; w<20; w+=kernel){
 			                                      for (int u=w; u<400; u+=20*kernel){ // classify input layer area
 		                                               for (int x=0; x<h; x++) {  // classify hidden layer area
-							        for (int m=x*hiddenpiece; m<x*(hiddenpiece+1); m++)  {
+							        for (int m=x*hiddenpiece; m<(x+1)*hiddenpiece; m++)  {
 			                                         for (int a=0; a<kernel; a+=1){
 			                                          for (int b=0; b<20*kernel; b+=20){
 				                                   int n = u+a+b;
@@ -1004,7 +1004,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           // classify area by index
                   /*	for (int m=0; m<param->nOutput; m++) { // classify output area
 			 for (int z=0; z<h; z++) {  // classify hidden layer area
-			   for (int n=t*hiddenpiece; n<z*(hiddenpiece+1); n++)  {
+			   for (int n=z*hiddenpiece; n<(z+1)*hiddenpiece; n++)  {
 			       if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*h+h*m+z; break;}
 			      }
 			       }
@@ -1373,7 +1373,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 double weightsum1=0;
 				 double zerosigcount1=0;
 				 areanum = z+ ( 400/(20*kernel)*(w/kernel)+(f-w)/(20*kernel) )*h;
-			      for (int m=z*hiddenpiece; m<z*(hiddenpiece+1); m++)  {
+			      for (int m=z*hiddenpiece; m<(z+1)*hiddenpiece; m++)  {
 			      for (int a=0; a<kernel; a+=1){
 			      for (int b=0; b<20*kernel; b+=20){
 				int n = f+a+b;
@@ -1425,7 +1425,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				double zerosigcount2=0;
 				double weightsum2=0;
 				areanum = (400/(20*kernel)*(20/kernel))*h + m*h +z;
-			      for (int n=z*hiddenpiece; n<z*(hiddenpiece+1); n++)  {
+			      for (int n=z*hiddenpiece; n<(z+1)*hiddenpiece; n++)  {
 				  
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
 				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
