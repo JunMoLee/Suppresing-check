@@ -1363,8 +1363,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				
 				
-			   for (int i=0; i<20; i+=kernel){
-			    for (int j=i; j<400; j+=20*kernel){ // classify input layer area
+			   for (int w=0; w<20; w+=kernel){
+			    for (int f=w; f<400; f+=20*kernel){ // classify input layer area
 
 		             for (int z=0; z<h; z++) {  // classify hidden layer area
 				 double possatsum1=0, negsatsum1=0;
@@ -1372,11 +1372,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 double possigcount1=0, negsigcount1=0;
 				 double weightsum1=0;
 				 double zerosigcount1=0;
-				 areanum = z+ ( 400/(20*kernel)*(i/kernel)+(j-i)/(20*kernel) )*h;
+				 areanum = z+ ( 400/(20*kernel)*(w/kernel)+(f-w)/(20*kernel) )*h;
 			      for (int m=z*hiddenpiece; m<z*(hiddenpiece+1); m++)  {
 			      for (int a=0; a<kernel; a+=1){
 			      for (int b=0; b<20*kernel; b+=20){
-				int n = j+a+b;
+				int n = f+a+b;
 				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
 				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
 				posstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
