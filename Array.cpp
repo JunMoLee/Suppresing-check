@@ -181,13 +181,13 @@ void Array::WriteCell(int x, int y, double deltaWeight, double weight, double ma
 		//printf("Writing cell....\n");
        if (regular) 
         {	// Regular write
-		if(!newupdate){
+		if(!newupdate){ // normal update
 			static_cast<AnalogNVM*>(cell[x][y])->Write(deltaWeight, weight, minWeight, maxWeight, learningrate);
 		}
 		// Reverse update
-		/**/ else {  if(!regularupdate&&!dominance)
+		/**/ else {  if(!regularupdate/*check for (+ reverse speed) = (- reverse speed)*/&&!dominance/*check for coinciding +,- reverse update*/) // limiting one side of reverse update
 			static_cast<RealDevice*>(cell[x][y])->newWrite(deltaWeight, weight, minWeight, maxWeight, positiveupdate, learningrate);
-		      else
+		      else // allowing bidrectional reverse update
 			static_cast<RealDevice*>(cell[x][y])->newWrite(deltaWeight, weight, minWeight, maxWeight, deltaweightsign, learningrate);
 			      
 		} /**/
