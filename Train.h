@@ -42,7 +42,7 @@
 extern double totalWeightUpdate; // track the total weight update (absolute value) during the whole training process
 extern double totalNumPulse;// track the total number of pulse for the weight update process; for Analog device only
 // void Train(const int numTrain, const int epochs);
-void Train(const int numTrain, const int epochs, char* optimization_type, int epochcount=1, bool stopreset=0, bool stopreverse=0, double adLA=1, double adFrr=1, double adNur=1); // For decayed learning rate
+void Train(const int numTrain, const int epochs, char* optimization_type, int epochcount=1, bool stopreset=0, bool posstopreverse=0, bool negstopreverse=0, double adLA=1, double adFrr=1, double adNur=1); // For decayed learning rate
 /* Availiable optimization type includes
 "SGD": the stochastic gradient descent
 "Momentum": the momentum optimization
