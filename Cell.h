@@ -103,18 +103,18 @@ public:
 	double minConductanceVar;	// Sigma of minConductance variation (S)
 	
 	/* weight signal count tracking variables */
-	double upc=0; // for positive signal
-	double unc=0; // for negative signal
-	double uzc=0; // for zero signal
+	int upc=0; // for positive signal
+	int unc=0; // for negative signal
+	int uzc=0; // for zero signal
 	
 	/* track saturation counter for positive and negative */
-	double possat=0;
-	double negsat=0;
+	int possat=0;
+	int negsat=0;
 	void ResetCounter();
 	
 	/* track average step update */
-	double posstep=0;
-	double negstep=0;
+	int posstep=0;
+	int negstep=0;
 };
 
 class SRAM: public Cell {
