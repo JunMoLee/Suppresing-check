@@ -95,18 +95,18 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 
 
 /*Weight track variables */
-			        vector <double> prevpossatsum2(220,0);
-                                vector <double> prevnegsatsum2(220,0);
-				vector <double> prevposstepcount2(220,0);
-				vector <double> prevnegstepcount2(220,0);
+			        vector <int> prevpossatsum2(220,0);
+                                vector <int> prevnegsatsum2(220,0);
+				vector <int> prevposstepcount2(220,0);
+				vector <int> prevnegstepcount2(220,0);
 				/* double prevpossigcount2=0, prevnegsigcount2=0; */
 				vector <double> prevweightsum2(220,0);
 				/* double prevzerosigcount2=0; */
 
-			        vector <double> prevpossatsum1(220,0);
-                                vector <double> prevnegsatsum1(220,0);
-				vector <double> prevposstepcount1(220,0);
-				vector <double> prevnegstepcount1(220,0);
+			        vector <int> prevpossatsum1(220,0);
+                                vector <int> prevnegsatsum1(220,0);
+				vector <int> prevposstepcount1(220,0);
+				vector <int> prevnegstepcount1(220,0);
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
 				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
@@ -1367,11 +1367,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    for (int f=w; f<400; f+=20*kernel){ // classify input layer area
 
 		             for (int z=0; z<h; z++) {  // classify hidden layer area
-				 double possatsum1=0, negsatsum1=0;
-				 double posstepcount1=0, negstepcount1=0;
-				 double possigcount1=0, negsigcount1=0;
+				 int possatsum1=0, negsatsum1=0;
+				 int posstepcount1=0, negstepcount1=0;
+				 int possigcount1=0, negsigcount1=0;
 				 double weightsum1=0;
-				 double zerosigcount1=0;
+				 int zerosigcount1=0;
 				 areanum = z+ ( 400/(20*kernel)*(w/kernel)+(f-w)/(20*kernel) )*h;
 			      for (int m=z*hiddenpiece; m<(z+1)*hiddenpiece; m++)  {
 				      
@@ -1427,10 +1427,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		          for (int m=0; m<param->nOutput; m++) { // classify output area
 			   
 			    for (int z=0; z<h; z++) {  // classify hidden layer area
-				double possatsum2=0, negsatsum2=0;
-				double posstepcount2=0, negstepcount2=0;
-				double possigcount2=0, negsigcount2=0;
-				double zerosigcount2=0;
+				int possatsum2=0, negsatsum2=0;
+				int posstepcount2=0, negstepcount2=0;
+				int possigcount2=0, negsigcount2=0;
+				int zerosigcount2=0;
 				double weightsum2=0;
 				areanum = (400/(20*kernel)*(20/kernel))*h + m*h +z;
 			      for (int n=z*hiddenpiece; n<(z+1)*hiddenpiece; n++)  {
