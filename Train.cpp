@@ -137,7 +137,8 @@ double a2[param->nOutput];  // Net output of output layer [param->nOutput]
 double s1[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
 		       int kernel=20; // k=kernel size;
-		       int h=100; // h=number of hidden layer slice
+		       int h=100; // h=number of hidden layer slice for IH
+	               int hh=1; // hh= number of hidden layer slice for HO
 		       int hiddenpiece= param->nHide/h;	
 	for (int t = 0; t < epochs; t++) {
 
@@ -1003,9 +1004,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           double learningrateHO [4];
 				                           // classify area by index
                   /*	for (int m=0; m<param->nOutput; m++) { // classify output area
-			 for (int z=0; z<h; z++) {  // classify hidden layer area
+			 for (int z=0; z<hh; z++) {  // classify hidden layer area
 			   for (int n=z*hiddenpiece; n<(z+1)*hiddenpiece; n++)  {
-			       if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*h+h*m+z; break;}
+			       if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*hh+hh*m+z; break;}
 			      }
 			       }
 			        }    */
@@ -1426,13 +1427,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 		          for (int m=0; m<param->nOutput; m++) { // classify output area
 			   
-			    for (int z=0; z<h; z++) {  // classify hidden layer area
+			    for (int z=0; z<hh; z++) {  // classify hidden layer area
 				int possatsum2=0, negsatsum2=0;
 				int posstepcount2=0, negstepcount2=0;
 				int possigcount2=0, negsigcount2=0;
 				int zerosigcount2=0;
 				double weightsum2=0;
-				areanum = (400/(20*kernel)*(20/kernel))*h + m*h +z;
+				areanum = (400/(20*kernel)*(20/kernel))*hh + m*hh +z;
 			      for (int n=z*hiddenpiece; n<(z+1)*hiddenpiece; n++)  {
 				  
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
