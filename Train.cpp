@@ -1374,7 +1374,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 double zerosigcount1=0;
 				 areanum = z+ ( 400/(20*kernel)*(w/kernel)+(f-w)/(20*kernel) )*h;
 			      for (int m=z*hiddenpiece; m<(z+1)*hiddenpiece; m++)  {
-				      cout<<"   "<<"a["<<m<<"]="<<a1[m]<<endl;
+				      
 			      for (int a=0; a<kernel; a+=1){
 			      for (int b=0; b<20*kernel; b+=20){
 				int n = f+a+b;
@@ -1411,6 +1411,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }	 
 			    }
 			    }
+				
+				for (int e=0; e<100;e++){
+					
+						cout<<"   "<<"a["<<e<<"]="<<a1[e]<<endl;
+				}
 				
 				cout<<endl;
 			  // weight HO
@@ -1457,6 +1462,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 			    }
 			  }
+				
+				
+				for (int e=0; e<10;e++){
+					
+						cout<<"   "<<"a["<<e<<"]="<<a2[e]<<endl;
+				}
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: " << possatsum1/param->RefreshRate/40000<< ", " <<possatsum1/param->RefreshRate/40000*100<<"%";
 			cout <<" avg IH negative sat: " << negsatsum1/param->RefreshRate/40000<<", " <<negsatsum1/param->RefreshRate/40000*100<<"%";
