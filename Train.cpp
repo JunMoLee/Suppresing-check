@@ -136,7 +136,7 @@ double a2[param->nOutput];  // Net output of output layer [param->nOutput]
 
 double s1[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
-		       int kernel=10; // k=kernel size;
+		       int kernel=1; // k=kernel size;
 		       int h=2; // h=number of hidden layer slice
 		       int hiddenpiece= param->nHide/h;	
 	for (int t = 0; t < epochs; t++) {
@@ -1392,10 +1392,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 
 			    }
 			    }
-				 
 			    }
+				     
 			cout<<"area "<<areanum<<" "<<((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0)<<(prevweightsum1[areanum]>0)<<((prevpossatsum1[areanum]-prevnegsatsum1[areanum])>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0);
-		        cout<<"   "<<prevposstepcount1[areanum]<<" "<<prevnegstepcount1[areanum]<<" "<<posstepcount1<<" "<<negstepcount1<<endl;
+		        cout<<"   "<<prevposstepcount1[areanum]<<" "<<prevnegstepcount1[areanum]<<" "<<posstepcount1<<" "<<negstepcount1;
+		        cout<<"   "<<"a["<<m<<"]="<<a1[m]<<endl;
 				    prevpossatsum1[areanum] = possatsum1;
 				    prevnegsatsum1[areanum] = negsatsum1;
 				    prevposstepcount1[areanum] = posstepcount1;
@@ -1403,13 +1404,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				  /*  prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
 				    prevweightsum1[areanum] = weightsum1;
-				   /* prevzerosigcount1[area] = zerosigcount1; */
+				  /* prevzerosigcount1[area] = zerosigcount1; */
 				    
 				    
+			    }	 
 			    }
-				 
 			    }
-			    }
+				
 				cout<<endl;
 			  // weight HO
 				
@@ -1440,7 +1441,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 			    }
 				cout<<"area "<<areanum<<" "<<((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0)<<(prevweightsum2[areanum]>0)<<((prevpossatsum2[areanum]-prevnegsatsum2[areanum])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0);
-				cout<<"   "<<prevposstepcount2[areanum]<<" "<<prevnegstepcount2[areanum]<<" "<<posstepcount2<<" "<<negstepcount2<<endl;
+				cout<<"   "<<prevposstepcount2[areanum]<<" "<<prevnegstepcount2[areanum]<<" "<<posstepcount2<<" "<<negstepcount2;
+				cout<<"   "<<"a["<<m<<"]="<<a2[m]<<endl;
 				    prevpossatsum2[areanum] = possatsum2;
 				    prevnegsatsum2[areanum] = negsatsum2;
 				    prevposstepcount2[areanum] = posstepcount2;
