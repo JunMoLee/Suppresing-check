@@ -1425,7 +1425,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		         cout << "OH"<<endl;	
 				
 		          for (int m=0; m<param->nOutput; m++) { // classify output area
-			    cout<<"   "<<"a["<<m<<"]="<<a2[m]<<endl;
+			   
 			    for (int z=0; z<h; z++) {  // classify hidden layer area
 				double possatsum2=0, negsatsum2=0;
 				double posstepcount2=0, negstepcount2=0;
