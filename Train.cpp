@@ -140,6 +140,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		       int h=100; // h=number of hidden layer slice for IH
 	               int hh=1; // hh= number of hidden layer slice for HO
 		       int hiddenpiece= param->nHide/h;	
+	               int hhiddenpiece= param ->nHide/hh;
 	for (int t = 0; t < epochs; t++) {
 
 		for (int batchSize = 0; batchSize < numTrain; batchSize++) {
@@ -1005,7 +1006,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           // classify area by index
                   /*	for (int m=0; m<param->nOutput; m++) { // classify output area
 			 for (int z=0; z<hh; z++) {  // classify hidden layer area
-			   for (int n=z*hiddenpiece; n<(z+1)*hiddenpiece; n++)  {
+			   for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
 			       if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*hh+hh*m+z; break;}
 			      }
 			       }
@@ -1434,7 +1435,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				int zerosigcount2=0;
 				double weightsum2=0;
 				areanum = (400/(20*kernel)*(20/kernel))*hh + m*hh +z;
-			      for (int n=z*hiddenpiece; n<(z+1)*hiddenpiece; n++)  {
+			      for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
 				  
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
 				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
