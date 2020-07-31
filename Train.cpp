@@ -604,8 +604,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 			                                      else if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 1313)
 							      {
-							      learningrateIH[0] = param->learningrate[0][0]/2;
-							      learningrateIH[1] = param->learningrate[0][1]*2;
+							      learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
 							      }
@@ -1071,14 +1071,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								     
 				                               
 				                         
-				                      switch (areanumber2) // allocate learning rate for each area
+				                    /*  switch (areanumber2) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
 				                            { learningrateHO[0] = param->learningrate[1][0];
 							      learningrateHO[1] = param->learningrate[1][1];
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      break;
-							    }  
+							    }  */
 				                /*     if ((areanumber2==203)||(areanumber2==205)||(areanumber2==207)||(areanumber2==211)||(areanumber2==213)||(areanumber2==215)||(areanumber2==217)||(areanumber2==219))
 							    { learningrateHO[0] = param->learningrate[1][0]*0.5;
 							      learningrateHO[1] = param->learningrate[1][1]*1.5;
