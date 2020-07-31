@@ -114,6 +114,13 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
                                  vector <vector <int>> updatepattern2(220, vector<int>(4,-5));  
 				
 /*Optimization functions*/
+
+int adaptlogic (double i){
+	if (i>0) return 3;
+	if (i==0) return 2;
+	if (i<0) return 1;
+}
+
 double gradt;
 double GAMA=0.9;
 double BETA1= 0.1, BETA2=0.7; 
@@ -590,15 +597,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                             
 				                              if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 1010)
 							      {
-							      learningrateIH[0] = param->learningrate[0][0]*1.5;
-							      learningrateIH[1] = param->learningrate[0][1]/1.5;
+							      learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
 							      }
 			                                      else if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 0101)
 							      {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
+							      learningrateIH[0] = param->learningrate[0][0]/1.5;
+							      learningrateIH[1] = param->learningrate[0][1]*1.5;
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
 							      }
