@@ -1096,30 +1096,30 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 							   // adpative weight update 
 				                             
-				                              if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1010)
+				                              if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 3131)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0]+0.05;
-							      learningrateHO[1] = param->learningrate[1][1]-0.05;
+							      learningrateHO[0] = param->learningrate[1][0];
+							      learningrateHO[1] = param->learningrate[1][1];
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      }
-				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 0101)
+				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1313)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0]-0.05;
-							      learningrateHO[1] = param->learningrate[1][1]+0.05;
+							      learningrateHO[0] = param->learningrate[1][0];
+							      learningrateHO[1] = param->learningrate[1][1];
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      }
-				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 0000)
+				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1111)
 							      {
 							      learningrateHO[0] = param->learningrate[1][0];
 							      learningrateHO[1] = param->learningrate[1][1]-0.05;
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      }
-				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1111)
+				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 3333)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0]-0.05;
+							      learningrateHO[0] = param->learningrate[1][0];
 							      learningrateHO[1] = param->learningrate[1][1];
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
@@ -1502,14 +1502,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 			    }
 				     
-			cout<<"area "<<areanum<<" "<<((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0)<<(prevweightsum1[areanum]>0)<<((prevpossatsum1[areanum]-prevnegsatsum1[areanum])>0)<<"    "<<((posstepcount1-negstepcount1)>0)<<(weightsum1>0)<<((possatsum1-negsatsum1)>0);
+			cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum]))<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
 		        cout<<"   "<<prevposstepcount1[areanum]<<" "<<prevnegstepcount1[areanum]<<" "<<posstepcount1<<" "<<negstepcount1<<endl;
 		        
 		        
-				    updatepattern1[areanum][0] = ((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0);
-				    updatepattern1[areanum][1] = (prevweightsum1[areanum]>0);
-				    updatepattern1[areanum][2] = ((posstepcount1-negstepcount1)>0);
-				    updatepattern1[areanum][3] = (weightsum1>0);
+				    updatepattern1[areanum][0] = adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum]);
+				    updatepattern1[areanum][1] = adaptlogic(prevweightsum1[areanum]);
+				    updatepattern1[areanum][2] = adaptlogic(posstepcount1-negstepcount1);
+				    updatepattern1[areanum][3] = adaptlogic(weightsum1);
 				     
 				     
 				    prevpossatsum1[areanum] = possatsum1;
@@ -1563,13 +1563,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<"area "<<areanum<<" "<<((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0)<<(prevweightsum2[areanum]>0)<<((prevpossatsum2[areanum]-prevnegsatsum2[areanum])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0);
+				cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount2[areanum]-prevnegstepcount2[areanum])<<adaptlogic(prevweightsum2[areanum])<<adaptlogic(prevpossatsum2[areanum]-prevnegsatsum2[areanum])<<"    "<<adaptlogic(posstepcount2-negstepcount2)<<adaptlogic(weightsum2)<<adaptlogic(possatsum2-negsatsum2);
 				cout<<"   "<<prevposstepcount2[areanum]<<" "<<prevnegstepcount2[areanum]<<" "<<posstepcount2<<" "<<negstepcount2<<endl;
 				
-				    updatepattern2[areanum][0] = ((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0);
-				    updatepattern2[areanum][1] = (prevweightsum2[areanum]>0);
-				    updatepattern2[areanum][2] = ((posstepcount2-negstepcount2)>0);
-				    updatepattern2[areanum][3] = (weightsum2>0);
+				    updatepattern2[areanum][0] = adaptlogic(prevposstepcount2[areanum]-prevnegstepcount2[areanum]);
+				    updatepattern2[areanum][1] = adaptlogic(prevweightsum2[areanum]);
+				    updatepattern2[areanum][2] = adaptlogic(posstepcount2-negstepcount2);
+				    updatepattern2[areanum][3] = adaptlogic(weightsum2);
 				    
 				    
 				    prevpossatsum2[areanum] = possatsum2;
