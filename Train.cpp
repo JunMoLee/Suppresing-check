@@ -126,8 +126,7 @@ double Adam(double gradient, double learning_rate, double momentumPreV, double v
 
 void Train(const int numTrain, const int epochs, char *optimization_type, int epochcount, bool stopreset, bool posstopreverse, bool negstopreverse, double adLA, double adFrr, double adNur) {
 
-static int adaptcount=0;	
-int adaptperiod=4;
+
 int numBatchReadSynapse;	    // # of read synapses in a batch read operation (decide later)
 int numBatchWriteSynapse;	// # of write synapses in a batch write operation (decide later)
 double outN1[param->nHide]; // Net input to the hidden layer [param->nHide]
@@ -1500,6 +1499,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        cout<<"   "<<prevposstepcount1[areanum]<<" "<<prevnegstepcount1[areanum]<<" "<<posstepcount1<<" "<<negstepcount1<<endl;
 		        
 		        
+				    updatepattern1[areanum][0] = ((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0);
+				    updatepattern1[areanum][1] = (prevweightsum1[areanum]>0);
+				    updatepattern1[areanum][2] = ((posstepcount1[areanum]-negstepcount1[areanum])>0);
+				    updatepattern1[areanum][3] = (weightsum1[areanum]>0);
+				     
+				     
 				    prevpossatsum1[areanum] = possatsum1;
 				    prevnegsatsum1[areanum] = negsatsum1;
 				    prevposstepcount1[areanum] = posstepcount1;
@@ -1509,10 +1514,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevweightsum1[areanum] = weightsum1;
 				  /* prevzerosigcount1[area] = zerosigcount1; */
 				     
-				    updatepattern1[areanum][0] = ((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0);
-				    updatepattern1[areanum][1] = (prevweightsum1[areanum]>0);
-				    updatepattern1[areanum][2] = ((posstepcount1[areanum]-negstepcount1[areanum])>0);
-				    updatepattern1[areanum][3] = (weightsum1[areanum]>0);
+
 				    
 				    
 			    }	 
@@ -1521,7 +1523,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				for (int e=0; e<100;e++){
 					
-							cout<<"   "<<"a["<<e<<"]="<<a1[e]<<"   "<"s["<<e<"]="<<s1[e]<<endl;
+							cout<<"   "<<"a["<<e<<"]="<<a1[e]<<"   "<<"s["<<e<"]="<<s1[e]<<endl;
 				}
 				
 				cout<<endl;
@@ -1557,6 +1559,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				cout<<"area "<<areanum<<" "<<((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0)<<(prevweightsum2[areanum]>0)<<((prevpossatsum2[areanum]-prevnegsatsum2[areanum])>0)<<"    "<<((posstepcount2-negstepcount2)>0)<<(weightsum2>0)<<((possatsum2-negsatsum2)>0);
 				cout<<"   "<<prevposstepcount2[areanum]<<" "<<prevnegstepcount2[areanum]<<" "<<posstepcount2<<" "<<negstepcount2<<endl;
 				
+				    updatepattern2[areanum][0] = ((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0);
+				    updatepattern2[areanum][1] = (prevweightsum2[areanum]>0);
+				    updatepattern2[areanum][2] = ((posstepcount2[areanum]-negstepcount2[areanum])>0);
+				    updatepattern2[areanum][3] = (weightsum2[areanum]>0);
+				    
+				    
 				    prevpossatsum2[areanum] = possatsum2;
 				    prevnegsatsum2[areanum] = negsatsum2;
 				    prevposstepcount2[areanum] = posstepcount2;
@@ -1568,10 +1576,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    
 				    
 				    
-				    updatepattern2[areanum][0] = ((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0);
-				    updatepattern2[areanum][1] = (prevweightsum2[areanum]>0);
-				    updatepattern2[areanum][2] = ((posstepcount2[areanum]-negstepcount2[areanum])>0);
-				    updatepattern2[areanum][3] = (weightsum2[areanum]>0);
+
 				    
 
 			    }
@@ -1580,7 +1585,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				for (int e=0; e<10;e++){
 					
-						cout<<"   "<<"a["<<e<<"]="<<a2[e]<<"   "<"s["<<e<"]="<<s2[e]<<endl;
+						cout<<"   "<<"a["<<e<<"]="<<a2[e]<<"   "<<"s["<<e<"]="<<s2[e]<<endl;
 				}
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: " << possatsum1/param->RefreshRate/40000<< ", " <<possatsum1/param->RefreshRate/40000*100<<"%";
@@ -1596,7 +1601,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			cout <<endl; */
 			} // end of if code
 		
-		adaptcount++;
+		
 				
 
 	/* track weight distribution */
