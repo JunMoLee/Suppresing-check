@@ -1501,8 +1501,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        
 				    updatepattern1[areanum][0] = ((prevposstepcount1[areanum]-prevnegstepcount1[areanum])>0);
 				    updatepattern1[areanum][1] = (prevweightsum1[areanum]>0);
-				    updatepattern1[areanum][2] = ((posstepcount1[areanum]-negstepcount1[areanum])>0);
-				    updatepattern1[areanum][3] = (weightsum1[areanum]>0);
+				    updatepattern1[areanum][2] = ((posstepcount1-negstepcount1)>0);
+				    updatepattern1[areanum][3] = (weightsum1>0);
 				     
 				     
 				    prevpossatsum1[areanum] = possatsum1;
@@ -1561,8 +1561,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				    updatepattern2[areanum][0] = ((prevposstepcount2[areanum]-prevnegstepcount2[areanum])>0);
 				    updatepattern2[areanum][1] = (prevweightsum2[areanum]>0);
-				    updatepattern2[areanum][2] = ((posstepcount2[areanum]-negstepcount2[areanum])>0);
-				    updatepattern2[areanum][3] = (weightsum2[areanum]>0);
+				    updatepattern2[areanum][2] = ((posstepcount2-negstepcount2)>0);
+				    updatepattern2[areanum][3] = (weightsum2>0);
 				    
 				    
 				    prevpossatsum2[areanum] = possatsum2;
