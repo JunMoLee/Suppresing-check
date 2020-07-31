@@ -103,7 +103,7 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 				/* double prevpossigcount2=0, prevnegsigcount2=0; */
 				vector <double> prevweightsum2(220,0);
 				/* double prevzerosigcount2=0; */
-                                vector <vector <int>> updatepattern1(220, vector<int>(4,0));  
+                                vector <vector <int>> updatepattern1(220, vector<int>(4,-5));  
 			        vector <int> prevpossatsum1(220,0);
                                 vector <int> prevnegsatsum1(220,0);
 				vector <int> prevposstepcount1(220,0);
@@ -111,7 +111,7 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
 				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
-                                 vector <vector <int>> updatepattern2(220, vector<int>(4,0));  
+                                 vector <vector <int>> updatepattern2(220, vector<int>(4,-5));  
 				
 /*Optimization functions*/
 double gradt;
