@@ -43,7 +43,7 @@ Param::Param() {
 	/* MNIST dataset */
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
-	useLTD=1;
+	useLTD=0;
 	const double
         l=30;
 	const double
@@ -64,7 +64,7 @@ Param::Param() {
 	
 	
 	/* Algorithm parameters */
-	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
+	numTrainImagesPerEpoch = 2000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
@@ -100,7 +100,7 @@ Param::Param() {
 	learningrate[0][3] = dalpha;
 		
 	learningrate[1][0] = alpha1;
-	learningrate[1][1] = 0.2;
+	learningrate[1][1] = nalpha1;
 	learningrate[1][2] = pdalpha;
 	learningrate[1][3] = dalpha;
 		
