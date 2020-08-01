@@ -596,19 +596,23 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						          // adpative weight update 
 				                           if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1)
 							   {
-							      if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 2231)
+							      if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 2211)
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1]*0;
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-							      }
-			                                      else if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 2213)
-							      {
-							      learningrateIH[0] = param->learningrate[0][0]*0;
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
+							      posstopreverse=1;
+						              negstopreverse=0;
+							      }
+			                                      else if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 2233)
+							      {
+							      learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];
+							      learningrateIH[2] = param->learningrate[0][2];
+							      learningrateIH[3] = param->learningrate[0][3];
+							      posstopreverse=1;
+						              negstopreverse=0;
 							      }
 				                              else
 							      {
@@ -619,16 +623,18 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 3131)
+				                              if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 1111)
+							      {
+				                              learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];
+							      learningrateIH[2] = param->learningrate[0][2];
+							      learningrateIH[3] = param->learningrate[0][3];
+							      posstopreverse=1;
+						              negstopreverse=0;
+							      }
+			                                      else if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 3333)
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1]*0;
-							      learningrateIH[2] = param->learningrate[0][2]*0;
-							      learningrateIH[3] = param->learningrate[0][3]*0;
-							      }
-			                                      else if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 1313)
-							      {
-							      learningrateIH[0] = param->learningrate[0][0]*0;
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
@@ -1122,19 +1128,23 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 							   // adpative weight update 
 				                            if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1){
-							      if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 2231)
+							      if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 2211)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1]*0;
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
+							      learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
+							      posstopreverse=1;
+						              negstopreverse=0;
 							      }
-				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 2213)
+				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 2233)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0]*0;
-							      learningrateHO[1] = param->learningrate[1][1];
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
+				                              learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
+							      posstopreverse=0;
+						              negstopreverse=1;
 							      }
 				                              else
 							      {
@@ -1145,19 +1155,23 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }    
 							    }
 				                            else {
-				                              if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 3131)
+				                              if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1111)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1]*0;
-							      learningrateHO[2] = param->learningrate[1][2]*0;
-							      learningrateHO[3] = param->learningrate[1][3]*0;
+							      learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
+							      posstopreverse=1;
+						              negstopreverse=0;
 							      }
-				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1313)
+				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 3333)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0]*0;
-							      learningrateHO[1] = param->learningrate[1][1];
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
+							      learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
+							      posstopreverse=0;
+						              negstopreverse=1;
 							      }
 				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1111)
 							      {
@@ -1270,7 +1284,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false, false, false,  learningrateHO);
 								}
 								
-								
+			
+						// reset stopreverse
+						posstopreverse=1;
+						negstopreverse=1;
 								
 								
 							
