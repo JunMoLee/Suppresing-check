@@ -583,14 +583,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				                          // classify area by index
 				                        
-			                                     for (int w=0; w<20; w+=kernel){
-			                                      for (int u=w; u<400; u+=20*kernel){ // classify input layer area
+			                                     for (int q=0; q<20; w+=kernel){
+			                                      for (int u=q; u<400; u+=20*kernel){ // classify input layer area
 		                                               for (int x=0; x<h; x++) {  // classify hidden layer area
 							        for (int m=x*hiddenpiece; m<(x+1)*hiddenpiece; m++)  {
 			                                         for (int a=0; a<kernel; a+=1){
 			                                          for (int b=0; b<20*kernel; b+=20){
 				                                   int n = u+a+b;
-							             if((jj==m) && (k==n))  {areanumber1 = x+ ( 400/(20*kernel)*(w/kernel)+(u-w)/(20*kernel) )*h; break;}
+							             if((jj==m) && (k==n))  {areanumber1 = x+ ( 400/(20*kernel)*(q/kernel)+(u-q)/(20*kernel) )*h; break;}
 								    }
 								     }
 								      }
@@ -1526,8 +1526,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				
 				
-			   for (int w=0; w<20; w+=kernel){
-			    for (int f=w; f<400; f+=20*kernel){ // classify input layer area
+			   for (int q=0; q<20; q+=kernel){
+			    for (int f=q; f<400; f+=20*kernel){ // classify input layer area
 
 		             for (int z=0; z<h; z++) {  // classify hidden layer area
 				 int possatsum1=0, negsatsum1=0;
@@ -1535,7 +1535,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 int possigcount1=0, negsigcount1=0;
 				 double weightsum1=0;
 				 int zerosigcount1=0;
-				 areanum = z+ ( 400/(20*kernel)*(w/kernel)+(f-w)/(20*kernel) )*h;
+				 areanum = z+ ( 400/(20*kernel)*(q/kernel)+(f-q)/(20*kernel) )*h;
 			      for (int m=z*hiddenpiece; m<(z+1)*hiddenpiece; m++)  {
 				      
 			      for (int a=0; a<kernel; a+=1){
