@@ -63,6 +63,26 @@ double truncate(double x, int numLevel, double threshold) {
 	}
 }
 
+/* new threshold truncation */
+
+double newtruncate(double x, int numLevel, double threshold) {
+	if (numLevel <= 0) {   // No truncation if numLevel <= 0
+		return x;
+	} else {
+		int sign = 1;
+		if (x<0)
+			sign = -1;	// For truncation on negative number
+
+		double val = x * numLevel * sign;
+		int r_val = (int)(val);
+		if (val - r_val > threshold)
+			val = r_val + 1;
+		else
+			val = r_val;
+		return val*sign/numLevel;
+	}
+}
+
 /* Round with a custom threshold */
 double round_th(double x, double threshold) {
 	int sign = 1;
