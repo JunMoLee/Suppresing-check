@@ -1058,16 +1058,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
                         */			        /* weight HO update */
-				                           int areanumber2;
+				                           int areanumber2=0;
 				                           double learningrateHO [4];
 				                           // classify area by index
-                  /*	for (int m=0; m<param->nOutput; m++) { // classify output area
+                  	for (int m=0; m<param->nOutput; m++) { // classify output area
 			 for (int z=0; z<hh; z++) {  // classify hidden layer area
 			   for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
 			       if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*hh+hh*m+z; break;}
 			      }
 			       }
-			        }    */
+			        }    
 								     
 				                               
 				                         
@@ -1105,15 +1105,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1313)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1];
+							      learningrateHO[0] = param->learningrate[1][0]-0.1;
+							      learningrateHO[1] = param->learningrate[1][1]+0.1;
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      }
 				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1111)
 							      {
 							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1]-0.05;
+							      learningrateHO[1] = param->learningrate[1][1];
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      }
