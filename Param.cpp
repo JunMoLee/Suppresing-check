@@ -182,8 +182,8 @@ param_gp=1;
 param_gn=-1;
 break;
 case 3:
-param_gp=0;
-param_gn=-9;
+param_gp=5;
+param_gn=1;
 break;
 case 4:
 param_gp=4;
