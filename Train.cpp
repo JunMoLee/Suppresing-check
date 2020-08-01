@@ -584,7 +584,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				                          // classify area by index
 				                        
-			                                     for (int q=0; q<20; w+=kernel){
+			                                     for (int q=0; q<20; q+=kernel){
 			                                      for (int u=q; u<400; u+=20*kernel){ // classify input layer area
 		                                               for (int x=0; x<h; x++) {  // classify hidden layer area
 							        for (int m=x*hiddenpiece; m<(x+1)*hiddenpiece; m++)  {
