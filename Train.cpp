@@ -594,7 +594,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							                }
 							                 }  
 						          // adpative weight update 
-				                           if((batchSize+numTrain*(epochcount-1))==TrackRate*2-1)
+				                           if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1)
 							   {
 							      if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 0031)
 							      {
@@ -1120,7 +1120,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						       } */
 				
 							   // adpative weight update 
-				                            if((batchSize+numTrain*(epochcount-1))==TrackRate*2-1){
+				                            if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1){
 							      if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 0031)
 							      {
 							      learningrateHO[0] = param->learningrate[1][0];
