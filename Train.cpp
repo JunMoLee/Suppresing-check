@@ -1105,8 +1105,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1313)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1]+0.2;
+							      learningrateHO[0] = param->learningrate[1][0]*0;
+							      learningrateHO[1] = param->learningrate[1][1]*2;
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      }
