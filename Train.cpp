@@ -96,22 +96,22 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 
 
 /*Weight track variables */
-			        vector <int> prevpossatsum2(35,0);
-                                vector <int> prevnegsatsum2(35,0);
-				vector <int> prevposstepcount2(35,0);
-				vector <int> prevnegstepcount2(35,0);
+			        vector <int> prevpossatsum2(220,0);
+                                vector <int> prevnegsatsum2(220,0);
+				vector <int> prevposstepcount2(220,0);
+				vector <int> prevnegstepcount2(220,0);
 				/* double prevpossigcount2=0, prevnegsigcount2=0; */
-				vector <double> prevweightsum2(35,0);
+				vector <double> prevweightsum2(220,0);
 				/* double prevzerosigcount2=0; */
-                                vector <vector <int>> updatepattern1(35, vector<int>(4,0));  
-			        vector <int> prevpossatsum1(35,0);
-                                vector <int> prevnegsatsum1(35,0);
-				vector <int> prevposstepcount1(35,0);
-				vector <int> prevnegstepcount1(35,0);
+                                vector <vector <int>> updatepattern1(220, vector<int>(4,0));  
+			        vector <int> prevpossatsum1(220,0);
+                                vector <int> prevnegsatsum1(220,0);
+				vector <int> prevposstepcount1(220,0);
+				vector <int> prevnegstepcount1(220,0);
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
-				vector <double> prevweightsum1(35,0);
+				vector <double> prevweightsum1(220,0);
 				/* double prevzerosigcount1=0; */
-                                 vector <vector <int>> updatepattern2(35, vector<int>(4,0));  
+                                 vector <vector <int>> updatepattern2(220, vector<int>(4,0));  
 				
 /*Optimization functions*/
 
@@ -149,10 +149,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	
 		     
 	for (int t = 0; t < epochs; t++) {
-		       int kernel=4; // k=kernel size;
-		       int h=1; // h=number of hidden layer slice for IH
-	               int hh=10; // hh= number of hidden layer slice for HO
-	               int os=1;  // os = number of output layer slice
+		       int kernel=20; // k=kernel size;
+		       int h=10; // h=number of hidden layer slice for IH
+	               int hh=1; // hh= number of hidden layer slice for HO
+	               int os=10;  // os = number of output layer slice
 	             
 	
 		       int hiddenpiece= param->nHide/h;	
