@@ -1105,15 +1105,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1313)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1];
+							      learningrateHO[0] = param->learningrate[1][0]*0;
+							      learningrateHO[1] = param->learningrate[1][1]*2;
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      }
 				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1111)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0]*0;
-							      learningrateHO[1] = param->learningrate[1][1]*2;
+							      learningrateHO[0] = param->learningrate[1][0];
+							      learningrateHO[1] = param->learningrate[1][1];
 							      learningrateHO[2] = param->learningrate[1][2];
 							      learningrateHO[3] = param->learningrate[1][3];
 							      }
@@ -1502,7 +1502,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    }
 			    }
 				     
-			cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
+			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
+		        cout<<"area "<<areanum<<" "<<updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3];
 		        cout<<"   "<<prevposstepcount1[areanum]<<" "<<prevnegstepcount1[areanum]<<" "<<posstepcount1<<" "<<negstepcount1<<endl;
 		        
 		        
@@ -1563,7 +1564,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				
 			    }
-				cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount2[areanum]-prevnegstepcount2[areanum])<<adaptlogic(prevweightsum2[areanum])<<adaptlogic(prevpossatsum2[areanum]-prevnegsatsum2[areanum])<<"    "<<adaptlogic(posstepcount2-negstepcount2)<<adaptlogic(weightsum2)<<adaptlogic(possatsum2-negsatsum2);
+				// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount2[areanum]-prevnegstepcount2[areanum])<<adaptlogic(prevweightsum2[areanum])<<adaptlogic(prevpossatsum2[areanum]-prevnegsatsum2[areanum])<<"    "<<adaptlogic(posstepcount2-negstepcount2)<<adaptlogic(weightsum2)<<adaptlogic(possatsum2-negsatsum2);
+				cout<<"area "<<areanum<<" "<<updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3];
 				cout<<"   "<<prevposstepcount2[areanum]<<" "<<prevnegstepcount2[areanum]<<" "<<posstepcount2<<" "<<negstepcount2<<endl;
 				
 				    updatepattern2[areanum][0] = adaptlogic(prevposstepcount2[areanum]-prevnegstepcount2[areanum]);
