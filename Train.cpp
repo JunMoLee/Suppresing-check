@@ -1094,15 +1094,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           double learningrateHO [4];
 				                           // classify area by index
 
-				
-			for (int m=0; m<param->nOutput; m++) { // classify output area
+		      for (int ry =0; ry<os; os++){ // classify output area
+		       for ( int rr =0; rr<param->nOutput/os; rr++){ 
+			int m= rr + ry*os;
 			    for (int z=0; z<hh; z++) {  // classify hidden layer area
 			      for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
-					 if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*h+hh*m+z; break;}
+					 if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*h+hh*ry+z; break;}
 			      }
 			    }
 			}
-				                               
+		      }	                               
 				                         
 				                    /*  switch (areanumber2) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
@@ -1595,16 +1596,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				
 		         cout << "OH"<<endl;	
-				
-		          for (int m=0; m<param->nOutput; m++) { // classify output area
-			   
+		     for (int ry =0; ry<os; os++){ // classify output area
+		       for ( int rr =0; rr<param->nOutput/os; rr++){ 
+			int m= rr + ry*os;
 			    for (int z=0; z<hh; z++) {  // classify hidden layer area
 				int possatsum2=0, negsatsum2=0;
 				int posstepcount2=0, negstepcount2=0;
 				int possigcount2=0, negsigcount2=0;
 				int zerosigcount2=0;
 				double weightsum2=0;
-				areanum = (400/(20*kernel)*(20/kernel))*h + m*hh +z;
+				areanum = (400/(20*kernel)*(20/kernel))*h + ry*hh +z;
 			      for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
 				  
 				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
@@ -1645,7 +1646,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 			    }
 			  }
-				
+		       }	
 				
 				for (int e=0; e<10;e++){
 					
