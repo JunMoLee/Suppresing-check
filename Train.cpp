@@ -633,11 +633,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           // reset weightupdatepattern
 				                                
 				                
-							       for (int o=0; o<220; o++) {
+							/*       for (int o=0; o<220; o++) {
 							         for (int p=0; p<4; p++) {
 									 updatepattern1[o][p]=0;
 								 }
-							       }
+							       } */
 								 
 							    
 				                 /*       if ((areanumber1==1)||(areanumber1==7))
@@ -1135,11 +1135,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                          // reset weightupdatepattern
 				                                
 			
-							       for (int o=0; o<220; o++) {
+							    /*   for (int o=0; o<220; o++) {
 							         for (int p=0; p<4; p++) {
 									 updatepattern2[o][p]=0;
 								 }
-							       }
+							       } */
 							
 				
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])) { // Analog eNVM
