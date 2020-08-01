@@ -147,6 +147,8 @@ double a2[param->nOutput];  // Net output of output layer [param->nOutput]
 double s1[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
 	
+		     
+	for (int t = 0; t < epochs; t++) {
 		       int kernel=4; // k=kernel size;
 		       int h=1; // h=number of hidden layer slice for IH
 	               int hh=10; // hh= number of hidden layer slice for HO
@@ -155,7 +157,6 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	
 		       int hiddenpiece= param->nHide/h;	
 	               int hhiddenpiece= param ->nHide/hh;
-	for (int t = 0; t < epochs; t++) {
 
 		for (int batchSize = 0; batchSize < numTrain; batchSize++) {
 
