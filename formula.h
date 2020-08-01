@@ -43,6 +43,7 @@
 
 double sigmoid(double x);
 double truncate(double x, int numBit, double threshold=0.5);
+double newtruncate(double x, int numBit, double threshold=0);
 double round_th(double x, double threshold);
 double NonlinearWeight(double xPulse, int maxNumLevel, double A, double B, double minConductance);
 double InvNonlinearWeight(double conductance, int maxNumLevel, double A, double B, double minConductance);
