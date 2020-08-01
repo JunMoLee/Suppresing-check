@@ -571,7 +571,9 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		upc++;
 		GpGnCell = false;
 		deltaWeightNormalized = learningrate[2]  * totalcondrange/ncondrange*deltaWeightNormalized/(maxWeight-minWeight);
-	
+	        if(maxNumLevelnLTD==1)
+		newtruncate(deltaWeightNormalized, maxNumLevelnLTD);
+		else
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelnLTD);
 		numPulse = deltaWeightNormalized * maxNumLevelnLTD;
 		posstep+=numPulse;
@@ -625,6 +627,9 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 		GpGnCell = true;
 		deltaWeightNormalized = - learningrate[3]  * totalcondrange/pcondrange*deltaWeightNormalized/(maxWeight-minWeight);
 		deltaWeightSign = deltaWeightNormalized;
+		if(maxNumLevelpLTD==1)
+		newtruncate(deltaWeightNormalized, maxNumLevelpLTD);
+		else
 		deltaWeightNormalized = truncate(deltaWeightNormalized, maxNumLevelpLTD);
 		numPulse = deltaWeightNormalized * maxNumLevelpLTD;
 		negstep += numPulse;
