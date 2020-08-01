@@ -43,7 +43,7 @@ Param::Param() {
 	/* MNIST dataset */
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
-	useLTD=0;
+	useLTD=1;
 	const double
         l=30;
 	const double
@@ -107,7 +107,7 @@ Param::Param() {
 	tp = 12.5;
 	tn = 12.5;
 	kp=128;
-	kd=128;
+	kd=1;
 	knp=97;
 	knd=97;
 	kc=64;
@@ -126,10 +126,10 @@ Param::Param() {
     Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
     optimization_type = "SGD";
 	const int
-	nuc=0;
+	nuc=1;
         ReverseUpdate = nuc;
 	const int 
-        frc=1;
+        frc=0;
 	FullRefresh= frc;
 
 	/* Hardware parameters */
@@ -157,15 +157,15 @@ Param::Param() {
 	frr=1000;
 	RefreshRate = frr;
 	const int 
-	nur=6;
+	nur=100;
 	const int 
 	rnur=1;
 	const int
-	nurn=2;
+	nurn=100;
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
-a=3;
+a=0;
 	
 
 switch(a){
