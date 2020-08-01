@@ -147,9 +147,10 @@ double a2[param->nOutput];  // Net output of output layer [param->nOutput]
 double s1[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
 	
-		       int kernel=20; // k=kernel size;
+		       int kernel=10; // k=kernel size;
 		       int h=10; // h=number of hidden layer slice for IH
 	               int hh=1; // hh= number of hidden layer slice for HO
+	               int os=0;
 	             
 	
 		       int hiddenpiece= param->nHide/h;	
