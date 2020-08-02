@@ -276,7 +276,7 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 	this->x = x; this->y = y;	// Cell location: x (column) and y (row) start from index 0
 	this-> location =l;
 	/* allocate area */
-	            switch (location)
+	            switch (location) {
 			    
 			    case 0:
 	                   {                           for (int q=0; q<20; q+=kernel){
@@ -310,7 +310,7 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 		                }	
 		            break;
 	                    }
-	
+		    }
 	maxConductance=0; // in case of unwanted situations
 	minConductance=0;
 	pminConductance = 3.0769e-9;
