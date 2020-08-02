@@ -1095,8 +1095,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
                         */		
-				int reset =0;
-				if(dis(gen)==0) reset=1;
+		            int reset=0;
+			    random_device rd;
+			    mt19937 gen(rd());
+			    uniform_int_distribution<int> dis(0,9);
+			    if(dis(gen)==0) reset=1;
 				      /* weight HO update */
 				                           int areanum=  dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum;
 				                           double learningrateHO [4];
