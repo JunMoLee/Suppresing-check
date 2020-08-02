@@ -1597,7 +1597,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        }
 				for (int e=0; e<100;e++){
 					
-							cout<<"   "<<"a["<<e<<"]="<<scaling(a1[e])<<"   "<<"s["<<e<<"]="<<scaling(s1[1])<<endl;
+							cout<<"   "<<"a["<<e<<"]="<<scaling(a1[e])<<"   "<<"s["<<e<<"]="<<scaling(s1[e])<<endl;
 				}
 				
 				cout<<endl;
