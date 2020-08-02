@@ -300,7 +300,7 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 	                    {
 				for (int ry =0; ry<os; ry++){ // classify output area
 		                 for ( int rr =0; rr<param->nOutput/os; rr++){ 
-			          int m= rr + ry*os;
+			          int m= rr + ry*param->nOutput/os;
 			          for (int z=0; z<hh; z++) {  // classify hidden layer area
 			           for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
 					 if((x==m) && (y==n)) {areanum = (400/(20*kernel)*(20/kernel))*h+hh*ry+z; break;}
