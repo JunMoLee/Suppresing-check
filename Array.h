@@ -61,15 +61,17 @@ public:
     int refColumnNumber;
 	double p;
         double n;
+	int l;
 	/* Constructor */
     // code modified
-		Array(int arrayColSize, int arrayRowSize, int wireWidth, double lp, double ln)
+		Array(int arrayColSize, int arrayRowSize, int wireWidth, double lp, double ln, int ll)
 	{  
         this->arrayRowSize = arrayRowSize;
         this->arrayColSize = arrayColSize;
         this->wireWidth = wireWidth;
         this-> p=lp;
         this-> n=ln; //code modified
+        this -> l=ll;
         readEnergy = 0;
         writeEnergy = 0;
         transferReadEnergy = transferWriteEnergy = 0;
