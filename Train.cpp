@@ -96,22 +96,21 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 
 
 /*Weight track variables */
-			        vector <int> prevpossatsum2(220,0);
-                                vector <int> prevnegsatsum2(220,0);
-				vector <int> prevposstepcount2(220,0);
-				vector <int> prevnegstepcount2(220,0);
-				/* double prevpossigcount2=0, prevnegsigcount2=0; */
-				vector <double> prevweightsum2(220,0);
-				/* double prevzerosigcount2=0; */
-                                vector <vector <int>> updatepattern1(220, vector<int>(4,0));  
-			        vector <int> prevpossatsum1(220,0);
-                                vector <int> prevnegsatsum1(220,0);
-				vector <int> prevposstepcount1(220,0);
-				vector <int> prevnegstepcount1(220,0);
+
+                                vector <int> prevnegsatsum(220,0);
+				vector <int> prevposstepcount(220,0);
+				vector <int> prevnegstepcount(220,0);
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
-				vector <double> prevweightsum1(220,0);
+				vector <double> prevweightsum(220,0);
 				/* double prevzerosigcount1=0; */
-                                 vector <vector <int>> updatepattern2(220, vector<int>(4,0));  
+                                 vector <vector <int>> updatepattern(220, vector<int>(4,0));  
+                                vector <int> negsatsum(220,0);
+				vector <int> posstepcount(220,0);
+				vector <int> negstepcount(220,0);
+				/* double prevpossigcount1=0, prevnegsigcount1=0; */
+				vector <double> weightsum(220,0);
+				/* double prevzerosigcount1=0; */
+                                
 				
 /*Optimization functions*/
 
@@ -149,14 +148,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	
 		     
 	for (int t = 0; t < epochs; t++) {
-		       int kernel=20; // k=kernel size;
-		       int h=10; // h=number of hidden layer slice for IH
-	               int hh=1; // hh= number of hidden layer slice for HO
-	               int os=10;  // os = number of output layer slice
-	             
-	
-		       int hiddenpiece= param->nHide/h;	
-	               int hhiddenpiece= param ->nHide/hh;
+
 
 		for (int batchSize = 0; batchSize < numTrain; batchSize++) {
 
@@ -576,33 +568,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				
 				    
-                                                           int areanumber1=0;
+                                                           int areanum=dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanum;
 				                           double learningrateIH [4];
 				
 				
 				
 
-				                          // classify area by index
-				                        
-			                                     for (int q=0; q<20; q+=kernel){
-			                                      for (int u=q; u<400; u+=20*kernel){ // classify input layer area
-		                                               for (int x=0; x<h; x++) {  // classify hidden layer area
-							        for (int m=x*hiddenpiece; m<(x+1)*hiddenpiece; m++)  {
-			                                         for (int a=0; a<kernel; a+=1){
-			                                          for (int b=0; b<20*kernel; b+=20){
-				                                   int n = u+a+b;
-							             if((jj==m) && (k==n))  {areanumber1 = x+ ( 400/(20*kernel)*(q/kernel)+(u-q)/(20*kernel) )*h; break;}
-								    }
-								     }
-								      }
-							               }
-							                }
-							                 }  
 				
 						          // adpative weight update 
 				                           if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1)
 							   {
-							      if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 2211)
+							      if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2211)
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -611,7 +587,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							     posstopreverse=1;
 						              negstopreverse=1;
 							      }
-			                                      else if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 2233)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern1[areanum][2]*10+updatepattern[areanum][3] == 2233)
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -632,7 +608,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 1111)
+				                              if(updatepattern[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern1[areanum][3] == 1111)
 							      {
 				                              learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1]*0;
@@ -641,7 +617,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      posstopreverse=1;
 						              negstopreverse=0;
 							      }
-			                                      else if(updatepattern1[areanumber1][0]*1000+updatepattern1[areanumber1][1]*100+updatepattern1[areanumber1][2]*10+updatepattern1[areanumber1][3] == 3333)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333)
 							      {
 							      learningrateIH[0] = param->learningrate[0][0]*0;
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -1091,20 +1067,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
                         */			        /* weight HO update */
-				                           int areanumber2=0;
+				                           int areanum= AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum;
 				                           double learningrateHO [4];
 				                           // classify area by index
 
-		      for (int ry =0; ry<os; os++){ // classify output area
-		       for ( int rr =0; rr<param->nOutput/os; rr++){ 
-			int m= rr + ry*os;
-			    for (int z=0; z<hh; z++) {  // classify hidden layer area
-			      for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
-					 if((jj==m) && (k==n)) {areanumber2 = (400/(20*kernel)*(20/kernel))*h+hh*ry+z; break;}
-			      }
-			    }
-			}
-		      }	                               
+                         
 				                         
 				                    /*  switch (areanumber2) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
@@ -1130,66 +1097,69 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						       } */
 				
 							   // adpative weight update 
-				                            if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1){
-							      if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 2211)
+				                         if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1)
+							   {
+							      if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2211)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1];
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
-						     posstopreverse=1;
+							      learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
+							     posstopreverse=1;
 						              negstopreverse=1;
 							      }
-				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 2233)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern1[areanum][2]*10+updatepattern[areanum][3] == 2233)
 							      {
-				                              learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1];
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
-						     posstopreverse=1;
+							      learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
+							     posstopreverse=1;
 						              negstopreverse=1;
 							      }
 				                              else
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1];
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
+							      learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
 								               // reset stopreverse
 						              posstopreverse=1;
 						              negstopreverse=1;
-							      }    
-							    }
-				                            else {
-				                              if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 1111)
+							      }
+							   }
+					                   else {
+				                              if(updatepattern[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern1[areanum][3] == 1111)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1]*0;
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
+				                              learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1]*0;
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
 							      posstopreverse=1;
 						              negstopreverse=0;
 							      }
-				                              else if(updatepattern2[areanumber2][0]*1000+updatepattern2[areanumber2][1]*100+updatepattern2[areanumber2][2]*10+updatepattern2[areanumber2][3] == 3333)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333)
 							      {
-							      learningrateHO[0] = param->learningrate[1][0]*0;
-							      learningrateHO[1] = param->learningrate[1][1];
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
-							      posstopreverse=0;
+							      learningrateHO[0] = param->learningrate[0][0]*0;
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
+								               // reset stopreverse
+						              posstopreverse=0;
 						              negstopreverse=1;
 							      }
+
 				                              else
 							      {
-							      learningrateHO[0] = param->learningrate[1][0];
-							      learningrateHO[1] = param->learningrate[1][1];
-							      learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
+							      learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];
 								               // reset stopreverse
 						              posstopreverse=1;
 						              negstopreverse=1;
 							      }
-							    }
+							   }
 				                          // reset weightupdatepattern
 				                                
 			
@@ -1513,52 +1483,29 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 			} // end of full-reset code
 			
-		       /* saturation count */
 			
-			if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
+		     // weight IH
 
-
-		       int areanum=0;
-
-                          
+		       /* saturation count */
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 		         cout << "IH"<<endl;
-			 // weight IH
+			
+			if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
+                         for (int m=0; m<param->nHide; m++){
+				 for (int n=0; n<param<-nOutput; n++){
+				int areanum = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->areanum; 	
+				possatsum[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
+				negsatsum1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
+				posstepcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
+				 negstepcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
+				 possigcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc;
+				 negsigcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc;
+				 zerosigcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
+				 weightsum1[areanum]+=weight1[m][n];
+				 }
+			 }
 
-				
-				
-			   for (int q=0; q<20; q+=kernel){
-			    for (int f=q; f<400; f+=20*kernel){ // classify input layer area
-
-		             for (int z=0; z<h; z++) {  // classify hidden layer area
-				 int possatsum1=0, negsatsum1=0;
-				 int posstepcount1=0, negstepcount1=0;
-				 int possigcount1=0, negsigcount1=0;
-				 double weightsum1=0;
-				 int zerosigcount1=0;
-				 areanum = z+ ( 400/(20*kernel)*(q/kernel)+(f-q)/(20*kernel) )*h;
-			      for (int m=z*hiddenpiece; m<(z+1)*hiddenpiece; m++)  {
-				      
-			      for (int a=0; a<kernel; a+=1){
-			      for (int b=0; b<20*kernel; b+=20){
-				int n = f+a+b;
-				possatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
-				negsatsum1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
-				posstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
-				 negstepcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
-				 possigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc;
-				 negsigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc;
-				 zerosigcount1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
-				 weightsum1+=weight1[m][n];
-				      
-
-				 
-				 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
-				 
-			    }
-			    }
-			    }
-				     
+						     
 			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
 		        cout<<"area "<<areanum<<" "<<updatepattern1[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern1[areanum][2]*10+updatepattern1[areanum][3];
 		        cout<<"   "<<prevposstepcount1[areanum]<<" "<<prevnegstepcount1[areanum]<<" "<<posstepcount1<<" "<<negstepcount1<<endl;
@@ -1577,15 +1524,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				  /*  prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
 				    prevweightsum1[areanum] = weightsum1;
-				  /* prevzerosigcount1[area] = zerosigcount1; */
-				     
-
-				    
-				    
-			    }	 
-			    }
-			    }
-				
+                          
+		
 				for (int e=0; e<100;e++){
 					
 							cout<<"   "<<"a["<<e<<"]="<<a1[e]<<"   "<<"s["<<e<<"]="<<s1[e]<<endl;
