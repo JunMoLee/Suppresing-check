@@ -272,8 +272,9 @@ negstep=0;
 }
 
 /* Real Device */
-RealDevice::RealDevice(int x, int y, double p, double n) {
+RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 	this->x = x; this->y = y;	// Cell location: x (column) and y (row) start from index 0
+	this-> location =l;
 	/* allocate area */
 	            switch (location)
 			    
