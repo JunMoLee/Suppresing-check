@@ -565,7 +565,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(actualWeightUpdated);
                             }
                             */
-                            
+				
+                            // verify lowest Gp or probabilitstically deternmine cell to reset//
+			    
+			    int reset=0;
+			    random_device rd;
+			    mt19937 gen(rd());
+			    uniform_int_distribution<int>dis(0,9);
+			    if(dis(gen)==0) reset=1;
 							/* weight IH update */
 				
 				
@@ -610,7 +617,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)
+				                              if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111) && (reset==1))
 							      {
 				                              learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -619,7 +626,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      posstopreverse=1;
 						              negstopreverse=0;
 							      }
-			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333) && (reset==1))
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -1087,7 +1094,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             {
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
-                        */			        /* weight HO update */
+                        */		
+				int reset =0;
+				if(dis(gen)==0) reset=1;
+				      /* weight HO update */
 				                           int areanum=  dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum;
 				                           double learningrateHO [4];
 				                           // classify area by index
@@ -1150,7 +1160,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)
+				                              if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)  && (reset==1))
 							      {
 				                              learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];
@@ -1159,7 +1169,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      posstopreverse=1;
 						              negstopreverse=0;
 							      }
-			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333 && (reset==1))
 							      {
 							      learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];
