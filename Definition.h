@@ -108,9 +108,9 @@ int correct = 0;
 
 /*random number generator engine */
 /* Synaptic array between input and hidden layer */
-Array *arrayIH = new Array(param->nHide, param->nInput, param->arrayWireWidth, param->param_gp, param->param_gn);
+Array *arrayIH = new Array(param->nHide, param->nInput, param->arrayWireWidth, param->param_gp, param->param_gn,0);
 /* Synaptic array between hidden and output layer */
-Array *arrayHO = new Array(param->nOutput, param->nHide, param->arrayWireWidth, param->param_gp, param->param_gn);
+Array *arrayHO = new Array(param->nOutput, param->nHide, param->arrayWireWidth, param->param_gp, param->param_gn,1);
 
 /* Random number generator engine */
 std::mt19937 gen;
