@@ -44,7 +44,8 @@
 class Param {
 public:
 	Param();
-	
+	/* associated index */
+	vector <vector<int>> associatedindex(40000, vector<int>(2, 0)); 
 
 	/* MNIST dataset */
 	int numMnistTrainImages;// # of training images in MNIST
