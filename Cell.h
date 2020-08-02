@@ -51,6 +51,18 @@ public:
 	int x, y;	// Cell location: x (column) and y (row) start from index 0
 	double heightInFeatureSize, widthInFeatureSize;	// Cell height/width in terms of feature size (F)
 	double area;	// Cell area (m^2)
+	
+	/*array parameters */
+	               int location=0;// verify whether it is in IH or HO
+		       int kernel=20; // k=kernel size;
+		       int h=10; // h=number of hidden layer slice for IH
+	               int hh=1; // hh= number of hidden layer slice for HO
+	               int os=10;  // os = number of output layer slice
+	             
+	
+		       int hiddenpiece= param->nHide/h;	
+	               int hhiddenpiece= param ->nHide/hh;
+	
 	virtual ~Cell() {}	// Add a virtual function to enable dynamic_cast
 };
 
@@ -115,6 +127,9 @@ public:
 	/* track average step update */
 	int posstep=0;
 	int negstep=0;
+	
+	/* define area */
+	int areanum=0;
 };
 
 class SRAM: public Cell {
@@ -222,7 +237,7 @@ public:
 	double paramBGpd;
 	double paramBGn;
 	double paramBGnd;
-	RealDevice(int x, int y, double p, double  n);
+	RealDevice(int x, int y, double p, double  n, int l);
 	double Read(double voltage);	// Return read current (A)
 	void Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight , double learningrate [] = param -> defaultlearningrate[0]);
 	void newWrite(double deltaWeightNormalized, double weight, double minWeight, double maxWeight, bool positiveupdate, double learningrate  [] = param -> defaultlearningrate[0]);
