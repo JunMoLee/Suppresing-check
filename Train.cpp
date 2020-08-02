@@ -1571,9 +1571,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
 		        for (int areanum=0; areanum<400/(kernel*kernel)*h; areanum++){
 		        cout<<"area "<<areanum<<" "<<updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3];
-		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum]<<endl;
+		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum];
 			
-		        
+				cout<<"   ";
+				for(int ai=param->associatedindex[areanum][0]; ai< param->associatedindex[areanum][1];ai++){
+				cout<<ai<<", "<<s1[ai]<<" "<<;
+				}
+				cout<<endl;
+			  
 		        
 				    updatepattern[areanum][0] = adaptlogic(prevposstepcount[areanum]-prevnegstepcount[areanum]);
 				    updatepattern[areanum][1] = adaptlogic(prevweightsum[areanum]);
@@ -1592,7 +1597,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        }
 				for (int e=0; e<100;e++){
 					
-							cout<<"   "<<"a["<<e<<"]="<<a1[e]<<"   "<<"s["<<e<<"]="<<s1[e]<<endl;
+							cout<<"   "<<"a["<<e<<"]="<<da1[e]<<"   "<<"s["<<e<<"]="<<scaling(s1[1])<<endl;
 				}
 				
 				cout<<endl;
@@ -1623,7 +1628,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
 		        for (int areanum=(400/(20*kernel)*(20/kernel))*h; areanum<(400/(20*kernel)*(20/kernel))*h+hh*os; areanum++){
 		        cout<<"area "<<areanum<<" "<<updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3];
-		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum]<<endl;
+		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum];
+			
+				cout<<"   ";
+				for(int ai=param->associatedindex[areanum][0]; ai< param->associatedindex[areanum][1];ai++){
+				cout<<ai<<", "<<da1[ai]<<" "<<;
+				}
+				cout<<endl;
 			
 		        
 		        
@@ -1644,7 +1655,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		
 				for (int e=0; e<10;e++){
 					
-							cout<<"   "<<"a["<<e<<"]="<<a2[e]<<"   "<<"s["<<e<<"]="<<s2[e]<<endl;
+							cout<<"   "<<"a["<<e<<"]="<<round_th(a2[3]*(param->numInputLevel-1), param->Hthreshold)<<"   "<<"s["<<e<<"]="<<scaling(s2[e])<<endl;
 				}
 				
 				cout<<endl;
