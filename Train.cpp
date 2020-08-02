@@ -629,7 +629,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						              posstopreverse=0;
 						              negstopreverse=1;
 							      }
-
+                                                              else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3131)
+							      {
+							      learningrateIH[0] = param->learningrate[0][0]*2;
+							      learningrateIH[1] = param->learningrate[0][1];
+							      learningrateIH[2] = param->learningrate[0][2];
+							      learningrateIH[3] = param->learningrate[0][3];
+								               // reset stopreverse
+						              posstopreverse=1;
+						              negstopreverse=1;
+							      }
 				                              else
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
