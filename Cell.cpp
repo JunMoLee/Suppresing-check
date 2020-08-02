@@ -316,8 +316,8 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 							       bb = ry;
 							       cc = n-z*hhiddenpiece;
 							       dd = rr;
-							        param->associatedindex[areanum][0]=bb*param->nOutput/os;
-							        param->associatedindex[areanum][1]=(bb+1)*param->nOutput/os-1;
+							        param->associatedindex[areanum][0]=aa*hhiddenpiece;
+							        param->associatedindex[areanum][1]=(aa+1)*hhiddenpiece-1;
 							       break;}
 			           }
 			          }
