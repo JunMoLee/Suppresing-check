@@ -47,38 +47,64 @@ double scaling(double x){
 	int sign = 1;
 	if(x<0) {x=-x; sign=-1;}
 	x= x*pow(10,20);
-	if((0<=x)&&(x<pow(10,2))){
+	if((0<=x)&&(x<pow(10,1))){
 		return 1*sign;
 	}
-	else if((pow(10,2)<=x)&&(x<pow(10,4))){
+	else if((pow(10,1)<=x)&&(x<pow(10,2))){
 		return 2*sign;
 	}
-		else if((pow(10,4)<=x)&&(x<pow(10,6))){
+		else if((pow(10,2)<=x)&&(x<pow(10,3))){
 		return 3*sign;
 	}
-		else if((pow(10,6)<=x)&&(x<pow(10,8))){
+		else if((pow(10,3)<=x)&&(x<pow(10,4))){
 		return 4*sign;
 	}
-		else if((pow(10,8)<=x)&&(x<pow(10,10))){
+		else if((pow(10,4)<=x)&&(x<pow(10,5))){
 		return 5*sign;
 	}
-		else if((pow(10,10)<=x)&&(x<pow(10,12))){
+		else if((pow(10,5)<=x)&&(x<pow(10,6))){
 		return 6*sign;
 	}
-		else if((pow(10,12)<=x)&&(x<pow(10,14))){
+		else if((pow(10,6)<=x)&&(x<pow(10,7))){
 		return 7*sign;
 	}
-		else if((pow(10,14)<=x)&&(x<pow(10,16))){
+		else if((pow(10,7)<=x)&&(x<pow(10,8))){
 		return 8*sign;
 	}
-		else if((pow(10,16)<=x)&&(x<pow(10,18))){
+		else if((pow(10,8)<=x)&&(x<pow(10,9))){
 		return 9*sign;
 	}
-		else if((pow(10,18)<=x)&&(x<pow(10,20))){
+		else if((pow(10,9)<=x)&&(x<pow(10,10))){
 		return 10*sign;
 	}
-		else {
+else if((pow(10,10)<=x)&&(x<pow(10,11))){
 		return 11*sign;
+	}
+	else if((pow(10,11)<=x)&&(x<pow(10,12))){
+		return 12*sign;
+	}
+	else if((pow(10,12)<=x)&&(x<pow(10,13))){
+		return 13*sign;
+	}
+		else if((pow(10,13)<=x)&&(x<pow(10,14))){
+		return 14*sign;
+	}
+		else if((pow(10,14)<=x)&&(x<pow(10,15))){
+		return 15*sign;
+	}
+			else if((pow(10,15)<=x)&&(x<pow(10,16))){
+		return 16*sign;
+	}
+			else if((pow(10,16)<=x)&&(x<pow(10,17))){
+		return 17*sign;
+	}
+			else if((pow(10,17)<=x)&&(x<pow(10,18))){
+		return 18*sign;
+	}
+			else if((pow(10,18)<=x)&&(x<pow(10,19))){
+		return 19*sign;
+	}
+	else{ return 20*sign;
 	}
 }
 
