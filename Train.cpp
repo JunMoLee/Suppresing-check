@@ -1597,7 +1597,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        }
 				for (int e=0; e<100;e++){
 					
-							cout<<"   "<<"a["<<e<<"]="<<a1[e]<<"   "<<"s["<<e<<"]="<<scaling(s1[1])<<endl;
+							cout<<"   "<<"a["<<e<<"]="<<scaling(a1[e])<<"   "<<"s["<<e<<"]="<<scaling(s1[1])<<endl;
 				}
 				
 				cout<<endl;
@@ -1632,7 +1632,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 				cout<<"   ";
 				for(int ai=param->associatedindex[areanum][0]; ai<= param->associatedindex[areanum][1];ai++){
-				cout<<ai<<","<<a1[ai]<<"/";
+				cout<<ai<<","<<scaling(a1[ai])<<"/";
 				}
 				cout<<endl;
 			
@@ -1655,7 +1655,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		
 				for (int e=0; e<10;e++){
 					
-							cout<<"   "<<"a["<<e<<"]="<<a2[e]<<"   "<<"s["<<e<<"]="<<scaling(s2[e])<<endl;
+							cout<<"   "<<"a["<<e<<"]="<<scaling(a2[e])<<"   "<<"s["<<e<<"]="<<scaling(s2[e])<<endl;
 				}
 				
 				cout<<endl;
