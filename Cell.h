@@ -225,10 +225,10 @@ public:
 	double sigmaDtoD;	// Sigma of device-to-device variation on weight update nonliearity baseline
 	double sigmaCtoC;	// Sigma of cycle-to-cycle variation on weight update
         /*Cell index*/
-	int a=0;
-	int b=0;
-	int c=0;
-	int d=0;
+	int aa=0;
+	int bb=0;
+	int cc=0;
+	int dd=0;
 	/*PCM*/
 	double NL_LTP_Gp;
 	double NL_LTD_Gp;
