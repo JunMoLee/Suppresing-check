@@ -1608,7 +1608,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				
 			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
-		        for (int areanum=0; areanum<hh*os; areanum++){
+		        for (int areanum=(400/(20*kernel)*(20/kernel))*h; areanum<(400/(20*kernel)*(20/kernel))*h+hh*os; areanum++){
 		        cout<<"area "<<areanum<<" "<<updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3];
 		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum]<<endl;
 			
