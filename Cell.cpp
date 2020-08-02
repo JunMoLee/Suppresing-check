@@ -274,6 +274,42 @@ negstep=0;
 /* Real Device */
 RealDevice::RealDevice(int x, int y, double p, double n) {
 	this->x = x; this->y = y;	// Cell location: x (column) and y (row) start from index 0
+	/* allocate area */
+	            switch (location)
+			    
+			    case 0:
+	                   {                           for (int q=0; q<20; q+=kernel){
+			                                      for (int u=q; u<400; u+=20*kernel){ // classify input layer area
+		                                               for (int t=0; t<h; t++) {  // classify hidden layer area
+							        for (int m=t*hiddenpiece; m<(t+1)*hiddenpiece; m++)  {
+			                                         for (int a=0; a<kernel; a+=1){
+			                                          for (int b=0; b<20*kernel; b+=20){
+				                                   int n = u+a+b;
+							             if((x==m) && (y==n))  {areanum = t+ ( 400/(20*kernel)*(q/kernel)+(u-q)/(20*kernel) )*h; break;}
+								    }
+								     }
+								      }
+							               }
+							                }
+							                 }  
+			    break;
+		            }
+	
+	                    case 1: 
+	                    {
+				for (int ry =0; ry<os; os++){ // classify output area
+		                 for ( int rr =0; rr<param->nOutput/os; rr++){ 
+			          int m= rr + ry*os;
+			          for (int z=0; z<hh; z++) {  // classify hidden layer area
+			           for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
+					 if((x==m) && (y==n)) {areanum = (400/(20*kernel)*(20/kernel))*h+hh*ry+z; break;}
+			           }
+			          }
+			         }
+		                }	
+		            break;
+	                    }
+	
 	maxConductance=0; // in case of unwanted situations
 	minConductance=0;
 	pminConductance = 3.0769e-9;
