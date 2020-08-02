@@ -42,6 +42,7 @@
 #include <vector>
 
 double sigmoid(double x);
+double scaling(double x);
 double truncate(double x, int numBit, double threshold=0.5);
 double newtruncate(double x, int numBit, double threshold=0);
 double round_th(double x, double threshold);
