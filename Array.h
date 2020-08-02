@@ -98,7 +98,8 @@ public:
 		for (int col=0; col<cellsPerRow; col++) {
 			cell[col] = new Cell*[arrayRowSize];
 			for (int row=0; row<arrayRowSize; row++) {
-				cell[col][row] = new memoryType(col, row, this-> p, this-> n);
+				cell[col][row] = new memoryType(col, row, this-> p, this-> n,l);
+				
 			}
 		}
 		
