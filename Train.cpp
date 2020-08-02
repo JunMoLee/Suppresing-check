@@ -97,19 +97,7 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 
 /*Weight track variables */
 
-                                vector <int> prevnegsatsum(220,0);
-				vector <int> prevposstepcount(220,0);
-				vector <int> prevnegstepcount(220,0);
-				/* double prevpossigcount1=0, prevnegsigcount1=0; */
-				vector <double> prevweightsum(220,0);
-				/* double prevzerosigcount1=0; */
-                                 vector <vector <int>> updatepattern(220, vector<int>(4,0));  
-                                vector <int> negsatsum(220,0);
-				vector <int> posstepcount(220,0);
-				vector <int> negstepcount(220,0);
-				/* double prevpossigcount1=0, prevnegsigcount1=0; */
-				vector <double> weightsum(220,0);
-				/* double prevzerosigcount1=0; */
+vector <vector <int>> updatepattern(220, vector<int>(4,0)); 
                                 
 				
 /*Optimization functions*/
@@ -145,6 +133,13 @@ double a2[param->nOutput];  // Net output of output layer [param->nOutput]
 
 double s1[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
+
+                                
+			        kernel =  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->kernel; 	
+		                h = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->h; 
+		                hh = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hh; 
+		                os = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os;
+
 	
 		     
 	for (int t = 0; t < epochs; t++) {
@@ -1482,7 +1477,20 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			} // end of if code
 				
 			} // end of full-reset code
-			
+			       
+			        vector <int> prevnegsatsum(220,0);
+				vector <int> prevposstepcount(220,0);
+				vector <int> prevnegstepcount(220,0);
+				/* double prevpossigcount1=0, prevnegsigcount1=0; */
+				vector <double> prevweightsum(220,0);
+				/* double prevzerosigcount1=0; */
+                                
+                                vector <int> negsatsum(220,0);
+				vector <int> posstepcount(220,0);
+				vector <int> negstepcount(220,0);
+				/* double prevpossigcount1=0, prevnegsigcount1=0; */
+				vector <double> weightsum(220,0);
+				/* double prevzerosigcount1=0; */   
 			
 		     // weight IH
 
@@ -1495,104 +1503,99 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 for (int n=0; n<param<-nOutput; n++){
 				int areanum = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->areanum; 	
 				possatsum[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
-				negsatsum1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
-				posstepcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
-				 negstepcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
-				 possigcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->upc;
-				 negsigcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->unc;
-				 zerosigcount1[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->uzc;
-				 weightsum1[areanum]+=weight1[m][n];
+				negsatsum[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
+				posstepcount[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
+				 negstepcount[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
+
+				 weightsum[areanum]+=weight[m][n];
+			         static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 				 }
 			 }
 
-						     
+
+				
 			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
-		        cout<<"area "<<areanum<<" "<<updatepattern1[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern1[areanum][2]*10+updatepattern1[areanum][3];
-		        cout<<"   "<<prevposstepcount1[areanum]<<" "<<prevnegstepcount1[areanum]<<" "<<posstepcount1<<" "<<negstepcount1<<endl;
+		        for (int areanum=0; areanum<400/(kernel*kernel)*h; areanum++){
+		        cout<<"area "<<areanum<<" "<<updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3];
+		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum]<<endl;
+			
 		        
 		        
-				    updatepattern1[areanum][0] = adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum]);
-				    updatepattern1[areanum][1] = adaptlogic(prevweightsum1[areanum]);
-				    updatepattern1[areanum][2] = adaptlogic(posstepcount1-negstepcount1);
-				    updatepattern1[areanum][3] = adaptlogic(weightsum1);
+				    updatepattern[areanum][0] = adaptlogic(prevposstepcount[areanum]-prevnegstepcount[areanum]);
+				    updatepattern[areanum][1] = adaptlogic(prevweightsum[areanum]);
+				    updatepattern[areanum][2] = adaptlogic(posstepcount[areanum]-negstepcount[areanum]);
+				    updatepattern[areanum][3] = adaptlogic(weightsum[areanum]);
 				     
 				     
-				    prevpossatsum1[areanum] = possatsum1;
-				    prevnegsatsum1[areanum] = negsatsum1;
-				    prevposstepcount1[areanum] = posstepcount1;
-				    prevnegstepcount1[areanum] = negstepcount1;
+				    prevpossatsum[areanum] = possatsum[areanum];
+				    prevnegsatsum[areanum] = negsatsum[areanum];
+				    prevposstepcount[areanum] = posstepcount[areanum];
+				    prevnegstepcount[areanum] = negstepcount[areanum];
 				  /*  prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
-				    prevweightsum1[areanum] = weightsum1;
+				    prevweightsum[areanum] = weightsum[areanum];
                           
-		
+		        }
 				for (int e=0; e<100;e++){
 					
 							cout<<"   "<<"a["<<e<<"]="<<a1[e]<<"   "<<"s["<<e<<"]="<<s1[e]<<endl;
 				}
 				
 				cout<<endl;
-			  // weight HO
 				
-
+				
+			// weight HO
+				
 				
 		         cout << "OH"<<endl;	
-		     for (int ry =0; ry<os; os++){ // classify output area
-		       for ( int rr =0; rr<param->nOutput/os; rr++){ 
-			int m= rr + ry*os;
-			    for (int z=0; z<hh; z++) {  // classify hidden layer area
-				int possatsum2=0, negsatsum2=0;
-				int posstepcount2=0, negstepcount2=0;
-				int possigcount2=0, negsigcount2=0;
-				int zerosigcount2=0;
-				double weightsum2=0;
-				areanum = (400/(20*kernel)*(20/kernel))*h + ry*hh +z;
-			      for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
-				  
-				possatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
-				negsatsum2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
-				posstepcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep; 
-				negstepcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep; 
-				possigcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->upc;
-				negsigcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->unc;
-				zerosigcount2 += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->uzc;
-				weightsum2+=weight2[m][n];
 				
-				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
-				
-			    }
-				// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount2[areanum]-prevnegstepcount2[areanum])<<adaptlogic(prevweightsum2[areanum])<<adaptlogic(prevpossatsum2[areanum]-prevnegsatsum2[areanum])<<"    "<<adaptlogic(posstepcount2-negstepcount2)<<adaptlogic(weightsum2)<<adaptlogic(possatsum2-negsatsum2);
-				cout<<"area "<<areanum<<" "<<updatepattern2[areanum][0]*1000+updatepattern2[areanum][1]*100+updatepattern2[areanum][2]*10+updatepattern2[areanum][3];
-				cout<<"   "<<prevposstepcount2[areanum]<<" "<<prevnegstepcount2[areanum]<<" "<<posstepcount2<<" "<<negstepcount2<<endl;
-				
-				    updatepattern2[areanum][0] = adaptlogic(prevposstepcount2[areanum]-prevnegstepcount2[areanum]);
-				    updatepattern2[areanum][1] = adaptlogic(prevweightsum2[areanum]);
-				    updatepattern2[areanum][2] = adaptlogic(posstepcount2-negstepcount2);
-				    updatepattern2[areanum][3] = adaptlogic(weightsum2);
-				    
-				    
-				    prevpossatsum2[areanum] = possatsum2;
-				    prevnegsatsum2[areanum] = negsatsum2;
-				    prevposstepcount2[areanum] = posstepcount2;
-				    prevnegstepcount2[areanum] = negstepcount2;
-				  /*  prevpossigcount2= possigcount2;
-				    prevnegsigcount2= negsigcount2; */
-				    prevweightsum2[areanum] = weightsum2;
-				   /* prevzerosigcount2[area] = zerosigcount2; */
-				    
-				    
-				    
+		    /* saturation count */
+			
+			
+                         for (int m=0; m<param->nOutput; m++){
+				 for (int n=0; n<param<-nHide; n++){
+				int areanum = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->areanum; 	
+				possatsum[areanum] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
+				negsatsum[areanum] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
+				posstepcount[areanum] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep;
+				negstepcount[areanum] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep;
 
-				    
+				 weightsum[areanum]+=weight[m][n];
+			         static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
+				 }
+			 }
 
-			    }
-			  }
-		       }	
+
 				
+			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
+		        for (int areanum=0; areanum<hh*os; areanum++){
+		        cout<<"area "<<areanum<<" "<<updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3];
+		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum]<<endl;
+			
+		        
+		        
+				    updatepattern[areanum][0] = adaptlogic(prevposstepcount[areanum]-prevnegstepcount[areanum]);
+				    updatepattern[areanum][1] = adaptlogic(prevweightsum[areanum]);
+				    updatepattern[areanum][2] = adaptlogic(posstepcount[areanum]-negstepcount[areanum]);
+				    updatepattern[areanum][3] = adaptlogic(weightsum[areanum]);
+				     
+				     
+				    prevpossatsum[areanum] = possatsum[areanum];
+				    prevnegsatsum[areanum] = negsatsum[areanum];
+				    prevposstepcount[areanum] = posstepcount[areanum];
+				    prevnegstepcount[areanum] = negstepcount[areanum];
+				  /*  prevpossigcount1= possigcount2;
+				    prevnegsigcount1= negsigcount2; */
+				    prevweightsum[areanum] = weightsum[areanum];
+                          }
+		
 				for (int e=0; e<10;e++){
 					
-						cout<<"   "<<"a["<<e<<"]="<<a2[e]<<"   "<<"s["<<e<<"]="<<s2[e]<<endl;
+							cout<<"   "<<"a["<<e<<"]="<<a2[e]<<"   "<<"s["<<e<<"]="<<s2[e]<<endl;
 				}
+				
+				cout<<endl;
+				
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: " << possatsum1/param->RefreshRate/40000<< ", " <<possatsum1/param->RefreshRate/40000*100<<"%";
 			cout <<" avg IH negative sat: " << negsatsum1/param->RefreshRate/40000<<", " <<negsatsum1/param->RefreshRate/40000*100<<"%";
@@ -1677,7 +1680,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	
 		
 	if(param->weighttrack==1){
-                                                      	
+                                   	
              												
 		for (int m=0; m<param->nHide; m++) {
 		  for (int i=0; i<4;i++){
