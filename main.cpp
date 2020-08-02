@@ -80,6 +80,7 @@ int main() {
 	//arrayHO->Initialization<MeasuredDevice>();
 	//arrayHO->Initialization<SRAM>(param->numWeightBit);
 	//arrayHO->Initialization<DigitalNVM>(param->numWeightBit,true);
+	cout<<"3"<<endl;
 
 
 	/* Initialization of NeuroSim synaptic cores */
@@ -124,6 +125,7 @@ int main() {
 	printf("Total leakage power of Neuron is : %.4e W\n", leakageNeuronIH + leakageNeuronHO);
 	
 	/* Initialize weights and map weights to conductances for hardware implementation */
+	cout<<"4"<<endl;
 	WeightInitialize();
 	if (param->useHardwareInTraining) { WeightToConductance(); }
 
