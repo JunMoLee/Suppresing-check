@@ -298,7 +298,7 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 	
 	                    case 1: 
 	                    {
-				for (int ry =0; ry<os; os++){ // classify output area
+				for (int ry =0; ry<os; ry++){ // classify output area
 		                 for ( int rr =0; rr<param->nOutput/os; rr++){ 
 			          int m= rr + ry*os;
 			          for (int z=0; z<hh; z++) {  // classify hidden layer area
