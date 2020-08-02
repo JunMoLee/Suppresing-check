@@ -286,7 +286,12 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 			                                         for (int a=0; a<kernel; a+=1){
 			                                          for (int b=0; b<20*kernel; b+=20){
 				                                   int n = u+a+b;
-							             if((x==m) && (y==n))  {areanum = t+ ( 400/(20*kernel)*(q/kernel)+(u-q)/(20*kernel) )*h; break;}
+							             if((x==m) && (y==n))  {areanum = t+ ( 400/(20*kernel)*(q/kernel)+(u-q)/(20*kernel) )*h; 
+											    aa=q/kernel*(20/kernel)+(u-q)/(20*kernel); 
+											    bb=t;
+											    cc=a+b;
+											    dd=m-t*hiddenpiece;
+											    break;}
 								    }
 								     }
 								      }
@@ -297,13 +302,19 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 		            }
 	
 	                    case 1: 
-	                    {
+	                    { 
+		              for (int z=0; z<hh; z++) {  // classify hidden layer area
+			       for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
 				for (int ry =0; ry<os; ry++){ // classify output area
 		                 for ( int rr =0; rr<param->nOutput/os; rr++){ 
-			          int m= rr + ry*param->nOutput/os;
-			          for (int z=0; z<hh; z++) {  // classify hidden layer area
-			           for (int n=z*hhiddenpiece; n<(z+1)*hhiddenpiece; n++)  {
-					 if((x==m) && (y==n)) {areanum = (400/(20*kernel)*(20/kernel))*h+hh*ry+z; break;}
+			          int m= ry*(param->nOutput/os) +rr;
+			     
+					 if((x==m) && (y==n)) {areanum = (400/(20*kernel)*(20/kernel))*h+hh*os+ry; 
+							       aa = z;
+							       bb = ry;
+							       cc = n-z*hhiddenpiece;
+							       dd = rr;
+							       break;}
 			           }
 			          }
 			         }
