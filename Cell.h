@@ -229,7 +229,7 @@ public:
 	int bb=0;
 	int cc=0;
 	int dd=0;
-	vector <vector<int>> associatedindex(40000, vector<int>(2, 0)); 
+	
 	/*PCM*/
 	double NL_LTP_Gp;
 	double NL_LTD_Gp;
