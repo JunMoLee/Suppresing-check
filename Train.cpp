@@ -1502,7 +1502,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
                          for (int m=0; m<param->nHide; m++){
-				 for (int n=0; n<param->nOutput; n++){
+				 for (int n=0; n<param->nInput; n++){
 				int areanum = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->areanum; 	
 
 				 posstepcount[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
