@@ -43,6 +43,44 @@
 double sigmoid(double x) {
 	return 1 / (1 + exp(-x));
 }
+double scaling(double x){
+	int sign = 1;
+	if(x<0) {x=-x; sign=-1;}
+	x= x*pow(10,20);
+	if((0<=x)&&(x<pow(10,2))){
+		return 1*sign;
+	}
+	else if((pow(10,2)<=x)&&(x<pow(10,4))){
+		return 2*sign;
+	}
+		else if((pow(10,4)<=x)&&(x<pow(10,6))){
+		return 3*sign;
+	}
+		else if((pow(10,6)<=x)&&(x<pow(10,8))){
+		return 4*sign;
+	}
+		else if((pow(10,8)<=x)&&(x<pow(10,10))){
+		return 5*sign;
+	}
+		else if((pow(10,10)<=x)&&(x<pow(10,12))){
+		return 6*sign;
+	}
+		else if((pow(10,12)<=x)&&(x<pow(10,14))){
+		return 7*sign;
+	}
+		else if((pow(10,14)<=x)&&(x<pow(10,16))){
+		return 8*sign;
+	}
+		else if((pow(10,16)<=x)&&(x<pow(10,18))){
+		return 9*sign;
+	}
+		else if((pow(10,18)<=x)&&(x<pow(10,20))){
+		return 10*sign;
+	}
+		else {
+		return 11*sign;
+	}
+}
 
 /* Truncation with a custom threshold */
 double truncate(double x, int numLevel, double threshold) {
