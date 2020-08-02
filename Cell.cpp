@@ -311,7 +311,7 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 		                 for ( int rr =0; rr<param->nOutput/os; rr++){ 
 			          int m= ry*(param->nOutput/os) +rr;
 			     
-					 if((x==m) && (y==n)) {areanum = (400/(20*kernel)*(20/kernel))*h+hh*os+ry; 
+					 if((x==m) && (y==n)) {areanum = (400/(20*kernel)*(20/kernel))*h+z*os+ry; 
 							       aa = z;
 							       bb = ry;
 							       cc = n-z*hhiddenpiece;
