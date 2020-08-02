@@ -135,10 +135,10 @@ double s1[param->nHide];    // Output delta from input layer to the hidden layer
 double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
 
                                 
-			        kernel =  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->kernel; 	
-		                h = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->h; 
-		                hh = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hh; 
-		                os = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os;
+			       int kernel =  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->kernel; 	
+		               int h = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->h; 
+		               int hh = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hh; 
+		               int os = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os;
 
 	
 		     
@@ -582,7 +582,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							     posstopreverse=1;
 						              negstopreverse=1;
 							      }
-			                                      else if(updatepattern[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern1[areanum][2]*10+updatepattern[areanum][3] == 2233)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern1[areanum][2]*10+updatepattern[areanum][3] == 2233)
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -603,7 +603,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if(updatepattern[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern1[areanum][3] == 1111)
+				                              if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern1[areanum][3] == 1111)
 							      {
 				                              learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1]*0;
@@ -1062,7 +1062,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
                         */			        /* weight HO update */
-				                           int areanum= AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum;
+				                           int areanum= = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum;
 				                           double learningrateHO [4];
 				                           // classify area by index
 
@@ -1103,7 +1103,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							     posstopreverse=1;
 						              negstopreverse=1;
 							      }
-			                                      else if(updatepattern[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern1[areanum][2]*10+updatepattern[areanum][3] == 2233)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2233)
 							      {
 							      learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];
@@ -1124,7 +1124,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if(updatepattern[areanum][0]*1000+updatepattern1[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern1[areanum][3] == 1111)
+				                              if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)
 							      {
 				                              learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1]*0;
@@ -1479,12 +1479,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			} // end of full-reset code
 			       
 			        vector <int> prevnegsatsum(220,0);
+			        vector <int> prevpossatsum(220,0);
 				vector <int> prevposstepcount(220,0);
 				vector <int> prevnegstepcount(220,0);
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
 				vector <double> prevweightsum(220,0);
 				/* double prevzerosigcount1=0; */
-                                
+			
+                                vector <int> possatsum(220,0);
                                 vector <int> negsatsum(220,0);
 				vector <int> posstepcount(220,0);
 				vector <int> negstepcount(220,0);
@@ -1500,14 +1502,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
                          for (int m=0; m<param->nHide; m++){
-				 for (int n=0; n<param<-nOutput; n++){
+				 for (int n=0; n<param->nOutput; n++){
 				int areanum = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->areanum; 	
-				possatsum[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat; 
-				negsatsum[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat; 
-				posstepcount[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
+
+				 posstepcount[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
 				 negstepcount[areanum] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
 
-				 weightsum[areanum]+=weight[m][n];
+				 weightsum[areanum]+=weight1[m][n];
 			         static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 				 }
 			 }
@@ -1553,14 +1554,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 			
                          for (int m=0; m<param->nOutput; m++){
-				 for (int n=0; n<param<-nHide; n++){
+				 for (int n=0; n<param->nHide; n++){
 				int areanum = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->areanum; 	
-				possatsum[areanum] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat; 
-				negsatsum[areanum] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat; 
+
 				posstepcount[areanum] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep;
 				negstepcount[areanum] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep;
 
-				 weightsum[areanum]+=weight[m][n];
+				 weightsum[areanum]+=weight2[m][n];
 			         static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				 }
 			 }
