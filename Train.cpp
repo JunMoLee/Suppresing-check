@@ -579,16 +579,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
-							     posstopreverse=1;
+							      posstopreverse=1;
 						              negstopreverse=1;
 							      }
-			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern1[areanum][2]*10+updatepattern[areanum][3] == 2233)
+			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2233)
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
-							     posstopreverse=1;
+							      posstopreverse=1;
 						              negstopreverse=1;
 							      }
 				                              else
@@ -603,7 +603,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern1[areanum][3] == 1111)
+				                              if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)
 							      {
 				                              learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1]*0;
@@ -1062,7 +1062,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
                         */			        /* weight HO update */
-				                           int areanum= = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum;
+				                           int areanum=  dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum;
 				                           double learningrateHO [4];
 				                           // classify area by index
 
