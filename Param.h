@@ -37,6 +37,7 @@
 ********************************************************************************/
 
 #include <string>
+#include <vector>
 
 #ifndef PARAM_H_
 #define PARAM_H_
