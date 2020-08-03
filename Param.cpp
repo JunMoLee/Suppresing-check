@@ -79,7 +79,7 @@ Param::Param() {
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
-	nHide = 200;      // # of neurons in hidden layer
+	nHide = 100;      // # of neurons in hidden layer
 	nOutput = 10;     // # of neurons in output layer
 	
 	/* learning rate */
