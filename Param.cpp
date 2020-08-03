@@ -40,12 +40,12 @@
 #include "Param.h"
 
 Param::Param() {
-	for (int i=0;i<40000;i++){
+	for (int i=0;i<41000;i++){
 	vector <int> index (2,0);
 	associatedindex.push_back(index);
 	}
 	
-	for (int i=0;i<40000;i++){
+	for (int i=0;i<41000;i++){
 	vector <int> index (2,0);
 	associatedindex2.push_back(index);
 	}
