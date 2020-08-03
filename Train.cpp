@@ -574,7 +574,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    int reset=0;
 		            random_device rd;
 			    mt19937 gen(rd());
-			    uniform_int_distribution<int> dis(0,19);
+			    uniform_int_distribution<int> dis(0,8);
 			    if(dis(gen)==0) reset=1; 
 			    
 			 /*   if((dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==counteradaptIH) || (dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==(counteradaptIH + 1)))
@@ -1117,8 +1117,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    
 			    random_device rd;
 			    mt19937 gen(rd());
-			    uniform_int_distribution<int> dis(0,19);
+			    uniform_int_distribution<int> dis(0,8);
 			    if(dis(gen)==0) reset=1;
+				
+			   int adaptivegradient=0;
+			    for(int f=param->associatedindex[dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum][0]; f<param->associatedindex[dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum][1]; f++)
+			    {adaptivegradient += s2[f];}
+			    if(adaptivegradient<0) reset=0;
 				      /* weight HO update */
 				                           int areanum=  dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum;
 				                           double learningrateHO [4];
