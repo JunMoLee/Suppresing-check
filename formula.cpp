@@ -46,7 +46,8 @@ double sigmoid(double x) {
 double scaling(double x){
 	int sign = 1;
 	if(x<0) {x=-x; sign=-1;}
-	x= x*pow(10,20);
+	x=x*pow(10,7)
+/*	x= x*pow(10,20);
 	if((0<=x)&&(x<pow(10,1))){
 		return 1*sign;
 	}
@@ -105,7 +106,7 @@ else if((pow(10,10)<=x)&&(x<pow(10,11))){
 		return 19*sign;
 	}
 	else{ return 20*sign;
-	}
+	} */
 }
 
 /* Truncation with a custom threshold */
