@@ -97,13 +97,13 @@ extern double totalNumPulse=0;// track the total number of pulse for the weight 
 
 /*Weight track variables */
 
-vector <vector <int>> updatepattern(41000, vector<int>(4,0)); 
-vector <int> prevnegsatsum(41000,0);
-vector <int> prevpossatsum(41000,0);
-vector <int> prevposstepcount(41000,0);
-vector <int> prevnegstepcount(41000,0);
+vector <vector <int>> updatepattern(164000, vector<int>(4,0)); 
+vector <int> prevnegsatsum(164000,0);
+vector <int> prevpossatsum(164000,0);
+vector <int> prevposstepcount(164000,0);
+vector <int> prevnegstepcount(164000,0);
 /* double prevpossigcount1=0, prevnegsigcount1=0; */
-vector <double> prevweightsum(41000,0);
+vector <double> prevweightsum(164000,0);
 /* double prevzerosigcount1=0; */
 
 				
@@ -1561,12 +1561,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			       
 
 			
-                                vector <int> possatsum(41000,0);
-                                vector <int> negsatsum(41000,0);
-				vector <int> posstepcount(41000,0);
-				vector <int> negstepcount(41000,0);
+                                vector <int> possatsum(164000,0);
+                                vector <int> negsatsum(164000,0);
+				vector <int> posstepcount(164000,0);
+				vector <int> negstepcount(164000,0);
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
-				vector <double> weightsum(41000,0);
+				vector <double> weightsum(164000,0);
 				/* double prevzerosigcount1=0; */   
 			
 		     
