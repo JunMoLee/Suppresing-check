@@ -291,8 +291,9 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 											    bb=t;
 											    cc=a+b;
 											    dd=m-t*hiddenpiece;
-											    param->associatedindex[areanum][0]=bb*hiddenpiece;
-											     param->associatedindex[areanum][1]=(bb+1)*hiddenpiece-1;
+											
+											    	    param->associatedindex2[areanum][0]=bb*hiddenpiece;
+											     param->associatedindex2[areanum][1]=(bb+1)*hiddenpiece-1;
 											    break;}
 								    }
 								     }
@@ -318,6 +319,8 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 							       dd = rr;
 							        param->associatedindex[areanum][0]=aa*hhiddenpiece;
 							        param->associatedindex[areanum][1]=(aa+1)*hhiddenpiece-1;
+							               param->associatedindex2[areanum][0]=bb*param->nOutput/os;
+							        param->associatedindex2[areanum][1]=(bb+1)*param->nOutput/os-1;
 							       break;}
 			           }
 			          }
