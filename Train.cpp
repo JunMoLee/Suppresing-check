@@ -595,7 +595,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				
 
-				
+				               
 						          // adpative weight update 
 				                           if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1)
 							   {			 
@@ -717,7 +717,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      break;
 							    }  */
                             
-				
+				                        if (epochcount>10) {posstopreverse=1; negstopreverse=1;}
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])) {	// Analog eNVM
 								
 							  /* new update */
@@ -1250,7 +1250,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								 }
 							       } */
 							
-				
+				if (epochcount>10) {posstopreverse=1; negstopreverse=1;}
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])) { // Analog eNVM
 								
 							 /* new update => reverse update */
