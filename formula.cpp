@@ -46,7 +46,8 @@ double sigmoid(double x) {
 double scaling(double x){
 	int sign = 1;
 	if(x<0) {x=-x; sign=-1;}
-	x=x*pow(10,7)
+	x=x*pow(10,7);
+		return x*sign;
 /*	x= x*pow(10,20);
 	if((0<=x)&&(x<pow(10,1))){
 		return 1*sign;
