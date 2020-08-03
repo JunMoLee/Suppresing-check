@@ -40,12 +40,12 @@
 #include "Param.h"
 
 Param::Param() {
-	for (int i=0;i<41000;i++){
+	for (int i=0;i<164000;i++){
 	vector <int> index (2,0);
 	associatedindex.push_back(index);
 	}
 	
-	for (int i=0;i<41000;i++){
+	for (int i=0;i<164000;i++){
 	vector <int> index (2,0);
 	associatedindex2.push_back(index);
 	}
@@ -79,7 +79,7 @@ Param::Param() {
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
-	nHide = 100;      // # of neurons in hidden layer
+	nHide = 200;      // # of neurons in hidden layer
 	nOutput = 10;     // # of neurons in output layer
 	
 	/* learning rate */
