@@ -1635,8 +1635,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				cout<<"   ";
 				int sumactivation=0;
 				for(int ai=param->associatedindex[areanum][0]; ai<= param->associatedindex[areanum][1];ai++){
-				cout<<ai<<","<<scaling(a1[ai])<<"/";
-				sumactivation += a1[ai];
+				cout<<ai<<","<<scaling(a1[ai]*(1-a1[ai]))<<"/";
+				sumactivation += a1[ai]*(1-a1[ai]);
 				}
 				cout<<" "<<scaling(sumactivation);
 				cout<<endl;
