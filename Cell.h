@@ -54,10 +54,10 @@ public:
 	
 	/*array parameters */
 	               int location=0;// verify whether it is in IH or HO
-		       int kernel=2; // k=kernel size;
-		       int h=10; // h=number of hidden layer slice for IH
-	               int hh=50; // hh= number of hidden layer slice for HO
-	               int os=5;  // os = number of output layer slice
+		       int kernel=10; // k=kernel size;
+		       int h=100; // h=number of hidden layer slice for IH
+	               int hh=5; // hh= number of hidden layer slice for HO
+	               int os=10;  // os = number of output layer slice
 	             
 	
 		       int hiddenpiece= param->nHide/h;	
