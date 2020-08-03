@@ -45,6 +45,12 @@ Param::Param() {
 	associatedindex.push_back(index);
 	}
 	
+	for (int i=0;i<40000;i++){
+	vector <int> index (2,0);
+	associatedindex2.push_back(index);
+	}
+	
+	
 	/* MNIST dataset */
 	numMnistTrainImages = 60000;// # of training images in MNIST
 	numMnistTestImages = 10000;	// # of testing images in MNIST
