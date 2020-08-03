@@ -579,9 +579,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    
 			    if(dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==counteradaptIH)
 			    {reset=1;}
-			    counteradaptIH++;
-			    if(counteradaptIH == maxcounterIH)
-			    {counteradaptIH =0;}
+
 			    int adaptivegradient=0;
 			    for(int f=param->associatedindex[dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanum][0]; f<param->associatedindex[dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanum][1]; f++)
 			    {adaptivegradient += s1[f];}
@@ -600,7 +598,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 						          // adpative weight update 
 				                           if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1)
-							   {
+							   {			 
 							      if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2211)
 							      {
 							      learningrateIH[0] = param->learningrate[0][0];
@@ -680,6 +678,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						              posstopreverse=1;
 						              negstopreverse=1;
 							      }
+								   
+			counteradaptIH++;
+			    if(counteradaptIH == maxcounterIH)
+			    {counteradaptIH =0;}
 							   }
 				                           // reset weightupdatepattern
 				                                
@@ -1112,9 +1114,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		            int reset=0;
 			   if(dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd==counteradaptHO)
 			    {reset=1;}
-			    counteradaptHO++;
-			    if(counteradaptHO == maxcounterHO)
-			    {counteradaptHO =0;}
+			    
 			  /*  random_device rd;
 			    mt19937 gen(rd());
 			    uniform_int_distribution<int> dis(0,9);
@@ -1231,6 +1231,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						              posstopreverse=1;
 						              negstopreverse=1;
 							      }
+								   
+								   counteradaptHO++;
+			    if(counteradaptHO == maxcounterHO)
+			    {counteradaptHO =0;}
 							   }
 				                          // reset weightupdatepattern
 				                                
