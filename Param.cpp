@@ -64,7 +64,7 @@ Param::Param() {
 	selectsim=ss;
 	
 	/* Weight track variables */
-	weighttrack=1;
+	weighttrack=0;
 	TrackRate=150;
 	
 	
