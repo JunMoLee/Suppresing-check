@@ -1597,7 +1597,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum];
 			        double sumgradient=0;
 				cout<<"   ";
-				for(int ai=param->associatedindex[areanum][0]; ai<= param->associatedindex[areanum][1];ai++){
+				for(int ai=param->associatedindex2[areanum][0]; ai<= param->associatedindex2[areanum][1];ai++){
 				cout<<ai<<","<<scaling(s1[ai])<<"/";
 			        sumgradient += s1[ai];
 				}
@@ -1657,11 +1657,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 				cout<<"   ";
 				double sumactivation=0;
-				for(int ai=param->associatedindex[areanum][0]; ai<= param->associatedindex[areanum][1];ai++){
-				cout<<ai<<","<<scaling(a1[ai]*(1-a1[ai]))<<"/";
+				double outputgradient=0;
+				for(int ai=param->associatedindex1[areanum][0]; ai<= param->associatedindex1[areanum][1];ai++){
+				cout<<ai<<","<<scaling(a1[ai]*(1-a1[ai]))<<" || "<<scaling(s2[ai])<<"/";
 				sumactivation += a1[ai]*(1-a1[ai]);
+				outputgradient += s2[ai]
 				}
-				cout<<" "<<scaling(sumactivation);
+				cout<<" "<<scaling(sumactivation)<<" || "<<scaling(outputgradient);
 				cout<<endl;
 			
 		        
