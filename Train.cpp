@@ -577,7 +577,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    uniform_int_distribution<int> dis(0,9);
 			    if(dis(gen)==0) reset=1; */
 			    
-			    if(dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd)==counteradaptIH)
+			    if(dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==counteradaptIH)
 			    {reset=1;}
 			    counteradaptIH++;
 			    if(counteradaptIH == maxcounterIH)
@@ -1110,7 +1110,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                             }
                         */		
 		            int reset=0;
-			   if(dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd)==counteradaptHO)
+			   if(dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd==counteradaptHO)
 			    {reset=1;}
 			    counteradaptHO++;
 			    if(counteradaptHO == maxcounterHO)
