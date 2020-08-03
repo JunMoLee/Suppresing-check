@@ -580,10 +580,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			 /*   if((dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==counteradaptIH) || (dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==(counteradaptIH + 1)))
 			    {reset=1;} */
 
-			 /*   int adaptivegradient=0;
+			  int adaptivegradient=0;
 			    for(int f=param->associatedindex[dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanum][0]; f<param->associatedindex[dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanum][1]; f++)
 			    {adaptivegradient += s1[f];}
-			    if(adaptivegradient<0) reset=0; */
+			    if(adaptivegradient<0) reset=0;
 
 				                          /* weight IH update */
 				
