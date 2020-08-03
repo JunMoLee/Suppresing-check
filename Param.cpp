@@ -65,7 +65,7 @@ Param::Param() {
 	
 	/* Weight track variables */
 	weighttrack=1;
-	TrackRate=500;
+	TrackRate=150;
 	
 	
 	/* Algorithm parameters */
@@ -162,11 +162,11 @@ Param::Param() {
 	frr=1000;
 	RefreshRate = frr;
 	const int 
-	nur=100;
+	nur=150;
 	const int 
 	rnur=1;
 	const int
-	nurn=100;
+	nurn=150;
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
