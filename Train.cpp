@@ -574,7 +574,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    int reset=0;
 		            random_device rd;
 			    mt19937 gen(rd());
-			    uniform_int_distribution<int> dis(0,14);
+			    uniform_int_distribution<int> dis(0,9);
 			    if(dis(gen)==0) reset=1; 
 			    
 			 /*   if((dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==counteradaptIH) || (dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==(counteradaptIH + 1)))
@@ -1142,7 +1142,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    
 			    random_device rd;
 			    mt19937 gen(rd());
-			    uniform_int_distribution<int> dis(0,14);
+			    uniform_int_distribution<int> dis(0,9);
 			    if(dis(gen)==0) reset=1;
 				
 			   int adaptivegradient=0;
