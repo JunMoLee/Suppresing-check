@@ -1645,8 +1645,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                   if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
 	             // weight IH
 		       /* saturation count */
-			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
-		         cout << "IH"<<endl;
+			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
+		         cout << "IH"<<endl; */
 			
 			
                          for (int m=0; m<param->nHide; m++){
@@ -1703,7 +1703,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			// weight HO
 				
 				
-		         cout << "OH"<<endl;	
+		       /*  cout << "OH"<<endl;	*/
 				
 		    /* saturation count */
 			
