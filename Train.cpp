@@ -574,16 +574,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			    int reset=0;
 		            random_device rd;
 			    mt19937 gen(rd());
-			    uniform_int_distribution<int> dis(0,8);
+			    uniform_int_distribution<int> dis(0,9);
 			    if(dis(gen)==0) reset=1; 
 			    
 			 /*   if((dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==counteradaptIH) || (dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==(counteradaptIH + 1)))
 			    {reset=1;} */
 
-			  int adaptivegradient=0;
+			/*  int adaptivegradient=0;
 			    for(int f=param->associatedindex[dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanum][0]; f<param->associatedindex[dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanum][1]; f++)
 			    {adaptivegradient += s1[f];}
-			    if(adaptivegradient<0) reset=0;
+			    if(adaptivegradient<0) reset=0; */
 
 				                          /* weight IH update */
 				
@@ -629,7 +629,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111) && (reset==1))
+				                              if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1313) && (reset==1))
 							      {
 				                              learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1]/1.3;
@@ -638,7 +638,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      posstopreverse=1;
 						              negstopreverse=0;
 							      }
-			                                      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333) && (reset==1))
+			                                      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3131) && (reset==1))
 							      {
 							      learningrateIH[0] = param->learningrate[0][0]/1.3;
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -717,7 +717,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      break;
 							    }  */
                             
-				                        if (epochcount>10) {posstopreverse=1; negstopreverse=1;}
+				                       // if (epochcount>10) {posstopreverse=1; negstopreverse=1;}
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])) {	// Analog eNVM
 								
 							  /* new update */
@@ -1187,7 +1187,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      }
 							   }
 					                   else {
-				                              if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)  && (reset==1))
+				                              if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1313)  && (reset==1))
 							      {
 				                              learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1]/1.5;
@@ -1196,7 +1196,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      posstopreverse=1;
 						              negstopreverse=0;
 							      }
-			                                      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333) && (reset==1))
+			                                      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3131) && (reset==1))
 							      {
 							      learningrateHO[0] = param->learningrate[0][0]/1.5;
 							      learningrateHO[1] = param->learningrate[0][1];
@@ -1250,7 +1250,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								 }
 							       } */
 							
-				if (epochcount>10) {posstopreverse=1; negstopreverse=1;}
+			//	if (epochcount>10) {posstopreverse=1; negstopreverse=1;}
 							if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])) { // Analog eNVM
 								
 							 /* new update => reverse update */
