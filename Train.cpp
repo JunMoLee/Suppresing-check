@@ -571,7 +571,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
                             // verify lowest Gp or probabilitstically deternmine cell to reset//
 			    
-			    int reset=0;
+			    int reset=1;
 		           /* random_device rd;
 			    mt19937 gen(rd());
 			    uniform_int_distribution<int> dis(0,9);
@@ -1136,7 +1136,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 maxWeightUpdated =fabs(deltaWeight2[jj][k]);
                             }
                         */		
-		            int reset=0;
+		            int reset=1;
 			/*   if((dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd==(counteradaptHO)) || (dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd==(counteradaptHO+1)))
 			    {reset=1;} */
 			    
