@@ -1712,7 +1712,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 posstepcount[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
 				 negstepcount[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
                                  conpossum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ConductanceGp;
-				 connegsum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ConductanceGn;	 
+				 connegsum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ConductanceGn;	
+					 possatsum[areanum1] +=  static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;	
+					 negsatsum[areanum1] +=  static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;	
 				 weightsum[areanum1]+=weight1[m][n];
 			         static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 				 }
@@ -1725,6 +1727,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		   cout<<"area "<<areanum11<<" "<<updatepattern[areanum11][0]*1000+updatepattern[areanum11][1]*100+updatepattern[areanum11][2]*10+updatepattern[areanum11][3];
 				cout<<"  "<<conupdatepattern[areanum11][0]*1000+conupdatepattern[areanum11][1]*100+conupdatepattern[areanum11][2]*10+conupdatepattern[areanum11][3];
 		        cout<<"   "<<prevposstepcount[areanum11]<<" "<<prevnegstepcount[areanum11]<<" "<<posstepcount[areanum11]<<" "<<negstepcount[areanum11];
+				cout<<"   "<<possatsum[areanum11]<<" "<<negsatsum[areanum11];
 			    double sumgradient=0;
 				cout<<"   ";
 				for(int ai=param->associatedindex2[allocationmethod1][areanum11][0]; ai<= param->associatedindex2[allocationmethod1][areanum11][1];ai++){
@@ -1780,7 +1783,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				posstepcount[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep;
 				negstepcount[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep;
-
+					  conpossum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ConductanceGp;
+				 connegsum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ConductanceGn;	
+                                  possatsum[areanum2] +=  static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;	
+					 negsatsum[areanum2] +=  static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;	
 				 weightsum[areanum2]+=weight2[m][n];
 			         static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 				 }
@@ -1793,7 +1799,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		     cout<<"area "<<areanum22<<" "<<updatepattern[areanum22][0]*1000+updatepattern[areanum22][1]*100+updatepattern[areanum22][2]*10+updatepattern[areanum22][3];
 				cout<<"  "<<conupdatepattern[areanum22][0]*1000+conupdatepattern[areanum22][1]*100+conupdatepattern[areanum22][2]*10+conupdatepattern[areanum22][3];
 		        cout<<"   "<<prevposstepcount[areanum22]<<" "<<prevnegstepcount[areanum22]<<" "<<posstepcount[areanum22]<<" "<<negstepcount[areanum22];
-			
+			cout<<"   "<<possatsum[areanum22]<<" "<<negsatsum[areanum22];
 				cout<<"   ";
 				double sumactivation=0;
 				double outputgradient=0;
