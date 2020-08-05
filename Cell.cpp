@@ -276,24 +276,43 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 	this->x = x; this->y = y;	// Cell location: x (column) and y (row) start from index 0
 	this-> location =l;
 	/* allocate area */
-	            switch (location) {
+	              switch (location) {
 			    
 			    case 0:
-	                   {                           for (int q=0; q<20; q+=kernel){
+	                   {                     for (int q=0; q<20; q+=kernel){
 			                                      for (int u=q; u<400; u+=20*kernel){ // classify input layer area
 		                                               for (int t=0; t<h; t++) {  // classify hidden layer area
 							        for (int m=t*hiddenpiece; m<(t+1)*hiddenpiece; m++)  {
 			                                         for (int a=0; a<kernel; a+=1){
 			                                          for (int b=0; b<20*kernel; b+=20){
 				                                   int n = u+a+b;
-							             if((x==m) && (y==n))  {areanum = t+ ( 400/(20*kernel)*(q/kernel)+(u-q)/(20*kernel) )*h; 
-											    aa=q/kernel*(20/kernel)+(u-q)/(20*kernel); 
-											    bb=t;
-											    cc=a+b;
-											    dd=m-t*hiddenpiece;
+							             if((x==m) && (y==n))  {
+											    int ma=q/kernel*(20/kernel)+(u-q)/(20*kernel); 
+											    int mb=t;
+											    int mc=a+b;
+											    int md=m-t*hiddenpiece;
+											    for(int ii=  0; ii<kernel;ii++){
+												  
+												    	areanumber.push_back(ma*h +  mb);
+												
+											                aa.push_back(ma);
+												        bb.push_back(mb);
+												        cc.push_back(mc);
+												        dd.push_back(md);
+												param->associatedindex2[ii][areanumber[ii]][0]=mb*hiddenpiece;
+											     param->associatedindex2[ii][areanumber[ii]][1]=(mb+1)*hiddenpiece-1;
+												    
+												    if(mc>=20*(kernel-1))
+												    {mc=mc-20*(kernel-1);
+												     if(ma==(400/(20*kernel)*(20/kernel)-1) ) ma=0;
+												     else ma+=1;}
+												    else {mc +=20; }
+												   
+											    }	
+												
 											
-											    	    param->associatedindex2[areanum][0]=bb*hiddenpiece;
-											     param->associatedindex2[areanum][1]=(bb+1)*hiddenpiece-1;
+											
+											    
 											    break;}
 								    }
 								     }
@@ -312,15 +331,32 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 		                 for ( int rr =0; rr<param->nOutput/os; rr++){ 
 			          int m= ry*(param->nOutput/os) +rr;
 			     
-					 if((x==m) && (y==n)) {areanum = (400/(20*kernel)*(20/kernel))*h+z*os+ry; 
-							       aa = z;
-							       bb = ry;
-							       cc = n-z*hhiddenpiece;
-							       dd = rr;
-							        param->associatedindex[areanum][0]=aa*hhiddenpiece;
-							        param->associatedindex[areanum][1]=(aa+1)*hhiddenpiece-1;
-							               param->associatedindex2[areanum][0]=bb*param->nOutput/os;
-							        param->associatedindex2[areanum][1]=(bb+1)*param->nOutput/os-1;
+					 if((x==m) && (y==n)) {
+							       int ma = z;
+							       int mb = ry;
+							       int mc = n-z*hhiddenpiece;
+							       int md = rr;
+							        for(int ii=  0; ii<hhiddenpiece;ii++){
+					
+										areanumber.push_back((400/(20*kernel)*(20/kernel))*h+ ma*os +  mb);
+											              aa.push_back(ma);
+												        bb.push_back(mb);
+												        cc.push_back(mc);
+												        dd.push_back(md);
+								param->associatedindex[ii][areanumber[ii]][0]=ma*hhiddenpiece;
+							        param->associatedindex[ii][areanumber[ii]][1]=(ma+1)*hhiddenpiece-1;
+							        param->associatedindex2[ii][areanumber[ii]][0]=mb*param->nOutput/os;
+							        param->associatedindex2[ii][areanumber[ii]][1]=(mb+1)*param->nOutput/os-1; 
+											if(mc==hhiddenpiece-1)
+							{mc=0;
+						 if(ma==(hh-1)) ma=0;
+								else ma+=1;}
+									 else mc+=1;
+											    }
+								    
+								   
+			
+							       	
 							       break;}
 			           }
 			          }
@@ -329,6 +365,7 @@ RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 		            break;
 	                    }
 		    }
+	
 	maxConductance=0; // in case of unwanted situations
 	minConductance=0;
 	pminConductance = 3.0769e-9;
