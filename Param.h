@@ -61,7 +61,8 @@ public:
 	int nInput;     // # of neurons in input layer
 	int nHide;      // # of neurons in hidden layer
 	int nOutput;	// # of neurons in output layer
-		 int allocationmethod=0;
+	 int allocationmethodIH=0;
+	 int allocationmethodHO=0;
 	
 	double alpha1;		// Learning rate for the synapses from input to hidden layer
 	double alpha2;		// Learning rate for the synapses from hidden to output layer
