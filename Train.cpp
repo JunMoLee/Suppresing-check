@@ -679,7 +679,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateIH[3] = param->learningrate[0][3];
 							      }
 								               // reset stopreverse
-								      if((a1[activationindex]>10^-7)&&((reset==1){
+								      if((a1[activationindex]>10^-7)&&(reset==1)){
 						              posstopreverse=1;
 						              negstopreverse=0;}
 								      else{
@@ -708,7 +708,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateIH[3] = param->learningrate[0][3];
 							      }
 								               // reset stopreverse
-										      if((a1[activationindex]<0.8)&&((reset==1){
+										      if((a1[activationindex]<0.8)&&(reset==1)){
 						              posstopreverse=0;
 						              negstopreverse=1;}
 								      else{
