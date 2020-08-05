@@ -106,6 +106,13 @@ vector <int> prevnegstepcount(164000,0);
 vector <double> prevweightsum(164000,0);
 /* double prevzerosigcount1=0; */
 
+vector <vector <int>> conupdatepattern(164000, vector<int>(4,0)); 
+vector <double> prevconpossum(164000,0);
+vector <double> prevconnegsum(164000,0);
+/* double prevpossigcount1=0, prevnegsigcount1=0; */
+
+/* double prevzerosigcount1=0; */
+
 				
 /*Optimization functions*/
 
@@ -1684,6 +1691,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				/* double prevpossigcount1=0, prevnegsigcount1=0; */
 				vector <double> weightsum(164000,0);
 				/* double prevzerosigcount1=0; */   
+			        vector <double> conpossum(164000,0);
+				vector <double> connegsum(164000,0);
+			        
 			
 		     
                   if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
@@ -1701,7 +1711,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				 posstepcount[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
 				 negstepcount[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
-
+                                 conpossum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ConductanceGp;
+				 connegsum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ConductanceGn;	 
 				 weightsum[areanum1]+=weight1[m][n];
 			         static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 				 }
@@ -1712,6 +1723,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
 		        for (int areanum11=0; areanum11<400/(kernel*kernel)*h; areanum11++){
 		   cout<<"area "<<areanum11<<" "<<updatepattern[areanum11][0]*1000+updatepattern[areanum11][1]*100+updatepattern[areanum11][2]*10+updatepattern[areanum11][3];
+				cout<<"  "<<conupdatepattern[areanum11][0]*1000+conupdatepattern[areanum11][1]*100+conupdatepattern[areanum11][2]*10+conupdatepattern[areanum11][3];
 		        cout<<"   "<<prevposstepcount[areanum11]<<" "<<prevnegstepcount[areanum11]<<" "<<posstepcount[areanum11]<<" "<<negstepcount[areanum11];
 			    double sumgradient=0;
 				cout<<"   ";
@@ -1727,12 +1739,20 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    updatepattern[areanum11][1] = adaptlogic(prevweightsum[areanum11]);
 				    updatepattern[areanum11][2] = adaptlogic(posstepcount[areanum11]-negstepcount[areanum11]);
 				    updatepattern[areanum11][3] = adaptlogic(weightsum[areanum11]);
-				     
+				
+				    conupdatepattern[areanum11][0] = conupdatepattern[areanum11][2];
+				    conupdatepattern[areanum11][1] = conupdatepattern[areanum11][3];
+				    conupdatepattern[areanum11][2] = adaptlogic(conpossum[areanum11]-prevconpossum[areanum11]);
+				    conupdatepattern[areanum11][3] = adaptlogic(connegsum[areanum11]-prevconnegsum[areanum11]);
+			
+
 				     
 				    prevpossatsum[areanum11] = possatsum[areanum11];
 				    prevnegsatsum[areanum11] = negsatsum[areanum11];
 				    prevposstepcount[areanum11] = posstepcount[areanum11];
 				    prevnegstepcount[areanum11] = negstepcount[areanum11];
+				     prevconpossum[areanum11] = conpossum[areanum11];
+			            prevconnegsum[areanum11] = connegsum[areanum11];
 				  /*  prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
 				    prevweightsum[areanum11] = weightsum[areanum11];
@@ -1771,6 +1791,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
 		        for (int areanum22=(400/(20*kernel)*(20/kernel))*h; areanum22<(400/(20*kernel)*(20/kernel))*h+hh*os; areanum22++){
 		     cout<<"area "<<areanum22<<" "<<updatepattern[areanum22][0]*1000+updatepattern[areanum22][1]*100+updatepattern[areanum22][2]*10+updatepattern[areanum22][3];
+				cout<<"  "<<conupdatepattern[areanum22][0]*1000+conupdatepattern[areanum22][1]*100+conupdatepattern[areanum22][2]*10+conupdatepattern[areanum22][3];
 		        cout<<"   "<<prevposstepcount[areanum22]<<" "<<prevnegstepcount[areanum22]<<" "<<posstepcount[areanum22]<<" "<<negstepcount[areanum22];
 			
 				cout<<"   ";
@@ -1798,11 +1819,20 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    updatepattern[areanum22][2] = adaptlogic(posstepcount[areanum22]-negstepcount[areanum22]);
 				    updatepattern[areanum22][3] = adaptlogic(weightsum[areanum22]);
 				     
+				   conupdatepattern[areanum22][0] = conupdatepattern[areanum22][2];
+				    conupdatepattern[areanum22][1] = conupdatepattern[areanum22][3];
+				    conupdatepattern[areanum22][2] = adaptlogic(conpossum[areanum22]-prevconpossum[areanum22]);
+				    conupdatepattern[areanum22][3] = adaptlogic(connegsum[areanum22]-prevconnegsum[areanum22]);
+			
+
 				     
 				    prevpossatsum[areanum22] = possatsum[areanum22];
 				    prevnegsatsum[areanum22] = negsatsum[areanum22];
 				    prevposstepcount[areanum22] = posstepcount[areanum22];
 				    prevnegstepcount[areanum22] = negstepcount[areanum22];
+				     prevconpossum[areanum22] = conpossum[areanum22];
+			            prevconnegsum[areanum22] = connegsum[areanum22];
+				  /*  prevpossigcount1= possigcount2;
 				  /*  prevpossigcount1= possigcount2;
 				    prevnegsigcount1= negsigcount2; */
 				    prevweightsum[areanum22] = weightsum[areanum22];
