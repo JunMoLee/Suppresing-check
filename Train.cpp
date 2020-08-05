@@ -1650,8 +1650,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			  int allocationmethod = param -> allocationmethod;
 	             // weight IH
 		       /* saturation count */
-			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
-		         cout << "IH"<<endl; */
+			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
+		         cout << "IH"<<endl; 
 			
 			
                          for (int m=0; m<param->nHide; m++){
@@ -1670,16 +1670,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 			// cout<<"area "<<areanum<<" "<<adaptlogic(prevposstepcount1[areanum]-prevnegstepcount1[areanum])<<adaptlogic(prevweightsum1[areanum])<<adaptlogic(prevpossatsum1[areanum]-prevnegsatsum1[areanum])<<"    "<<adaptlogic(posstepcount1-negstepcount1)<<adaptlogic(weightsum1)<<adaptlogic(possatsum1-negsatsum1);
 		        for (int areanum11=0; areanum11<400/(kernel*kernel)*h; areanum11++){
-		   cout<<"area "<<areanum<<" "<<updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3];
-		        cout<<"   "<<prevposstepcount[areanum]<<" "<<prevnegstepcount[areanum]<<" "<<posstepcount[areanum]<<" "<<negstepcount[areanum];
-			   /*     double sumgradient=0;
+		   cout<<"area "<<areanum11<<" "<<updatepattern[areanum11][0]*1000+updatepattern[areanum11][1]*100+updatepattern[areanum11][2]*10+updatepattern[areanum11][3];
+		        cout<<"   "<<prevposstepcount[areanum11]<<" "<<prevnegstepcount[areanum11]<<" "<<posstepcount[areanum11]<<" "<<negstepcount[areanum11];
+			    double sumgradient=0;
 				cout<<"   ";
 				for(int ai=param->associatedindex2[areanum][0]; ai<= param->associatedindex2[areanum][1];ai++){
 				cout<<ai<<","<<scaling(s1[ai])<<"/";
 			        sumgradient += s1[ai];
 				}
-				cout<<" "<< scaling(sumgradient); */
-				cout<<endl; */
+				cout<<" "<< scaling(sumgradient);
+				cout<<endl; 
 			  
 		        
 				    updatepattern[areanum11][0] = adaptlogic(prevposstepcount[areanum11]-prevnegstepcount[areanum11]);
@@ -1697,18 +1697,18 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevweightsum[areanum11] = weightsum[areanum11];
                           
 		        }
-			/*	for (int e=0; e<100;e++){
+				for (int e=0; e<100;e++){
 					
 							cout<<"   "<<"a["<<e<<"]="<<scaling(a1[e])<<"   "<<"s["<<e<<"]="<<scaling(s1[e])<<endl;
-				} */
+				} 
 				
-				/* cout<<endl; */
+				 cout<<endl; 
 				
 				
 			// weight HO
 				
 				
-		       /*  cout << "OH"<<endl;	*/
+		         cout << "OH"<<endl;	
 				
 		    /* saturation count */
 			
