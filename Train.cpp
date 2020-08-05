@@ -144,7 +144,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                 
 			       int kernel =  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->kernel; 	
 		               int h = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->h; 
+	                       int hiddenpiece = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hiddenpiece; 
 		               int hh = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hh; 
+	   int hhiddenpiece = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hhiddenpiece; 
 		               int os = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os;
                                int counteradaptIH =0;
                                int counteradaptHO =0;
@@ -1178,7 +1180,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           double learningrateHO [4];
 				                           int bb= dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->bb[allocationmethod2];
 				                           int dd = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd[allocationmethod2];
-				                           int activationindex= bb*hiddenpiece + dd;
+				                           int activationindex= bb*(param->nOutput/os) + dd;
 				                           // classify area by index
 
                          
