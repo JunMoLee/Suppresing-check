@@ -595,6 +595,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
                                                            int areanum=dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanumber[allocationmethod1];
 				                           double learningrateIH [4];
+				                            int bb= dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->bb[allocationmethod2];
+				                           int dd = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd[allocationmethod2];
+				                           int activationindex= bb*hiddenpiece + dd;
 				
 				
 
@@ -656,10 +659,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      {
 								      
 							      if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
+							      if(a1[activationindex]>10^-7){
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1]/3;
 							      learningrateIH[2] = param->learningrate[0][2];
+							      learningrateIH[3] = param->learningrate[0][3];}
+							      else{
+							       learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];
+							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
+							      }
 							      } else {
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -678,10 +688,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333) && (reset==1))
 							      {
 					                       if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
+							      if(a1[activationindex]<0.8){
 							      learningrateIH[0] = param->learningrate[0][0]/3;
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
+							      learningrateIH[3] = param->learningrate[0][3];}
+							      else {
+							      learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];
+							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];
+							      }
 							      } else {
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -1159,6 +1176,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    
                                                            int areanum=dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanumber[allocationmethod2];
 				                           double learningrateHO [4];
+				                           int bb= dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->bb[allocationmethod2];
+				                           int dd = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd[allocationmethod2];
+				                           int activationindex= bb*hiddenpiece + dd;
 				                           // classify area by index
 
                          
@@ -1241,10 +1261,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                       else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)  && (reset==1))
 							      {
 							     if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      learningrateHO[0] = param->learningrate[0][0];
+							      if(a2[activationindex]>10^-7)
+							      {learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1]/3;
 							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];}
+							      else
+							      {learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
 							      learningrateHO[3] = param->learningrate[0][3];
+							      }
 							      } else {
 							      learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];
@@ -1262,10 +1289,17 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333)  && (reset==1))
 							      {
 							     if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      learningrateHO[0] = param->learningrate[0][0]/3;
+							      if (a2[activationindex]<0.8)
+							      {learningrateHO[0] = param->learningrate[0][0]/3;
+							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2];
+							      learningrateHO[3] = param->learningrate[0][3];}
+							      else
+							      {learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];
 							      learningrateHO[2] = param->learningrate[0][2];
 							      learningrateHO[3] = param->learningrate[0][3];
+							      }
 							      } else {
 							      learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];
