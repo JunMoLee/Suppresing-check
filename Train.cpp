@@ -1656,7 +1656,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
                          for (int m=0; m<param->nHide; m++){
 				 for (int n=0; n<param->nInput; n++){
-				  int areanum1=dynamic_cast<AnalogNVM*>(arrayIH->cell[m][n])->areanumber[allocationmethod];
+				  int areanum1=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->areanumber[allocationmethod];
 
 				 posstepcount[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
 				 negstepcount[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
@@ -1715,7 +1715,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
                          for (int m=0; m<param->nOutput; m++){
 				 for (int n=0; n<param->nHide; n++){
-				 int areanum2=dynamic_cast<AnalogNVM*>(arrayHO->cell[m][m])->areanumber[allocationmethod];
+				 int areanum2=static_cast<AnalogNVM*>(arrayHO->cell[m][m])->areanumber[allocationmethod];
 
 				posstepcount[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep;
 				negstepcount[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep;
