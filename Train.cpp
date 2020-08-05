@@ -150,6 +150,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                int counteradaptHO =0;
                                int maxcounterIH = param->nHide/h;
 	                       int maxcounterHO = param->nOutput/os;
+	                       int maxallocationmethodIH = kernel-1;
+                               int maxallocationmethodHO = param->nHide/hh-1;
 	
 		     
 	for (int t = 0; t < epochs; t++) {
@@ -589,7 +591,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				
 				    
-                                                           int allocationmethod1 = param -> allocationmethod;
+                                                           int allocationmethod1 = param -> allocationmethodIH;
+
                                                            int areanum=dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanumber[allocationmethod1];
 				                           double learningrateIH [4];
 				
@@ -803,7 +806,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						            else if ((int)(param->newUpdateRate/adNur)==(int)(param->nnewUpdateRate/adNur))
 									
 								{ // if + reverse update = - reverse update
-									
+								
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1)))
 								// reverse update condition
 								arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, !(posstopreverse*negstopreverse), (!posstopreverse*negstopreverse), !posstopreverse*!negstopreverse, learningrateIH);
@@ -1152,7 +1155,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				      /* weight HO update */ 
 				
 				
-				                           int allocationmethod2 = param -> allocationmethod;
+				                           int allocationmethod2 = param -> allocationmethodHO;
 				    
                                                            int areanum=dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanumber[allocationmethod2];
 				                           double learningrateHO [4];
@@ -1391,7 +1394,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, false, false, false,  learningrateHO);	
 			
 								}
-									
+								
+								      /* update allocation method */
+								      param->allocationmethod +=1 ;
 								}
 								
 						        } // end of if
@@ -1647,7 +1652,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 		     
                   if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
-			  int allocationmethod = param -> allocationmethod;
+			  int allocationmethod1 = param -> allocationmethodIH;
+			  int allocationmethod2 = param-> allocationmethodHO;
 	             // weight IH
 		       /* saturation count */
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
@@ -1674,7 +1680,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        cout<<"   "<<prevposstepcount[areanum11]<<" "<<prevnegstepcount[areanum11]<<" "<<posstepcount[areanum11]<<" "<<negstepcount[areanum11];
 			    double sumgradient=0;
 				cout<<"   ";
-				for(int ai=param->associatedindex2[allocationmethod][areanum11][0]; ai<= param->associatedindex2[allocationmethod][areanum11][1];ai++){
+				for(int ai=param->associatedindex2[allocationmethod1][areanum11][0]; ai<= param->associatedindex2[allocationmethod1][areanum11][1];ai++){
 				cout<<ai<<","<<scaling(s1[ai])<<"/";
 			        sumgradient += s1[ai];
 				}
@@ -1735,13 +1741,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				cout<<"   ";
 				double sumactivation=0;
 				double outputgradient=0;
-				for(int ai=param->associatedindex[allocationmethod][areanum22][0]; ai<= param->associatedindex[allocationmethod][areanum22][1];ai++){
+				for(int ai=param->associatedindex[allocationmethod2][areanum22][0]; ai<= param->associatedindex[allocationmethod2][areanum22][1];ai++){
 				cout<<ai<<","<<scaling(a1[ai]*(1-a1[ai]))<<"/";
 				sumactivation += a1[ai]*(1-a1[ai]);
 				
 				}
 				cout<<" || ";
-				for(int ai=param->associatedindex2[allocationmethod][areanum22][0]; ai<= param->associatedindex2[allocationmethod][areanum22][1];ai++){
+				for(int ai=param->associatedindex2[allocationmethod2][areanum22][0]; ai<= param->associatedindex2[allocationmethod2][areanum22][1];ai++){
 				cout<<ai<<","<<scaling(s2[ai])<<"/";
 		
 				outputgradient += s2[ai];
@@ -1835,7 +1841,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	weightdis.open("weightdistribution.csv",std::ios_base::app);  
 	weightdis << epochcount << ", " << batchSize << ", " << batchSize+numTrain*(epochcount-1) <<", "<<(weightsum1>0)<<", "<<(positiveweight1>negativeweight1)<<", "<< (weightsum2>0) << ", " << (positiveweight2>negativeweight2); */
 	    	
-	}   // end of weight update code for 1 epoch
+			
+				if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
+				param->allocationmethodIH++;
+				param->allocationmethodHO++:
+				                           if( param -> allocationmethodIH>maxallocationmethodIH) param -> allocationmethodIH=0;
+				 if( param -> allocationmethodHO>maxallocationmethodHO) param -> allocationmethodHO=0;}
+			
+	}   // end of weight update code for 1 cycle
 		
 		
 	/* track weights */
@@ -1914,7 +1927,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 	} // end of weight tracking code
 	
-		
+
 	
     }  // end of interepoch code (default -> iterate once)
 }  // end of Train function
