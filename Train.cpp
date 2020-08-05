@@ -663,7 +663,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
 							      if(a1[activationindex]>10^-7){
 							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1]/3;
+							      learningrateIH[1] = param->learningrate[0][1]/2;
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];}
 							      else{
@@ -691,7 +691,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      {
 					                       if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
 							      if(a1[activationindex]<0.8){
-							      learningrateIH[0] = param->learningrate[0][0]/3;
+							      learningrateIH[0] = param->learningrate[0][0]/2;
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
 							      learningrateIH[3] = param->learningrate[0][3];}
@@ -1265,7 +1265,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							     if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
 							      if(a2[activationindex]>10^-7)
 							      {learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1]/3;
+							      learningrateHO[1] = param->learningrate[0][1]/2;
 							      learningrateHO[2] = param->learningrate[0][2];
 							      learningrateHO[3] = param->learningrate[0][3];}
 							      else
@@ -1292,7 +1292,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      {
 							     if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
 							      if (a2[activationindex]<0.8)
-							      {learningrateHO[0] = param->learningrate[0][0]/3;
+							      {learningrateHO[0] = param->learningrate[0][0]/2;
 							      learningrateHO[1] = param->learningrate[0][1];
 							      learningrateHO[2] = param->learningrate[0][2];
 							      learningrateHO[3] = param->learningrate[0][3];}
