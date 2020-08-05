@@ -597,8 +597,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
                                                            int areanum=dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->areanumber[allocationmethod1];
 				                           double learningrateIH [4];
-				                            int bb= dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->bb[allocationmethod2];
-				                           int dd = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd[allocationmethod2];
+				                            int bb= dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->bb[allocationmethod1];
+				                           int dd = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd[allocationmethod1];
 				                           int activationindex= bb*hiddenpiece + dd;
 				
 				
