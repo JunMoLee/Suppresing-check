@@ -63,7 +63,7 @@ public:
 	int nOutput;	// # of neurons in output layer
 	 int allocationmethodIH=0;
 	 int allocationmethodHO=0;
-	
+	int usealternatearea=0;
 	double alpha1;		// Learning rate for the synapses from input to hidden layer
 	double alpha2;		// Learning rate for the synapses from hidden to output layer
 	double speed;           // speed ratio between different layers : in this case, (learning rate of IH) / (learning rate of HO)
