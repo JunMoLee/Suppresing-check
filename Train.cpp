@@ -1772,12 +1772,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevweightsum[areanum22] = weightsum[areanum22];
                           }
 		
-			/* for (int e=0; e<10;e++){
+			 for (int e=0; e<10;e++){
 					
 							cout<<"   "<<"a["<<e<<"]="<<scaling(a2[e])<<"   "<<"s["<<e<<"]="<<scaling(s2[e])<<endl;
-				} */
+				} 
 				
-				 /* cout<<endl; */
+				cout<<endl; 
 				
 			/* cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 			cout <<"avg IH positive sat: " << possatsum1/param->RefreshRate/40000<< ", " <<possatsum1/param->RefreshRate/40000*100<<"%";
