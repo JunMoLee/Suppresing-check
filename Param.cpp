@@ -40,15 +40,23 @@
 #include "Param.h"
 
 Param::Param() {
-	for (int i=0;i<164000;i++){
-	vector <int> index (2,0);
-	associatedindex.push_back(index);
+for (int r=0; r<100; r++){
+        vector <vector <int>> previndex1;
+		for (int f=0;f<164000;f++){
+	vector <int> index1 (2,0);
+	previndex1.push_back(index1);
+		}
+	associatedindex.push_back(previndex1);
 	}
 	
-	for (int i=0;i<164000;i++){
-	vector <int> index (2,0);
-	associatedindex2.push_back(index);
-	}
+	for (int r=0; r<100; r++){
+        vector <vector <int>> previndex2;
+		for (int f=0;f<164000;f++){
+	vector <int> index2 (2,0);
+	previndex2.push_back(index2);
+		}
+	associatedindex2.push_back(previndex2);
+	} 
 	
 	
 	/* MNIST dataset */
