@@ -1841,7 +1841,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	weightdis << epochcount << ", " << batchSize << ", " << batchSize+numTrain*(epochcount-1) <<", "<<(weightsum1>0)<<", "<<(positiveweight1>negativeweight1)<<", "<< (weightsum2>0) << ", " << (positiveweight2>negativeweight2); */
 	    	
 			
-				if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
+				if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate*param->usealternatearea==((int)(param->newUpdateRate/adNur-1))){
 				param->allocationmethodIH++;
 				param->allocationmethodHO++;
 				                           if( param -> allocationmethodIH>maxallocationmethodIH) param -> allocationmethodIH=0;
