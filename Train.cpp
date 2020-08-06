@@ -668,7 +668,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      {
 								      
 							      if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      if(a1[activationindex]<0.5){
+							      if(a1[activationindex]>=0){
 							      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1]/2;
 							      learningrateIH[2] = param->learningrate[0][2];
@@ -686,7 +686,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateIH[3] = param->learningrate[0][3];
 							      }
 								               // reset stopreverse
-								      if((a1[activationindex]<0.5)&&(reset==1)){
+								      if((a1[activationindex]>=0)&&(reset==1)){
 						              posstopreverse=1;
 						              negstopreverse=0;}
 								      else{
@@ -697,7 +697,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333) && (reset==1))
 							      {
 					                       if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      if(a1[activationindex]>0.5){
+							      if(a1[activationindex]>=0){
 							      learningrateIH[0] = param->learningrate[0][0]/2;
 							      learningrateIH[1] = param->learningrate[0][1];
 							      learningrateIH[2] = param->learningrate[0][2];
@@ -715,7 +715,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateIH[3] = param->learningrate[0][3];
 							      }
 								               // reset stopreverse
-										      if((a1[activationindex]>0.5)&&(reset==1)){
+										      if((a1[activationindex]>=0)&&(reset==1)){
 						              posstopreverse=0;
 						              negstopreverse=1;}
 								      else{
@@ -1270,7 +1270,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                       else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)  && (reset==1))
 							      {
 							     if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      if(a2[activationindex]<0.5)
+							      if(a2[activationindex]>=0)
 							      {learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1]/2;
 							      learningrateHO[2] = param->learningrate[0][2];
@@ -1288,7 +1288,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateHO[3] = param->learningrate[0][3];
 							      }
 								               // reset stopreverse
-							if((reset==1) && (a2[activationindex]<0.5)){
+							if((reset==1) && (a2[activationindex]>=0)){
 						              posstopreverse=1;
 						              negstopreverse=0;}
 								      else{
@@ -1298,7 +1298,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333)  && (reset==1))
 							      {
 							     if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      if (a2[activationindex]>0.5)
+							      if (a2[activationindex]>=0)
 							      {learningrateHO[0] = param->learningrate[0][0]/2;
 							      learningrateHO[1] = param->learningrate[0][1];
 							      learningrateHO[2] = param->learningrate[0][2];
@@ -1316,7 +1316,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateHO[3] = param->learningrate[0][3];
 							      }
 								               // reset stopreverse
-						             if((a2[activationindex]<0.5)&&(reset==1)){
+						             if((a2[activationindex]>=0)&&(reset==1)){
 						              posstopreverse=0;
 						              negstopreverse=1;}
 								      else{
