@@ -123,8 +123,8 @@ for (int r=0; r<100; r++){
 	learningrate[1][2] = pdalpha;
 	learningrate[1][3] = dalpha;
 		
-	tp = 12.5;
-	tn = 12.5;
+	tp = 10;
+	tn = 10;
 	kp=128;
 	kd=1;
 	knp=97;
