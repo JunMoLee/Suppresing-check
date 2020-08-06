@@ -1554,6 +1554,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
 		     
                   if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-2)){
+			  int allocationmethod1 = param -> allocationmethodIH;
+			  int allocationmethod2 = param-> allocationmethodHO;
 			  
 			  			  for (int m=0; m<param->nHide; m++){
 				 for (int n=0; n<param->nInput; n++){
