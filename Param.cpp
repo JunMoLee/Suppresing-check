@@ -75,6 +75,12 @@ for (int r=0; r<100; r++){
 	rdl=10;
 	const double
 	ss=0;
+	const double
+	lrs=5;
+	const double
+	ar=1.2
+	learningratesplit = lrs;
+	adaptiveratio =ar;
 	selectsim=ss;
 	
 	/* Weight track variables */
