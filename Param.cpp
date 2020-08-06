@@ -64,13 +64,13 @@ for (int r=0; r<100; r++){
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=30;
+        l=40;
 	const double
-	ll=30;
+	ll=40;
 	const double
-	dl=20;
+	dl=40;
 	const double
-	pdl=15;
+	pdl=40;
 	const double
 	rdl=10;
 	const double
@@ -79,7 +79,7 @@ for (int r=0; r<100; r++){
 	
 	/* Weight track variables */
 	weighttrack=0;
-	TrackRate=150;
+	TrackRate=2;
 	
 	
 	/* Algorithm parameters */
@@ -176,15 +176,15 @@ for (int r=0; r<100; r++){
 	frr=1000;
 	RefreshRate = frr;
 	const int 
-	nur=150;
+	nur=2;
 	const int 
 	rnur=1;
 	const int
-	nurn=150;
+	nurn=2;
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
-a=0;
+a=1;
 	
 
 switch(a){
