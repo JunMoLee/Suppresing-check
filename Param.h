@@ -102,6 +102,8 @@ public:
 	
 	double cp; // common NL of P
 	double cd; // common NL of D
+	double learningratesplit;
+	double adaptiveratio;
 	
         char* optimization_type;
 
