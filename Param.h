@@ -104,7 +104,7 @@ public:
 	double cd; // common NL of D
 	double learningratesplit;
 	double adaptiveratio;
-	
+	double adaptivemomentum;
         char* optimization_type;
 
 	/* Hardware parameters */
