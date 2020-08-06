@@ -210,7 +210,7 @@ int main() {
 		}
 		cout <<endl;
 		 cout << "Training Epoch : " << i << endl; 	
-		Train(param->numTrainImagesPerEpoch, param->interNumEpochs, param->optimization_type, i,0, 1, 1);
+		Train(param->numTrainImagesPerEpoch, param->interNumEpochs, param->optimization_type, i,0);
 		cout<<endl;
 		cout<<"IH"<<endl;
 		cout<<"LTP alpha(+) "<< param->learningrate[0][0] <<" LTP alpha(-) "<<param->learningrate[0][1];
