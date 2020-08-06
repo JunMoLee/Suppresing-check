@@ -81,6 +81,7 @@ for (int r=0; r<100; r++){
 	ar=1.2
 	learningratesplit = lrs;
 	adaptiveratio =ar;
+	adaptivemomentum = am;
 	selectsim=ss;
 	
 	/* Weight track variables */
