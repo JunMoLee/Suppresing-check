@@ -108,7 +108,9 @@ vector <double> prevweightsum(164000,0);
 
 vector <vector <int>> conupdatepattern(164000, vector<int>(4,0)); 
 vector <double> prevconpossum(164000,0);
-vector <double> prevconnegsum(164000,0);
+vector <double> prevconnegsum(164000,0);			        
+vector <double> conpossum(164000,0);
+vector <double> connegsum(164000,0);
 /* double prevpossigcount1=0, prevnegsigcount1=0; */
 
 /* double prevzerosigcount1=0; */
@@ -582,11 +584,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
                             // verify lowest Gp or probabilitstically deternmine cell to reset//
 			    
-			    int reset=0;
-		            random_device rd;
-			    mt19937 gen(rd());
-			    uniform_int_distribution<int> dis(0,9);
-			    if(dis(gen)==0) reset=1; 
+			
 			    
 			 /*   if((dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==counteradaptIH) || (dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd==(counteradaptIH + 1)))
 			    {reset=1;} */
@@ -612,131 +610,71 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				               
 						          // adpative weight update 
-				                           if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1)
-							   {			 
-							      if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2211)
+				                     	      learningrateIH[0] = param->learningrate[0][0];
+							      learningrateIH[1] = param->learningrate[0][1];	 
+							   
+							    if((0<conpossum[areanum])&&(conpossum[areanum]<32))
+							     {
+							      
+							      learningrateIH[2] = param->learningrate[0][2]*1.1;
+							      }
+							      else if ((32<conpossum[areanum])&&(conpossum[areanum]<64))
 							      {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-							      posstopreverse=1;
-						              negstopreverse=1;
-							      }
-			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2233)
-							      {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-							      posstopreverse=1;
-						              negstopreverse=1;
-							      }
-				                              else
-							      {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
-							      }
-							   }
-					                   else {
-				                              if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1313)  && (reset==1))
-							      {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
-							      }
-					                      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3131)  && (reset==1))
-							      {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
-							      }
-                                                              else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111))
-							      {
-								      
-							      if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      if(a1[activationindex]>=0){
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1]/2;
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];}
-							      else{
-							       learningrateIH[0] = param->learningrate[0][0]*2;
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-							      }
-							      } else {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-							      }
-								               // reset stopreverse
-								      if((a1[activationindex]>=0)&&(reset==1)){
-						              posstopreverse=1;
-						              negstopreverse=0;}
-								      else{
-							      posstopreverse=1;
-						              negstopreverse=1;}
+							      learningrateIH[2] = param->learningrate[0][2]*1.1;
 							      
 							      }
-							      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333) && (reset==1))
+							      else if ((64<conpossum[areanum])&&(conpossum[areanum]<96)) 
 							      {
-					                       if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      if(a1[activationindex]>=0){
-							      learningrateIH[0] = param->learningrate[0][0]/2;
-							      learningrateIH[1] = param->learningrate[0][1];
+							   
 							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];}
-							      else {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1]*2;
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
-							      }
-							      } else {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
+							   
 							      }
 								               // reset stopreverse
-										      if((a1[activationindex]>=0)&&(reset==1)){
-						              posstopreverse=0;
-						              negstopreverse=1;}
-								      else{
-							      posstopreverse=1;
-						              negstopreverse=1;}
+						              else if ((96<conpossum[areanum])&&(conpossum[areanum]<128)) 
+							      {
+						       	    
+							      learningrateIH[2] = param->learningrate[0][2]/1.1;
+							      
 							      }
 				                              else
 							      {
-							      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];
-							      learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
+							      
+							      learningrateIH[2] = param->learningrate[0][2]/1.1;
+							     
 								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
+						         
+							      }
+				
+				
+							  if((0<connegsum[areanum])&&(connegsum[areanum]<32))
+							     {
+							      
+							      learningrateIH[3] = param->learningrate[0][3]*1.1;}
+							      else if ((32<connegsum[areanum])&&(connegsum[areanum]<64))
+							      {
+							 
+							      learningrateIH[3] = param->learningrate[0][3]*1.1;
+							      }
+							      else if ((64<connegsum[areanum])&&(connegsum[areanum]<96)) 
+							      {
+							  
+							      learningrateIH[3] = param->learningrate[0][3];
+							      }
+								               // reset stopreverse
+						              else if ((96<connegsum[areanum])&&(connegsum[areanum]<128)) 
+							      {
+						       	    
+							      learningrateIH[3] = param->learningrate[0][3]/1.1;
+							      }
+				                              else
+							      {
+							    
+							      learningrateIH[3] = param->learningrate[0][3]/1.1;
+								               // reset stopreverse
+						         
 							      }
 								   
-			counteradaptIH++;
-			    if(counteradaptIH == maxcounterIH-1)
-			    {counteradaptIH =0;}
-							   }
+		
 				                           // reset weightupdatepattern
 				                                
 				                
@@ -1169,10 +1107,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			/*   if((dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd==(counteradaptHO)) || (dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd==(counteradaptHO+1)))
 			    {reset=1;} */
 			    
-			  random_device rd;
-			    mt19937 gen(rd());
-			    uniform_int_distribution<int> dis(0,9);
-			    if(dis(gen)==0) reset=1; 
+		
 				
 			/*   int adaptivegradient=0;
 			    for(int f=param->associatedindex[dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum][0]; f<param->associatedindex[dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->areanum][1]; f++)
@@ -1216,148 +1151,70 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						       } */
 				
 							   // adpative weight update 
-				                         if((batchSize+numTrain*(epochcount-1))==param->TrackRate*2-1)
-							   {
-							      if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2211)
-							      {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-							     posstopreverse=1;
-						              negstopreverse=1;
+				                       // adpative weight update 
+				                     	      learningrateHO[0] = param->learningrate[0][0];
+							      learningrateHO[1] = param->learningrate[0][1];	 
+							   
+							    if((0<conpossum[areanum])&&(conpossum[areanum]<8))
+							     {
+							      
+							      learningrateHO[2] = param->learningrate[0][2]*1.1;
 							      }
-			                                      else if(updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 2233)
+							      else if ((8<conpossum[areanum])&&(conpossum[areanum]<16))
 							      {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
+							      learningrateHO[2] = param->learningrate[0][2]*1.1;
+							      
+							      }
+							      else if ((16<conpossum[areanum])&&(conpossum[areanum]<24)) 
+							      {
+							   
 							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-							      posstopreverse=1;
-						              negstopreverse=1;
+							   
+							      }
+								               // reset stopreverse
+						              else if ((24<conpossum[areanum])&&(conpossum[areanum]<32)) 
+							      {
+						       	    
+							      learningrateHO[2] = param->learningrate[0][2]/1.1;
+							      
 							      }
 				                              else
 							      {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
+							      
+							      learningrateHO[2] = param->learningrate[0][2]/1.1;
+							     
 								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
+						         
 							      }
-							   }
-					                   else {
-				                              if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3111)  && (reset==1))
+				
+				
+							  if((0<connegsum[areanum])&&(connegsum[areanum]<8))
+							     {
+							      
+							      learningrateHO[3] = param->learningrate[0][3]*1.1;}
+							      else if ((8<connegsum[areanum])&&(connegsum[areanum]<16))
 							      {
-				                              learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-							      posstopreverse=1;
-						              negstopreverse=1;
+							 
+							      learningrateHO[3] = param->learningrate[0][3]*1.1;
 							      }
-			                                      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] ==1333) && (reset==1))
+							      else if ((16<connegsum[areanum])&&(connegsum[areanum]<24)) 
 							      {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
-							      }
-                                      else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1111)  && (reset==1))
-							      {
-							     if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      if(a2[activationindex]>=0)
-							      {learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1]/2;
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];}
-							      else
-							      {learningrateHO[0] = param->learningrate[0][0]*2;
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-							      }
-							      } else {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
+							  
 							      learningrateHO[3] = param->learningrate[0][3];
 							      }
 								               // reset stopreverse
-							if((reset==1) && (a2[activationindex]>=0)){
-						              posstopreverse=1;
-						              negstopreverse=0;}
-								      else{
-							      posstopreverse=1;
-						              negstopreverse=1;}
-							      }
-							else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3333)  && (reset==1))
+						              else if ((24<connegsum[areanum])&&(connegsum[areanum]<32)) 
 							      {
-							     if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
-							      if (a2[activationindex]>=0)
-							      {learningrateHO[0] = param->learningrate[0][0]/2;
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];}
-							      else
-							      {learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1]*2;
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-							      }
-							      } else {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-							      }
-								               // reset stopreverse
-						             if((a2[activationindex]>=0)&&(reset==1)){
-						              posstopreverse=0;
-						              negstopreverse=1;}
-								      else{
-							      posstopreverse=1;
-						              negstopreverse=1;}
-							      }
-						else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 1313)  && (reset==1))
-							      {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
-							      }
-						else if((updatepattern[areanum][0]*1000+updatepattern[areanum][1]*100+updatepattern[areanum][2]*10+updatepattern[areanum][3] == 3131)  && (reset==1))
-							      {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
-								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
+						       	    
+							      learningrateHO[3] = param->learningrate[0][3]/1.1;
 							      }
 				                              else
 							      {
-							      learningrateHO[0] = param->learningrate[0][0];
-							      learningrateHO[1] = param->learningrate[0][1];
-							      learningrateHO[2] = param->learningrate[0][2];
-							      learningrateHO[3] = param->learningrate[0][3];
+							    
+							      learningrateHO[3] = param->learningrate[0][3]/1.1;
 								               // reset stopreverse
-						              posstopreverse=1;
-						              negstopreverse=1;
+						         
 							      }
-								   
-								   counteradaptHO++;
-			    if(counteradaptHO == maxcounterHO-1)
-			    {counteradaptHO =0;}
-							   }
 				                          // reset weightupdatepattern
 				                                
 			
@@ -1681,26 +1538,52 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			} // end of if code
 				
 			} // end of full-reset code
-			       
+			
 
 			
-                                vector <int> possatsum(164000,0);
+             /*           vector <int> possatsum(164000,0);
                                 vector <int> negsatsum(164000,0);
 				vector <int> posstepcount(164000,0);
 				vector <int> negstepcount(164000,0);
-				/* double prevpossigcount1=0, prevnegsigcount1=0; */
+				 double prevpossigcount1=0, prevnegsigcount1=0; 
 				vector <double> weightsum(164000,0);
-				/* double prevzerosigcount1=0; */   
-			        vector <double> conpossum(164000,0);
-				vector <double> connegsum(164000,0);
+				double prevzerosigcount1=0;  */
+			        vector <double>  currentconpossum(164000,0);
+				vector <double>  currentconnegsum(164000,0); 
 			        
 			
 		     
-                  if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-1)){
-			  int allocationmethod1 = param -> allocationmethodIH;
+                  if ((batchSize+numTrain*(epochcount-1)) % param->TrackRate == (param->TrackRate-2)){
+			  
+			  			  for (int m=0; m<param->nHide; m++){
+				 for (int n=0; n<param->nInput; n++){
+				  int areanum1=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->areanumber[allocationmethod1];
+
+			
+                                  currentconpossum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp;
+				  currentconnegsum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn;	
+				 conpossum[areanum1] +=    currentconpossum[areanum1];
+				connegsum[areanum1] +=   currentconnegsum[areanum1];	
+			
+				 }
+			 }
+			       
+			  for (int m=0; m<param->nOutput; m++){
+				 for (int n=0; n<param->nHide; n++){
+				 int areanum2=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->areanumber[allocationmethod2];
+
+
+					   currentconpossum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp;
+				 currentconnegsum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn;	
+					 conpossum[areanum2] =    currentconpossum[areanum2];
+				connegsum[areanum2] =   currentconnegsum[areanum2]	;
+                                 
+				 }
+			 }
+			/*  int allocationmethod1 = param -> allocationmethodIH;
 			  int allocationmethod2 = param-> allocationmethodHO;
 	             // weight IH
-		       /* saturation count */
+		       // saturation count 
 			 cout << "epoch : "<<epochcount << " batchSize : " <<batchSize<<endl;
 		         cout << "IH"<<endl; 
 			
@@ -1756,8 +1639,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegstepcount[areanum11] = negstepcount[areanum11];
 				     prevconpossum[areanum11] = conpossum[areanum11];
 			            prevconnegsum[areanum11] = connegsum[areanum11];
-				  /*  prevpossigcount1= possigcount2;
-				    prevnegsigcount1= negsigcount2; */
+				    prevpossigcount1= possigcount2;
+				    prevnegsigcount1= negsigcount2; 
 				    prevweightsum[areanum11] = weightsum[areanum11];
                           
 		        }
@@ -1774,8 +1657,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 		         cout << "OH"<<endl;	
 				
-		    /* saturation count */
-			
+		    //saturation count 
+
+			  
+			  
 			
                          for (int m=0; m<param->nOutput; m++){
 				 for (int n=0; n<param->nHide; n++){
@@ -1821,14 +1706,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		        
 		        
 				    updatepattern[areanum22][0] = adaptlogic(prevposstepcount[areanum22]-prevnegstepcount[areanum22]);
-				    updatepattern[areanum22][1] = adaptlogic(prevweightsum[areanum22]);
-				    updatepattern[areanum22][2] = adaptlogic(posstepcount[areanum22]-negstepcount[areanum22]);
-				    updatepattern[areanum22][3] = adaptlogic(weightsum[areanum22]);
+				/  updatepattern[areanum22][1] = adaptlogic(prevweightsum[areanum22]);
+				   updatepattern[areanum22][2] = adaptlogic(posstepcount[areanum22]-negstepcount[areanum22]);
+				  updatepattern[areanum22][3] = adaptlogic(weightsum[areanum22]);
 				     
-				   conupdatepattern[areanum22][0] = conupdatepattern[areanum22][2];
-				    conupdatepattern[areanum22][1] = conupdatepattern[areanum22][3];
-				    conupdatepattern[areanum22][2] = adaptlogic(conpossum[areanum22]-prevconpossum[areanum22]);
-				    conupdatepattern[areanum22][3] = adaptlogic(connegsum[areanum22]-prevconnegsum[areanum22]);
+				  conupdatepattern[areanum22][0] = conupdatepattern[areanum22][2];
+				   conupdatepattern[areanum22][1] = conupdatepattern[areanum22][3];
+				 conupdatepattern[areanum22][2] = adaptlogic(conpossum[areanum22]-prevconpossum[areanum22]);
+				conupdatepattern[areanum22][3] = adaptlogic(connegsum[areanum22]-prevconnegsum[areanum22]);
 			
 
 				     
@@ -1838,15 +1723,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				    prevnegstepcount[areanum22] = negstepcount[areanum22];
 				     prevconpossum[areanum22] = conpossum[areanum22];
 			            prevconnegsum[areanum22] = connegsum[areanum22];
-				  /*  prevpossigcount1= possigcount2;
-				  /*  prevpossigcount1= possigcount2;
-				    prevnegsigcount1= negsigcount2; */
+				  prevpossigcount1= possigcount2;
+				  prevpossigcount1= possigcount2;
+				    prevnegsigcount1= negsigcount2;
 				    prevweightsum[areanum22] = weightsum[areanum22];
                           }
 		
 			 for (int e=0; e<10;e++){
 					
-							cout<<"   "<<"a["<<e<<"]="<<scaling(a2[e])<<"   "<<"s["<<e<<"]="<<scaling(s2[e])<<endl;
+							// cout<<"   "<<"a["<<e<<"]="<<scaling(a2[e])<<"   "<<"s["<<e<<"]="<<scaling(s2[e])<<endl;
 				} 
 				
 				cout<<endl; 
@@ -1863,7 +1748,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			cout <<endl;
 			cout <<"weightsum IH: "<<weightsum1<<" weightsum HO:"<<weightsum2;
 			cout <<endl; */
-			} // end of if code
+			} // end of if code 
 		
 		
 				
