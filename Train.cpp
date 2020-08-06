@@ -1711,8 +1711,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				 posstepcount[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
 				 negstepcount[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
-                                 conpossum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ConductanceGp;
-				 connegsum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ConductanceGn;	
+                                 conpossum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp;
+				 connegsum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn;	
 					 possatsum[areanum1] +=  static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;	
 					 negsatsum[areanum1] +=  static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;	
 				 weightsum[areanum1]+=weight1[m][n];
@@ -1783,8 +1783,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				posstepcount[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep;
 				negstepcount[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep;
-					  conpossum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ConductanceGp;
-				 connegsum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ConductanceGn;	
+					  conpossum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp;
+				 connegsum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn;	
                                   possatsum[areanum2] +=  static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;	
 					 negsatsum[areanum2] +=  static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;	
 				 weightsum[areanum2]+=weight2[m][n];
