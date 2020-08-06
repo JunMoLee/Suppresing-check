@@ -616,11 +616,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							    if((0<conpossum[areanum])&&(conpossum[areanum]<32))
 							     {
 							      
-							      learningrateIH[2] = param->learningrate[0][2]*1.1;
+							      learningrateIH[2] = param->learningrate[0][2]*1.2;
 							      }
 							      else if ((32<conpossum[areanum])&&(conpossum[areanum]<64))
 							      {
-							      learningrateIH[2] = param->learningrate[0][2]*1.1;
+							      learningrateIH[2] = param->learningrate[0][2]*1.2;
 							      
 							      }
 							      else if ((64<conpossum[areanum])&&(conpossum[areanum]<96)) 
@@ -633,13 +633,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						              else if ((96<conpossum[areanum])&&(conpossum[areanum]<128)) 
 							      {
 						       	    
-							      learningrateIH[2] = param->learningrate[0][2]/1.1;
+							      learningrateIH[2] = param->learningrate[0][2]/1.2;
 							      
 							      }
 				                              else
 							      {
 							      
-							      learningrateIH[2] = param->learningrate[0][2]/1.1;
+							      learningrateIH[2] = param->learningrate[0][2]/1.2;
 							     
 								               // reset stopreverse
 						         
@@ -649,11 +649,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							  if((0<connegsum[areanum])&&(connegsum[areanum]<32))
 							     {
 							      
-							      learningrateIH[3] = param->learningrate[0][3]*1.1;}
+							      learningrateIH[3] = param->learningrate[0][3]*1.2;}
 							      else if ((32<connegsum[areanum])&&(connegsum[areanum]<64))
 							      {
 							 
-							      learningrateIH[3] = param->learningrate[0][3]*1.1;
+							      learningrateIH[3] = param->learningrate[0][3]*1.2;
 							      }
 							      else if ((64<connegsum[areanum])&&(connegsum[areanum]<96)) 
 							      {
@@ -664,12 +664,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						              else if ((96<connegsum[areanum])&&(connegsum[areanum]<128)) 
 							      {
 						       	    
-							      learningrateIH[3] = param->learningrate[0][3]/1.1;
+							      learningrateIH[3] = param->learningrate[0][3]/1.2;
 							      }
 				                              else
 							      {
 							    
-							      learningrateIH[3] = param->learningrate[0][3]/1.1;
+							      learningrateIH[3] = param->learningrate[0][3]/1.2;
 								               // reset stopreverse
 						         
 							      }
@@ -1158,11 +1158,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							    if((0<conpossum[areanum])&&(conpossum[areanum]<8))
 							     {
 							      
-							      learningrateHO[2] = param->learningrate[0][2]*1.1;
+							      learningrateHO[2] = param->learningrate[0][2]*1.2;
 							      }
 							      else if ((8<conpossum[areanum])&&(conpossum[areanum]<16))
 							      {
-							      learningrateHO[2] = param->learningrate[0][2]*1.1;
+							      learningrateHO[2] = param->learningrate[0][2]*1.2;
 							      
 							      }
 							      else if ((16<conpossum[areanum])&&(conpossum[areanum]<24)) 
@@ -1175,13 +1175,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						              else if ((24<conpossum[areanum])&&(conpossum[areanum]<32)) 
 							      {
 						       	    
-							      learningrateHO[2] = param->learningrate[0][2]/1.1;
+							      learningrateHO[2] = param->learningrate[0][2]/1.2;
 							      
 							      }
 				                              else
 							      {
 							      
-							      learningrateHO[2] = param->learningrate[0][2]/1.1;
+							      learningrateHO[2] = param->learningrate[0][2]/1.2;
 							     
 								               // reset stopreverse
 						         
@@ -1191,11 +1191,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							  if((0<connegsum[areanum])&&(connegsum[areanum]<8))
 							     {
 							      
-							      learningrateHO[3] = param->learningrate[0][3]*1.1;}
+							      learningrateHO[3] = param->learningrate[0][3]*1.2;}
 							      else if ((8<connegsum[areanum])&&(connegsum[areanum]<16))
 							      {
 							 
-							      learningrateHO[3] = param->learningrate[0][3]*1.1;
+							      learningrateHO[3] = param->learningrate[0][3]*1.2;
 							      }
 							      else if ((16<connegsum[areanum])&&(connegsum[areanum]<24)) 
 							      {
@@ -1206,12 +1206,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						              else if ((24<connegsum[areanum])&&(connegsum[areanum]<32)) 
 							      {
 						       	    
-							      learningrateHO[3] = param->learningrate[0][3]/1.1;
+							      learningrateHO[3] = param->learningrate[0][3]/1.2;
 							      }
 				                              else
 							      {
 							    
-							      learningrateHO[3] = param->learningrate[0][3]/1.1;
+							      learningrateHO[3] = param->learningrate[0][3]/1.2;
 								               // reset stopreverse
 						         
 							      }
