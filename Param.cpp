@@ -74,33 +74,33 @@ for (int r=0; r<100; r++){
 	ls=0;
 	switch (ls) {
 		case 0:
-			{
+			
 	
 	dalpha=30/100;
 
 	pdalpha=30/100;
-			break;}
+			break;
 		case 1:
-			{
+			
 	dalpha=20/100;
 	
 	pdalpha=20/100;
-			break;}
+			break;
 		case 2:
-			{
+			
 	dalpha=20/100;
 	pdalpha=15/100;
-			break;}
+			break;
 			case 3:
-			{
+			
 	dalpha=15/100;
 	pdalpha=20/100;
-			break;}
+			break;
 			case 4:
-			{
+			
 	dalpha=15/100;
 	pdalpha=15/100;
-			break;}
+			break;
 	}
 	
 	const double
@@ -117,19 +117,19 @@ for (int r=0; r<100; r++){
 	const int // allocate kernel
 	ks=0;
 	switch (ks) {
-			case 0: {	
+			case 0: 	
 	kernel=20; 
-			break;}
-	{
-		case 1: 	{
+			break;
+	
+		case 1: 	
 	kernel=10; 
-		break;}
-		{
+		break;
+		
 		case 2: 	
-	kernel=4; break;}
-	{
-		case 3: {	
-	kernel=1; break;}
+	kernel=4; break;
+	
+		case 3: 	
+	kernel=1; break;
 	}
 	
         const int // allocate h
@@ -139,20 +139,20 @@ for (int r=0; r<100; r++){
 	xxs=0;
 	switch (xxs) {
 			
-	case 0: 	{
+	case 0: 	
 	hh=100; break;}
 
-		case 1: 	{
+		case 1: 	
 	hh=50; break;}
 	
-		case 2: {	
+		case 2: 	
 	hh=25; break;}
 	
-		case 3: 	{
-	hh=10; break;}
+		case 3: 	
+	hh=10; break;
 		
-		case 4: {	
-	hh=5; break;}
+		case 4: 	
+	hh=5; break;
 	}
 	
 
@@ -184,23 +184,23 @@ for (int r=0; r<100; r++){
 	
 	switch (ns){
 	case 0:
-			{
+			
 	newUpdateRate=6;
 	
 	nnewUpdateRate=2;	
 	TrackRate=nnewUpdateRate;
-			break;}
+			break;
 	case 1:
-			{
+			
 
 	
 	newUpdateRate=5;
 	
 	nnewUpdateRate=5;	
 	TrackRate=nnewUpdateRate;
-			break;}
+			break;
 	case 2:
-			{
+			
 
 	newUpdateRate=2;
 
