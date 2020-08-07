@@ -630,13 +630,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< (split+1)*conductancepieceIH) )
-							   {learningrateIH[2] = param->learningrate[0][2]*(adaptiveratio-split*adaptivemomentum); break;}
+							   {learningrateIH[2] = param->learningrate[0][2]*(adaptiveratio/pow(adaptivemomentum, split)); break;}
 							   }
 							  
 				
 							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceIH) )
-							   {learningrateIH[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
+							   {learningrateIH[3] = param->learningrate[0][3]*(adaptiveratio/pow(adaptivemomentum, split)); break;}
 							   } 
 				
 							 
@@ -1127,13 +1127,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   
 							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (split+1)*conductancepieceHO) )
-							   {learningrateHO[2] = param->learningrate[0][2]*(adaptiveratio-split*adaptivemomentum); break;}
+							   {learningrateHO[2] = param->learningrate[0][2]*(adaptiveratio/pow(adaptivemomentum, split)); break;}
 							   }
 							  
 				
 							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceHO) )
-							   {learningrateHO[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
+							   {learningrateHO[3] = param->learningrate[0][3]*(adaptiveratio/pow(adaptivemomentum, split)); break;}
 							   } 
 				
 				                          // reset weightupdatepattern
