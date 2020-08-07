@@ -64,6 +64,16 @@ public:
 	 int allocationmethodIH=0;
 	 int allocationmethodHO=0;
 	int usealternatearea=0;
+	int kernel=4; // k=kernel size;
+	int h=100; // h=number of hidden layer slice for IH
+	int hh=5; // hh= number of hidden layer slice for HO
+	int os=10;  // os = number of output layer slice
+	int allocationmethod=0;
+	int hiddenpiece;	
+	int hhiddenpiece;
+	int outputpiece;
+	int areasizeIH;
+	int areasizeHO;
 	double alpha1;		// Learning rate for the synapses from input to hidden layer
 	double alpha2;		// Learning rate for the synapses from hidden to output layer
 	double speed;           // speed ratio between different layers : in this case, (learning rate of IH) / (learning rate of HO)
