@@ -61,6 +61,8 @@ public:
 	int nInput;     // # of neurons in input layer
 	int nHide;      // # of neurons in hidden layer
 	int nOutput;	// # of neurons in output layer
+	
+	/* weight track variables */
 	 int allocationmethodIH=0;
 	 int allocationmethodHO=0;
 	int usealternatearea=0;
@@ -74,6 +76,8 @@ public:
 	int outputpiece;
 	int areasizeIH;
 	int areasizeHO;
+	int usesplit =1;
+	
 	double alpha1;		// Learning rate for the synapses from input to hidden layer
 	double alpha2;		// Learning rate for the synapses from hidden to output layer
 	double speed;           // speed ratio between different layers : in this case, (learning rate of IH) / (learning rate of HO)
