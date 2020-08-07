@@ -41,6 +41,16 @@
 #include <cmath>
 
 Param::Param() {
+	
+	
+	/* Algorithm parameters */
+	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
+	totalNumEpochs = 125;	// Total number of epochs
+	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
+	nInput = 400;     // # of neurons in input layer
+	nHide = 100;      // # of neurons in hidden layer
+	nOutput = 10;     // # of neurons in output layer
+	
 for (int r=0; r<100; r++){
         vector <vector <int>> previndex1;
 		for (int f=0;f<164000;f++){
@@ -76,30 +86,30 @@ for (int r=0; r<100; r++){
 		case 0:
 			
 	
-	dalpha=30/100;
+	dalpha=0.3;
 
-	pdalpha=30/100;
+	pdalpha=0.3;
 			break;
 		case 1:
 			
-	dalpha=20/100;
+	dalpha=0.2;
 	
-	pdalpha=20/100;
+	pdalpha=0.2;
 			break;
 		case 2:
 			
-	dalpha=20/100;
-	pdalpha=15/100;
+	dalpha=0.2;
+	pdalpha=0.15;
 			break;
 			case 3:
 			
-	dalpha=15/100;
-	pdalpha=20/100;
+	dalpha=0.15;
+	pdalpha=0.2;
 			break;
 			case 4:
 			
-	dalpha=15/100;
-	pdalpha=15/100;
+	dalpha=0.15;
+	pdalpha=0.15;
 			break;
 	}
 	
@@ -215,13 +225,7 @@ for (int r=0; r<100; r++){
 	adaptivemomentum = am;
 	usesplit = 1;
 	
-	/* Algorithm parameters */
-	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
-	totalNumEpochs = 125;	// Total number of epochs
-	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
-	nInput = 400;     // # of neurons in input layer
-	nHide = 100;      // # of neurons in hidden layer
-	nOutput = 10;     // # of neurons in output layer
+
 	
 	/* learning rate */
 	
