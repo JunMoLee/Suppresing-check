@@ -628,7 +628,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                     	      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];	 
 				
-							   for(int split =0; split<learningratesplit;split++)
+						if(param->usesplit==1){	   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< (split+1)*conductancepieceIH) )
 							   {learningrateIH[2] = param->learningrate[0][2]*(adaptiveratio/pow(adaptivemomentum, split)); break;}
 							   }
@@ -638,6 +638,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {if( (split*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceIH) )
 							   {learningrateIH[3] = param->learningrate[0][3]*(adaptiveratio/pow(adaptivemomentum, split)); break;}
 							   } 
+								      }
+				else {
+				learningrateIH[2] = param->learningrate[0][2];
+				learningrateIH[3] = param->learningrate[0][3];
+				}
 				
 							 
 								   
@@ -1125,7 +1130,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                    	      learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];	 
 							   
-							   for(int split =0; split<learningratesplit;split++)
+						if(param->usesplit==1){	   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (split+1)*conductancepieceHO) )
 							   {learningrateHO[2] = param->learningrate[0][2]*(adaptiveratio/pow(adaptivemomentum, split)); break;}
 							   }
@@ -1135,6 +1140,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {if( (split*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceHO) )
 							   {learningrateHO[3] = param->learningrate[0][3]*(adaptiveratio/pow(adaptivemomentum, split)); break;}
 							   } 
+								      }
+				else {
+					      learningrateHO[2] = param->learningrate[0][2];
+					      learningrateHO[3] = param->learningrate[0][3];	 }
+				
 				
 				                          // reset weightupdatepattern
 				
