@@ -185,26 +185,25 @@ for (int r=0; r<100; r++){
 	switch (ns){
 	case 0:
 			{
-	const int 
 	newUpdateRate=6;
-	const int
+	
 	nnewUpdateRate=2;	
 	TrackRate=nnewUpdateRate;
 			break;}
 	case 1:
 			{
 
-		const int 
+	
 	newUpdateRate=5;
-	const int
+	
 	nnewUpdateRate=5;	
 	TrackRate=nnewUpdateRate;
 			break;}
 	case 2:
 			{
-	const int 
+
 	newUpdateRate=2;
-	const int
+
 	nnewUpdateRate=6;	
 	TrackRate=newUpdateRate;
 
