@@ -189,9 +189,9 @@ int main() {
 		
 		
 	        double adaptivemomentum = param->adaptivemomentum;
-		double areasizeIH = param-> areasizeIH;
-	        double areasizeHO = param-> areasizeHO;
-		double learningratesplit = param -> learningratesplit;
+		int areasizeIH = param-> areasizeIH;
+	        int areasizeHO = param-> areasizeHO;
+		int learningratesplit = param -> learningratesplit;
 			
 		// cycle to cycle variation
 			
