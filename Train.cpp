@@ -159,18 +159,18 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                       int hhiddenpiece = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hhiddenpiece; 
 		               int os = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os;
 	                       int areasizeIH = kernel * kernel * hiddenpiece;
-	                       int areasizeHO = hhddienpiece * outputpiece
+	                       int areasizeHO = hhiddenpiece * outputpiece
 			       int maxconrangeIH =areasizeIH *  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->pmaxConductance;     
 			       int maxconrangeHO = areasizeHO *  static_cast<AnalogNVM*>(arrayHO->cell[0][0])->pmaxConductance;     
-	                       int conductancepieceIH =  maxconrangeIH / (param-> lrs);
-	                       int conductancepieceHO =  maxconrangeHO / (param-> lrs);   
+	                       int conductancepieceIH =  maxconrangeIH / (param-> learningratesplit);
+	                       int conductancepieceHO =  maxconrangeHO / (param-> learningratesplit);   
                                int counteradaptIH =0;
                                int counteradaptHO =0;
                                int maxcounterIH = param->nHide/h;
 	                       int maxcounterHO = param->nOutput/os;
 	                       int maxallocationmethodIH = kernel-1;
                                int maxallocationmethodHO = param->nHide/hh-1;
-	                       int adaptivemoment = param -> adaptivemoment;
+	                       int adaptivemomentum = param -> adaptivemomentum;
 	                       int adaptiveratio = param -> adaptiveratio;
 				       
 	
@@ -623,15 +623,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                     	      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];	 
 				
-							   for(int split =0; split<param->lrs;split++)
+							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< (split+1)*conductancepieceIH) )
-							   {learningrateIH[2] = param->learningrate[0][2]*(adaptiveratio-split*adaptivemoment); break;}
+							   {learningrateIH[2] = param->learningrate[0][2]*(adaptiveratio-split*adaptivemomentum); break;}
 							   }
 							  
 				
-							   for(int split =0; split<param->lrs;split++)
+							   for(int split =0; split<learningrateplit;split++)
 							   {if( (split*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceIH) )
-							   {learningrateIH[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemoment); break;}
+							   {learningrateIH[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
 							   }
 				
 							 
@@ -1117,15 +1117,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                     	      learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];	 
 							   
-							   for(int split =0; split<param->lrs;split++)
+							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (split+1)*conductancepieceHO) )
-							   {learningrateHO[2] = param->learningrate[0][2]*(adaptiveratio-split*adaptivemoment); break;}
+							   {learningrateHO[2] = param->learningrate[0][2]*(adaptiveratio-split*adaptivemomentum); break;}
 							   }
 							  
 				
-							   for(int split =0; split<param->lrs;split++)
+							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceHO) )
-							   {learningrateHO[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemoment); break;}
+							   {learningrateHO[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
 							   }
 				
 				                          // reset weightupdatepattern
