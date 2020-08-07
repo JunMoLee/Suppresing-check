@@ -78,7 +78,7 @@ for (int r=0; r<100; r++){
 	const double
 	lrs=5;
 	const double
-	ar=1
+	ar=1;
 	const double
 	am=0;
 	learningratesplit = lrs;
