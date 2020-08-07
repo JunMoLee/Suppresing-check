@@ -704,7 +704,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 								}
 								
-							    else if ((int)(param->newUpdateRate/adNur)>(int)(param->nnewUpdateRate/adNur)){ // if + reverse update is faster than - reverse update
+							    else if ((int)(param->newUpdateRate/adNur)>(int)(param->nnewUpdateRate/adNur)){ // if - reverse update is faster than + reverse update
 									
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->nnewUpdateRate/adNur))*param->ReverseUpdate==(int)(param->nnewUpdateRate/adNur-1)){
 								// - reverse update condition	
@@ -1171,7 +1171,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 									
 								}
 								
-							    else if ((int)(param->newUpdateRate/adNur)>(int)(param->nnewUpdateRate/adNur)){ // if + reverse update is faster than - reverse update
+							    else if ((int)(param->newUpdateRate/adNur)>(int)(param->nnewUpdateRate/adNur)){ // if - reverse update is faster than + reverse update
 									
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->nnewUpdateRate/adNur))*param->ReverseUpdate==(int)(param->nnewUpdateRate/adNur-1)){
 								// - reverse update condition	
