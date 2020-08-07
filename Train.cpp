@@ -159,7 +159,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                       int hhiddenpiece = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hhiddenpiece; 
 		               int os = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os;
 	                       int areasizeIH = kernel * kernel * hiddenpiece;
-	                       int areasizeHO = hhiddenpiece * outputpiece
+	                       int areasizeHO = hhiddenpiece * outputpiece;
 			       int maxconrangeIH =areasizeIH *  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->pmaxConductance;     
 			       int maxconrangeHO = areasizeHO *  static_cast<AnalogNVM*>(arrayHO->cell[0][0])->pmaxConductance;     
 	                       int conductancepieceIH =  maxconrangeIH / (param-> learningratesplit);
@@ -172,6 +172,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
                                int maxallocationmethodHO = param->nHide/hh-1;
 	                       int adaptivemomentum = param -> adaptivemomentum;
 	                       int adaptiveratio = param -> adaptiveratio;
+	                       int learningratesplit = param -> learningratesplit;
 				       
 	
 		     
@@ -629,7 +630,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   }
 							  
 				
-							   for(int split =0; split<learningrateplit;split++)
+							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceIH) )
 							   {learningrateIH[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
 							   }
