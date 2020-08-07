@@ -75,39 +75,33 @@ for (int r=0; r<100; r++){
 	switch (ls) {
 		case 0:
 			{
-	const double
-	dl=30;
-	const double
-	pdl=30;
+	
+	dalpha=30/100;
+
+	pdalpha=30/100;
 			break;}
 		case 1:
 			{
-	const double
-	dl=20;
-	const double
-	pdl=20;
+	dalpha=20/100;
+	
+	pdalpha=20/100;
 			break;}
 		case 2:
 			{
-	const double
-	dl=20;
-	const double
-	pdl=15;
+	dalpha=20/100;
+	pdalpha=15/100;
 			break;}
 			case 3:
 			{
-	const double
-	dl=15;
-	const double
-	pdl=20;
+	dalpha=15/100;
+	pdalpha=20/100;
 			break;}
 			case 4:
 			{
-	const double
-	dl=15;
-	const double
-	pdl=15;
+	dalpha=15/100;
+	pdalpha=15/100;
 			break;}
+	}
 	
 	const double
 	rdl=10;
@@ -123,23 +117,20 @@ for (int r=0; r<100; r++){
 	const int // allocate kernel
 	ks=0;
 	switch (ks) {
-		case 0: 	
-	const int
-	k=20; 
+			case 0: 	
+	kernel=20; 
 			break;}
 	{
 		case 1: 	
-	const int
-	k=10; 
+	kernel=10; 
 		break;}
 		{
 		case 2: 	
-	const int
-	k=4; break;}
+	kernel=4; break;}
 	{
 		case 3: 	
-	const int
-	k=1; break;}
+	kernel=1; break;}
+	}
 	
         const int // allocate h
 	x=100;
@@ -147,33 +138,30 @@ for (int r=0; r<100; r++){
         const int // allocate hh
 	xxs=0;
 	switch (xxs) {
-		case 0: 	
-	const int 
-	xx=100; break;}
+			
+	case 0: 	
+	hh=100; break;}
 	{
 		case 1: 	
-	const int
-	xx=50; break;}
+	hh=50; break;}
 	{
 		case 2: 	
-	const int
-	xx=25; break;}
+	hh=25; break;}
 	{
 		case 3: 	
-	const int
-	xx=10; break;}
+	hh=10; break;}
 		{
 		case 4: 	
-	const int
-	xx=5; break;}
+	hh=5; break;}
+	}
 	
 
 	const int // allocate os
 	o=10;
 	
-	kernel=k; // k=kernel size;
+	// k=kernel size;
 	h=x; // h=number of hidden layer slice for IH
-	hh=xx; // hh= number of hidden layer slice for HO
+        // hh= number of hidden layer slice for HO
 	os=o;  // os = number of output layer slice
 	
 	allocationmethod=0;
@@ -242,8 +230,8 @@ for (int r=0; r<100; r++){
 	alpha1 = l/100.0;	// Learning rate for the weights from input to hidden layer
 	alpha2 = alpha1/2;	// Learning rate for the weights from hidden to output layer
 	
-	dalpha = dl/100;        // LTD learning rate (-)
-	pdalpha = pdl/100;      // LTD learning rate (+)
+	// LTD learning rate (-)
+	// LTD learning rate (+)
 	
 	nalpha1 = l/100;        // LTP learning rate (-) for IH weights
 	nalpha2 = l/2.0/100;    // LTP learning rate (-) for HO weights
