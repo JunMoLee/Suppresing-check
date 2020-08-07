@@ -617,15 +617,15 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           int dd = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd[allocationmethod1];
 				                           int activationindex= bb*hiddenpiece + dd;
 				
-				 learningrateIH[0] = param->learningrate[0][0];
+				/* learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
 				
 				 learningrateIH[2] = param->learningrate[0][2];
-							      learningrateIH[3] = param->learningrate[0][3];
+							      learningrateIH[3] = param->learningrate[0][3]; */
 
 				               
 						          // adpative weight update 
-				                     	/*      learningrateIH[0] = param->learningrate[0][0];
+				                     	      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];	 
 				
 							   for(int split =0; split<learningratesplit;split++)
@@ -637,7 +637,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceIH) )
 							   {learningrateIH[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
-							   } */
+							   } 
 				
 							 
 								   
@@ -1092,10 +1092,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           int activationindex= bb*(param->nOutput/os) + dd;
 				                           // classify area by index
 
-                                                    	      learningrateHO[0] = param->learningrate[1][0];
+                                                    	    /*  learningrateHO[0] = param->learningrate[1][0];
 							      learningrateHO[1] = param->learningrate[1][1];	
 				  learningrateHO[2] = param->learningrate[1][2];
-							      learningrateHO[3] = param->learningrate[1][3];
+							      learningrateHO[3] = param->learningrate[1][3]; */
 				                         
 				                    /*  switch (areanumber2) // allocate learning rate for each area
 					                    case 0:// setting learning rate for each area
@@ -1122,7 +1122,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 							   // adpative weight update 
 				                       // adpative weight update 
-				                   /*  	      learningrateHO[0] = param->learningrate[0][0];
+				                    	      learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];	 
 							   
 							   for(int split =0; split<learningratesplit;split++)
@@ -1134,7 +1134,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceHO) )
 							   {learningrateHO[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
-							   } */
+							   } 
 				
 				                          // reset weightupdatepattern
 				
