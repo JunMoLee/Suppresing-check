@@ -38,6 +38,7 @@
 #include <string>
 #include "math.h"
 #include "Param.h"
+#include <cmath>
 
 Param::Param() {
 for (int r=0; r<100; r++){
@@ -67,32 +68,168 @@ for (int r=0; r<100; r++){
         l=30;
 	const double
 	ll=30;
+
+	
+	const int //select dl, pdl
+	ls=0;
+	switch (ls) {
+		case 0:
+			{
+	const double
+	dl=30;
+	const double
+	pdl=30;
+			break;}
+		case 1:
+			{
+	const double
+	dl=20;
+	const double
+	pdl=20;
+			break;}
+		case 2:
+			{
 	const double
 	dl=20;
 	const double
 	pdl=15;
+			break;}
+			case 3:
+			{
+	const double
+	dl=15;
+	const double
+	pdl=20;
+			break;}
+			case 4:
+			{
+	const double
+	dl=15;
+	const double
+	pdl=15;
+			break;}
+	
 	const double
 	rdl=10;
 	const double
 	ss=0;
-	const double
-	lrs=5;
-	const double
-	ar=1;
-	const double
-	am=0;
-	learningratesplit = lrs;
-	adaptiveratio =ar;
-	adaptivemomentum = am;
+
+
 	selectsim=ss;
 	
 	/* Weight track variables */
 	weighttrack=0;
-	TrackRate=2;
 	
+	const int // allocate kernel
+	ks=0;
+	switch (ks) {
+		case 0: 	
+	const int
+	k=20; 
+			break;}
+	{
+		case 1: 	
+	const int
+	k=10; 
+		break;}
+		{
+		case 2: 	
+	const int
+	k=4; break;}
+	{
+		case 3: 	
+	const int
+	k=1; break;}
+	
+        const int // allocate h
+	x=100;
+	
+        const int // allocate hh
+	xxs=0;
+	switch (xxs) {
+		case 0: 	
+	const int 
+	xx=100; break;}
+	{
+		case 1: 	
+	const int
+	xx=50; break;}
+	{
+		case 2: 	
+	const int
+	xx=25; break;}
+	{
+		case 3: 	
+	const int
+	xx=10; break;}
+		{
+		case 4: 	
+	const int
+	xx=5; break;}
+	
+
+	const int // allocate os
+	o=10;
+	
+	kernel=k; // k=kernel size;
+	h=x; // h=number of hidden layer slice for IH
+	hh=xx; // hh= number of hidden layer slice for HO
+	os=o;  // os = number of output layer slice
+	
+	allocationmethod=0;
+	hiddenpiece=nHide/h;	
+	hhiddenpiece= nHide/hh;
+	outputpiece = nOutput/os;
+	areasizeIH = kernel * kernel * hiddenpiece;
+	areasizeHO = hhiddenpiece * outputpiece;
+	
+	const double  // allocate lrs(learning rate split)
+	lrs=3;
+	const double // allocate ar(adaptive ratio)
+	ar=1.1;
+	const double // allocate am(adaptive momentum)
+	am=15;
+	
+	// allocate nur, nurn, trackrate
+	const int 
+	ns=0;
+	
+	switch (ns){
+	case 0:
+			{
+	const int 
+	nur=6;
+	const int
+	nurn=2;	
+	TrackRate=nurn;
+			break;}
+	case 1:
+			{
+
+		const int 
+	nur=5;
+	const int
+	nurn=5;	
+	TrackRate=nurn;
+			break;}
+	case 2:
+			{
+	const int 
+	nur=2;
+	const int
+	nurn=6;	
+	TrackRate=nur;
+
+			break;}
+	
+			
+	learningratesplit = lrs;
+	adaptiveratio =pow(am/10,(lrs-1)/2);
+	adaptivemomentum = am;
+	usesplit = 1;
 	
 	/* Algorithm parameters */
-	numTrainImagesPerEpoch = 2000;	// # of training images per epoch
+	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
@@ -150,9 +287,10 @@ for (int r=0; r<100; r++){
 	dominance=dom;
 	maxWeight = 1;	// Upper bound of weight value
 	minWeight = -1;	// Lower bound of weight value
-    /*Optimization method 
-    Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
-    optimization_type = "SGD";
+	
+        /*Optimization method 
+        Available option include: "SGD", "Momentum", "Adagrad", "RMSprop" and "Adam"*/
+        optimization_type = "SGD";
 	const int
 	nuc=1;
         ReverseUpdate = nuc;
@@ -184,14 +322,10 @@ for (int r=0; r<100; r++){
         const int 
 	frr=1000;
 	RefreshRate = frr;
-	const int 
-	nur=6;
-	const int 
-	rnur=1;
-	const int
-	nurn=2;
+
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
+	
 const int
 a=0;
 	
@@ -206,12 +340,12 @@ param_gp=1;
 param_gn=-3;
 break;
 case 2:
-param_gp=1;
-param_gn=-1;
+param_gp=2;
+param_gn=-5;
 break;
 case 3:
 param_gp=5;
-param_gn=1;
+param_gn=-5;
 break;
 case 4:
 param_gp=4;
