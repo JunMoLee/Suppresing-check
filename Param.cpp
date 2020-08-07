@@ -117,18 +117,18 @@ for (int r=0; r<100; r++){
 	const int // allocate kernel
 	ks=0;
 	switch (ks) {
-			case 0: 	
+			case 0: {	
 	kernel=20; 
 			break;}
 	{
-		case 1: 	
+		case 1: 	{
 	kernel=10; 
 		break;}
 		{
 		case 2: 	
 	kernel=4; break;}
 	{
-		case 3: 	
+		case 3: {	
 	kernel=1; break;}
 	}
 	
@@ -139,19 +139,19 @@ for (int r=0; r<100; r++){
 	xxs=0;
 	switch (xxs) {
 			
-	case 0: 	
+	case 0: 	{
 	hh=100; break;}
-	{
-		case 1: 	
+
+		case 1: 	{
 	hh=50; break;}
-	{
-		case 2: 	
+	
+		case 2: {	
 	hh=25; break;}
-	{
-		case 3: 	
+	
+		case 3: 	{
 	hh=10; break;}
-		{
-		case 4: 	
+		
+		case 4: {	
 	hh=5; break;}
 	}
 	
