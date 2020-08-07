@@ -687,7 +687,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->nnewUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
 								// if - reverse update and + reverse update coincide -> dominance determines whether + reverse update happens in the coinciding point (happen = dom 1 / not happen = dom 0)
 									
-							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true/*regular*/, !(posstopreverse*negstopreverse) * ((param->dominance)+!negstopreverse)/*newupdate*/, (!posstopreverse*negstopreverse)/*PositiveUpdate*/, param->dominance*!posstopreverse*!negstopreverse/*dominance*/, learningrateIH);}	
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true/*regular*/, !(posstopreverse*negstopreverse) * ((param->dominance)+!negstopreverse)/*newupdate*/,!posstopreverse*negstopreverse*param->dominance/*PositiveUpdate*/, param->dominance*!posstopreverse*!negstopreverse/*dominance*/, learningrateIH);}	
 								// normal update if dominance = 0, negstopreverse = 1 or posstopreverse & negstopreverse = 1 else reverse update according to stopreverse setting
 								else
 							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, !posstopreverse, true,  false, learningrateIH);
@@ -711,7 +711,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==(int)(param->nnewUpdateRate/adNur-1)){
 							        // if - reverse update and + reverse update coincide -> dominance determines whether + reverse update happens in the coinciding point (happen = dom 1 / not happen = dom 0)
 									
-							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, !(posstopreverse*negstopreverse) * ((param->dominance)+!posstopreverse), (!posstopreverse*negstopreverse), param->dominance*!posstopreverse*!negstopreverse, learningrateIH);}	
+							        arrayIH->WriteCell(jj, k, deltaWeight1[jj][k], weight1[jj][k], param->maxWeight, param->minWeight, true, !(posstopreverse*negstopreverse) * ((param->dominance)+!posstopreverse), !posstopreverse, param->dominance*!posstopreverse*!negstopreverse, learningrateIH);}	
 								// normal update if dominance = 0, posstopreverse = 1 or posstopreverse & negstopreverse = 1 else reverse update according to stopreverse setting
 								
 								else
@@ -1154,7 +1154,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->nnewUpdateRate/adNur))*param->ReverseUpdate==((int)(param->newUpdateRate/adNur-1))){
 								// if - reverse update and + reverse update coincide -> dominance determines whether + reverse update happens in the coinciding point (happen = dom 1 / not happen = dom 0)
 									
-							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true/*regular*/, !(posstopreverse*negstopreverse) * ((param->dominance)+!negstopreverse)/*newupdate*/, (!posstopreverse*negstopreverse)/*PositiveUpdate*/, param->dominance*!posstopreverse*!negstopreverse/*dominance*/, learningrateHO);}	
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true/*regular*/, !(posstopreverse*negstopreverse) * ((param->dominance)+!negstopreverse)/*newupdate*/, !posstopreverse*negstopreverse*param->dominance/*PositiveUpdate*/, param->dominance*!posstopreverse*!negstopreverse/*dominance*/, learningrateHO);}	
 								// normal update if dominance = 0, negstopreverse = 1 or posstopreverse & negstopreverse = 1 else reverse update according to stopreverse setting
 								else
 							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, !posstopreverse, true,  false, learningrateHO);
@@ -1178,7 +1178,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								if(((batchSize+numTrain*(epochcount-1)) % (int)(param->newUpdateRate/adNur))*param->ReverseUpdate==(int)(param->nnewUpdateRate/adNur-1)){
 							        // if - reverse update and + reverse update coincide -> dominance determines whether + reverse update happens in the coinciding point (happen = dom 1 / not happen = dom 0)
 									
-							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, !(posstopreverse*negstopreverse) * ((param->dominance)+!posstopreverse), (!posstopreverse*negstopreverse), param->dominance*!posstopreverse*!negstopreverse, learningrateHO);}	
+							        arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, !(posstopreverse*negstopreverse) * ((param->dominance)+!posstopreverse), !posstopreverse, param->dominance*!posstopreverse*!negstopreverse, learningrateHO);}	
 								// normal update if dominance = 0, posstopreverse = 1 or posstopreverse & negstopreverse = 1 else reverse update according to stopreverse setting
 								
 								else
