@@ -66,10 +66,10 @@ public:
 	 int allocationmethodIH=0;
 	 int allocationmethodHO=0;
 	int usealternatearea=0;
-	int kernel=4; // k=kernel size;
-	int h=100; // h=number of hidden layer slice for IH
-	int hh=5; // hh= number of hidden layer slice for HO
-	int os=10;  // os = number of output layer slice
+	double kernel=4; // k=kernel size;
+	double h=100; // h=number of hidden layer slice for IH
+	double hh=5; // hh= number of hidden layer slice for HO
+	double os=10;  // os = number of output layer slice
 	int allocationmethod=0;
 	int hiddenpiece;	
 	int hhiddenpiece;
