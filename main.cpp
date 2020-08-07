@@ -188,7 +188,11 @@ int main() {
 		double stdsum=0; // standard deviation of certain epochs
 		
 		
-	        double wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
+	        double adaptivemomentum = param->adaptivemomentum;
+		double areasizeIH = param-> areasizeIH;
+	        double areasizeHO = param-> areasizeHO;
+		double learningratesplit = param -> learningratesplit;
+			
 		// cycle to cycle variation
 			
 
@@ -203,15 +207,16 @@ int main() {
 		{ /* print out explanation for results */
 		 cout<<endl;
 
-		 printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LA(+): %.2f LA(-): %.2f LAd(+): %.2f LAd(-): %.2f\n newUpdateRate(+): %d\n newUpdateRate(-): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n c2cWeightvariance: %.2f\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, pLA, nLA, pLAd, nLAd, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, wv);
+		 printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LA(+): %.2f LA(-): %.2f LAd(+): %.2f LAd(-): %.2f\n newUpdateRate(+): %d\n newUpdateRate(-): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n Adaptivemomentum: %d\n areasizeIH: %d\n areasizeHO: %d\n learningratesplit: %d\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, pLA, nLA, pLAd, nLAd, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, adaptivemomentum, areasizeIH, areasizeHO, learningratesplit );
 		 cout <<endl;
 		 cout << "default algorithm"<<endl;
-		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"pLA"<<", "<<"nLA"<<", "<<"pLAd"<<","<<"nLAd"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" <<", "<<"average accuracy"<<", "<<"standard deviation"<< endl;
+		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"pLA"<<", "<<"nLA"<<", "<<"pLAd"<<","<<"nLAd"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"wv"<<", "<<"epoch"<< ", "<<"accuracy" <<", "<<"average accuracy"<<", "<<"standard deviation"<<", "<<"adaptive momentum"<<", "<<"area sizeIH"<<", "<<"area sizeHO"<<", "<<"learningratesplit"<< endl;
 		}
 		cout <<endl;
-		 cout << "Training Epoch : " << i << endl; 	
+		
 		Train(param->numTrainImagesPerEpoch, param->interNumEpochs, param->optimization_type, i,0);
 		cout<<endl;
+		cout << "Training Epoch : " << i << endl; 	
 		cout<<"IH"<<endl;
 		cout<<"LTP alpha(+) "<< param->learningrate[0][0] <<" LTP alpha(-) "<<param->learningrate[0][1];
 		cout<<" LTD alpha(+) "<<param->learningrate[0][2]<<" LTD alpha(-) "<<param->learningrate[0][3]<<endl;
@@ -465,25 +470,34 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 		knd = static_cast<RealDevice*>(arrayIH->cell[0][0])->maxNumLevelnLTD;
 		pof = static_cast<RealDevice*>(arrayIH->cell[0][0])->pmaxConductance/static_cast<RealDevice*>(arrayIH->cell[0][0])->pminConductance;
 		nof = static_cast<RealDevice*>(arrayIH->cell[0][0])->nmaxConductance/static_cast<RealDevice*>(arrayIH->cell[0][0])->nminConductance;
-		newUpdateRate = param->newUpdateRate;
+		
 	        RefreshRate =param->RefreshRate;
 	        FullRefresh =param->FullRefresh;
+			
+	        		
 	        ReverseUpdate =param->ReverseUpdate;
+		newUpdateRate = param->newUpdateRate;
 	        nnewUpdateRate= param->nnewUpdateRate;
 	        dominance = param ->dominance;	
+			
+			
+	        adaptivemomentum = param->adaptivemomentum;
+		areasizeIH = param-> areasizeIH;
+	        areasizeHO = param-> areasizeHO;
+		learningratesplit = param -> learningratesplit;
 			
                 pLA = param->learningrate[0][0]; // positive set Learning rate
 	        nLA = param->learningrate[0][1]; // negative set Learning rate
 		pLAd = param->learningrate[0][2]; // positive reset Learning rate
 	        nLAd = param->learningrate[0][3]; // negative set Learning rate
 		
-	          pLA2 = param->learningrate[1][0]; // positive set Learning rate
+	         pLA2 = param->learningrate[1][0]; // positive set Learning rate
 	         nLA2 = param->learningrate[1][1]; // negative set Learning rate
 		 pLAd2 = param->learningrate[1][2]; // positive reset Learning rate
 	         nLAd2 = param->learningrate[1][3]; // negative set Learning rate
 			
 	   
-	        wv = (static_cast<RealDevice*>(arrayIH->cell[0][0])->maxConductance - static_cast<RealDevice*>(arrayIH->cell[0][0])->minConductance)*0.015;
+
 		// cycle to cycle variation 
 
 			
@@ -508,37 +522,37 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 		}
 		else if (26<=i && i<=50)
 		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
-			averagesum2 += accuracy[(size_t)i-1];
+			averagesum2 += accuracy[(size_t)i-26];
 			cout<<"accumulated average accuracy : "<<averagesum2/(i-25)<<endl;
 		        for(size_t j=26; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum2/(i) ) * ( accuracy[(size_t)j-1] - averagesum2/(i) );
+			stdsum += ( accuracy[(size_t)j-26] - averagesum2/(i) ) * ( accuracy[(size_t)j-26] - averagesum2/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-25))<<endl;
 		}
 		else if (51<=i && i<=75)
 		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
-			averagesum3 += accuracy[(size_t)i-1];
+			averagesum3 += accuracy[(size_t)i-51];
 			cout<<"accumulated average accuracy : "<<averagesum3/(i-50)<<endl;
 		        for(size_t j=51; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum3/(i) ) * ( accuracy[(size_t)j-1] - averagesum3/(i) );
+			stdsum += ( accuracy[(size_t)j-51] - averagesum3/(i) ) * ( accuracy[(size_t)j-51] - averagesum3/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-50))<<endl;
 		}
 		else if (76<=i && i<=100)
 		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
-			averagesum4 += accuracy[(size_t)i-1];
+			averagesum4 += accuracy[(size_t)i-76];
 			cout<<"accumulated average accuracy : "<<averagesum4/(i-75)<<endl;
 		        for(size_t j=76; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum4/(i) ) * ( accuracy[(size_t)j-1] - averagesum4/(i) );
+			stdsum += ( accuracy[(size_t)j-76] - averagesum4/(i) ) * ( accuracy[(size_t)j-76] - averagesum4/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-75))<<endl;
 		}
 		else 
 		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
-			averagesum5 += accuracy[(size_t)i-1];
+			averagesum5 += accuracy[(size_t)i-101];
 			cout<<"accumulated average accuracy : "<<averagesum5/(i-100)<<endl;
 		        for(size_t j=101; j<=i;j++){
-			stdsum += ( accuracy[(size_t)j-1] - averagesum5/(i) ) * ( accuracy[(size_t)j-1] - averagesum5/(i) );
+			stdsum += ( accuracy[(size_t)j-101] - averagesum5/(i) ) * ( accuracy[(size_t)j-101] - averagesum5/(i) );
 			}
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-100))<<endl;
 		}
@@ -547,15 +561,15 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 		/* write results in file */
 		if(write_or_not){
                 if (i>=1 && i<=25)
-		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum1/(i)<<", "<<sqrt(stdsum/(i))<< endl;
 		else if (i>=26 && i<=50)
-		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum2/(i-25)<<", "<<sqrt(stdsum/(i-25))<< endl;
+		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum1/(i)<<", "<<sqrt(stdsum/(i))<<", "<<adaptivemomentum<<", "<<areasizeIH<<", "<<areasizeHO<<", "<<learningratesplit<< endl;
+		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum2/(i-25)<<", "<<sqrt(stdsum/(i-25))<<", "<<adaptivemomentum<<", "<<areasizeIH<<", "<<areasizeHO<<", "<<learningratesplit<< endl;
 		else if (i>=51 && i<=75)
-		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum3/(i-50)<<", "<<sqrt(stdsum/(i-50))<< endl;
+		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum3/(i-50)<<", "<<sqrt(stdsum/(i-50))<<", "<<adaptivemomentum<<", "<<areasizeIH<<", "<<areasizeHO<<", "<<learningratesplit<< endl;
 		else if (i>=76 && i<=100)
-		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum4/(i-75)<<", "<<sqrt(stdsum/(i-75))<< endl;	
+		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum4/(i-75)<<", "<<sqrt(stdsum/(i-75))<<", "<<adaptivemomentum<<", "<<areasizeIH<<", "<<areasizeHO<<", "<<learningratesplit<< endl;	
 		else
-		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum5/(i-100)<<", "<<sqrt(stdsum/(i-100))<< endl;
+		read <<param->optimization_type<<", "<<NL_LTP_Gp<<", "<<NL_LTD_Gp<<", "<<NL_LTP_Gn<<", "<<NL_LTD_Gn<<", "<<kp<<", "<<kd<<", "<<knp<<", "<<knd<<", "<<pLA<<", "<<nLA<<", "<<pLAd<<","<<nLAd<<", "<<pof<< ", " <<nof<< ", " <<newUpdateRate<<", "<<nnewUpdateRate<<", "<<ReverseUpdate<<", "<<RefreshRate<<", "<<FullRefresh<<", "<<dominance<<", "<<wv<<", "<<i*param->interNumEpochs<< ", "<<(double)correct/param->numMnistTestImages*100 << ", "<<averagesum5/(i-100)<<", "<<sqrt(stdsum/(i-100))<<", "<<adaptivemomentum<<", "<<areasizeIH<<", "<<areasizeHO<<", "<<learningratesplit<< endl;
 		}
 									
 		/*printf("\tRead latency=%.4e s\n", subArrayIH->readLatency + subArrayHO->readLatency);
