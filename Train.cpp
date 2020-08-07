@@ -682,7 +682,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							  /* new update */
 								
 					                  if (param->ReverseUpdate){ // start of if
-									
+									cout<<"1"<<endl;
 							    if ((int)(param->newUpdateRate/adNur)<(int)(param->nnewUpdateRate/adNur)){ // if + reverse update is faster than - reverse update
 
 								
