@@ -186,26 +186,26 @@ for (int r=0; r<100; r++){
 	case 0:
 			{
 	const int 
-	nur=6;
+	newUpdateRate=6;
 	const int
-	nurn=2;	
+	nnewUpdateRate=2;	
 	TrackRate=nurn;
 			break;}
 	case 1:
 			{
 
 		const int 
-	nur=5;
+	newUpdateRate=5;
 	const int
-	nurn=5;	
+	nnewUpdateRate=5;	
 	TrackRate=nurn;
 			break;}
 	case 2:
 			{
 	const int 
-	nur=2;
+	newUpdateRate=2;
 	const int
-	nurn=6;	
+	nnewUpdateRate=6;	
 	TrackRate=nur;
 
 			break;}
@@ -311,8 +311,8 @@ for (int r=0; r<100; r++){
 	frr=1000;
 	RefreshRate = frr;
 
-	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
-	nnewUpdateRate =nurn;
+	 // rate of new update algorithm implementation (per # of images)
+	
 	
 const int
 a=0;
