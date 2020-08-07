@@ -144,6 +144,7 @@ for (int r=0; r<100; r++){
 	
         const int // allocate h
 	x=100;
+	h=x;
 	
         const int // allocate hh
 	xxs=0;
@@ -168,20 +169,20 @@ for (int r=0; r<100; r++){
 
 	const int // allocate os
 	o=10;
-	
+	os = o;
 	// k=kernel size;
 	h=x; // h=number of hidden layer slice for IH
         // hh= number of hidden layer slice for HO
 	os=o;  // os = number of output layer slice
 	
 	allocationmethod=0;
-	hiddenpiece=nHide/h;	
-	hhiddenpiece= nHide/hh;
-	outputpiece = nOutput/os;
-	areasizeIH = kernel * kernel * hiddenpiece;
-	areasizeHO = hhiddenpiece * outputpiece;
+	hiddenpiece=this -> nHide/h;	
+	hhiddenpiece= this -> nHide/hh;
+	outputpiece = this -> nOutput/os;
+	areasizeIH = kernel * kernel * this -> hiddenpiece;
+	areasizeHO = this -> hhiddenpiece * this -> outputpiece;
 	
-	const double  // allocate lrs(learning rate split)
+	const int // allocate lrs(learning rate split)
 	lrs=3;
 	const double // allocate ar(adaptive ratio)
 	ar=1.1;
