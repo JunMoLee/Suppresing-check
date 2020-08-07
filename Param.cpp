@@ -140,13 +140,13 @@ for (int r=0; r<100; r++){
 	switch (xxs) {
 			
 	case 0: 	
-	hh=100; break;}
+	hh=100; break;
 
 		case 1: 	
-	hh=50; break;}
+	hh=50; break;
 	
 		case 2: 	
-	hh=25; break;}
+	hh=25; break;
 	
 		case 3: 	
 	hh=10; break;
