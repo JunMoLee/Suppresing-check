@@ -170,8 +170,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                       int maxcounterHO = param->nOutput/os;
 	                       int maxallocationmethodIH = kernel-1;
                                int maxallocationmethodHO = param->nHide/hh-1;
-	                       int adaptivemomentum = param -> adaptivemomentum;
-	                       int adaptiveratio = param -> adaptiveratio;
+	                       double adaptivemomentum = param -> adaptivemomentum;
+	                       double adaptiveratio = param -> adaptiveratio;
 	                       int learningratesplit = param -> learningratesplit;
 				       
 	
@@ -621,7 +621,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 				               
 						          // adpative weight update 
-				                     	      learningrateIH[0] = param->learningrate[0][0];
+				                     	/*      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];	 
 				
 							   for(int split =0; split<learningratesplit;split++)
@@ -633,7 +633,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceIH) )
 							   {learningrateIH[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
-							   }
+							   } */
 				
 							 
 								   
@@ -1115,7 +1115,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 							   // adpative weight update 
 				                       // adpative weight update 
-				                     	      learningrateHO[0] = param->learningrate[0][0];
+				                   /*  	      learningrateHO[0] = param->learningrate[0][0];
 							      learningrateHO[1] = param->learningrate[0][1];	 
 							   
 							   for(int split =0; split<learningratesplit;split++)
@@ -1127,7 +1127,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   for(int split =0; split<learningratesplit;split++)
 							   {if( (split*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (split+1)*conductancepieceHO) )
 							   {learningrateHO[3] = param->learningrate[0][3]*(adaptiveratio-split*adaptivemomentum); break;}
-							   }
+							   } */
 				
 				                          // reset weightupdatepattern
 				
