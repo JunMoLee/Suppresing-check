@@ -64,13 +64,13 @@ for (int r=0; r<100; r++){
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=40;
+        l=30;
 	const double
-	ll=40;
+	ll=30;
 	const double
-	dl=40;
+	dl=20;
 	const double
-	pdl=40;
+	pdl=15;
 	const double
 	rdl=10;
 	const double
@@ -146,7 +146,7 @@ for (int r=0; r<100; r++){
 	cp=1;
 	cp=-1;
 	const int
-	dom=1;
+	dom=0;
 	dominance=dom;
 	maxWeight = 1;	// Upper bound of weight value
 	minWeight = -1;	// Lower bound of weight value
@@ -185,7 +185,7 @@ for (int r=0; r<100; r++){
 	frr=1000;
 	RefreshRate = frr;
 	const int 
-	nur=2;
+	nur=6;
 	const int 
 	rnur=1;
 	const int
@@ -193,7 +193,7 @@ for (int r=0; r<100; r++){
 	newUpdateRate = nur; // rate of new update algorithm implementation (per # of images)
 	nnewUpdateRate =nurn;
 const int
-a=1;
+a=0;
 	
 
 switch(a){
