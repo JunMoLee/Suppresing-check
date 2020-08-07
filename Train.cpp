@@ -171,7 +171,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                       int maxallocationmethodIH = kernel-1;
                                int maxallocationmethodHO = param->nHide/hh-1;
 	                       int adaptivemoment = param -> adaptivemoment;
-	                       int adaptiveratio = param - > adaptiveratio;
+	                       int adaptiveratio = param -> adaptiveratio;
 				       
 	
 		     
