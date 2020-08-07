@@ -189,7 +189,7 @@ for (int r=0; r<100; r++){
 	newUpdateRate=6;
 	const int
 	nnewUpdateRate=2;	
-	TrackRate=nurn;
+	TrackRate=nnewUpdateRate;
 			break;}
 	case 1:
 			{
@@ -198,7 +198,7 @@ for (int r=0; r<100; r++){
 	newUpdateRate=5;
 	const int
 	nnewUpdateRate=5;	
-	TrackRate=nurn;
+	TrackRate=nnewUpdateRate;
 			break;}
 	case 2:
 			{
@@ -206,7 +206,7 @@ for (int r=0; r<100; r++){
 	newUpdateRate=2;
 	const int
 	nnewUpdateRate=6;	
-	TrackRate=nur;
+	TrackRate=newUpdateRate;
 
 			break;}
 	
