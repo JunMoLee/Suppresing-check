@@ -157,7 +157,18 @@ int main() {
 		for (int i=1; i<=125; i++) {
 		
 	        /* define name for simplicity */
-			
+			       int kernel =  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->kernel; 	
+		               int h = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->h; 
+	                       int hiddenpiece = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hiddenpiece; 
+		               int hh = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hh; 
+	                       int outputpiece = param->nOutput / (static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os); 
+	                       int hhiddenpiece = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hhiddenpiece; 
+		               int os = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os;
+
+			       double maxconrangeIH =areasizeIH *  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->pmaxConductance;     
+			       double maxconrangeHO = areasizeHO *  static_cast<AnalogNVM*>(arrayHO->cell[0][0])->pmaxConductance;     
+	                       double conductancepieceIH =  maxconrangeIH / (param-> learningratesplit);
+	                       double conductancepieceHO =  maxconrangeHO / (param-> learningratesplit); 	
 		double NL_LTP_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gp;
 	        double NL_LTD_Gp = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTD_Gp;
 		double NL_LTP_Gn = static_cast<RealDevice*>(arrayIH->cell[0][0])->NL_LTP_Gn;
@@ -210,6 +221,7 @@ int main() {
 		 printf("opt: %s NL_LTP_Gp:%.1f NL_LTD_Gp:%.1f NL_LTP_Gn:%.1f NL_LTD_Gn:%.1f CSpP: %d CSpD: %d CSnP: %d CSnD: %d OnOffGp: %.1f OnOffGn: %.1f LA(+): %.2f LA(-): %.2f LAd(+): %.2f LAd(-): %.2f\n newUpdateRate(+): %d\n newUpdateRate(-): %d\n RefreshRate: %d\n ReverseUpdate: %d\n FullRefresh: %d\n Dominance: %d\n Adaptivemomentum: %.2f\n areasizeIH: %d\n areasizeHO: %d\n learningratesplit: %d\n", param->optimization_type, NL_LTP_Gp, NL_LTD_Gp, NL_LTP_Gn, NL_LTD_Gn, kp, kd, knp, knd, pof, nof, pLA, nLA, pLAd, nLAd, newUpdateRate, nnewUpdateRate, RefreshRate, ReverseUpdate, FullRefresh, dominance, adaptivemomentum, areasizeIH, areasizeHO, learningratesplit );
 		 cout <<endl;
 		 cout << "default algorithm"<<endl;
+		 cout << "conductance piece IH "<<conductancepieceIH<<" conductance piece HO "<<conductancepieceHO<<endl;
 		 read <<"param->optimization_type"<<", "<<"NL_LTP_Gp"<<", "<<"NL_LTD_Gp"<<", "<<"NL_LTP_Gn"<<", "<<"NL_LTD_Gn"<<", "<<"kp"<<", "<<"kd"<<", "<<"knp"<<", "<<"knd"<<", "<<"pLA"<<", "<<"nLA"<<", "<<"pLAd"<<","<<"nLAd"<<", "<<"pof"<< ", " <<"nof"<< ", " <<"newUpdateRate"<<", "<<"nnewUpdateRate"<<", "<<"ReverseUpdate"<<", "<<"RefreshRate"<<", "<<"FullRefresh"<<", "<<"dominance"<<", "<<"epoch"<< ", "<<"accuracy" <<", "<<"average accuracy"<<", "<<"standard deviation"<<", "<<"adaptive momentum"<<", "<<"area sizeIH"<<", "<<"area sizeHO"<<", "<<"learningratesplit"<< endl;
 		}
 		cout <<endl;
