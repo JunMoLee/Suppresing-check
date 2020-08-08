@@ -1496,8 +1496,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			
                                   currentconpossum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp;
 				  currentconnegsum[areanum1] += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn;	
-				 conpossum[areanum1] +=    currentconpossum[areanum1];
-				connegsum[areanum1] +=   currentconnegsum[areanum1];	
+				  conpossum[areanum1] =    currentconpossum[areanum1];
+				  connegsum[areanum1] =   currentconnegsum[areanum1];	
 			
 				 }
 			 }
@@ -1510,7 +1510,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				currentconpossum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp;
 				currentconnegsum[areanum2] += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn;	
 				conpossum[areanum2] =    currentconpossum[areanum2];
-				connegsum[areanum2] =   currentconnegsum[areanum2]	;
+				connegsum[areanum2] =   currentconnegsum[areanum2];
                                  
 				 }
 			 }
