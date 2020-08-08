@@ -128,18 +128,18 @@ for (int r=0; r<100; r++){
 	ks=0;
 	switch (ks) {
 			case 0: 	
-	kernel=20; 
+	kernel=1; 
 			break;
 	
 		case 1: 	
-	kernel=10; 
+	kernel=4; 
 		break;
 		
 		case 2: 	
-	kernel=4; break;
+	kernel=5; break;
 	
 		case 3: 	
-	kernel=1; break;
+	kernel=10; break;
 	}
 	
         const int // allocate h
