@@ -164,7 +164,8 @@ int main() {
 	                       int outputpiece = param->nOutput / (static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os); 
 	                       int hhiddenpiece = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->hhiddenpiece; 
 		               int os = static_cast<AnalogNVM*>(arrayIH->cell[0][0])->os;
-
+		int areasizeIH = param-> areasizeIH;
+	        int areasizeHO = param-> areasizeHO;
 			       double maxconrangeIH =areasizeIH *  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->pmaxConductance;     
 			       double maxconrangeHO = areasizeHO *  static_cast<AnalogNVM*>(arrayHO->cell[0][0])->pmaxConductance;     
 	                       double conductancepieceIH =  maxconrangeIH / (param-> learningratesplit);
@@ -200,8 +201,7 @@ int main() {
 		
 		
 	        double adaptivemomentum = param->adaptivemomentum;
-		int areasizeIH = param-> areasizeIH;
-	        int areasizeHO = param-> areasizeHO;
+
 		int learningratesplit = param -> learningratesplit;
 			
 		// cycle to cycle variation
