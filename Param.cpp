@@ -94,12 +94,12 @@ for (int r=0; r<100; r++){
 			
 	dalpha=0.2;
 	
-	pdalpha=0.2;
+	pdalpha=0.15;
 			break;
 		case 2:
 			
 	dalpha=0.2;
-	pdalpha=0.15;
+	pdalpha=0.2;
 			break;
 			case 3:
 			
