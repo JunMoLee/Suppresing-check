@@ -187,7 +187,7 @@ for (int r=0; r<100; r++){
 	const double // allocate ar(adaptive ratio)
 	ar=1.1;
 	const double // allocate am(adaptive momentum)
-	am=15;
+	am=10;
 	
 	// allocate nur, nurn, trackrate
 	const int 
