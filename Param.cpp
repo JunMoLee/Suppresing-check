@@ -81,7 +81,7 @@ for (int r=0; r<100; r++){
 
 	
 	const int //select dl, pdl
-	ls=0;
+	ls=1;
 	switch (ls) {
 		case 0:
 			
