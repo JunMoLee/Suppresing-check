@@ -521,7 +521,7 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			
 		}
 		else if (26<=i && i<=50)
-		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+		{       accuracy[(size_t)i-26] = (double)correct/param->numMnistTestImages*100;
 			averagesum2 += accuracy[(size_t)i-26];
 			cout<<"accumulated average accuracy : "<<averagesum2/(i-25)<<endl;
 		        for(size_t j=26; j<=i;j++){
@@ -530,7 +530,7 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-25))<<endl;
 		}
 		else if (51<=i && i<=75)
-		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+		{       accuracy[(size_t)i-51] = (double)correct/param->numMnistTestImages*100;
 			averagesum3 += accuracy[(size_t)i-51];
 			cout<<"accumulated average accuracy : "<<averagesum3/(i-50)<<endl;
 		        for(size_t j=51; j<=i;j++){
@@ -539,7 +539,7 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-50))<<endl;
 		}
 		else if (76<=i && i<=100)
-		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+		{       accuracy[(size_t)i-76] = (double)correct/param->numMnistTestImages*100;
 			averagesum4 += accuracy[(size_t)i-76];
 			cout<<"accumulated average accuracy : "<<averagesum4/(i-75)<<endl;
 		        for(size_t j=76; j<=i;j++){
@@ -548,7 +548,7 @@ cout<<"alpha1 "<< param->alpha1 <<" dalpha "<<param->dalpha<<" nalpha1 "<<param-
 			cout<<"accumulated standard deviation : "<<sqrt(stdsum/(i-75))<<endl;
 		}
 		else 
-		{       accuracy[(size_t)i-1] = (double)correct/param->numMnistTestImages*100;
+		{       accuracy[(size_t)i-101] = (double)correct/param->numMnistTestImages*100;
 			averagesum5 += accuracy[(size_t)i-101];
 			cout<<"accumulated average accuracy : "<<averagesum5/(i-100)<<endl;
 		        for(size_t j=101; j<=i;j++){
