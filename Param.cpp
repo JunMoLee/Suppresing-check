@@ -75,9 +75,9 @@ for (int r=0; r<100; r++){
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=30;
+        l=20;
 	const double
-	ll=30;
+	ll=20;
 
 	
 	const int //select dl, pdl
@@ -187,7 +187,7 @@ for (int r=0; r<100; r++){
 	const double // allocate ar(adaptive ratio)
 	ar=1.1;
 	const double // allocate am(adaptive momentum)
-	am=10;
+	am=1008;
 	
 	// allocate nur, nurn, trackrate
 	const int 
@@ -196,18 +196,18 @@ for (int r=0; r<100; r++){
 	switch (ns){
 	case 0:
 			
-	newUpdateRate=6;
+	newUpdateRate=4;
 	
-	nnewUpdateRate=2;	
+	nnewUpdateRate=4;	
 	TrackRate=nnewUpdateRate;
 			break;
 	case 1:
 			
 
 	
-	newUpdateRate=5;
+	newUpdateRate=3;
 	
-	nnewUpdateRate=5;	
+	nnewUpdateRate=3;	
 	TrackRate=nnewUpdateRate;
 			break;
 	case 2:
@@ -215,15 +215,15 @@ for (int r=0; r<100; r++){
 
 	newUpdateRate=2;
 
-	nnewUpdateRate=6;	
+	nnewUpdateRate=2;	
 	TrackRate=newUpdateRate;
 
 			break;}
 	
 			
 	learningratesplit = lrs;
-	adaptiveratio =pow(am/10,(lrs-1)/2);
-	adaptivemomentum = am/10;
+	adaptiveratio =pow(am/1000,(lrs-1)/2);
+	adaptivemomentum = am/1000;
 	usesplit = 1;
 	
 
@@ -319,7 +319,7 @@ for (int r=0; r<100; r++){
 	
 	
 const int
-a=0;
+a=1;
 	
 
 switch(a){
