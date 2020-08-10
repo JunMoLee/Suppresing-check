@@ -187,7 +187,7 @@ for (int r=0; r<100; r++){
 	const double // allocate ar(adaptive ratio)
 	ar=1.1;
 	const double // allocate am(adaptive momentum)
-	am=1008;
+	am=10020;
 	
 	// allocate nur, nurn, trackrate
 	const int 
@@ -196,9 +196,9 @@ for (int r=0; r<100; r++){
 	switch (ns){
 	case 0:
 			
-	newUpdateRate=4;
+	newUpdateRate=2;
 	
-	nnewUpdateRate=4;	
+	nnewUpdateRate=2;	
 	TrackRate=nnewUpdateRate;
 			break;
 	case 1:
@@ -222,8 +222,8 @@ for (int r=0; r<100; r++){
 	
 			
 	learningratesplit = lrs;
-	adaptiveratio =pow(am/1000,(lrs-1)/2);
-	adaptivemomentum = am/1000;
+	adaptiveratio =pow(am/10000,(lrs-1)/2);
+	adaptivemomentum = am/10000;
 	usesplit = 1;
 	
 
