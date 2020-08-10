@@ -81,14 +81,14 @@ for (int r=0; r<100; r++){
 
 	
 	const int //select dl, pdl
-	ls=1;
+	ls=0;
 	switch (ls) {
 		case 0:
 			
 	
-	dalpha=0.3;
+	dalpha=0.1;
 
-	pdalpha=0.3;
+	pdalpha=0.1;
 			break;
 		case 1:
 			
