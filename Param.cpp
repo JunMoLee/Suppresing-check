@@ -125,7 +125,7 @@ for (int r=0; r<100; r++){
 	weighttrack=0;
 	
 	const int // allocate kernel
-	ks=0;
+	ks=1;
 	switch (ks) {
 			case 0: 	
 	kernel=1; 
@@ -147,7 +147,7 @@ for (int r=0; r<100; r++){
 	h=x;
 	
         const int // allocate hh
-	xxs=0;
+	xxs=1;
 	switch (xxs) {
 			
 	case 0: 	
@@ -187,7 +187,7 @@ for (int r=0; r<100; r++){
 	const double // allocate ar(adaptive ratio)
 	ar=1.1;
 	const double // allocate am(adaptive momentum)
-	am=10018;
+	am=10012;
 	
 	// allocate nur, nurn, trackrate
 	const int 
