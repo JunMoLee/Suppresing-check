@@ -86,9 +86,9 @@ for (int r=0; r<100; r++){
 		case 0:
 			
 	
-	dalpha=0.1;
+	dalpha=0.15;
 
-	pdalpha=0.1;
+	pdalpha=0.15;
 			break;
 		case 1:
 			
@@ -187,7 +187,7 @@ for (int r=0; r<100; r++){
 	const double // allocate ar(adaptive ratio)
 	ar=1.1;
 	const double // allocate am(adaptive momentum)
-	am=10020;
+	am=10018;
 	
 	// allocate nur, nurn, trackrate
 	const int 
