@@ -125,7 +125,7 @@ for (int r=0; r<100; r++){
 	weighttrack=0;
 	
 	const int // allocate kernel
-	ks=1;
+	ks=0;
 	switch (ks) {
 			case 0: 	
 	kernel=1; 
