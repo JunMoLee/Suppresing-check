@@ -75,9 +75,9 @@ for (int r=0; r<100; r++){
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=30;
+        l=40;
 	const double
-	ll=30;
+	ll=40;
 
 	
 	const int //select dl, pdl
@@ -86,15 +86,15 @@ for (int r=0; r<100; r++){
 		case 0:
 			
 	
-	dalpha=0.20;
+	dalpha=0.40;
 
-	pdalpha=0.15;
+	pdalpha=0.40;
 			break;
 		case 1:
 			
-	dalpha=0.2;
+	dalpha=0.3;
 	
-	pdalpha=0.2;
+	pdalpha=0.3;
 			break;
 		case 2:
 			
@@ -129,14 +129,18 @@ for (int r=0; r<100; r++){
 	switch (ks) {
 			case 0: 	
 	kernel=1; 
+			hh=100;
 			break;
 	
 		case 1: 	
 	kernel=4; 
+			hh=50;
 		break;
 		
 		case 2: 	
-	kernel=5; break;
+	kernel=5; 
+			hh=25;
+			break;
 	
 		case 3: 	
 	kernel=10; break;
@@ -146,7 +150,7 @@ for (int r=0; r<100; r++){
 	x=100;
 	h=x;
 	
-        const int // allocate hh
+   /*     const int // allocate hh
 	xxs=1;
 	switch (xxs) {
 			
@@ -164,7 +168,7 @@ for (int r=0; r<100; r++){
 		
 		case 4: 	
 	hh=5; break;
-	}
+	} */
 	
 
 	const int // allocate os
@@ -196,9 +200,9 @@ for (int r=0; r<100; r++){
 	switch (ns){
 	case 0:
 			
-	newUpdateRate=2;
+	newUpdateRate=3;
 	
-	nnewUpdateRate=6;	
+	nnewUpdateRate=3;	
 	TrackRate=nnewUpdateRate;
 			break;
 	case 1:
@@ -319,7 +323,7 @@ for (int r=0; r<100; r++){
 	
 	
 const int
-a=0;
+a=2;
 	
 
 switch(a){
