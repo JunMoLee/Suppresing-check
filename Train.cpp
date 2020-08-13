@@ -1136,7 +1136,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   // adpative weight update 
 				                       // adpative weight update 
 				                    	   if(param->usesplit==1){	  
-							   {if( (0*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (1)*conductancepieceHO) )
+							   if( (0*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (1)*conductancepieceHO) )
 							   {learningrateHO[2] = 0;}
 							   
 						      
