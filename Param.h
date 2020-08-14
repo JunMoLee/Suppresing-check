@@ -122,6 +122,7 @@ public:
 	double adaptivemomentum;
 	int Gth1;
 	int Gth2;
+	int unitcellsplit=1;
         char* optimization_type;
 
 	/* Hardware parameters */
