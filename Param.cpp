@@ -232,6 +232,7 @@ for (int r=0; r<100; r++){
 	Gth1=2;
 	Gth2=8;
 	unitcellsplit =0;
+	saturationprotector=5;
 
 	
 	/* learning rate */
