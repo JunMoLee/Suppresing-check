@@ -1175,6 +1175,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				if (Gth2 <connegsum[areanum]) 
 							   {   dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGp =0;
 							      deltaWeight2[jj][k]=0;}
+							   }
 				else {
 				learningrateHO[2] = param->learningrate[0][2];
 				learningrateHO[3] = param->learningrate[0][3];
