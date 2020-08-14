@@ -665,7 +665,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					 
 						      
 						      else if (conpossum[areanum] >= Gth2) 
-							   {learningrateIH[2] = 1000000000;}
+							   {learningrateIH[2] = 100000;}
 							  
 							  
 				
@@ -680,7 +680,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 						      else if (connegsum[areanum] >= Gth2) 
 							   {
-					          learningrateIH[3] =100000000;}
+					          learningrateIH[3] =100000;}
 							
 								      }
 				
@@ -1202,7 +1202,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 								   
 						           else if (conpossum[areanum] >= Gth2)
-							   {  learningrateHO[2] = 100000000;}
+							   {  learningrateHO[2] = 100000;}
 							   
 							  
 				
@@ -1215,7 +1215,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					                  		   
 				
 				                           else if (connegsum[areanum] >= Gth2)
-							   {  learningrateHO[3] = 100000000;}
+							   {  learningrateHO[3] = 100000;}
 							   }
 				
 
