@@ -631,7 +631,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					      if(param->usesplit==1){	  
 							   if( (0*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< (1)*conductancepieceIH) )
 							   {learningrateIH[2] = 0;
-							    posstopreverse=1;}
+							   // posstopreverse=1;}
 								      if( (1*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< (2)*conductancepieceIH) )
 							   {		learningrateIH[2] = param->learningrate[0][2];}   
 						      
@@ -643,7 +643,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							
 							   if( (0*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (1)*conductancepieceIH) )
 							   {learningrateIH[3] =0;
-							   negstopreverse=1;}
+							   //negstopreverse=1;}
 						   if( (1*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (2)*conductancepieceIH) )
 							   {learningrateIH[3] =param->learningrate[0][3];}	  
 				
@@ -1142,7 +1142,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                    	   if(param->usesplit==1){	  
 							   if( (0*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (1)*conductancepieceHO) )
 							   {learningrateHO[2] = 0;
-							   posstopreverse=1;}
+							  // posstopreverse=1;}
 							   
 						      	   if( (1*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (2)*conductancepieceHO) )
 							   {learningrateHO[2] = param->learningrate[0][2];}
@@ -1154,7 +1154,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							
 							   if( (0*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (1)*conductancepieceHO) )
 							   {learningrateHO[3] =0;
-							   negstopreverse=1;}
+							  // negstopreverse=1;}
 					if( (1*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (2)*conductancepieceHO) )
 							   {learningrateHO[3] = param->learningrate[0][3];}		   
 				
