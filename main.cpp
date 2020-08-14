@@ -188,7 +188,7 @@ int main() {
 	        int dominance = param ->dominance;
 	        int Gth1 = param -> Gth1;
 		int Gth2 = param -> Gth2;
-		int usesplitadapt = param->usesplitadapt
+		int usesplitadapt = param->usesplitadapt;
 			
 	        double  pLA = param->learningrate[0][0]; // positive set Learning rate
 	        double nLA = param->learningrate[0][1]; // negative set Learning rate
