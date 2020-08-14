@@ -119,6 +119,8 @@ public:
 	double learningratesplit;
 	double adaptiveratio;
 	double adaptivemomentum;
+	int Gth1;
+	int Gth2;
         char* optimization_type;
 
 	/* Hardware parameters */
