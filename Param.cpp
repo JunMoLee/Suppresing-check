@@ -229,7 +229,7 @@ for (int r=0; r<100; r++){
 	adaptiveratio =pow(am/10000,(lrs-1)/2);
 	adaptivemomentum = am/10000;
 	usesplit = 1;
-	Gth1=4;
+	Gth1=2;
 	Gth2=7;
 
 	
