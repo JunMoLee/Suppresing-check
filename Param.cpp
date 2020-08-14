@@ -125,7 +125,7 @@ for (int r=0; r<100; r++){
 	weighttrack=0;
 	
 	const int // allocate kernel
-	ks=0;
+	ks=1;
 	switch (ks) {
 			case 0: 	
 	kernel=1; 
@@ -175,7 +175,7 @@ for (int r=0; r<100; r++){
 	o=10;
 	os = o;
 	// k=kernel size;
-	h=x; // h=number of hidden layer slice for IH
+	hh=10; // h=number of hidden layer slice for IH
         // hh= number of hidden layer slice for HO
 	os=o;  // os = number of output layer slice
 	
@@ -229,8 +229,8 @@ for (int r=0; r<100; r++){
 	adaptiveratio =pow(am/10000,(lrs-1)/2);
 	adaptivemomentum = am/10000;
 	usesplit = 1;
-	Gth1=3;
-	Gth2=7;
+	Gth1=2;
+	Gth2=8;
 
 	
 	/* learning rate */
