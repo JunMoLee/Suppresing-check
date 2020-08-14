@@ -667,7 +667,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					 
 						      
 						      else if (conpos >= Gth2) 
-							   {learningrateIH[2] = 100000;}
+							   {learningrateIH[2] = 5;}
 							  
 							  
 				
@@ -682,7 +682,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 						      else if (conneg>= Gth2) 
 							   {
-					          learningrateIH[3] =100000;}
+					          learningrateIH[3] =5;}
 							
 								      }
 				
@@ -1209,7 +1209,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 								   
 						           else if (conpos>= Gth2)
-							   {  learningrateHO[2] = 100000;}
+							   {  learningrateHO[2] = 5;}
 							   
 							  
 				
@@ -1222,7 +1222,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					                  		   
 				
 				                           else if (conneg>= Gth2)
-							   {  learningrateHO[3] = 100000;}
+							   {  learningrateHO[3] = 5;}
 							   }
 				
 
