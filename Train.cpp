@@ -173,8 +173,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                       double adaptivemoment = param -> adaptivemomentum;
 	                       double adaptiveratio = param -> adaptiveratio;
 	                       int learningratesplit = param -> learningratesplit;
-	                   int Gth1 = param->Gth1;
-				                           int Gth2 = param->Gth2;
+	                   double Gth1 = param->Gth1;
+				                           double Gth2 = param->Gth2;
+	                     double Gth1pieceIH = Gth1 * areasizeIH;
+	                     double Gth2pieceIH= Gth2 * areasizeIH;
+	                     double Gth1pieceHO= Gth1 * areasizeHO;
+	                     double Gth2pieceHO = Gth2 * areasizeHO;
 				       
 	
 		     
@@ -658,7 +662,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					      if(param->usesplit==1){	  
 						      
 						     
-
+                                                  if(param->unitcellsplit == 1){
 						      if ( (0*conductancepieceIH<=conpos) && (conpos< Gth1) )
 							   {learningrateIH[2] = 0;
 							   // posstopreverse=1;
@@ -683,6 +687,32 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						      else if (conneg>= Gth2) 
 							   {
 					          learningrateIH[3] =5;}
+						  }
+						      else {
+							       if( (0<=conpossum[areanum]) && (conpossum[areanum]< Gth1pieceIH) )
+							   {learningrateIH[2] = 0;
+							  // posstopreverse=1;
+							   }
+							   
+
+								   
+						           else if (conpossum[areanum]>= Gth2pieceIH)
+							   {  learningrateIH[2] = 5;}
+							   
+							  
+				
+							
+							   if( (0<=connegsum[areanum]) && (connegsum[areanum]< Gth1pieceIH) )
+							   {learningrateIH[3] =0;
+							  // negstopreverse=1;
+							   }
+							    
+					                  		   
+				
+				                           else if (connegsum[areanum]>= Gth2pieceIH)
+							   {  learningrateIH[3] = 5;}
+							    }
+						      }
 							
 								      }
 				
@@ -1199,7 +1229,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							    
 				                    if(param->usesplit==1){	  
 								   
-								        
+							if(param -> unitcellsplit == 1){	        
 						    
 							   if( (0<=conpos) && (conpos< Gth1) )
 							   {learningrateHO[2] = 0;
@@ -1223,7 +1253,34 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				                           else if (conneg>= Gth2)
 							   {  learningrateHO[3] = 5;}
+								
+							}
+							    else{
+							   
+						           if( (0<=conpossum[areanum]) && (conpossum[areanum]< Gth1pieceHO) )
+							   {learningrateHO[2] = 0;
+							  // posstopreverse=1;
 							   }
+							   
+
+								   
+						           else if (conpossum[areanum]>= Gth2pieceHO)
+							   {  learningrateHO[2] = 5;}
+							   
+							  
+				
+							
+							   if( (0<=connegsum[areanum]) && (connegsum[areanum]< Gth1pieceHO) )
+							   {learningrateHO[3] =0;
+							  // negstopreverse=1;
+							   }
+							    
+					                  		   
+				
+				                           else if (connegsum[areanum]>= Gth2pieceHO)
+							   {  learningrateHO[3] = 5;}
+							    }
+							  }
 				
 
 				
