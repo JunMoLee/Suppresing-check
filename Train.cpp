@@ -173,6 +173,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                       double adaptivemomentum = param -> adaptivemomentum;
 	                       double adaptiveratio = param -> adaptiveratio;
 	                       int learningratesplit = param -> learningratesplit;
+	                   int Gth1 = param->Gth1;
+				                           int Gth2 = param->Gth2;
 				       
 	
 		     
@@ -616,6 +618,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                            int bb= dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->bb[allocationmethod1];
 				                           int dd = dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->dd[allocationmethod1];
 				                           int activationindex= bb*hiddenpiece + dd;
+				                           int Gth1 = param->Gth1;
+				                           int Gth2 = param->Gth2;
 				
 				/* learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -629,27 +633,27 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateIH[1] = param->learningrate[0][1];	 
 				
 					      if(param->usesplit==1){	  
-							   if( (0*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< (1)*conductancepieceIH) )
+							   if( (0*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< Gth1) )
 							   {learningrateIH[2] = 0;
 							   // posstopreverse=1;
 							   }
-								      if( (1*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< (2)*conductancepieceIH) )
+								      if( (Gth1 <conpossum[areanum]) && (conpossum[areanum]< Gth2) )
 							   {		learningrateIH[2] = param->learningrate[0][2];}   
 						      
-						      if( (2*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< (3)*conductancepieceIH) )
+						      if (Gth2<conpossum[areanum]) 
 							   {learningrateIH[2] = 100000;}
 							  
 							  
 				
 							
-							   if( (0*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (1)*conductancepieceIH) )
+							   if( (0<connegsum[areanum]) && (connegsum[areanum]< Gth1) )
 							   {learningrateIH[3] =0;
 							   //negstopreverse=1;
 							   }
-						   if( (1*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< (2)*conductancepieceIH) )
+						   if( (Gth1 <connegsum[areanum]) && (connegsum[areanum]< Gth2) )
 							   {learningrateIH[3] =param->learningrate[0][3];}	  
 				
-				if( (2*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< 3*conductancepieceIH) )
+				if (Gth2<connegsum[areanum])
 							   {learningrateIH[3] =100000 ;}
 							
 								      }
@@ -1142,27 +1146,28 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   // adpative weight update 
 				                       // adpative weight update 
 				                    	   if(param->usesplit==1){	  
-							   if( (0*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (1)*conductancepieceHO) )
+							   if( (0<conpossum[areanum]) && (conpossum[areanum]< Gth1) )
 							   {learningrateHO[2] = 0;
 							  // posstopreverse=1;
 							   }
 							   
-						      	   if( (1*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (2)*conductancepieceHO) )
+						      	   if( (Gth1<conpossum[areanum]) && (conpossum[areanum]< Gth2) )
 							   {learningrateHO[2] = param->learningrate[0][2];}
-						      if( (2*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]< (3)*conductancepieceHO) )
+								   
+						      if (Gth2<conpossum[areanum])
 							   {learningrateHO[2] = 100000;}
 							   
 							  
 				
 							
-							   if( (0*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (1)*conductancepieceHO) )
+							   if( (0<connegsum[areanum]) && (connegsum[areanum]< Gth1) )
 							   {learningrateHO[3] =0;
 							  // negstopreverse=1;
 							   }
-					if( (1*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< (2)*conductancepieceHO) )
+					if( (Gth1<connegsum[areanum]) && (connegsum[areanum]< Gth2) )
 							   {learningrateHO[3] = param->learningrate[0][3];}		   
 				
-				if( (2*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]< 3*conductancepieceHO) )
+				if (Gth2 <connegsum[areanum]) 
 							   {learningrateHO[3] =100000 ;}
 							   
 								      }
