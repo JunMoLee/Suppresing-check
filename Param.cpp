@@ -230,7 +230,7 @@ for (int r=0; r<100; r++){
 	adaptivemomentum = am/10000;
 	usesplit = 1;
 	Gth1=2;
-	Gth2=8;
+	Gth2=10;
 
 	
 	/* learning rate */
