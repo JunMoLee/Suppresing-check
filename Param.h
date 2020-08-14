@@ -120,6 +120,7 @@ public:
 	double learningratesplit;
 	double adaptiveratio;
 	double adaptivemomentum;
+	double saturationprotector;
 	int Gth1;
 	int Gth2;
 	int unitcellsplit=1;
