@@ -116,6 +116,7 @@ public:
 	
 	double cp; // common NL of P
 	double cd; // common NL of D
+	int usesplitadapt;
 	double learningratesplit;
 	double adaptiveratio;
 	double adaptivemomentum;
