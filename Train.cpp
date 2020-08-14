@@ -632,11 +632,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                     	      learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];	 
 				
-					      if(param->usesplit==1){	  
-						      
-						      if(param->usesplitadapt)
+				
+				               if(param->usesplitadapt)
 							      
 						      {
+							      
 						       for(int split =0; i<learningratesplit; split++){
 						          if( (split*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]<(split+1)*conductancepieceIH) )
 							  {learningrateIH[3] = adaptiveratio/pow(adaptivemoment,split); break;}
@@ -645,39 +645,50 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						          if( (split*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]<(split+1)*conductancepieceIH) )
 							  {learningrateIH[2] = adaptiveratio/pow(adaptivemoment,split); break;}
 						       }
-						      }
-							   if( (0*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< Gth1) )
+							      
+						      }  // end of usesplitadapt
+				
+					      if(param->usesplit==1){	  
+						      
+						     
+
+						      if ( (0*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< Gth1) )
 							   {learningrateIH[2] = 0;
 							   // posstopreverse=1;
 							   }
-								      if( (Gth1 <conpossum[areanum]) && (conpossum[areanum]< Gth2) )
-							   {		learningrateIH[2] = param->learningrate[0][2];}   
 						      
-						      if (Gth2<conpossum[areanum]) 
+						      else if( (Gth1 <conpossum[areanum]) && (conpossum[areanum]< Gth2) )
+							   {learningrateIH[2] = param->learningrate[0][2];}   
+						      
+						      else
 							   {
-							      dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->conductanceGn=0;
-						      deltaWeight1[jj][k] = 0;}
+							     dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->conductanceGn=0;
+						             deltaWeight1[jj][k] = 0;}
 							  
 							  
 				
 							
-							   if( (0<connegsum[areanum]) && (connegsum[areanum]< Gth1) )
+						     if ( (0*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]< Gth1) )
 							   {learningrateIH[3] =0;
 							   //negstopreverse=1;
 							   }
-						   if( (Gth1 <connegsum[areanum]) && (connegsum[areanum]< Gth2) )
+						      
+						      else if( (Gth1 <connegsum[areanum]) && (connegsum[areanum]< Gth2) )
 							   {learningrateIH[3] =param->learningrate[0][3];}	  
 				
-				if (Gth2<connegsum[areanum])
+				
+						      else 
 							   {
-					  dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->conductanceGp=0;
-					deltaWeight1[jj][k] = 0;}
+					                   dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->conductanceGp=0;
+					                   deltaWeight1[jj][k] = 0;}
 							
 								      }
-				else {
-				learningrateIH[2] = param->learningrate[0][2];
-				learningrateIH[3] = param->learningrate[0][3];
-				}
+				
+				
+				                else { // no usesplit
+				                        learningrateIH[2] = param->learningrate[0][2];
+				                        learningrateIH[3] = param->learningrate[0][3];
+				                     }
 				
 							 
 								   
@@ -1160,11 +1171,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							  learningrateHO[3] = param->learningrate[1][3];
 						       } */
 				
-							   // adpative weight update 
+						       // adpative weight update 
 				                       // adpative weight update 
-				                    	   if(param->usesplit==1){	  
-								   
-								         if(param->usesplitadapt)
+				
+				                    if(param->usesplitadapt)
 							      
 						      {
 						       for(int split =0; i<learningratesplit; split++){
@@ -1175,16 +1185,22 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						          if( (split*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]<(split+1)*conductancepieceHO) )
 							  {learningrateHO[2] = adaptiveratio/pow(adaptivemoment,split); break;}
 						       }
-						      }
+						    }    
+							    
+							    
+				                    if(param->usesplit==1){	  
+								   
+								        
+						    
 							   if( (0<conpossum[areanum]) && (conpossum[areanum]< Gth1) )
 							   {learningrateHO[2] = 0;
 							  // posstopreverse=1;
 							   }
 							   
-						      	   if( (Gth1<conpossum[areanum]) && (conpossum[areanum]< Gth2) )
+						      	   else if( (Gth1<conpossum[areanum]) && (conpossum[areanum]< Gth2) )
 							   {learningrateHO[2] = param->learningrate[0][2];}
 								   
-						      if (Gth2<conpossum[areanum])
+						           else
 							   {   dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGn =0;
 							      deltaWeight2[jj][k]=0;}
 							   
@@ -1195,17 +1211,19 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {learningrateHO[3] =0;
 							  // negstopreverse=1;
 							   }
-					if( (Gth1<connegsum[areanum]) && (connegsum[areanum]< Gth2) )
+							    
+					                   else if( (Gth1<connegsum[areanum]) && (connegsum[areanum]< Gth2) )
 							   {learningrateHO[3] = param->learningrate[0][3];}		   
 				
-				if (Gth2 <connegsum[areanum]) 
+				                           else
 							   {   dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGp =0;
 							      deltaWeight2[jj][k]=0;}
 							   }
-				else {
-				learningrateHO[2] = param->learningrate[0][2];
-				learningrateHO[3] = param->learningrate[0][3];
-				}
+				
+				                   else {
+				                        learningrateHO[2] = param->learningrate[0][2];
+				                        learningrateHO[3] = param->learningrate[0][3];
+				                        }
 				
 				
 				                          // reset weightupdatepattern
