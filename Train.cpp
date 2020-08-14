@@ -633,6 +633,19 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							      learningrateIH[1] = param->learningrate[0][1];	 
 				
 					      if(param->usesplit==1){	  
+						      
+						      if(param->usesplitadapt)
+							      
+						      {
+						       for(int split =0; i<learningratesplit; split++){
+						          if( (split*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]<(split+1)*conductancepieceIH) )
+							  {learningrateIH[3] = adaptiveratio/pow(adaptivemoment,split); break;}
+						       }
+						       for(int split =0; i<learningratesplit; split++){
+						          if( (split*conductancepieceIH<connegsum[areanum]) && (connegsum[areanum]<(split+1)*conductancepieceIH) )
+							  {learningrateIH[2] = adaptiveratio/pow(adaptivemoment,split); break;}
+						       }
+						      }
 							   if( (0*conductancepieceIH<conpossum[areanum]) && (conpossum[areanum]< Gth1) )
 							   {learningrateIH[2] = 0;
 							   // posstopreverse=1;
@@ -1150,6 +1163,19 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   // adpative weight update 
 				                       // adpative weight update 
 				                    	   if(param->usesplit==1){	  
+								   
+								         if(param->usesplitadapt)
+							      
+						      {
+						       for(int split =0; i<learningratesplit; split++){
+						          if( (split*conductancepieceHO<conpossum[areanum]) && (conpossum[areanum]<(split+1)*conductancepieceHO) )
+							  {learningrateHO[3] = adaptiveratio/pow(adaptivemoment,split); break;}
+						       }
+						       for(int split =0; i<learningratesplit; split++){
+						          if( (split*conductancepieceHO<connegsum[areanum]) && (connegsum[areanum]<(split+1)*conductancepieceHO) )
+							  {learningrateHO[2] = adaptiveratio/pow(adaptivemoment,split); break;}
+						       }
+						      }
 							   if( (0<conpossum[areanum]) && (conpossum[areanum]< Gth1) )
 							   {learningrateHO[2] = 0;
 							  // posstopreverse=1;
