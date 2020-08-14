@@ -641,7 +641,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {		learningrateIH[2] = param->learningrate[0][2];}   
 						      
 						      if (Gth2<conpossum[areanum]) 
-							   {learningrateIH[2] = 100000;}
+							   {
+							      dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->conductanceGn=nminConductance;
+						      deltaWeight1[jj][k] = 0;}
 							  
 							  
 				
@@ -654,7 +656,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {learningrateIH[3] =param->learningrate[0][3];}	  
 				
 				if (Gth2<connegsum[areanum])
-							   {learningrateIH[3] =100000 ;}
+							   {
+					  dynamic_cast<AnalogNVM*>(arrayIH->cell[jj][k])->conductanceGp=pminConductance;
+					deltaWeight1[jj][k] = 0;}
 							
 								      }
 				else {
@@ -1155,7 +1159,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {learningrateHO[2] = param->learningrate[0][2];}
 								   
 						      if (Gth2<conpossum[areanum])
-							   {learningrateHO[2] = 100000;}
+							   {   dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGn = nminConductance;
+							      deltaWeight2[jj][k]=0;}
 							   
 							  
 				
@@ -1168,9 +1173,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {learningrateHO[3] = param->learningrate[0][3];}		   
 				
 				if (Gth2 <connegsum[areanum]) 
-							   {learningrateHO[3] =100000 ;}
-							   
-								      }
+							   {   dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGp = pminConductance;
+							      deltaWeight2[jj][k]=0;}
 				else {
 				learningrateHO[2] = param->learningrate[0][2];
 				learningrateHO[3] = param->learningrate[0][3];
