@@ -224,7 +224,7 @@ for (int r=0; r<100; r++){
 
 			break;}
 	
-			
+	usesplitadapt=1;		
 	learningratesplit = lrs;
 	adaptiveratio =pow(am/10000,(lrs-1)/2);
 	adaptivemomentum = am/10000;
