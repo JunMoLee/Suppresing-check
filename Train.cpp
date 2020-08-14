@@ -1138,6 +1138,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           int bb= dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->bb[allocationmethod2];
 				                           int dd = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd[allocationmethod2];
 				                           int activationindex= bb*(param->nOutput/os) + dd;
+				
+				   	      learningrateHO[0] = param->learningrate[1][0];
+							      learningrateHO[1] = param->learningrate[1][1];	 
 				                           // classify area by index
 
                                                     	    /*  learningrateHO[0] = param->learningrate[1][0];
@@ -1186,8 +1189,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							
 				
 				                   else {
-				                        learningrateHO[2] = param->learningrate[0][2];
-				                        learningrateHO[3] = param->learningrate[0][3];
+				                        learningrateHO[2] = param->learningrate[1][2];
+				                        learningrateHO[3] = param->learningrate[1][3];
 				                        }
 							    
 				                    if(param->usesplit==1){	  
