@@ -620,6 +620,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           int activationindex= bb*hiddenpiece + dd;
 				                           int Gth1 = param->Gth1;
 				                           int Gth2 = param->Gth2;
+				                           int conpos = static_cast<AnalogNVM*>(arrayIH->cell[jj][k])->conductanceGp;
+				 int conneg= static_cast<AnalogNVM*>(arrayIH->cell[jj][k])->conductanceGn;
 				
 				/* learningrateIH[0] = param->learningrate[0][0];
 							      learningrateIH[1] = param->learningrate[0][1];
@@ -657,20 +659,20 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						      
 						     
 
-						      if ( (0*conductancepieceIH<=conpossum[areanum]) && (conpossum[areanum]< Gth1) )
+						      if ( (0*conductancepieceIH<=conpos) && (conpos< Gth1) )
 							   {learningrateIH[2] = 0;
 							   // posstopreverse=1;
 							   }
 						      
 					 
 						      
-						      else if (conpossum[areanum] >= Gth2) 
+						      else if (conpos >= Gth2) 
 							   {learningrateIH[2] = 100000;}
 							  
 							  
 				
 							
-						     if ( (0*conductancepieceIH<=connegsum[areanum]) && (connegsum[areanum]< Gth1) )
+						     if ( (0*conductancepieceIH<=conneg) && (conneg< Gth1) )
 							   {learningrateIH[3] =0;
 							   //negstopreverse=1;
 							   }
@@ -678,7 +680,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					  
 				
 				
-						      else if (connegsum[areanum] >= Gth2) 
+						      else if (conneg>= Gth2) 
 							   {
 					          learningrateIH[3] =100000;}
 							
@@ -1138,6 +1140,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           int bb= dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->bb[allocationmethod2];
 				                           int dd = dynamic_cast<AnalogNVM*>(arrayHO->cell[jj][k])->dd[allocationmethod2];
 				                           int activationindex= bb*(param->nOutput/os) + dd;
+				              int conpos = static_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGp;
+				 int conneg = static_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGn;
 				
 				   	      learningrateHO[0] = param->learningrate[1][0];
 							      learningrateHO[1] = param->learningrate[1][1];	 
@@ -1197,27 +1201,27 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								   
 								        
 						    
-							   if( (0<=conpossum[areanum]) && (conpossum[areanum]< Gth1) )
+							   if( (0<=conpos) && (conpos< Gth1) )
 							   {learningrateHO[2] = 0;
 							  // posstopreverse=1;
 							   }
 							   
 
 								   
-						           else if (conpossum[areanum] >= Gth2)
+						           else if (conpos>= Gth2)
 							   {  learningrateHO[2] = 100000;}
 							   
 							  
 				
 							
-							   if( (0<=connegsum[areanum]) && (connegsum[areanum]< Gth1) )
+							   if( (0<=conneg) && (conneg< Gth1) )
 							   {learningrateHO[3] =0;
 							  // negstopreverse=1;
 							   }
 							    
 					                  		   
 				
-				                           else if (connegsum[areanum] >= Gth2)
+				                           else if (conneg>= Gth2)
 							   {  learningrateHO[3] = 100000;}
 							   }
 				
