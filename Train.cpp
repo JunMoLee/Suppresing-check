@@ -713,7 +713,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           else if (connegsum[areanum]>= Gth2pieceIH)
 							   {  learningrateIH[3] = saturationprotector;}
 							    }
-						      }
+						     
 							
 								      }
 				
