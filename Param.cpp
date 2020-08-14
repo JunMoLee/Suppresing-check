@@ -231,6 +231,7 @@ for (int r=0; r<100; r++){
 	usesplit = 1;
 	Gth1=2;
 	Gth2=8;
+	unitcellsplit =0;
 
 	
 	/* learning rate */
