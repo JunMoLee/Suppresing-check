@@ -121,8 +121,8 @@ public:
 	double adaptiveratio;
 	double adaptivemomentum;
 	double saturationprotector;
-	int Gth1;
-	int Gth2;
+	double Gth1;
+	double Gth2;
 	int unitcellsplit=1;
         char* optimization_type;
 
