@@ -179,6 +179,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                     double Gth2pieceIH= Gth2 * areasizeIH;
 	                     double Gth1pieceHO= Gth1 * areasizeHO;
 	                     double Gth2pieceHO = Gth2 * areasizeHO;
+	double saturationprotector = param->saturationprotector;
 				       
 	
 		     
@@ -697,7 +698,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 								   
 						           else if (conpossum[areanum]>= Gth2pieceIH)
-							   {  learningrateIH[2] = 5;}
+							   {  learningrateIH[2] = saturationprotector;}
 							   
 							  
 				
@@ -710,7 +711,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					                  		   
 				
 				                           else if (connegsum[areanum]>= Gth2pieceIH)
-							   {  learningrateIH[3] = 5;}
+							   {  learningrateIH[3] = saturationprotector;}
 							    }
 						      }
 							
@@ -1239,7 +1240,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 								   
 						           else if (conpos>= Gth2)
-							   {  learningrateHO[2] = 5;}
+							   {  learningrateHO[2] = saturationprotector;}
 							   
 							  
 				
@@ -1252,7 +1253,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					                  		   
 				
 				                           else if (conneg>= Gth2)
-							   {  learningrateHO[3] = 5;}
+							   {  learningrateHO[3] = saturationprotector;}
 								
 							}
 							    else{
