@@ -170,7 +170,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                       int maxcounterHO = param->nOutput/os;
 	                       int maxallocationmethodIH = kernel-1;
                                int maxallocationmethodHO = param->nHide/hh-1;
-	                       double adaptivemomentum = param -> adaptivemomentum;
+	                       double adaptivemoment = param -> adaptivemomentum;
 	                       double adaptiveratio = param -> adaptiveratio;
 	                       int learningratesplit = param -> learningratesplit;
 	                   int Gth1 = param->Gth1;
