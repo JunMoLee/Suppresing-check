@@ -75,9 +75,9 @@ for (int r=0; r<100; r++){
 	numMnistTestImages = 10000;	// # of testing images in MNIST
 	useLTD=1;
 	const double
-        l=40;
+        l=30;
 	const double
-	ll=40;
+	ll=30;
 
 	
 	const int //select dl, pdl
@@ -86,9 +86,9 @@ for (int r=0; r<100; r++){
 		case 0:
 			
 	
-	dalpha=0.40;
+	dalpha=0.20;
 
-	pdalpha=0.40;
+	pdalpha=0.15;
 			break;
 		case 1:
 			
@@ -200,9 +200,9 @@ for (int r=0; r<100; r++){
 	switch (ns){
 	case 0:
 			
-	newUpdateRate=3;
+	newUpdateRate=6;
 	
-	nnewUpdateRate=3;	
+	nnewUpdateRate=2;	
 	TrackRate=nnewUpdateRate;
 			break;
 	case 1:
@@ -325,7 +325,7 @@ for (int r=0; r<100; r++){
 	
 	
 const int
-a=2;
+a=0;
 	
 
 switch(a){
