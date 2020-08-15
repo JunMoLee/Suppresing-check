@@ -121,9 +121,13 @@ public:
 	double adaptiveratio;
 	double adaptivemomentum;
 	double saturationprotector;
+	double destructionprotector;
 	double Gth1;
 	double Gth2;
+	double adaptivesplitGth1;
+	double adaptivesplitGth2;
 	int unitcellsplit=1;
+	
         char* optimization_type;
 
 	/* Hardware parameters */
