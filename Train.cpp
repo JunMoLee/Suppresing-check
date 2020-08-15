@@ -1237,18 +1237,18 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							    
 						      //unequal partition
 						      	if( (0<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth1pieceHO) )
-							{learningrateHO[3] = param->learningrate[0][3] * adaptiveratio;}
+							{learningrateHO[3] = param->learningrate[1][3] * adaptiveratio;}
 						        else if ( (adaptivesplitGth1pieceHO<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth2pieceHO) )
-							{learningrateHO[3] = param->learningrate[0][3];}
+							{learningrateHO[3] = param->learningrate[1][3];}
 						        else 
-							{learningrateHO[3] = param->learningrate[0][3] / adaptiveratio;}
+							{learningrateHO[3] = param->learningrate[1][3] / adaptiveratio;}
 						       
 						        if( (0<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth1pieceHO) )
-							{learningrateHO[2] = param->learningrate[0][2] * adaptiveratio;}
+							{learningrateHO[2] = param->learningrate[1][2] * adaptiveratio;}
 						        else if ( (adaptivesplitGth1pieceHO<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth2pieceHO) )
-							{learningrateHO[2] = param->learningrate[0][2];}
+							{learningrateHO[2] = param->learningrate[1][2];}
 						        else 
-							{learningrateHO[2] = param->learningrate[0][2] / adaptiveratio;}
+							{learningrateHO[2] = param->learningrate[1][2] / adaptiveratio;}
 							
 							    
 						     
