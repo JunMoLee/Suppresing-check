@@ -228,11 +228,14 @@ for (int r=0; r<100; r++){
 	learningratesplit = lrs;
 	adaptiveratio =pow(am/10000,(lrs-1)/2);
 	adaptivemomentum = am/10000;
+	adaptivesplitGth1=9;
+	adaptivesplitGth2=1;
 	usesplit = 1;
 	Gth1=2;
 	Gth2=8;
 	unitcellsplit=1;
 	saturationprotector=5;
+	destructionprotector=0;
 
 	
 	/* learning rate */
