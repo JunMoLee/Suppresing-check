@@ -186,8 +186,8 @@ int main() {
 	        int ReverseUpdate =param->ReverseUpdate;
 	        int nnewUpdateRate= param->nnewUpdateRate;
 	        int dominance = param ->dominance;
-	        int Gth1 = param -> Gth1;
-		int Gth2 = param -> Gth2;
+	        double Gth1 = param -> Gth1;
+		double Gth2 = param -> Gth2;
 		int usesplitadapt = param->usesplitadapt;
 	        int unitcellsplit = param->unitcellsplit;
 		double saturationprotector = param->saturationprotector;			
