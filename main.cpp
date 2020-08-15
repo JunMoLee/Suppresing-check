@@ -154,7 +154,7 @@ int main() {
 	        double averagesum4=0;
 	        double averagesum5=0;
 	
-		for (int i=1; i<=50; i++) {
+		for (int i=1; i<=125; i++) {
 		
 	        /* define name for simplicity */
 			       int kernel =  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->kernel; 	
