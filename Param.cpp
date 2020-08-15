@@ -224,14 +224,14 @@ for (int r=0; r<100; r++){
 
 			break;}
 	
-	usesplitadapt=1;		
+	usesplitadapt=0;		
 	learningratesplit = lrs;
 	adaptiveratio =pow(am/10000,(lrs-1)/2);
 	adaptivemomentum = am/10000;
 	usesplit = 1;
 	Gth1=2;
 	Gth2=8;
-	unitcellsplit =0;
+	unitcellsplit=1;
 	saturationprotector=5;
 
 	
