@@ -129,6 +129,7 @@ public:
 	double adaptivesplitGth1;
 	double adaptivesplitGth2;
 	int unitcellsplit=1;
+	double deltaweightratio;
 	
         char* optimization_type;
 
