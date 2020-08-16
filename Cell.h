@@ -132,6 +132,9 @@ public:
 	
 	/* define area */
 	int areanum=0;
+	
+	/* weight analyzer */
+	 std::vector<double>  weightanalyzer();
 };
 
 class SRAM: public Cell {
