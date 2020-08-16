@@ -271,6 +271,28 @@ negstep=0;
 	
 }
 
+std::vector<double> eNVM::weightanalyzer(){
+	int Gplocationnumber;
+	int Gnlocationnumber;
+	double Gth1 = param -> Gth1;
+	double Gth2 = param -> Gth2;
+	
+	if((conductanceGp>=0) && (conductanceGp<Gth1)) Gplocationnumber = 1;
+	else if ((conductanceGp>=Gth1) && (conductanceGp<Gth2)) Gplocationnumber = 2;
+	else Gplocationnumber = 3;
+	
+	if((conductanceGn>=0) && (conductanceGn<Gth1)) Gnlocationnumber = 1;
+	else if ((conductanceGn>=Gth1) && (conductanceGn<Gth2)) Gnlocationnumber = 2;
+	else Gnlocationnumber = 3;
+	
+	std::vector<double> conductancelocationpair; 
+	conductancelocationpair.push_back(Gplocationnumber);
+	conductancelocationpair.push_back(Gnlocationnumber);
+	conductancelocationpair.push_back(Gplocationnumber+Gnlocationnumber);
+	
+	return conductancelocationpair;
+}
+
 /* Real Device */
 RealDevice::RealDevice(int x, int y, double p, double n, int l) {
 	this->x = x; this->y = y;	// Cell location: x (column) and y (row) start from index 0
