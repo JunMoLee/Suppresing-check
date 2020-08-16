@@ -124,6 +124,8 @@ public:
 	double destructionprotector;
 	double Gth1;
 	double Gth2;
+	double Gth1weight;
+	double Gth2weight;
 	double adaptivesplitGth1;
 	double adaptivesplitGth2;
 	int unitcellsplit=1;
