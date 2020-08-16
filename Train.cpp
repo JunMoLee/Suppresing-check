@@ -189,6 +189,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                     double adaptivesplitGth2pieceHO = Gth2 * areasizeHO;
                              double saturationprotector = param->saturationprotector;
 	                     double destructionprotector = param->destructionprotector;
+	double deltaweightratio = param->deltaweightratio;
 				       
 	
 		     
@@ -700,7 +701,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {learningrateIH[2] = saturationprotector;}
 							  
 						      else
-						      {learningrateIH[2]=param->learningrate[0][2]*3;}
+						      {learningrateIH[2]=param->learningrate[0][2]*deltaweightratio;}
 				
 							
 						     if ( (0*conductancepieceIH<=conneg) && (conneg< Gth1) )
@@ -714,7 +715,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						      else if (conneg>= Gth2) 
 							   {learningrateIH[3] =saturationprotector;}
 						        else
-						      {learningrateIH[3]=param->learningrate[0][3]*3;}
+						      {learningrateIH[3]=param->learningrate[0][3]*deltaweightratio;}
 						  }
 						      else {
 							       if( (0<=conpossum[areanum]) && (conpossum[areanum]< Gth1pieceIH) )
@@ -1291,7 +1292,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {  learningrateHO[2] = saturationprotector;}
 								
 							else 
-							{learningrateHO[2] = param->learningrate[1][2]*5;}
+							{learningrateHO[2] = param->learningrate[1][2]*deltaweightratio;}
 							   
 							  
 				
@@ -1306,7 +1307,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				                           else if (conneg>= Gth2)
 							   {  learningrateHO[3] = saturationprotector;}
 								else
-								{learningrateHO[3] = param->learningrate[1][3]*5;}
+								{learningrateHO[3] = param->learningrate[1][3]*deltaweightratio;}
 								
 							}
 							    else{
