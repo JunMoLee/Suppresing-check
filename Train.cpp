@@ -699,7 +699,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						      else if (conpos >= Gth2) 
 							   {learningrateIH[2] = saturationprotector;}
 							  
-							  
+						      else
+						      {learningrateIH[2]=param->learningrate[0][2]*3;}
 				
 							
 						     if ( (0*conductancepieceIH<=conneg) && (conneg< Gth1) )
@@ -712,6 +713,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 						      else if (conneg>= Gth2) 
 							   {learningrateIH[3] =saturationprotector;}
+						        else
+						      {learningrateIH[3]=param->learningrate[0][3]*3;}
 						  }
 						      else {
 							       if( (0<=conpossum[areanum]) && (conpossum[areanum]< Gth1pieceIH) )
@@ -1286,6 +1289,9 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 								   
 						           else if (conpos>= Gth2)
 							   {  learningrateHO[2] = saturationprotector;}
+								
+							else 
+							{learningrateHO[2] = param->learningrate[1][2]*5;}
 							   
 							  
 				
@@ -1299,6 +1305,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				                           else if (conneg>= Gth2)
 							   {  learningrateHO[3] = saturationprotector;}
+								else
+								{learningrateHO[3] = param->learningrate[1][3]*5;}
 								
 							}
 							    else{
