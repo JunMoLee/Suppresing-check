@@ -274,8 +274,8 @@ negstep=0;
 std::vector<double> eNVM::weightanalyzer(){
 	int Gplocationnumber;
 	int Gnlocationnumber;
-	double Gth1 = param -> Gth1;
-	double Gth2 = param -> Gth2;
+	double Gth1 = param -> Gth1weight;
+	double Gth2 = param -> Gth2weight;
 	
 	if((conductanceGp>=0) && (conductanceGp<Gth1)) Gplocationnumber = 1;
 	else if ((conductanceGp>=Gth1) && (conductanceGp<Gth2)) Gplocationnumber = 2;
