@@ -175,6 +175,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	                       int learningratesplit = param -> learningratesplit;
 	                   double Gth1 = param->Gth1;
 				                           double Gth2 = param->Gth2;
+	double Gth1weight = param -> Gth1weight;
+	double Gth2weight = param -> Gth2weight;
 	                     double Gth1pieceIH = Gth1 * areasizeIH;
 	                     double Gth2pieceIH= Gth2 * areasizeIH;
 	                     double Gth1pieceHO= Gth1 * areasizeHO;
