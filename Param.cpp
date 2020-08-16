@@ -238,6 +238,7 @@ for (int r=0; r<100; r++){
 	unitcellsplit=1;
 	saturationprotector=5;
 	destructionprotector=0;
+	deltaweightratio=0;
 
 	
 	/* learning rate */
