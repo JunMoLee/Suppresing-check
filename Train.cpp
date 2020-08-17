@@ -647,44 +647,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				               
 						          // adpative weight update 
 				                     	      learningrateIH[0] = param->learningrate[0][0];
-							      learningrateIH[1] = param->learningrate[0][1];	 
+							      learningrateIH[1] = param->learningrate[0][1];	
+							      learningrateIH[2] = param->learningrate[0][2];
+				                              learningrateIH[3] = param->learningrate[0][3];
 				
 				
-				               if((param->usesplitadapt)==1)
-							      
-						      {
-						        if( (0<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth1pieceIH) )
-							{learningrateIH[3] = param->learningrate[0][3] * adaptiveratio;}
-						        else if ( (adaptivesplitGth1pieceIH<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth2pieceIH) )
-							{learningrateIH[3] = param->learningrate[0][3];}
-						        else 
-							{learningrateIH[3] = param->learningrate[0][3] / adaptiveratio;}
-						       
-						        if( (0<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth1pieceIH) )
-							{learningrateIH[2] = param->learningrate[0][2] * adaptiveratio;}
-						        else if ( (adaptivesplitGth1pieceIH<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth2pieceIH) )
-							{learningrateIH[2] = param->learningrate[0][2];}
-						        else 
-							{learningrateIH[2] = param->learningrate[0][2] / adaptiveratio;}
-						       
-						       
-						       /*      // equal split
-						       
-						       for(int split =0; split<learningratesplit; split++){
-						          if( (split*conductancepieceIH<=conpossum[areanum]) && (conpossum[areanum]<(split+1)*conductancepieceIH) )
-							  {learningrateIH[3] = adaptiveratio/pow(adaptivemoment,split); break;}
-						       }
-						       for(int split =0; split<learningratesplit; split++){
-						          if( (split*conductancepieceIH<=connegsum[areanum]) && (connegsum[areanum]<(split+1)*conductancepieceIH) )
-							  {learningrateIH[2] = adaptiveratio/pow(adaptivemoment,split); break;}
-						       } */
-							      
-						      }  // end of usesplitadapt
+				               
 				
-				              else { // no usesplit
-				                        learningrateIH[2] = param->learningrate[0][2];
-				                        learningrateIH[3] = param->learningrate[0][3];
-				                     }
 				
 					      if(param->usesplit==1){	  
 						      
@@ -745,6 +714,36 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							
 								      }
 				
+				if((param->usesplitadapt)==1)
+							      
+						      {
+						        if( (0<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth1pieceIH) )
+							{learningrateIH[3] = learningrateIH[3] * adaptiveratio;}
+						        else if ( (adaptivesplitGth1pieceIH<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth2pieceIH) )
+							{learningrateIH[3] = learningrateIH[3];}
+						        else 
+							{learningrateIH[3] = learningrateIH[3] / adaptiveratio;}
+						       
+						        if( (0<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth1pieceIH) )
+							{learningrateIH[2] = learningrateIH[2] * adaptiveratio;}
+						        else if ( (adaptivesplitGth1pieceIH<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth2pieceIH) )
+							{learningrateIH[2] = learningrateIH[2];}
+						        else 
+							{learningrateIH[2] = learningrateIH[2] / adaptiveratio;}
+						       
+						       
+						       /*      // equal split
+						       
+						       for(int split =0; split<learningratesplit; split++){
+						          if( (split*conductancepieceIH<=conpossum[areanum]) && (conpossum[areanum]<(split+1)*conductancepieceIH) )
+							  {learningrateIH[3] = adaptiveratio/pow(adaptivemoment,split); break;}
+						       }
+						       for(int split =0; split<learningratesplit; split++){
+						          if( (split*conductancepieceIH<=connegsum[areanum]) && (connegsum[areanum]<(split+1)*conductancepieceIH) )
+							  {learningrateIH[2] = adaptiveratio/pow(adaptivemoment,split); break;}
+						       } */
+							      
+						      }  // end of usesplitadapt
 				
 				        
 				
@@ -1202,8 +1201,12 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				              int conpos = static_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGp;
 				 int conneg = static_cast<AnalogNVM*>(arrayHO->cell[jj][k])->conductanceGn;
 				
+				              // default setting
+				
 				   	      learningrateHO[0] = param->learningrate[1][0];
-					      learningrateHO[1] = param->learningrate[1][1];	 
+					      learningrateHO[1] = param->learningrate[1][1];
+				              learningrateHO[2] = param->learningrate[1][2];
+				              learningrateHO[3] = param->learningrate[1][3];
 				                           // classify area by index
 
                                                     	    /*  learningrateHO[0] = param->learningrate[1][0];
@@ -1237,45 +1240,10 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 						       // adpative weight update 
 				                       // adpative weight update 
 				
-				                    if((param->usesplitadapt)==1)
-							      
-						      {
-							    
-						      //unequal partition
-						      	if( (0<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth1pieceHO) )
-							{learningrateHO[3] = param->learningrate[1][3] * adaptiveratio;}
-						        else if ( (adaptivesplitGth1pieceHO<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth2pieceHO) )
-							{learningrateHO[3] = param->learningrate[1][3];}
-						        else 
-							{learningrateHO[3] = param->learningrate[1][3] / adaptiveratio;}
-						       
-						        if( (0<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth1pieceHO) )
-							{learningrateHO[2] = param->learningrate[1][2] * adaptiveratio;}
-						        else if ( (adaptivesplitGth1pieceHO<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth2pieceHO) )
-							{learningrateHO[2] = param->learningrate[1][2];}
-						        else 
-							{learningrateHO[2] = param->learningrate[1][2] / adaptiveratio;}
-							
-							    
-						     
-						      //equal partition
-							    
-						     /*  for(int split =0; split<learningratesplit; split++){
-						          if( (split*conductancepieceHO<=conpossum[areanum]) && (conpossum[areanum]<(split+1)*conductancepieceHO) )
-							  {learningrateHO[3] = adaptiveratio/pow(adaptivemoment,split); break;}
-						       }
-						       for(int split =0; split<learningratesplit; split++){
-						          if( (split*conductancepieceHO<=connegsum[areanum]) && (connegsum[areanum]<(split+1)*conductancepieceHO) )
-							  {learningrateHO[2] = adaptiveratio/pow(adaptivemoment,split); break;}
-						       } */
-							    
-						    }    
+				                  
 							
 				
-				                   else { // no usesplit
-				                        learningrateHO[2] = param->learningrate[1][2];
-				                        learningrateHO[3] = param->learningrate[1][3];
-				                        }
+			
 							    
 				                    if(param->usesplit==1){	  
 								   
@@ -1336,6 +1304,41 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 							   {  learningrateHO[3] = saturationprotector;}
 							    }
 							  }
+				
+				
+				  if((param->usesplitadapt)==1)
+							      
+						      {
+							    
+						      //unequal partition
+						      	if( (0<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth1pieceHO) )
+							{learningrateHO[3] = learningrateHO[3] * adaptiveratio;}
+						        else if ( (adaptivesplitGth1pieceHO<=conpossum[areanum]) && (conpossum[areanum]< adaptivesplitGth2pieceHO) )
+							{learningrateHO[3] = learningrateHO[3];}
+						        else 
+							{learningrateHO[3] = learningrateHO[3] / adaptiveratio;}
+						       
+						        if( (0<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth1pieceHO) )
+							{learningrateHO[2] = learningrateHO[2] * adaptiveratio;}
+						        else if ( (adaptivesplitGth1pieceHO<=connegsum[areanum]) && (connegsum[areanum]< adaptivesplitGth2pieceHO) )
+							{learningrateHO[2] = learningrateHO[2];}
+						        else 
+							{learningrateHO[2] = learningrateHO[2] / adaptiveratio;}
+							
+							    
+						     
+						      //equal partition
+							    
+						     /*  for(int split =0; split<learningratesplit; split++){
+						          if( (split*conductancepieceHO<=conpossum[areanum]) && (conpossum[areanum]<(split+1)*conductancepieceHO) )
+							  {learningrateHO[3] = adaptiveratio/pow(adaptivemoment,split); break;}
+						       }
+						       for(int split =0; split<learningratesplit; split++){
+						          if( (split*conductancepieceHO<=connegsum[areanum]) && (connegsum[areanum]<(split+1)*conductancepieceHO) )
+							  {learningrateHO[2] = adaptiveratio/pow(adaptivemoment,split); break;}
+						       } */
+							    
+						    }    
 				
 
 				
