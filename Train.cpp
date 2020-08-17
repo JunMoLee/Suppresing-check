@@ -2161,11 +2161,14 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double countGnrange =0;
 		double countGnweightrange=0;
 		double locationnumberspecifier=0;
+		double locationnumberspecifier2=0;
 				 for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
 				
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 2)
 				{locationnumberspecifier++;}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 5)
+				{locationnumberspecifier2++;}
 				
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
@@ -2186,6 +2189,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 2)
 				{locationnumberspecifier++;}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 5)
+				{locationnumberspecifier2++;}
 				
 	if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
@@ -2201,7 +2206,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				 }
 		
 		cout<<"P(|w|>=Gth2/pconrange | Gp,Gn>=Gth2/10) = "<< countGpweightrange/countGprange<<", "<<countGnweightrange/countGnrange<<endl;
-		cout<<"count L.N(Gp)+L.N(Gn) = 2 : "<<locationnumberspecifier++<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 2] : "<<locationnumberspecifier<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 5] : "<<locationnumberspecifier2<<endl;
     }  // end of interepoch code (default -> iterate once)
 }  // end of Train function
 double SGD(double gradient, double learning_rate){
