@@ -70,7 +70,7 @@ void WeightInitialize() {
             weight2[i][j] = (double)(rand() % 7 +(-3) ) / 3;   // random number: 0, 0.33, 0.66 or 1
         }
     }
-}
+
 
     for (int i = 0; i < param->nHide; i++) {
         for (int j = 0; j < param->nInput; j++) {
