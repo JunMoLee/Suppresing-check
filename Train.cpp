@@ -2098,16 +2098,26 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double count12HO=0;
 		double count22HO=0;
 		double count13HO=0;
-		double saturatedweight1=0;
-		double saturatedweight2=0;
-		double saturatedweight3=0;
-		double saturatedweight4=0;
-		double saturatedweight5=0;
-		double saturatedweightm1=0;
-		double saturatedweightm2=0;
-		double saturatedweightm3=0;
-		double saturatedweightm4=0;
-		double saturatedweightm5=0;
+		double possaturatedweight1=0;
+		double possaturatedweight2=0;
+		double possaturatedweight3=0;
+		double possaturatedweight4=0;
+		double possaturatedweight5=0;
+		double possaturatedweightm1=0;
+		double possaturatedweightm2=0;
+		double possaturatedweightm3=0;
+		double possaturatedweightm4=0;
+		double possaturatedweightm5=0;
+		double negsaturatedweight1=0;
+		double negsaturatedweight2=0;
+		double negsaturatedweight3=0;
+		double negsaturatedweight4=0;
+		double negsaturatedweight5=0;
+		double negsaturatedweightm1=0;
+		double negsaturatedweightm2=0;
+		double negsaturatedweightm3=0;
+		double negsaturatedweightm4=0;
+		double negsaturatedweightm5=0;
 		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){	
 				
@@ -2116,36 +2126,64 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsatcount){
 					
 				if((-1<=satweight)&&(satweight<-0.8))
-				{saturatedweightm5++;}
+				{negsaturatedweightm5++;}
 				else if((-0.8<=satweight)&&(satweight<-0.6))
-				{saturatedweightm4++;}
+				{negsaturatedweightm4++;}
 		
 				else if((-0.6<=satweight)&&(satweight<-0.4))
-				{saturatedweightm3++;}
+				{negsaturatedweightm3++;}
 				
 				else if((-0.4<=satweight)&&(satweight<-0.2))
-				{saturatedweightm2++;}
+				{negsaturatedweightm2++;}
 				
 				else if((-0.2<=satweight)&&(satweight<0))
-				{saturatedweightm1++;}
+				{negsaturatedweightm1++;}
+				
+				else if((0<=satweight)&&(satweight<0.2))
+				{negsaturatedweight1++;}
+				else if((0.2<=satweight)&&(satweight<0.4))
+				{negsaturatedweight2++;}
+				
+				else if((0.4<=satweight)&&(satweight<0.6))
+				{negsaturatedweight3++;}
+				
+				else if((0.6<=satweight)&&(satweight<0.8))
+				{negsaturatedweight4++;}
+				
+				else if((0.8<=satweight)&&(satweight<=1))
+				{negsaturatedweight5++;}
 		
 				}
 	
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possatcount){
 					
-				if((0<=satweight)&&(satweight<0.2))
-				{saturatedweight1++;}
+				if((-1<=satweight)&&(satweight<-0.8))
+				{possaturatedweightm5++;}
+				else if((-0.8<=satweight)&&(satweight<-0.6))
+				{possaturatedweightm4++;}
+		
+				else if((-0.6<=satweight)&&(satweight<-0.4))
+				{possaturatedweightm3++;}
+				
+				else if((-0.4<=satweight)&&(satweight<-0.2))
+				{possaturatedweightm2++;}
+				
+				else if((-0.2<=satweight)&&(satweight<0))
+				{possaturatedweightm1++;}
+					
+				else if((0<=satweight)&&(satweight<0.2))
+				{possaturatedweight1++;}
 				else if((0.2<=satweight)&&(satweight<0.4))
-				{saturatedweight2++;}
+				{possaturatedweight2++;}
 				
 				else if((0.4<=satweight)&&(satweight<0.6))
-				{saturatedweight3++;}
+				{possaturatedweight3++;}
 				
 				else if((0.6<=satweight)&&(satweight<0.8))
-				{saturatedweight4++;}
+				{possaturatedweight4++;}
 				
 				else if((0.8<=satweight)&&(satweight<=1))
-				{saturatedweight5++;}
+				{possaturatedweight5++;}
 				
 				}
 				
@@ -2161,36 +2199,64 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsatcount){
 					
 				if((-1<=satweight)&&(satweight<-0.8))
-				{saturatedweightm5++;}
+				{negsaturatedweightm5++;}
 				else if((-0.8<=satweight)&&(satweight<-0.6))
-				{saturatedweightm4++;}
-				
+				{negsaturatedweightm4++;}
+		
 				else if((-0.6<=satweight)&&(satweight<-0.4))
-				{saturatedweightm3++;}
+				{negsaturatedweightm3++;}
 				
 				else if((-0.4<=satweight)&&(satweight<-0.2))
-				{saturatedweightm2++;}
+				{negsaturatedweightm2++;}
 				
 				else if((-0.2<=satweight)&&(satweight<0))
-				{saturatedweightm1++;}
+				{negsaturatedweightm1++;}
+				
+				else if((0<=satweight)&&(satweight<0.2))
+				{negsaturatedweight1++;}
+				else if((0.2<=satweight)&&(satweight<0.4))
+				{negsaturatedweight2++;}
+				
+				else if((0.4<=satweight)&&(satweight<0.6))
+				{negsaturatedweight3++;}
+				
+				else if((0.6<=satweight)&&(satweight<0.8))
+				{negsaturatedweight4++;}
+				
+				else if((0.8<=satweight)&&(satweight<=1))
+				{negsaturatedweight5++;}
+		
 				}
 	
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possatcount){
 					
-				if((0<=satweight)&&(satweight<0.2))
-				{saturatedweight1++;}
+				if((-1<=satweight)&&(satweight<-0.8))
+				{possaturatedweightm5++;}
+				else if((-0.8<=satweight)&&(satweight<-0.6))
+				{possaturatedweightm4++;}
+		
+				else if((-0.6<=satweight)&&(satweight<-0.4))
+				{possaturatedweightm3++;}
+				
+				else if((-0.4<=satweight)&&(satweight<-0.2))
+				{possaturatedweightm2++;}
+				
+				else if((-0.2<=satweight)&&(satweight<0))
+				{possaturatedweightm1++;}
 					
+				else if((0<=satweight)&&(satweight<0.2))
+				{possaturatedweight1++;}
 				else if((0.2<=satweight)&&(satweight<0.4))
-				{saturatedweight2++;}
+				{possaturatedweight2++;}
 				
 				else if((0.4<=satweight)&&(satweight<0.6))
-				{saturatedweight3++;}
+				{possaturatedweight3++;}
 				
 				else if((0.6<=satweight)&&(satweight<0.8))
-				{saturatedweight4++;}
+				{possaturatedweight4++;}
 				
 				else if((0.8<=satweight)&&(satweight<=1))
-				{saturatedweight5++;}
+				{possaturatedweight5++;}
 				}
 			}
 		}
