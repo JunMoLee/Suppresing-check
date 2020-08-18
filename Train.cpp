@@ -2179,20 +2179,22 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					
 				if((0<=satweight)&&(satweight<0.2))
 				{saturatedweight1++;}
+					
 				else if((0.2<=satweight)&&(satweight<0.4))
 				{saturatedweight2++;}
-				}
+				
 				else if((0.4<=satweight)&&(satweight<0.6))
 				{saturatedweight3++;}
-				}
+				
 				else if((0.6<=satweight)&&(satweight<0.8))
 				{saturatedweight4++;}
-				}
+				
 				else if((0.8<=satweight)&&(satweight<=1))
 				{saturatedweight5++;}
 				}
 			}
 		}
+		
 cout<<"saturated weight count"<<endl;
 cout<<"-1<=w<-0.8"<<" : "<<saturatedweightm5<<endl;
 cout<<"-0.8<=w<-0.6"<<" : "<<saturatedweightm4<<endl;
