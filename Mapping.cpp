@@ -48,6 +48,8 @@ extern Param *param;
 
 extern std::vector< std::vector<double> > weight1;
 extern std::vector< std::vector<double> > weight2;
+extern std::vector< std::vector<double> > prevweight1;
+extern std::vector< std::vector<double> > prevweight2;
 
 extern Array *arrayIH;
 extern Array *arrayHO;
@@ -66,6 +68,20 @@ void WeightInitialize() {
     for (int i = 0; i < param->nOutput; i++) {
         for (int j = 0; j < param->nHide; j++) {
             weight2[i][j] = (double)(rand() % 7 +(-3) ) / 3;   // random number: 0, 0.33, 0.66 or 1
+        }
+    }
+}
+
+    for (int i = 0; i < param->nHide; i++) {
+        for (int j = 0; j < param->nInput; j++) {
+            prevweight1[i][j] = weight1;   // random number: 0, 0.33, 0.66 or 1
+            //printf("weight 1 is %.4f\n", weight1[i][j]);
+        }
+    }
+    /* Initialize weights for the hidden layer */
+    for (int i = 0; i < param->nOutput; i++) {
+        for (int j = 0; j < param->nHide; j++) {
+            prevweight2[i][j] = weight2;   // random number: 0, 0.33, 0.66 or 1
         }
     }
 }
