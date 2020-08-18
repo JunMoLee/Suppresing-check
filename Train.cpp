@@ -2076,6 +2076,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	double weightm3count=0;
 	double weightm2count=0;
 	double weightm1count=0;	
+			double location5count=0;
+	double location4count=0;
+	double location3count=0;
+	double location2count=0;
+	double location1count=0;
+			double locationm5count=0;
+	double locationm4count=0;
+	double locationm3count=0;
+	double locationm2count=0;
+	double locationm1count=0;	
 	
 		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){	
@@ -2085,6 +2095,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					 weightm5momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					weightm5count++;
+				        locationm5 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					
 					}
 				
@@ -2093,46 +2104,55 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					{weightm4momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm4count++;
+					  locationm4 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((-0.6<=prevweight1[m][n])&&(prevweight1[m][n]<-0.4))
 					{weightm3momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm3count++;
+					  locationm3 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((-0.4<=prevweight1[m][n])&&(prevweight1[m][n]-0.2))
 					{weightm2momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm2count++;
+					  locationm2 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((-0.2<=prevweight1[m][n])&&(prevweight1[m][n]<0))
 					{weightm1momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm1count++;
+					  locationm1 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((0<=prevweight1[m][n])&&(prevweight1[m][n]<0.2))
 					{weight1momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weight1count++;
+					 location1 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((0.2<=prevweight1[m][n])&&(prevweight1[m][n]<0.4))
 					{weight2momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					  weight2count++;
+					 location2+= (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((0.4<=prevweight1[m][n])&&(prevweight1[m][n]<0.6))
 					{weight3momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					  weight3count++;
+					 location3 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((0.6<=prevweight1[m][n])&&(prevweight1[m][n]<0.8))
 					{weight4momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					  weight4count++;
+					 location4 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 					else
 					{weight5momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					  weight5count++;
+					 location5 += (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn)/20;
 					}
 			}
 		}
@@ -2144,68 +2164,78 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					 weightm5momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 						weightm5count++;
+						 locationm5 += (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					
 					else if((-0.8<=prevweight2[m][n])&&(prevweight2[m][n]<-0.6))
 					{weightm4momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm4count++;
+					  locationm4 += (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((-0.6<=prevweight2[m][n])&&(prevweight2[m][n]<-0.4))
 					{weightm3momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm3count++;
+					  locationm3 += (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((-0.4<=prevweight2[m][n])&&(prevweight2[m][n]<-0.2))
 					{weightm2momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm2count++;
+					  locationm2 += (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((-0.2<=prevweight2[m][n])&&(prevweight2[m][n]<0))
 					{weightm1momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm1count++;
+					  locationm1 += (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((0<=prevweight2[m][n])&&(prevweight2[m][n]<0.2))
 					{weight1momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight1count++;
+					  location1+= (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((0.2<=prevweight2[m][n])&&(prevweight2[m][n]<0.4))
 					{weight2momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight2count++;
+					 location2+= (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((0.4<=prevweight2[m][n])&&(prevweight2[m][n]<0.6))
 					{weight3momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight3count++;
+					 location3 += (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					else if ((0.6<=prevweight2[m][n])&&(prevweight2[m][n]<0.8))
 					{weight4momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight4count++;
+					 location4 += (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 					else
 					{weight5momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight5count++;
+					 location5 += (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn)/20;
 					}
 				
 			}
 		}
 		
-                cout<<"momentum"<<endl;
-		cout<<"-1<=w<-0.8 : "<<weightm5momentumsum/weightm5count<<endl;
-                cout<<"-0.8<=w<-0.6 : "<<weightm4momentumsum/weightm4count<<endl;
-cout<<"-0.6<=w<-0.4 : "<<weightm3momentumsum/weightm3count<<endl;
-cout<<"-0.4<=w<-0.2 : "<<weightm2momentumsum/weightm2count<<endl;
-cout<<"-0.2<=w<0: "<<weightm1momentumsum/weightm1count<<endl;
-		cout<<"0<=w<0.2 : "<<weight1momentumsum/weight1count<<endl;
-                cout<<"0.2<=w<0.4 : "<<weight2momentumsum/weight2count<<endl;
-cout<<"0.4<=w<0.6 : "<<weight3momentumsum/weight3count<<endl;
-cout<<"0.6<=w<0.8 : "<<weight4momentumsum/weight4count<<endl;
-cout<<"0.8<=w<1 : "<<weight5momentumsum/weight5count<<endl;
+                cout<<"location average"<<endl;
+		cout<<"-1<=w<-0.8 : "<<locationm5count/weightm5count<<endl;
+                cout<<"-0.8<=w<-0.6 : "<<locationm4count/weightm4count<<endl;
+cout<<"-0.6<=w<-0.4 : "<<locationm3count/weightm3count<<endl;
+cout<<"-0.4<=w<-0.2 : "<<locationm2count/weightm2count<<endl;
+cout<<"-0.2<=w<0: "<<locationm1count/weightm1count<<endl;
+		cout<<"0<=w<0.2 : "<<location1count/weight1count<<endl;
+                cout<<"0.2<=w<0.4 : "<<location2count/weight2count<<endl;
+cout<<"0.4<=w<0.6 : "<<location3count/weight3count<<endl;
+cout<<"0.6<=w<0.8 : "<<location4count/weight4count<<endl;
+cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 
 						      
 // weight analyzer 
@@ -2267,6 +2297,8 @@ cout<<"0.8<=w<1 : "<<weight5momentumsum/weight5count<<endl;
 					 GnIH1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1];
 					 totalIH1 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]; 
 					 countIH1++;
+					
+					 
 					}
 					else if((-0.66666<=weight1[m][n])&&(weight1[m][n]<-0.33333))
 					{GpIH2 += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0];
