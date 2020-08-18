@@ -2147,7 +2147,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				else if((0.8<=satweight)&&(satweight<=1))
 				{saturatedweight5++;}
 				
-
+				}
 				
 					
 				
