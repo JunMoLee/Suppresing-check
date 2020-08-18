@@ -268,6 +268,7 @@ unc=0;
 uzc=0;
 posstep=0;
 negstep=0;
+momentumunitsum=0;
 	
 }
 
@@ -660,7 +661,14 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 			writePulseWidthLTD = writeLatencyLTD / (-numPulse);
 		}
 	}
-	
+	if(deltaWeightSign>0) momentumposstep += numPulse;
+	else mometumnegstep += numPulse;
+	momentumcyclecounter ++;
+	if(momentumcyclecounter % 100 == 0)
+	{momentumunitsum += momentumposstep/momentumnegstep;
+	 momentumposstep=0;
+	 momentumnegstep=0;
+	}
 	conductancePrev = conductance;
 	conductanceGp = conductanceNewGp;
 	conductanceGn = conductanceNewGn;
@@ -846,7 +854,14 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 			writePulseWidthLTD = writeLatencyLTD / (-numPulse);
 		}
 	}
-	
+	if(deltaWeightSign>0) momentumposstep += numPulse;
+	else mometumnegstep += numPulse;
+	momentumcyclecounter ++;
+	if(momentumcyclecounter % 100 == 0)
+	{momentumunitsum += momentumposstep/momentumnegstep;
+	 momentumposstep=0;
+	 momentumnegstep=0;
+	}
 	conductancePrev = conductance;
 	conductanceGp = conductanceNewGp;
 	conductanceGn = conductanceNewGn;
