@@ -54,6 +54,11 @@ weight1(param->nHide, std::vector<double>(param->nInput));
 /* Weights from hidden layer to output layer */
 std::vector< std::vector<double> >
 weight2(param->nOutput, std::vector<double>(param->nHide));
+std::vector< std::vector<double> >
+prevweight1(param->nHide, std::vector<double>(param->nInput));
+/* Weights from hidden layer to output layer */
+std::vector< std::vector<double> >
+prevweight2(param->nOutput, std::vector<double>(param->nHide));
 
 /* Weight change of weight1 */
 std::vector< std::vector<double> >
