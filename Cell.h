@@ -135,6 +135,10 @@ public:
 	
 	/* weight analyzer */
 	 std::vector<double>  weightanalyzer();
+	/* polarity, location  tracker */
+	int previouslocation=0;
+	int previouspolarity=0;
+	int polaritychange=0;
 	
 	/* momentum cycle */ 
 	int momentumcyclecounter = 0; 
