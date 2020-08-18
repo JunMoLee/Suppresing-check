@@ -2098,31 +2098,113 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double count12HO=0;
 		double count22HO=0;
 		double count13HO=0;
-		double saturatedweight1;
-		double saturatedweight2;
-		double saturatedweight3;
-		double saturatedweight4;
-		double saturatedweight5;
-		double saturatedweightm1;
-		double saturatedweightm2;
-		double saturatedweightm3;
-		double saturatedweightm4;
-		double saturatedweightm5;
+		double saturatedweight1=0;
+		double saturatedweight2=0;
+		double saturatedweight3=0;
+		double saturatedweight4=0;
+		double saturatedweight5=0;
+		double saturatedweightm1=0;
+		double saturatedweightm2=0;
+		double saturatedweightm3=0;
+		double saturatedweightm4=0;
+		double saturatedweightm5=0;
 		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){	
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possatcount + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsatcount)
-					double satwweight = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->positivesaturatedweight + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negativesaturatedweight;
-				{if(satweight){
+				
+				double satwweight = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->positivesaturatedweight + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negativesaturatedweight;
+				
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsatcount){
 					
+				if((-1<=satweight)&&(satweight<-0.8))
+				{saturatedweightm5++;}
+				else if((-0.8<=satweight)&&(satweight<-0.6))
+				{saturatedweightm4++;}
 				}
+				else if((-0.6<=satweight)&&(satweight<-0.4))
+				{saturatedweightm3++;}
 				}
+				else if((-0.4<=satweight)&&(satweight<-0.2))
+				{saturatedweightm2++;}
+				}
+				else if((-0.2<=satweight)&&(satweight<-0))
+				{saturatedweightm1++;}
+				}
+	
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possatcount){
+					
+				if((0<=satweight)&&(satweight<0.2))
+				{saturatedweight1++;}
+				else if((0.2<=satweight)&&(satweight<0.4))
+				{saturatedweight2++;}
+				}
+				else if((0.4<=satweight)&&(satweight<0.6))
+				{saturatedweight3++;}
+				}
+				else if((0.6<=satweight)&&(satweight<0.8))
+				{saturatedweight4++;}
+				}
+				else if((0.8<=satweight)&&(satweight<=1))
+				{saturatedweight5++;}
+				}
+
+				
+					
+				
+				
 			}
 		}
 				for (int m=0; m<param->nOutput; m++) {
 			for (int n=0; n<param->nHide;n++){
-			}
+				double satwweight = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->positivesaturatedweight + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negativesaturatedweight;
+				
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsatcount){
+					
+				if((-1<=satweight)&&(satweight<-0.8))
+				{saturatedweightm5++;}
+				else if((-0.8<=satweight)&&(satweight<-0.6))
+				{saturatedweightm4++;}
 				}
-	}
+				else if((-0.6<=satweight)&&(satweight<-0.4))
+				{saturatedweightm3++;}
+				}
+				else if((-0.4<=satweight)&&(satweight<-0.2))
+				{saturatedweightm2++;}
+				}
+				else if((-0.2<=satweight)&&(satweight<0))
+				{saturatedweightm1++;}
+				}
+	
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possatcount){
+					
+				if((0<=satweight)&&(satweight<0.2))
+				{saturatedweight1++;}
+				else if((0.2<=satweight)&&(satweight<0.4))
+				{saturatedweight2++;}
+				}
+				else if((0.4<=satweight)&&(satweight<0.6))
+				{saturatedweight3++;}
+				}
+				else if((0.6<=satweight)&&(satweight<0.8))
+				{saturatedweight4++;}
+				}
+				else if((0.8<=satweight)&&(satweight<=1))
+				{saturatedweight5++;}
+				}
+			}
+		}
+cout<<"saturated weight count"<<endl;
+cout<<"-1<=w<-0.8"<<" : "<<saturatedweightm5<<endl;
+cout<<"-0.8<=w<-0.6"<<" : "<<saturatedweightm4<<endl;
+cout<<"-0.6<=w<-0.4"<<" : "<<saturatedweightm3<<endl;
+cout<<"-0.4<=w<-0.2"<<" : "<<saturatedweightm2<<endl;
+cout<<"-0.2<=w<0"<<" : "<<saturatedweightm1<<endl;
+cout<<"0<=w<-0.2"<<" : "<<saturatedweight1<<endl;
+cout<<"0.2<=w<0.4"<<" : "<<saturatedweight2<<endl;
+cout<<"0.4<=w<0.6"<<" : "<<saturatedweight3<<endl;
+cout<<"0.6<=w<0.8"<<" : "<<saturatedweight4<<endl;
+cout<<"0.8<=w<=1"<<" : "<<saturatedweight5<<endl;
+
+	
 				
 				// count polarity change
 				
