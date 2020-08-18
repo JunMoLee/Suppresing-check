@@ -2111,7 +2111,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){	
 				
-				double satwweight = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->positivesaturatedweight + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negativesaturatedweight;
+				double satweight = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->positivesaturatedweight + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negativesaturatedweight;
 				
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsatcount){
 					
@@ -2119,15 +2119,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				{saturatedweightm5++;}
 				else if((-0.8<=satweight)&&(satweight<-0.6))
 				{saturatedweightm4++;}
-				}
+		
 				else if((-0.6<=satweight)&&(satweight<-0.4))
 				{saturatedweightm3++;}
-				}
+				
 				else if((-0.4<=satweight)&&(satweight<-0.2))
 				{saturatedweightm2++;}
-				}
-				else if((-0.2<=satweight)&&(satweight<-0))
+				
+				else if((-0.2<=satweight)&&(satweight<0))
 				{saturatedweightm1++;}
+		
 				}
 	
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possatcount){
@@ -2136,16 +2137,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				{saturatedweight1++;}
 				else if((0.2<=satweight)&&(satweight<0.4))
 				{saturatedweight2++;}
-				}
+				
 				else if((0.4<=satweight)&&(satweight<0.6))
 				{saturatedweight3++;}
-				}
+				
 				else if((0.6<=satweight)&&(satweight<0.8))
 				{saturatedweight4++;}
-				}
+				
 				else if((0.8<=satweight)&&(satweight<=1))
 				{saturatedweight5++;}
-				}
+				
 
 				
 					
@@ -2155,7 +2156,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		}
 				for (int m=0; m<param->nOutput; m++) {
 			for (int n=0; n<param->nHide;n++){
-				double satwweight = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->positivesaturatedweight + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negativesaturatedweight;
+				double satweight = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->positivesaturatedweight + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negativesaturatedweight;
 				
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsatcount){
 					
@@ -2163,13 +2164,13 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				{saturatedweightm5++;}
 				else if((-0.8<=satweight)&&(satweight<-0.6))
 				{saturatedweightm4++;}
-				}
+				
 				else if((-0.6<=satweight)&&(satweight<-0.4))
 				{saturatedweightm3++;}
-				}
+				
 				else if((-0.4<=satweight)&&(satweight<-0.2))
 				{saturatedweightm2++;}
-				}
+				
 				else if((-0.2<=satweight)&&(satweight<0))
 				{saturatedweightm1++;}
 				}
