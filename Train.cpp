@@ -2086,7 +2086,93 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	double locationm3count=0;
 	double locationm2count=0;
 	double locationm1count=0;	
-	
+	double polaritychangecount12=0;
+		double polaritychangecount12IH=0;
+	double polaritychangecount22=0;
+		double polaritychangecount22HO=0;
+	double polaritychangecount13=0;
+		double polaritychangecount13HO=0;
+		double count12IH=0;
+		double count22IH=0;
+		double count13IH=0;
+		double count12HO=0;
+		double count22HO=0;
+		double count13HO=0;
+		
+		for (int m=0; m<param->nHide; m++) {
+			for (int n=0; n<param->nInput;n++){	
+				
+				// count polarity change
+				
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouslocation==12)
+				{polaritychangecount12IH += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->polaritychange;
+				count12IH++;}
+				else if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouslocation==22)
+				{polaritychangecount22IH  += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->polaritychange;
+				count22IH++;}
+				else if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouslocation==13)
+				{polaritychangecount13IH += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->polaritychange;
+				count13IH++;}
+				
+			
+				// set polarity to count in next epoch
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]==3) 
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouslocation=12;
+				else if ((static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[0]==2)&& (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[1]==2))
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouspolarity=22;
+				else if (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]==4) 
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouspolarity=13;
+				
+
+				
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
+			}
+		}
+		for (int m=0; m<param->nHide; m++) {
+			for (int n=0; n<param->nInput;n++){	
+								// count polarity change
+				
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouslocation==12)
+				{polaritychangecount12HO += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->polaritychange;
+				 count12HO++;}
+				else if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouslocation==22)
+				{polaritychangecount22HO  += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->polaritychange;
+				 count22HO++;}
+				else if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouslocation==13)
+				{polaritychangecount13HO  += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->polaritychange;
+				 count13HO++;}
+				
+			
+				// set polarity to count in next epoch
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2]==3) 
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouslocation=12;
+				else if ((static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[0]==2)&& (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[1]==2))
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouspolarity=22;
+				else if (static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2]==4) 
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouspolarity=13;
+				
+
+				
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){	
 		
