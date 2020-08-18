@@ -2094,7 +2094,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm4count++;
 					}
-					else if ((-0.6<=prevweight1[m][n])&&(prevweight1[m][n]<0.4))
+					else if ((-0.6<=prevweight1[m][n])&&(prevweight1[m][n]<-0.4))
 					{weightm3momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm3count++;
@@ -2151,7 +2151,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm4count++;
 					}
-					else if ((-0.6<=prevweight2[m][n])&&(prevweight2[m][n]<0.4))
+					else if ((-0.6<=prevweight2[m][n])&&(prevweight2[m][n]<-0.4))
 					{weightm3momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm3count++;
