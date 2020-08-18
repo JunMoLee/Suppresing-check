@@ -259,6 +259,7 @@ void IdealDevice::Write(double deltaWeightNormalized, double weight, double minW
 	conductancePrev = conductance;
 	conductance = conductanceNew;
 }
+
 /* Reset counter */
 void eNVM::ResetCounter(){
 possat=0;
@@ -269,7 +270,7 @@ uzc=0;
 posstep=0;
 negstep=0;
 momentumunitsum=0;
-	
+momentumcyclecounter=0;	
 }
 
 std::vector<double> eNVM::weightanalyzer(){
