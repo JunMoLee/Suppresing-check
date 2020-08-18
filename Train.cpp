@@ -2086,11 +2086,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	double locationm3count=0;
 	double locationm2count=0;
 	double locationm1count=0;	
-	double polaritychangecount12=0;
+	double polaritychangecount12IH=0;
 		double polaritychangecount13IH=0;
-	double polaritychangecount22=0;
+	double polaritychangecount22IH=0;
 		double polaritychangecount12HO=0;
-	double polaritychangecount13=0;
+	double polaritychangecount13HO=0;
 		double polaritychangecount22HO=0;
 		double count12IH=0;
 		double count22IH=0;
