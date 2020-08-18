@@ -2087,11 +2087,11 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	double locationm2count=0;
 	double locationm1count=0;	
 	double polaritychangecount12=0;
-		double polaritychangecount12IH=0;
+		double polaritychangecount13IH=0;
 	double polaritychangecount22=0;
-		double polaritychangecount22HO=0;
+		double polaritychangecount12HO=0;
 	double polaritychangecount13=0;
-		double polaritychangecount13HO=0;
+		double polaritychangecount22HO=0;
 		double count12IH=0;
 		double count22IH=0;
 		double count13IH=0;
@@ -2209,8 +2209,9 @@ cout<<"0.8<=w<=1"<<" : "<<saturatedweight5<<endl;
 
 	
 				
-				// count polarity change
-					for (int m=0; m<param->nHide; m++) {
+		// count polarity change
+			
+		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){		
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouslocation==12)
 				{polaritychangecount12IH += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->polaritychange;
@@ -2236,6 +2237,7 @@ cout<<"0.8<=w<=1"<<" : "<<saturatedweight5<<endl;
 				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 			}
 		}
+			
 		for (int m=0; m<param->nOutput; m++) {
 			for (int n=0; n<param->nHide;n++){	
 								// count polarity change
