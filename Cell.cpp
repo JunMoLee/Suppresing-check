@@ -695,10 +695,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
 	if((conductancePrev * conductanceNew) <0) polaritychange++;
 	conductance = conductanceNew;
-		positivesaturatedweight=0;
-	negativesaturatedweight=0;
-			possatcount=0;
-		negsatcount=0;
+
 }
 
 ////////new write/////////////
@@ -910,10 +907,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
 	if((conductancePrev * conductanceNew) <0) polaritychange++;
 	conductance = conductanceNew;
-		positivesaturatedweight=0;
-	negativesaturatedweight=0;
-		possatcount=0;
-		negsatcount=0;
+
 }
 
 
