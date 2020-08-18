@@ -662,6 +662,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 			writePulseWidthLTD = writeLatencyLTD / (-numPulse);
 		}
 	}
+	
 	if(deltaWeightSign>0) momentumposstep += numPulse;
 	else momentumnegstep += numPulse;
 	momentumcyclecounter ++;
@@ -671,9 +672,11 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	 momentumnegstep=0;
 	}
 	conductancePrev = conductance;
+	
 	conductanceGp = conductanceNewGp;
 	conductanceGn = conductanceNewGn;
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
+	if((conductancePrev * conductanceNew) <0) polaritychange++;
 	conductance = conductanceNew;
 }
 
@@ -867,6 +870,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	conductanceGp = conductanceNewGp;
 	conductanceGn = conductanceNewGn;
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
+	if((conductancePrev * conductanceNew) <0) polaritychange++;
 	conductance = conductanceNew;
 }
 
