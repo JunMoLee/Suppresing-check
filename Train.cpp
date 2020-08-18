@@ -2210,7 +2210,8 @@ cout<<"0.8<=w<=1"<<" : "<<saturatedweight5<<endl;
 	
 				
 				// count polarity change
-				
+					for (int m=0; m<param->nHide; m++) {
+			for (int n=0; n<param->nInput;n++){		
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->previouslocation==12)
 				{polaritychangecount12IH += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->polaritychange;
 				count12IH++;}
