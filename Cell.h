@@ -138,8 +138,8 @@ public:
 	
 	/* momentum cycle */ 
 	int momentumcyclecounter = 0; 
-	int momentumposstep = 0;
-	int momentumnegstep = 0;
+	double momentumposstep = 0;
+	double momentumnegstep = 0;
 	int momentumunitsum = 0;
 };
 
