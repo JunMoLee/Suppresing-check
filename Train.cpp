@@ -2411,6 +2411,7 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 		double countGnweightrange=0;
 		double locationnumberspecifier=0;
 		double locationnumberspecifier2=0;
+		double locationnumberspecifier3=0;
 		double weightlocationspecifierGp=0;
 		double weightlocationspecifierGn=0;
 				 for (int m=0; m<param->nHide; m++) {
@@ -2420,6 +2421,8 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 				{locationnumberspecifier++;}
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 5)
 				{locationnumberspecifier2++;}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 3)
+				{locationnumberspecifier3++;}
 				
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
@@ -2446,6 +2449,8 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 				{locationnumberspecifier++;}
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 5)
 				{locationnumberspecifier2++;}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 3)
+				{locationnumberspecifier3++;}
 				
 	if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
@@ -2469,6 +2474,7 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 		cout<<"P(areanumbersum = 4 | Gp,Gn>=Gth2/10) = "<< weightlocationspecifierGp/countGprange<<", "<<weightlocationspecifierGn/countGnrange<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 2] : "<<locationnumberspecifier<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 5] : "<<locationnumberspecifier2<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 3] : "<<locationnumberspecifier3<<endl;
 		
 		
     }  // end of interepoch code (default -> iterate once)
