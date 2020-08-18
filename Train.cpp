@@ -2082,7 +2082,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		
 					if((-1<=prevweight1[m][n])&&(prevweight1[m][n]<-0.8)) 
 					{
-					 weightm5momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					 weightm5momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					weightm5count++;
 					
@@ -2090,47 +2090,47 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 					
 					else if((-0.8<=prevweight1[m][n])&&(prevweight1[m][n]<-0.6))
-					{weightm4momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weightm4momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm4count++;
 					}
 					else if ((-0.6<=prevweight1[m][n])&&(prevweight1[m][n]<0.4))
-					{weightm3momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weightm3momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm3count++;
 					}
 					else if ((-0.4<=prevweight1[m][n])&&(prevweight1[m][n]-0.2))
-					{weightm2momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weightm2momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm2count++;
 					}
 					else if ((-0.2<=prevweight1[m][n])&&(prevweight1[m][n]<0))
-					{weightm1momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weightm1momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weightm1count++;
 					}
 					else if ((0<=prevweight1[m][n])&&(prevweight1[m][n]<0.2))
-					{weight1momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weight1momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					 weight1count++;
 					}
 					else if ((0.2<=prevweight1[m][n])&&(prevweight1[m][n]<0.4))
-					{weight2momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weight2momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					  weight2count++;
 					}
 					else if ((0.4<=prevweight1[m][n])&&(prevweight1[m][n]<0.6))
-					{weight3momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weight3momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					  weight3count++;
 					}
 					else if ((0.6<=prevweight1[m][n])&&(prevweight1[m][n]<0.8))
-					{weight4momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weight4momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					  weight4count++;
 					}
 					else
-					{weight5momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum / 80;
+					{weight5momentumsum += static_cast<AnalogNVM*>(arrayIH->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter(); 
 					  weight5count++;
 					}
@@ -2141,53 +2141,53 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 			for (int n=0; n<param->nHide;n++){	
 				        if((-1<=prevweight2[m][n])&&(prevweight2[m][n]<-0.8)) 
 					{
-					 weightm5momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					 weightm5momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 						weightm5count++;
 					}
 					
 					else if((-0.8<=prevweight2[m][n])&&(prevweight2[m][n]<-0.6))
-					{weightm4momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weightm4momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm4count++;
 					}
 					else if ((-0.6<=prevweight2[m][n])&&(prevweight2[m][n]<0.4))
-					{weightm3momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weightm3momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm3count++;
 					}
 					else if ((-0.4<=prevweight2[m][n])&&(prevweight2[m][n]<-0.2))
-					{weightm2momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weightm2momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm2count++;
 					}
 					else if ((-0.2<=prevweight2[m][n])&&(prevweight2[m][n]<0))
-					{weightm1momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weightm1momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weightm1count++;
 					}
 					else if ((0<=prevweight2[m][n])&&(prevweight2[m][n]<0.2))
-					{weight1momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weight1momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight1count++;
 					}
 					else if ((0.2<=prevweight2[m][n])&&(prevweight2[m][n]<0.4))
-					{weight2momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weight2momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight2count++;
 					}
 					else if ((0.4<=prevweight2[m][n])&&(prevweight2[m][n]<0.6))
-					{weight3momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weight3momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight3count++;
 					}
 					else if ((0.6<=prevweight2[m][n])&&(prevweight2[m][n]<0.8))
-					{weight4momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weight4momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight4count++;
 					}
 					else
-					{weight5momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum / 80;
+					{weight5momentumsum += static_cast<AnalogNVM*>(arrayHO->cell[m][n])->momentumunitsum ;
 					 static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter(); 
 					 weight5count++;
 					}
