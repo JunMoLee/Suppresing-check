@@ -136,7 +136,9 @@ public:
 	/* weight analyzer */
 	 std::vector<double>  weightanalyzer();
 	 double positivesaturatedweight;
-	 double minussaturatedweight;
+	 double negativesaturatedweight;
+	 int possatcount=0;
+	 int negsatcount=0;
 	/* polarity, location  tracker */
 	int previouslocation=0;
 	int previouspolarity=0;
