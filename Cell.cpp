@@ -666,7 +666,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	else momentumnegstep += numPulse;
 	momentumcyclecounter ++;
 	if(momentumcyclecounter % 100 == 0)
-	{momentumunitsum += momentumposstep/momentumnegstep;
+	{momentumunitsum += momentumposstep-momentumnegstep;
 	 momentumposstep=0;
 	 momentumnegstep=0;
 	}
@@ -859,7 +859,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	else momentumnegstep += numPulse;
 	momentumcyclecounter ++;
 	if(momentumcyclecounter % 100 == 0)
-	{momentumunitsum += momentumposstep/momentumnegstep;
+	{momentumunitsum += momentumposstep - momentumnegstep;
 	 momentumposstep=0;
 	 momentumnegstep=0;
 	}
