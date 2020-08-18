@@ -2098,9 +2098,31 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double count12HO=0;
 		double count22HO=0;
 		double count13HO=0;
-		
+		double saturatedweight1;
+		double saturatedweight2;
+		double saturatedweight3;
+		double saturatedweight4;
+		double saturatedweight5;
+		double saturatedweightm1;
+		double saturatedweightm2;
+		double saturatedweightm3;
+		double saturatedweightm4;
+		double saturatedweightm5;
 		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){	
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possatcount + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsatcount)
+					double satwweight = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->positivesaturatedweight + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negativesaturatedweight;
+				{if(satweight){
+					
+				}
+				}
+			}
+		}
+				for (int m=0; m<param->nOutput; m++) {
+			for (int n=0; n<param->nHide;n++){
+			}
+				}
+	}
 				
 				// count polarity change
 				
@@ -2128,8 +2150,8 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 			}
 		}
-		for (int m=0; m<param->nHide; m++) {
-			for (int n=0; n<param->nInput;n++){	
+		for (int m=0; m<param->nOutput; m++) {
+			for (int n=0; n<param->nHide;n++){	
 								// count polarity change
 				
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->previouslocation==12)
