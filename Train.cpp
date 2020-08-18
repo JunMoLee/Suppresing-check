@@ -2159,6 +2159,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					
 				if((-1<=satweight)&&(satweight<-0.8))
 				{possaturatedweightm5++;}
+					
 				else if((-0.8<=satweight)&&(satweight<-0.6))
 				{possaturatedweightm4++;}
 		
@@ -2173,6 +2174,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					
 				else if((0<=satweight)&&(satweight<0.2))
 				{possaturatedweight1++;}
+					
 				else if((0.2<=satweight)&&(satweight<0.4))
 				{possaturatedweight2++;}
 				
@@ -2262,16 +2264,16 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		}
 		
 cout<<"saturated weight count"<<endl;
-cout<<"-1<=w<-0.8"<<" : "<<saturatedweightm5<<endl;
-cout<<"-0.8<=w<-0.6"<<" : "<<saturatedweightm4<<endl;
-cout<<"-0.6<=w<-0.4"<<" : "<<saturatedweightm3<<endl;
-cout<<"-0.4<=w<-0.2"<<" : "<<saturatedweightm2<<endl;
-cout<<"-0.2<=w<0"<<" : "<<saturatedweightm1<<endl;
-cout<<"0<=w<-0.2"<<" : "<<saturatedweight1<<endl;
-cout<<"0.2<=w<0.4"<<" : "<<saturatedweight2<<endl;
-cout<<"0.4<=w<0.6"<<" : "<<saturatedweight3<<endl;
-cout<<"0.6<=w<0.8"<<" : "<<saturatedweight4<<endl;
-cout<<"0.8<=w<=1"<<" : "<<saturatedweight5<<endl;
+cout<<"-1<=w<-0.8"<<" : "<<possaturatedweightm5, negsaturatedweightm5<<endl;
+cout<<"-0.8<=w<-0.6"<<" : "<<possaturatedweightm4, negsaturatedweightm4<<endl;
+cout<<"-0.6<=w<-0.4"<<" : "<<possaturatedweightm3, negsaturatedweightm3<<endl;
+cout<<"-0.4<=w<-0.2"<<" : "<<possaturatedweightm2, negsaturatedweightm2<<endl;
+cout<<"-0.2<=w<0"<<" : "<<possaturatedweightm1, negsaturatedweightm1<<endl;
+cout<<"0<=w<-0.2"<<" : "<<possaturatedweight1, negsaturatedweight1<<endl;
+cout<<"0.2<=w<0.4"<<" : "<<possaturatedweight2, negsaturatedweight2<<endl;
+cout<<"0.4<=w<0.6"<<" : "<<possaturatedweight3, negsaturatedweight3<<endl;
+cout<<"0.6<=w<0.8"<<" : "<<possaturatedweight4, negsaturatedweight4<<endl;
+cout<<"0.8<=w<=1"<<" : "<<possaturatedweight5, negsaturatedweight5<<endl;
 
 	
 				
