@@ -2379,6 +2379,8 @@ cout<<"0.8<=w<1 : "<<weight5momentumsum/weight5count<<endl;
 		double countGnweightrange=0;
 		double locationnumberspecifier=0;
 		double locationnumberspecifier2=0;
+		double weightlocationspecifierGp=0;
+		double weightlocationspecifierGn=0;
 				 for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
 				
@@ -2389,12 +2391,16 @@ cout<<"0.8<=w<1 : "<<weight5momentumsum/weight5count<<endl;
 				
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
+				{weightlocationspecifierGp++;}
 				 if(weight1[m][n]>=Gth2/10)
 				 {countGpweightrange++;}
 
 				}
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn >= Gth2)
 				{countGnrange ++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
+				{weightlocationspecifierGn++;}
 				 if(weight1[m][n]<=-Gth2/10)
 				 {countGnweightrange++;}
 				}
@@ -2412,17 +2418,23 @@ cout<<"0.8<=w<1 : "<<weight5momentumsum/weight5count<<endl;
 	if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
 				 if(weight2[m][n]>= Gth2/10)
-				 {countGpweightrange++;}
+				 {countGpweightrange++;
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
+				{weightlocationspecifierGp++;}
 				}
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn >= Gth2)
 				{countGnrange ++;
 				 if(weight2[m][n]<= -Gth2/10)
-				 {countGnweightrange++;}
+				 {countGnweightrange++;
+				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
+				{weightlocationspecifierGn++;}
+				}}
 				}
 			}
 				 }
 		
 		cout<<"P(|w|>=Gth2/pconrange | Gp,Gn>=Gth2/10) = "<< countGpweightrange/countGprange<<", "<<countGnweightrange/countGnrange<<endl;
+		cout<<"P(areanumbersum = 4 | Gp,Gn>=Gth2/10) = "<< weightlocationspecifierGp/countGprange<<", "<<weightlocationspecifierGn/countGnrange<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 2] : "<<locationnumberspecifier<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 5] : "<<locationnumberspecifier2<<endl;
 		
