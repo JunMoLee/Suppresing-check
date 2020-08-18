@@ -135,6 +135,12 @@ public:
 	
 	/* weight analyzer */
 	 std::vector<double>  weightanalyzer();
+	
+	/* momentum cycle */ 
+	int momentumcyclecounter = 0; 
+	int momentumposstep = 0;
+	int momentumnegstep = 0;
+	int momentumunitsum = 0;
 };
 
 class SRAM: public Cell {
