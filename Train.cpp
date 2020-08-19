@@ -2337,7 +2337,7 @@ cout<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl
 		
 		
 		
-		
+	//write code	
 		
 		
 		
@@ -2676,6 +2676,9 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 		double locationnumberspecifier=0;
 		double locationnumberspecifier2=0;
 		double locationnumberspecifier3=0;
+		double locationnumberspecifier4=0;
+		double locationnumberspecifier5=0;
+		double locationnumberspecifier6=0;
 		double weightlocationspecifierGp=0;
 		double weightlocationspecifierGn=0;
 				 for (int m=0; m<param->nHide; m++) {
@@ -2687,6 +2690,10 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 				{locationnumberspecifier2++;}
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 3)
 				{locationnumberspecifier3++;}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 6)
+				{locationnumberspecifier4++;}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
+				{locationnumberspecifier5++;}
 				
 				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
@@ -2715,6 +2722,10 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 				{locationnumberspecifier2++;}
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 3)
 				{locationnumberspecifier3++;}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 6)
+				{locationnumberspecifier4++;}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
+				{locationnumberspecifier4++;}
 				
 	if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp >= Gth2)
 				{countGprange ++;
@@ -2739,6 +2750,8 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 2] : "<<locationnumberspecifier<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 5] : "<<locationnumberspecifier2<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 3] : "<<locationnumberspecifier3<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 6] : "<<locationnumberspecifier4<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 4] : "<<locationnumberspecifier5<<endl;
 		
 		
     }  // end of interepoch code (default -> iterate once)
