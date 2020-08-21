@@ -48,7 +48,7 @@ Param::Param() {
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
-	nHide = 200;      // # of neurons in hidden layer
+	nHide = 100;      // # of neurons in hidden layer
 	nOutput = 10;     // # of neurons in output layer
 	
 for (int r=0; r<100; r++){
@@ -230,7 +230,7 @@ for (int r=0; r<100; r++){
 	adaptivemomentum = am/10000;
 	adaptivesplitGth1=1;
 	adaptivesplitGth2=7;
-	usesplit = 1;
+	usesplit = 0;
 	Gth1=1;
 	Gth2=7;
 	Gth1weight=1;
