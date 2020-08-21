@@ -2747,6 +2747,23 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 		
 		cout<<"P(|w|>=Gth2/pconrange | Gp,Gn>=Gth2/10) = "<< countGpweightrange/countGprange<<", "<<countGnweightrange/countGnrange<<endl;
 		cout<<"P(areanumbersum = 4 | Gp,Gn>=Gth2/10) = "<< weightlocationspecifierGp/countGprange<<", "<<weightlocationspecifierGn/countGnrange<<endl;
+		
+		
+		
+		string filename="Probabilitycheck";
+		read.open(filename+ ".csv",std::ios_base::app);
+		read << "epoch"<<", "<<epochcount<<endl;
+		read <<"IH"<<", "<< countGpweightrange/countGprange <<", "<<"HO"<<", "<<weightlocationspecifierGn/countGnrange<<endl;
+		read<<"-1<=w<-0.8"<<" : "<<possaturatedweightm5<<", "<< negsaturatedweightm5<<endl;
+read<<"-0.8<=w<-0.6"<<" : "<<possaturatedweightm4<<", "<< negsaturatedweightm4<<endl;
+read<<"-0.6<=w<-0.4"<<" : "<<possaturatedweightm3<<", "<< negsaturatedweightm3<<endl;
+read<<"-0.4<=w<-0.2"<<" : "<<possaturatedweightm2<<", "<<  negsaturatedweightm2<<endl;
+read<<"-0.2<=w<0"<<" : "<<possaturatedweightm1<<", "<<  negsaturatedweightm1<<endl;
+read<<"0<=w<-0.2"<<" : "<<possaturatedweight1<<", "<<  negsaturatedweight1<<endl;
+read<<"0.2<=w<0.4"<<" : "<<possaturatedweight2<<", "<<  negsaturatedweight2<<endl;
+read<<"0.4<=w<0.6"<<" : "<<possaturatedweight3<<", "<<  negsaturatedweight3<<endl;
+read<<"0.6<=w<0.8"<<" : "<<possaturatedweight4<<", "<< negsaturatedweight4<<endl;
+read<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 2] : "<<locationnumberspecifier<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 5] : "<<locationnumberspecifier2<<endl;
 		cout<<"count [L.N(Gp)+L.N(Gn) = 3] : "<<locationnumberspecifier3<<endl;
