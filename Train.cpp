@@ -2749,7 +2749,7 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
 		cout<<"P(areanumbersum = 4 | Gp,Gn>=Gth2/10) = "<< weightlocationspecifierGp/countGprange<<", "<<weightlocationspecifierGn/countGnrange<<endl;
 		
 		
-		
+		ofstream read;
 		string filename="Probabilitycheck";
 		read.open(filename+ ".csv",std::ios_base::app);
 		read << "epoch"<<", "<<epochcount<<endl;
