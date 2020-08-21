@@ -143,7 +143,7 @@ int main() {
 	        /* open file */ 
 	
 		ofstream read;
-		read.open("SI_200821_suprresorcheck.csv", ios_base::app);                                                         
+		read.open("SI_200822_reverseonlyanalysis.csv", ios_base::app);                                                         
 		vector <double> accuracy (125,0);
 	        
 	        /* define name for sum of accuaracy for every n epochs */ 
@@ -154,7 +154,7 @@ int main() {
 	        double averagesum4=0;
 	        double averagesum5=0;
 	
-		for (int i=1; i<=15; i++) {
+		for (int i=1; i<=125; i++) {
 		
 	        /* define name for simplicity */
 	        int kernel =  static_cast<AnalogNVM*>(arrayIH->cell[0][0])->kernel; 	
