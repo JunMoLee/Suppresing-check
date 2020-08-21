@@ -48,7 +48,7 @@ Param::Param() {
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
-	nHide = 100;      // # of neurons in hidden layer
+	nHide = 200;      // # of neurons in hidden layer
 	nOutput = 10;     // # of neurons in output layer
 	
 for (int r=0; r<100; r++){
@@ -125,7 +125,7 @@ for (int r=0; r<100; r++){
 	weighttrack=0;
 	
 	const int // allocate kernel
-	ks=1;
+	ks=3;
 	switch (ks) {
 			case 0: 	
 	kernel=1; 
@@ -143,11 +143,11 @@ for (int r=0; r<100; r++){
 			break;
 	
 		case 3: 	
-	kernel=10; break;
+	kernel=10; hh=10; break;
 	}
 	
         const int // allocate h
-	x=100;
+	x=200;
 	h=x;
 	
    /*     const int // allocate hh
@@ -175,7 +175,7 @@ for (int r=0; r<100; r++){
 	o=10;
 	os = o;
 	// k=kernel size;
-	hh=10; // h=number of hidden layer slice for IH
+	 // h=number of hidden layer slice for IH
         // hh= number of hidden layer slice for HO
 	os=o;  // os = number of output layer slice
 	
@@ -195,7 +195,7 @@ for (int r=0; r<100; r++){
 	
 	// allocate nur, nurn, trackrate
 	const int 
-	ns=0;
+	ns=1;
 	
 	switch (ns){
 	case 0:
@@ -224,20 +224,20 @@ for (int r=0; r<100; r++){
 
 			break;}
 	
-	usesplitadapt=0;		
+	usesplitadapt=1;		
 	learningratesplit = lrs;
 	adaptiveratio =pow(am/10000,(lrs-1)/2);
 	adaptivemomentum = am/10000;
-	adaptivesplitGth1=9;
-	adaptivesplitGth2=1;
+	adaptivesplitGth1=1;
+	adaptivesplitGth2=7;
 	usesplit = 1;
-	Gth1=2;
-	Gth2=8;
-	Gth1weight=2;
-	Gth2weight=8;
-	unitcellsplit=1;
-	saturationprotector=5;
-	destructionprotector=0;
+	Gth1=1;
+	Gth2=7;
+	Gth1weight=1;
+	Gth2weight=7;
+	unitcellsplit=0;
+	saturationprotector=3;
+	destructionprotector=1;
 	deltaweightratio=0;
 
 	
