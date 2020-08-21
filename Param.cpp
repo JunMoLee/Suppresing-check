@@ -147,7 +147,7 @@ for (int r=0; r<100; r++){
 	}
 	
         const int // allocate h
-	x=200;
+	x=100;
 	h=x;
 	
    /*     const int // allocate hh
