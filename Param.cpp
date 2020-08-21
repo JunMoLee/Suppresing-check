@@ -86,20 +86,20 @@ for (int r=0; r<100; r++){
 		case 0:
 			
 	
-	dalpha=0.20;
+	dalpha=0.3;
 
-	pdalpha=0.15;
+	pdalpha=0.3;
 			break;
 		case 1:
 			
-	dalpha=0.3;
+	dalpha=0.6;
 	
-	pdalpha=0.3;
+	pdalpha=0.6;
 			break;
 		case 2:
 			
-	dalpha=0.15;
-	pdalpha=0.15;
+	dalpha=0.9;
+	pdalpha=0.9;
 			break;
 			case 3:
 			
@@ -224,7 +224,7 @@ for (int r=0; r<100; r++){
 
 			break;}
 	
-	usesplitadapt=1;		
+	usesplitadapt=0;		
 	learningratesplit = lrs;
 	adaptiveratio =pow(am/10000,(lrs-1)/2);
 	adaptivemomentum = am/10000;
@@ -338,23 +338,23 @@ a=0;
 switch(a){
 case 0:
 param_gp=1;
-param_gn=-9;
+param_gn=-1;
 break;
 case 1:
 param_gp=1;
 param_gn=-3;
 break;
 case 2:
-param_gp=2;
+param_gp=1;
 param_gn=-5;
 break;
 case 3:
-param_gp=5;
-param_gn=-5;
+param_gp=1;
+param_gn=-7;
 break;
 case 4:
-param_gp=4;
-param_gn=-7;
+param_gp=1;
+param_gn=-9;
 break;
 case 5:
 param_gp=3;
