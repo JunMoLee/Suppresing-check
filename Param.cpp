@@ -44,7 +44,7 @@ Param::Param() {
 	
 	
 	/* Algorithm parameters */
-	numTrainImagesPerEpoch = 8000;	// # of training images per epoch
+	numTrainImagesPerEpoch = 3999;	// # of training images per epoch
 	totalNumEpochs = 125;	// Total number of epochs
 	interNumEpochs = 1;		// Internal number of epochs (print out the results every interNumEpochs)
 	nInput = 400;     // # of neurons in input layer
@@ -339,30 +339,144 @@ switch(a){
 case 0:
 param_gp=1;
 param_gn=-1;
+
+			learningrate[0][0] =0.2;
+	learningrate[0][1] = 0.2;
+	learningrate[0][2] = 0.2;
+	learningrate[0][3] = 0.2;
+		
+	learningrate[1][0] = 0.2;
+	learningrate[1][1] = 0.2;
+	learningrate[1][2] = 0.2;
+	learningrate[1][3] = 0.2;
+			newUpdateRate=10;
+
+	nnewUpdateRate=10;
+		RefreshRate = 4000;
+		        ReverseUpdate = 1;
+
+	FullRefresh= 1;
 break;
 case 1:
 param_gp=1;
-param_gn=-3;
+param_gn=-1;
+
+			learningrate[0][0] =0.2;
+	learningrate[0][1] = 0.2;
+	learningrate[0][2] = 0.2;
+	learningrate[0][3] = 0.2;
+		
+	learningrate[1][0] = 0.2;
+	learningrate[1][1] = 0.2;
+	learningrate[1][2] = 0.2;
+	learningrate[1][3] = 0.2;
+			newUpdateRate=10;
+
+	nnewUpdateRate=10;
+		RefreshRate = 3000;
+		        ReverseUpdate = 1;
+
+	FullRefresh= 0;
 break;
 case 2:
 param_gp=1;
-param_gn=-5;
+param_gn=-9;
+					learningrate[0][0] =0.3;
+	learningrate[0][1] = 0.3;
+	learningrate[0][2] = 0.15;
+	learningrate[0][3] = 0.2;
+		
+	learningrate[1][0] = 0.3;
+	learningrate[1][1] = 0.3;
+	learningrate[1][2] = 0.15;
+	learningrate[1][3] = 0.2;
+					newUpdateRate=6;
+
+	nnewUpdateRate=2;
+		RefreshRate = 4000;
+		        ReverseUpdate = 1;
+
+	FullRefresh= 1;
 break;
 case 3:
 param_gp=1;
-param_gn=-7;
+param_gn=-9;
+					learningrate[0][0] =0.3;
+	learningrate[0][1] = 0.3;
+	learningrate[0][2] = 0.15;
+	learningrate[0][3] = 0.2;
+		
+	learningrate[1][0] = 0.3;
+	learningrate[1][1] = 0.3;
+	learningrate[1][2] = 0.15;
+	learningrate[1][3] = 0.2;
+							newUpdateRate=6;
+
+	nnewUpdateRate=2;
+		RefreshRate = 3000;
+		        ReverseUpdate = 1;
+
+	FullRefresh= 0;
 break;
 case 4:
 param_gp=1;
-param_gn=-9;
+param_gn=-3;
+						learningrate[0][0] =0.2;
+	learningrate[0][1] = 0.2;
+	learningrate[0][2] = 0.15;
+	learningrate[0][3] = 0.2;
+		
+	learningrate[1][0] = 0.2;
+	learningrate[1][1] = 0.2;
+	learningrate[1][2] = 0.15;
+	learningrate[1][3] = 0.2;
+							newUpdateRate=2;
+
+	nnewUpdateRate=2;
+		RefreshRate = 3000;
+		        ReverseUpdate = 1;
+
+	FullRefresh= 0;
 break;
 case 5:
-param_gp=3;
+param_gp=1;
 param_gn=-3;
+						learningrate[0][0] =0.2;
+	learningrate[0][1] = 0.2;
+	learningrate[0][2] = 0.15;
+	learningrate[0][3] = 0.2;
+		
+	learningrate[1][0] = 0.2;
+	learningrate[1][1] = 0.2;
+	learningrate[1][2] = 0.15;
+	learningrate[1][3] = 0.2;
+							newUpdateRate=162;
+
+	nnewUpdateRate=162;
+		RefreshRate = 3000;
+		        ReverseUpdate = 1;
+
+	FullRefresh= 1;
 break;
 case 6:
-param_gp=3;
-param_gn=-1;
+param_gp=2;
+param_gn=-5;
+						learningrate[0][0] =0.4;
+	learningrate[0][1] = 0.4;
+	learningrate[0][2] = 0.33333;
+	learningrate[0][3] = 0.4;
+		
+	learningrate[1][0] = 0.4;
+	learningrate[1][1] = 0.4;
+	learningrate[1][2] = 0.33333;
+	learningrate[1][3] = 0.4;
+							newUpdateRate=12;
+
+	nnewUpdateRate=4;
+		RefreshRate = 3000;
+		        ReverseUpdate = 1;
+
+	FullRefresh= 0;
 break;
 case 7:
 param_gp=9;
