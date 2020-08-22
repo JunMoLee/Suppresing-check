@@ -2971,7 +2971,7 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl; */
 		
 		
 		ofstream read;
-		string filename="Probabilitycheck";
+		string filename="Probabilitycheck2";
 		read.open(filename+ ".csv",std::ios_base::app);
 		read << "epoch"<<", "<<epochcount<<endl;
 		read <<"IH"<<", "<< countGpweightrange/countGprange <<", "<<"HO"<<", "<<weightlocationspecifierGn/countGnrange<<endl;
