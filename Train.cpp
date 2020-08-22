@@ -2379,7 +2379,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				{nonsaturatedweight5++;
 				 dn52+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				}
-				
+				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
 					
 				
 				
@@ -2517,6 +2517,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				{nonsaturatedweight5++;
 				 dn52+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				}
+				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
 			}
 		}
 double a11, a12, a13;
@@ -2529,36 +2530,36 @@ double a71, a72, a73;
 double a81, a82, a83;
 double a91, a92, a93;
 double a101, a102, a103;
-a11= (possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100 : 0;
-a12= (negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100 : 0;
-a13 = (nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100 : 0;
-a21 = (possaturatedweightm4 > 0)? dnm4/possaturatedweightm4*100: 0;
-a22 = (negsaturatedweightm4 > 0)? dnm4n/negsaturatedweightm4*100 : 0;
-a23 = (nonsaturatedweightm4 > 0)? dnm42/nonsaturatedweightm4*100 : 0;
-a31 = (possaturatedweightm3 > 0)? dnm3/possaturatedweightm3*100: 0;
-a32 = (negsaturatedweightm3 > 0)? dnm3n/negsaturatedweightm3*100 : 0;
-a33 = (nonsaturatedweightm3 > 0)? dnm32/nonsaturatedweightm3*100 : 0;
-a41 = (possaturatedweightm2 > 0)? dnm2/possaturatedweightm2*100: 0;
-a42 = (negsaturatedweightm2 > 0)? dnm2n/negsaturatedweightm2*100 : 0;
-a43 = (nonsaturatedweightm2 > 0)? dnm22/nonsaturatedweightm2*100 : 0;
-a51= (possaturatedweightm1 > 0)? dnm1/possaturatedweightm1*100: 0;
-a52 = (negsaturatedweightm1 > 0)? dnm1n/negsaturatedweightm1*100 : 0;
-a53 = (nonsaturatedweightm1 > 0)? dnm12/nonsaturatedweightm1*100 : 0;
-a61 = (possaturatedweight1 > 0)? dn1/possaturatedweight1*100:0;
-a62 = (negsaturatedweight1 > 0)? dn1n/negsaturatedweight1*100:0;
-a63 = (nonsaturatedweight1 > 0)? dn12/nonsaturatedweight1*100 : 0;
-a71 = (possaturatedweight2 > 0)? dn2/possaturatedweight2*100:0;
-a72 = (negsaturatedweight2 > 0)? dn2n/negsaturatedweight2*100:0;
-a73 = (nonsaturatedweight2 > 0)? dn22/nonsaturatedweight2*100 : 0;
-a81 = (possaturatedweight3 > 0)? dn3/possaturatedweight3*100:0;
-a82 = (negsaturatedweight3 > 0)? dn3n/negsaturatedweight3*100:0;
-a83 = (nonsaturatedweight3 > 0)? dn32/nonsaturatedweight3*100 : 0;
-a91 = (possaturatedweight4 > 0)? dn4/possaturatedweight4*100:0;
-a92 = (negsaturatedweight4 > 0)? dn4n/negsaturatedweight4*100:0;
-a93 = (nonsaturatedweight4 > 0)? dn42/nonsaturatedweight4*100 : 0;
-a101 = (possaturatedweight5 > 0)? dn5/possaturatedweight5*100:0;
-a102 = (negsaturatedweight5 > 0)? dn5n/negsaturatedweight5*100:0;
-a103 = (nonsaturatedweight5 > 0)? dn12/nonsaturatedweight5*100 : 0;		
+a11= (possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100/8000 : 0;
+a12= (negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100/8000 : 0;
+a13 = (nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100/8000 : 0;
+a21 = (possaturatedweightm4 > 0)? dnm4/possaturatedweightm4*100/8000: 0;
+a22 = (negsaturatedweightm4 > 0)? dnm4n/negsaturatedweightm4*100/8000 : 0;
+a23 = (nonsaturatedweightm4 > 0)? dnm42/nonsaturatedweightm4*100/8000 : 0;
+a31 = (possaturatedweightm3 > 0)? dnm3/possaturatedweightm3*100/8000: 0;
+a32 = (negsaturatedweightm3 > 0)? dnm3n/negsaturatedweightm3*100/8000 : 0;
+a33 = (nonsaturatedweightm3 > 0)? dnm32/nonsaturatedweightm3*100/8000 : 0;
+a41 = (possaturatedweightm2 > 0)? dnm2/possaturatedweightm2*100/8000: 0;
+a42 = (negsaturatedweightm2 > 0)? dnm2n/negsaturatedweightm2*100/8000 : 0;
+a43 = (nonsaturatedweightm2 > 0)? dnm22/nonsaturatedweightm2*100/8000 : 0;
+a51= (possaturatedweightm1 > 0)? dnm1/possaturatedweightm1*100/8000: 0;
+a52 = (negsaturatedweightm1 > 0)? dnm1n/negsaturatedweightm1*100/8000 : 0;
+a53 = (nonsaturatedweightm1 > 0)? dnm12/nonsaturatedweightm1*100/8000 : 0;
+a61 = (possaturatedweight1 > 0)? dn1/possaturatedweight1*100/8000:0;
+a62 = (negsaturatedweight1 > 0)? dn1n/negsaturatedweight1*100/8000:0;
+a63 = (nonsaturatedweight1 > 0)? dn12/nonsaturatedweight1*100/8000 : 0;
+a71 = (possaturatedweight2 > 0)? dn2/possaturatedweight2*100/8000:0;
+a72 = (negsaturatedweight2 > 0)? dn2n/negsaturatedweight2*100/8000:0;
+a73 = (nonsaturatedweight2 > 0)? dn22/nonsaturatedweight2*100/8000 : 0;
+a81 = (possaturatedweight3 > 0)? dn3/possaturatedweight3*100/8000:0;
+a82 = (negsaturatedweight3 > 0)? dn3n/negsaturatedweight3*100/8000:0;
+a83 = (nonsaturatedweight3 > 0)? dn32/nonsaturatedweight3*100/8000 : 0;
+a91 = (possaturatedweight4 > 0)? dn4/possaturatedweight4*100/8000:0;
+a92 = (negsaturatedweight4 > 0)? dn4n/negsaturatedweight4*100/8000:0;
+a93 = (nonsaturatedweight4 > 0)? dn42/nonsaturatedweight4*100/8000 : 0;
+a101 = (possaturatedweight5 > 0)? dn5/possaturatedweight5*100/8000:0;
+a102 = (negsaturatedweight5 > 0)? dn5n/negsaturatedweight5*100/8000:0;
+a103 = (nonsaturatedweight5 > 0)? dn12/nonsaturatedweight5*100/8000 : 0;		
 		
 cout<<"saturated weight count"<<endl;
 cout<<"-1<=w<-0.8"<<" : "<<possaturatedweightm5<<", "<< negsaturatedweightm5<<endl;
