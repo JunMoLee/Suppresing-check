@@ -2538,7 +2538,7 @@ cout<<"0.8<=w<=1"<<" : "<<dn5/possaturatedweight5*100<<", "<<  dn5n/negsaturated
 		
 		
 		
-		for (int m=0; m<param->nHide; m++) {
+/*		for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){	
 		
 					if((-1<=prevweight1[m][n])&&(prevweight1[m][n]<-0.8)) 
@@ -2686,7 +2686,7 @@ cout<<"-0.2<=w<0: "<<locationm1count/weightm1count<<endl;
                 cout<<"0.2<=w<0.4 : "<<location2count/weight2count<<endl;
 cout<<"0.4<=w<0.6 : "<<location3count/weight3count<<endl;
 cout<<"0.6<=w<0.8 : "<<location4count/weight4count<<endl;
-cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl;
+cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl; */
 
 						      
 // weight analyzer 
