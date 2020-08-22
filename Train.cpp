@@ -2464,7 +2464,7 @@ cout<<"0.8<=w<=1"<<" : "<<(possaturatedweight5 > 0)? dn5/possaturatedweight5*100
 		
 
 		ofstream read;
-		string filename="Probabilitycheck";
+		string filename="Probabilitycheckreverseonly";
 		read.open(filename+ ".csv",std::ios_base::app);
 		read << "epoch"<<", "<<epochcount<<endl;
 		read <<"IH"<<", "<< countGpweightrange/countGprange <<", "<<"HO"<<", "<<weightlocationspecifierGn/countGnrange<<endl;
@@ -2480,7 +2480,7 @@ read<<"0.6<=w<0.8"<<" : "<<possaturatedweight4<<", "<< negsaturatedweight4<<endl
 read<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl;
 		
 				ofstream readx;
-		string filename="Destructivenesscheck";
+		string filename="Destructivenesscheckreverseonly";
 		readx.open(filename+ ".csv",std::ios_base::app);
 		readx << "epoch"<<", "<<epochcount<<endl;
 readx<<"-1<=w<-0.8"<<" : "<<(possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100 : 0 <<", "<<(negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100 : 0<<", "<<(nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100 : 0<<endl;
