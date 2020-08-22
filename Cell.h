@@ -151,7 +151,7 @@ public:
 	int momentumunitsum = 0;
 	
 	/* destructiveness */
-	double destructiveness;
+	double destructiveness=0;
 };
 
 class SRAM: public Cell {
