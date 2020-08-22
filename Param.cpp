@@ -479,8 +479,24 @@ param_gn=-5;
 	FullRefresh= 0;
 break;
 case 7:
-param_gp=9;
-param_gn=-1;
+param_gp=2;
+param_gn=-5;
+						learningrate[0][0] =0.4;
+	learningrate[0][1] = 0.4;
+	learningrate[0][2] = 0.33333;
+	learningrate[0][3] = 0.4;
+		
+	learningrate[1][0] = 0.4;
+	learningrate[1][1] = 0.4;
+	learningrate[1][2] = 0.33333;
+	learningrate[1][3] = 0.4;
+							newUpdateRate=12;
+
+	nnewUpdateRate=4;
+		RefreshRate = 199;
+		        ReverseUpdate = 0;
+
+	FullRefresh= 1;
 break;
 case 8:
 param_gp=8;
