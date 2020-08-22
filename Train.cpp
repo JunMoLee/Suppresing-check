@@ -2098,7 +2098,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double count12HO=0;
 		double count22HO=0;
 		double count13HO=0;
-		double possaturatedweight1=0;
+				double possaturatedweight1=0;
 		double possaturatedweight2=0;
 		double possaturatedweight3=0;
 		double possaturatedweight4=0;
@@ -2451,16 +2451,50 @@ cout<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl
 		
 		
 cout<<"destructivenesscount"<<endl;
-cout<<"-1<=w<-0.8"<<" : "<<dnm5/possaturatedweightm5*100<<", "<<dnm5n/ negsaturatedweightm5*100<<", "<<dnm52/nonsaturatedweightm5*100<<endl;
-cout<<"-0.8<=w<-0.6"<<" : "<<dnm4/possaturatedweightm4*100<<", "<< dnm4n/negsaturatedweightm4*100<<", "<<dnm42/nonsaturatedweightm4*100<<endl;
-cout<<"-0.6<=w<-0.4"<<" : "<<dnm3/possaturatedweightm3*100<<", "<< dnm3n/negsaturatedweightm3*100<<", "<<dnm32/nonsaturatedweightm3*100<<endl;
-cout<<"-0.4<=w<-0.2"<<" : "<<dnm2/possaturatedweightm2*100<<", "<<  dnm2n/negsaturatedweightm2*100<<", "<<dnm22/nonsaturatedweightm2*100<<endl;
-cout<<"-0.2<=w<0"<<" : "<<dnm1/possaturatedweightm1*100<<", "<<  dnm1n/negsaturatedweightm1*100<<", "<<dnm12/nonsaturatedweightm1*100<<endl;
-cout<<"0<=w<-0.2"<<" : "<<dn1/possaturatedweight1*100<<", "<<  dn1n/negsaturatedweight1*100<<", "<<dn12/nonsaturatedweight1*100<<endl;
-cout<<"0.2<=w<0.4"<<" : "<<dn2/possaturatedweight2*100<<", "<<  dn2n/negsaturatedweight2*100<<", "<<dn22/nonsaturatedweight2*100<<endl;
-cout<<"0.4<=w<0.6"<<" : "<<dn3/possaturatedweight3*100<<", "<<  dn3n/negsaturatedweight3*100<<", "<<dn32/nonsaturatedweight3*100<<endl;
-cout<<"0.6<=w<0.8"<<" : "<<dn4/possaturatedweight4*100<<", "<< dn4n/negsaturatedweight4*100<<", "<<dn42/nonsaturatedweight4*100<<endl;
-cout<<"0.8<=w<=1"<<" : "<<dn5/possaturatedweight5*100<<", "<<  dn5n/negsaturatedweight5*100<<", "<<dn52/nonsaturatedweight5*100<<endl;
+cout<<"-1<=w<-0.8"<<" : "<<(possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100 : 0 <<", "<<(negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100 : 0<<", "<<(nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100 : 0<<endl;
+cout<<"-0.8<=w<-0.6"<<" : "<<(possaturatedweightm4 > 0)? dnm4/possaturatedweightm4*100: 0<<", "<< (negsaturatedweightm4 > 0)? dnm4n/negsaturatedweightm4*100 : 0<<", "<<(nonsaturatedweightm4 > 0)? dnm42/nonsaturatedweightm4*100 : 0<<endl;
+cout<<"-0.6<=w<-0.4"<<" : "<<(possaturatedweightm3 > 0)? dnm3/possaturatedweightm3*100: 0<<<", "<< (negsaturatedweightm3 > 0)? dnm3n/negsaturatedweightm3*100 : 0<<", "<<(nonsaturatedweightm3 > 0)? dnm32/nonsaturatedweightm3*100 : 0<<endl;
+cout<<"-0.4<=w<-0.2"<<" : "<<(possaturatedweightm2 > 0)? dnm2/possaturatedweightm2*100: 0<<<", "<<  (negsaturatedweightm2 > 0)? dnm2n/negsaturatedweightm2*100 : 0<<", "<<(nonsaturatedweightm2 > 0)? dnm22/nonsaturatedweightm2*100 : 0<<endl;
+cout<<"-0.2<=w<0"<<" : "<<(possaturatedweightm1 > 0)? dnm1/possaturatedweightm1*100: 0<<<", "<<  (negsaturatedweightm1 > 0)? dnm1n/negsaturatedweightm1*100 : 0<<", "<<(nonsaturatedweightm1 > 0)? dnm12/nonsaturatedweightm1*100 : 0<<endl;
+cout<<"0<=w<-0.2"<<" : "<<(possaturatedweight1 > 0)? dn1/possaturatedweight1*100:0<<", "<< (negsaturatedweight1 > 0)? dn1n/negsaturatedweight1*100:0<<", "<<(nonsaturatedweight1 > 0)? dn12/nonsaturatedweight1*100 : 0<<endl;
+cout<<"0.2<=w<0.4"<<" : "<<(possaturatedweight2 > 0)? dn2/possaturatedweight2*100:0<<", "<<  (negsaturatedweight2 > 0)? dn2n/negsaturatedweight2*100:0<<", "<<(nonsaturatedweight2 > 0)? dn22/nonsaturatedweight2*100 : 0<<endl;
+cout<<"0.4<=w<0.6"<<" : "<<(possaturatedweight3 > 0)? dn3/possaturatedweight3*100:0<<", "<<  (negsaturatedweight3 > 0)? dn3n/negsaturatedweight3*100:0<<", "<<(nonsaturatedweight3 > 0)? dn32/nonsaturatedweight3*100 : 0<<endl;
+cout<<"0.6<=w<0.8"<<" : "<<(possaturatedweight4 > 0)? dn4/possaturatedweight4*100:0<<", "<< (negsaturatedweight4 > 0)? dn4n/negsaturatedweight4*100:0<<", "<<(nonsaturatedweight4 > 0)? dn42/nonsaturatedweight4*100 : 0<<endl;
+cout<<"0.8<=w<=1"<<" : "<<(possaturatedweight5 > 0)? dn5/possaturatedweight5*100:0<<", "<< (negsaturatedweight5 > 0)? dn5n/negsaturatedweight5*100:0<<", "<<(nonsaturatedweight5 > 0)? dn12/nonsaturatedweight5*100 : 0<<endl;
+		
+
+		ofstream read;
+		string filename="Probabilitycheck";
+		read.open(filename+ ".csv",std::ios_base::app);
+		read << "epoch"<<", "<<epochcount<<endl;
+		read <<"IH"<<", "<< countGpweightrange/countGprange <<", "<<"HO"<<", "<<weightlocationspecifierGn/countGnrange<<endl;
+		read<<"-1<=w<-0.8"<<" : "<<possaturatedweightm5<<", "<< negsaturatedweightm5<<endl;
+read<<"-0.8<=w<-0.6"<<" : "<<possaturatedweightm4<<", "<< negsaturatedweightm4<<endl;
+read<<"-0.6<=w<-0.4"<<" : "<<possaturatedweightm3<<", "<< negsaturatedweightm3<<endl;
+read<<"-0.4<=w<-0.2"<<" : "<<possaturatedweightm2<<", "<<  negsaturatedweightm2<<endl;
+read<<"-0.2<=w<0"<<" : "<<possaturatedweightm1<<", "<<  negsaturatedweightm1<<endl;
+read<<"0<=w<-0.2"<<" : "<<possaturatedweight1<<", "<<  negsaturatedweight1<<endl;
+read<<"0.2<=w<0.4"<<" : "<<possaturatedweight2<<", "<<  negsaturatedweight2<<endl;
+read<<"0.4<=w<0.6"<<" : "<<possaturatedweight3<<", "<<  negsaturatedweight3<<endl;
+read<<"0.6<=w<0.8"<<" : "<<possaturatedweight4<<", "<< negsaturatedweight4<<endl;
+read<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl;
+		
+				ofstream readx;
+		string filename="Destructivenesscheck";
+		readx.open(filename+ ".csv",std::ios_base::app);
+		readx << "epoch"<<", "<<epochcount<<endl;
+readx<<"-1<=w<-0.8"<<" : "<<(possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100 : 0 <<", "<<(negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100 : 0<<", "<<(nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100 : 0<<endl;
+readx<<"-0.8<=w<-0.6"<<" : "<<(possaturatedweightm4 > 0)? dnm4/possaturatedweightm4*100: 0<<", "<< (negsaturatedweightm4 > 0)? dnm4n/negsaturatedweightm4*100 : 0<<", "<<(nonsaturatedweightm4 > 0)? dnm42/nonsaturatedweightm4*100 : 0<<endl;
+readx<<"-0.6<=w<-0.4"<<" : "<<(possaturatedweightm3 > 0)? dnm3/possaturatedweightm3*100: 0<<<", "<< (negsaturatedweightm3 > 0)? dnm3n/negsaturatedweightm3*100 : 0<<", "<<(nonsaturatedweightm3 > 0)? dnm32/nonsaturatedweightm3*100 : 0<<endl;
+readx<<"-0.4<=w<-0.2"<<" : "<<(possaturatedweightm2 > 0)? dnm2/possaturatedweightm2*100: 0<<<", "<<  (negsaturatedweightm2 > 0)? dnm2n/negsaturatedweightm2*100 : 0<<", "<<(nonsaturatedweightm2 > 0)? dnm22/nonsaturatedweightm2*100 : 0<<endl;
+readx<<"-0.2<=w<0"<<" : "<<(possaturatedweightm1 > 0)? dnm1/possaturatedweightm1*100: 0<<<", "<<  (negsaturatedweightm1 > 0)? dnm1n/negsaturatedweightm1*100 : 0<<", "<<(nonsaturatedweightm1 > 0)? dnm12/nonsaturatedweightm1*100 : 0<<endl;
+readx<<"0<=w<-0.2"<<" : "<<(possaturatedweight1 > 0)? dn1/possaturatedweight1*100:0<<", "<< (negsaturatedweight1 > 0)? dn1n/negsaturatedweight1*100:0<<", "<<(nonsaturatedweight1 > 0)? dn12/nonsaturatedweight1*100 : 0<<endl;
+readx<<"0.2<=w<0.4"<<" : "<<(possaturatedweight2 > 0)? dn2/possaturatedweight2*100:0<<", "<<  (negsaturatedweight2 > 0)? dn2n/negsaturatedweight2*100:0<<", "<<(nonsaturatedweight2 > 0)? dn22/nonsaturatedweight2*100 : 0<<endl;
+readx<<"0.4<=w<0.6"<<" : "<<(possaturatedweight3 > 0)? dn3/possaturatedweight3*100:0<<", "<<  (negsaturatedweight3 > 0)? dn3n/negsaturatedweight3*100:0<<", "<<(nonsaturatedweight3 > 0)? dn32/nonsaturatedweight3*100 : 0<<endl;
+readx<<"0.6<=w<0.8"<<" : "<<(possaturatedweight4 > 0)? dn4/possaturatedweight4*100:0<<", "<< (negsaturatedweight4 > 0)? dn4n/negsaturatedweight4*100:0<<", "<<(nonsaturatedweight4 > 0)? dn42/nonsaturatedweight4*100 : 0<<endl;
+readx<<"0.8<=w<=1"<<" : "<<(possaturatedweight5 > 0)? dn5/possaturatedweight5*100:0<<", "<< (negsaturatedweight5 > 0)? dn5n/negsaturatedweight5*100:0<<", "<<(nonsaturatedweight5 > 0)? dn12/nonsaturatedweight5*100 : 0<<endl;
+
+	
 
 	
 				
