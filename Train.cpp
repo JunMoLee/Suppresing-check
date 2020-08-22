@@ -2480,8 +2480,8 @@ read<<"0.6<=w<0.8"<<" : "<<possaturatedweight4<<", "<< negsaturatedweight4<<endl
 read<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl;
 		
 				ofstream readx;
-		string filename="Destructivenesscheckreverseonly";
-		readx.open(filename+ ".csv",std::ios_base::app);
+		string filenamey="Destructivenesscheckreverseonly";
+		readx.open(filenamey+ ".csv",std::ios_base::app);
 		readx << "epoch"<<", "<<epochcount<<endl;
 readx<<"-1<=w<-0.8"<<" : "<<(possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100 : 0 <<", "<<(negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100 : 0<<", "<<(nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100 : 0<<endl;
 readx<<"-0.8<=w<-0.6"<<" : "<<(possaturatedweightm4 > 0)? dnm4/possaturatedweightm4*100: 0<<", "<< (negsaturatedweightm4 > 0)? dnm4n/negsaturatedweightm4*100 : 0<<", "<<(nonsaturatedweightm4 > 0)? dnm42/nonsaturatedweightm4*100 : 0<<endl;
