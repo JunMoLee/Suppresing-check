@@ -149,6 +149,9 @@ public:
 	double momentumposstep = 0;
 	double momentumnegstep = 0;
 	int momentumunitsum = 0;
+	
+	/* destructiveness */
+	double destructiveness;
 };
 
 class SRAM: public Cell {
