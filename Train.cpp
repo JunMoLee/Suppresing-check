@@ -2160,6 +2160,90 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double dnm32=0;
 		double dnm42=0;
 		double dnm52=0;
+		
+			double countGprange =0;
+		double countGpweightrange=0;
+		double countGnrange =0;
+		double countGnweightrange=0;
+		double locationnumberspecifier=0;
+		double locationnumberspecifier2=0;
+		double locationnumberspecifier3=0;
+		double locationnumberspecifier4=0;
+		double locationnumberspecifier5=0;
+		double locationnumberspecifier6=0;
+		double weightlocationspecifierGp=0;
+		double weightlocationspecifierGn=0;
+				 for (int m=0; m<param->nHide; m++) {
+			for (int n=0; n<param->nInput;n++){
+				
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 2)
+				{locationnumberspecifier++;}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 5)
+				{locationnumberspecifier2++;}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 3)
+				{locationnumberspecifier3++;}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 6)
+				{locationnumberspecifier4++;}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
+				{locationnumberspecifier5++;}
+				
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth2)
+				{countGprange ++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
+				{weightlocationspecifierGp++;}
+				 if(weight1[m][n]>=Gth2/10)
+				 {countGpweightrange++;}
+
+				}
+				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn >= Gth2)
+				{countGnrange ++;
+				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
+				{weightlocationspecifierGn++;}
+				 if(weight1[m][n]<=-Gth2/10)
+				 {countGnweightrange++;}
+				}
+			}
+				 }
+				
+					 for (int m=0; m<param->nOutput; m++) {
+			for (int n=0; n<param->nHide;n++){
+				
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 2)
+				{locationnumberspecifier++;}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 5)
+				{locationnumberspecifier2++;}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 3)
+				{locationnumberspecifier3++;}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 6)
+				{locationnumberspecifier4++;}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
+				{locationnumberspecifier4++;}
+				
+	if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp >= Gth2)
+				{countGprange ++;
+				 if(weight2[m][n]>= Gth2/10)
+				 {countGpweightrange++;
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
+				{weightlocationspecifierGp++;}
+				}
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn >= Gth2)
+				{countGnrange ++;
+				 if(weight2[m][n]<= -Gth2/10)
+				 {countGnweightrange++;
+				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
+				{weightlocationspecifierGn++;}
+				}}
+				}
+			}
+				 }
+		
+		cout<<"P(|w|>=Gth2/pconrange | Gp,Gn>=Gth2/10) = "<< countGpweightrange/countGprange<<", "<<countGnweightrange/countGnrange<<endl;
+		cout<<"P(areanumbersum = 4 | Gp,Gn>=Gth2/10) = "<< weightlocationspecifierGp/countGprange<<", "<<weightlocationspecifierGn/countGnrange<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 2] : "<<locationnumberspecifier<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 5] : "<<locationnumberspecifier2<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 3] : "<<locationnumberspecifier3<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 6] : "<<locationnumberspecifier4<<endl;
+		cout<<"count [L.N(Gp)+L.N(Gn) = 4] : "<<locationnumberspecifier5<<endl;
 				
 
 		for (int m=0; m<param->nHide; m++) {
@@ -2492,9 +2576,9 @@ cout<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl
 cout<<"destructivenesscount"<<endl;
 cout<<"-1<=w<-0.8"<<" : "<<a11 <<", "<<a12<<", "<<a13<<endl;
 cout<<"-0.8<=w<-0.6"<<" : "<<a21<<", "<< a22<<", "<<a23<<endl;
-cout<<"-0.6<=w<-0.4"<<" : "<<a31<<<", "<< a32<<", "<<a33<<endl;
-cout<<"-0.4<=w<-0.2"<<" : "<<a41<<<", "<<  a42<<", "<<a43<<endl;
-cout<<"-0.2<=w<0"<<" : "<<a51<<<", "<<  a52<<", "<<a53<<endl;
+cout<<"-0.6<=w<-0.4"<<" : "<<a31<<", "<< a32<<", "<<a33<<endl;
+cout<<"-0.4<=w<-0.2"<<" : "<<a41<<", "<<  a42<<", "<<a43<<endl;
+cout<<"-0.2<=w<0"<<" : "<<a51<<", "<<  a52<<", "<<a53<<endl;
 cout<<"0<=w<-0.2"<<" : "<<a61<<", "<< a62<<", "<<a63<<endl;
 cout<<"0.2<=w<0.4"<<" : "<<a71<<", "<<  a72<<", "<<a73<<endl;
 cout<<"0.4<=w<0.6"<<" : "<<a81<<", "<< a82<<", "<<a83<<endl;
@@ -2525,9 +2609,9 @@ read<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl
 		readx << "epoch"<<", "<<epochcount<<endl;
 readx<<"-1<=w<-0.8"<<" : "<<a11 <<", "<<a12<<", "<<a13<<endl;
 readx<<"-0.8<=w<-0.6"<<" : "<<a21<<", "<< a22<<", "<<a23<<endl;
-readx<<"-0.6<=w<-0.4"<<" : "<<a31<<<", "<< a32<<", "<<a33<<endl;
-readx<<"-0.4<=w<-0.2"<<" : "<<a41<<<", "<<  a42<<", "<<a43<<endl;
-readx<<"-0.2<=w<0"<<" : "<<a51<<<", "<<  a52<<", "<<a53<<endl;
+readx<<"-0.6<=w<-0.4"<<" : "<<a31<<", "<< a32<<", "<<a33<<endl;
+readx<<"-0.4<=w<-0.2"<<" : "<<a41<<", "<<  a42<<", "<<a43<<endl;
+readx<<"-0.2<=w<0"<<" : "<<a51<<", "<<  a52<<", "<<a53<<endl;
 readx<<"0<=w<-0.2"<<" : "<<a61<<", "<< a62<<", "<<a63<<endl;
 readx<<"0.2<=w<0.4"<<" : "<<a71<<", "<<  a72<<", "<<a73<<endl;
 readx<<"0.4<=w<0.6"<<" : "<<a81<<", "<< a82<<", "<<a83<<endl;
@@ -2930,106 +3014,7 @@ cout<<"0.8<=w<1 : "<<location5count/weight5count<<endl; */
 		
 		
 		
-		double countGprange =0;
-		double countGpweightrange=0;
-		double countGnrange =0;
-		double countGnweightrange=0;
-		double locationnumberspecifier=0;
-		double locationnumberspecifier2=0;
-		double locationnumberspecifier3=0;
-		double locationnumberspecifier4=0;
-		double locationnumberspecifier5=0;
-		double locationnumberspecifier6=0;
-		double weightlocationspecifierGp=0;
-		double weightlocationspecifierGn=0;
-				 for (int m=0; m<param->nHide; m++) {
-			for (int n=0; n<param->nInput;n++){
-				
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 2)
-				{locationnumberspecifier++;}
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 5)
-				{locationnumberspecifier2++;}
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 3)
-				{locationnumberspecifier3++;}
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 6)
-				{locationnumberspecifier4++;}
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
-				{locationnumberspecifier5++;}
-				
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGp >= Gth2)
-				{countGprange ++;
-				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
-				{weightlocationspecifierGp++;}
-				 if(weight1[m][n]>=Gth2/10)
-				 {countGpweightrange++;}
-
-				}
-				if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->conductanceGn >= Gth2)
-				{countGnrange ++;
-				 if(static_cast<AnalogNVM*>(arrayIH->cell[m][n])->weightanalyzer()[2] == 4)
-				{weightlocationspecifierGn++;}
-				 if(weight1[m][n]<=-Gth2/10)
-				 {countGnweightrange++;}
-				}
-			}
-				 }
-				
-					 for (int m=0; m<param->nOutput; m++) {
-			for (int n=0; n<param->nHide;n++){
-				
-				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 2)
-				{locationnumberspecifier++;}
-				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 5)
-				{locationnumberspecifier2++;}
-				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 3)
-				{locationnumberspecifier3++;}
-				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 6)
-				{locationnumberspecifier4++;}
-				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
-				{locationnumberspecifier4++;}
-				
-	if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGp >= Gth2)
-				{countGprange ++;
-				 if(weight2[m][n]>= Gth2/10)
-				 {countGpweightrange++;
-				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
-				{weightlocationspecifierGp++;}
-				}
-				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->conductanceGn >= Gth2)
-				{countGnrange ++;
-				 if(weight2[m][n]<= -Gth2/10)
-				 {countGnweightrange++;
-				 if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->weightanalyzer()[2] == 4)
-				{weightlocationspecifierGn++;}
-				}}
-				}
-			}
-				 }
-		
-		cout<<"P(|w|>=Gth2/pconrange | Gp,Gn>=Gth2/10) = "<< countGpweightrange/countGprange<<", "<<countGnweightrange/countGnrange<<endl;
-		cout<<"P(areanumbersum = 4 | Gp,Gn>=Gth2/10) = "<< weightlocationspecifierGp/countGprange<<", "<<weightlocationspecifierGn/countGnrange<<endl;
-		
-		
-		ofstream read;
-		string filename="Probabilitycheck2";
-		read.open(filename+ ".csv",std::ios_base::app);
-		read << "epoch"<<", "<<epochcount<<endl;
-		read <<"IH"<<", "<< countGpweightrange/countGprange <<", "<<"HO"<<", "<<weightlocationspecifierGn/countGnrange<<endl;
-		read<<"-1<=w<-0.8"<<" : "<<possaturatedweightm5<<", "<< negsaturatedweightm5<<endl;
-read<<"-0.8<=w<-0.6"<<" : "<<possaturatedweightm4<<", "<< negsaturatedweightm4<<endl;
-read<<"-0.6<=w<-0.4"<<" : "<<possaturatedweightm3<<", "<< negsaturatedweightm3<<endl;
-read<<"-0.4<=w<-0.2"<<" : "<<possaturatedweightm2<<", "<<  negsaturatedweightm2<<endl;
-read<<"-0.2<=w<0"<<" : "<<possaturatedweightm1<<", "<<  negsaturatedweightm1<<endl;
-read<<"0<=w<-0.2"<<" : "<<possaturatedweight1<<", "<<  negsaturatedweight1<<endl;
-read<<"0.2<=w<0.4"<<" : "<<possaturatedweight2<<", "<<  negsaturatedweight2<<endl;
-read<<"0.4<=w<0.6"<<" : "<<possaturatedweight3<<", "<<  negsaturatedweight3<<endl;
-read<<"0.6<=w<0.8"<<" : "<<possaturatedweight4<<", "<< negsaturatedweight4<<endl;
-read<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl;
-		cout<<"count [L.N(Gp)+L.N(Gn) = 2] : "<<locationnumberspecifier<<endl;
-		cout<<"count [L.N(Gp)+L.N(Gn) = 5] : "<<locationnumberspecifier2<<endl;
-		cout<<"count [L.N(Gp)+L.N(Gn) = 3] : "<<locationnumberspecifier3<<endl;
-		cout<<"count [L.N(Gp)+L.N(Gn) = 6] : "<<locationnumberspecifier4<<endl;
-		cout<<"count [L.N(Gp)+L.N(Gn) = 4] : "<<locationnumberspecifier5<<endl;
+	
 		
 		
     }  // end of interepoch code (default -> iterate once)
