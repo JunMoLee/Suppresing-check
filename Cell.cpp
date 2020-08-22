@@ -696,14 +696,16 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	conductanceGp = conductanceNewGp;
 	conductanceGn = conductanceNewGn;
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
-			if (realupdate == 0)
+			
 	if (realupdate == 0)
-	destructiveness = 0;
+        destructiveness = 0;
 	else{
 	if((conductanceNew - conductancePrev) >0)
 	destructiveness = ( (conductanceNew - conductancePrev) - realupdate) / realupdate ;
 	else
 	destructiveness = ( (conductancePrev - conductanceNew) - realupdate) / realupdate ;}
+	
+	
 	if((conductancePrev * conductanceNew) <0) polaritychange++;
 	conductance = conductanceNew;
 
@@ -922,7 +924,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	conductanceGn = conductanceNewGn;
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
 		if (realupdate == 0)
-	destructiveness = 0;
+destructiveness=0;
 	else{
 	if((conductanceNew - conductancePrev) >0)
 	destructiveness = ( (conductanceNew - conductancePrev) - realupdate / realupdate );
