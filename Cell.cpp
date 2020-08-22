@@ -698,22 +698,22 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
 			
 	if (realupdate == 0)
-destructiveness=0;
+        destructiveness+= 0;
 	else{
 		
 	if( (conductanceNew - conductancePrev)>0 )
 	{if(((conductanceNew - conductancePrev) - realupdate)>0)
-	destructiveness = ( (conductanceNew - conductancePrev) - realupdate) / realupdate ;
+	destructiveness +=  ( (conductanceNew - conductancePrev) - realupdate) / realupdate ;
 	 else
-		 destructiveness = (  realupdate - (conductanceNew - conductancePrev)) / realupdate ;
+		 destructiveness += (  realupdate - (conductanceNew - conductancePrev)) / realupdate ;
 	}
 		
 	else
 	{
 	if(((conductancePrev - conductanceNew) - realupdate)>0)
-	destructiveness = ( (conductancePrev - conductanceNew) - realupdate) / realupdate ;
+	destructiveness +=  ( (conductancePrev - conductanceNew) - realupdate) / realupdate ;
 	 else
-		 destructiveness = (  realupdate - (conductancePrev - conductanceNew)) / realupdate ;
+		 destructiveness += (  realupdate - (conductancePrev - conductanceNew)) / realupdate ;
 	
 	}
 	}
@@ -936,22 +936,22 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	conductanceGn = conductanceNewGn;
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
 		if (realupdate == 0)
-destructiveness=0;
+        destructiveness+= 0;
 	else{
 		
 	if( (conductanceNew - conductancePrev)>0 )
 	{if(((conductanceNew - conductancePrev) - realupdate)>0)
-	destructiveness = ( (conductanceNew - conductancePrev) - realupdate) / realupdate ;
+	destructiveness +=  ( (conductanceNew - conductancePrev) - realupdate) / realupdate ;
 	 else
-		 destructiveness = (  realupdate - (conductanceNew - conductancePrev)) / realupdate ;
+		 destructiveness += (  realupdate - (conductanceNew - conductancePrev)) / realupdate ;
 	}
 		
 	else
 	{
 	if(((conductancePrev - conductanceNew) - realupdate)>0)
-	destructiveness = ( (conductancePrev - conductanceNew) - realupdate) / realupdate ;
+	destructiveness +=  ( (conductancePrev - conductanceNew) - realupdate) / realupdate ;
 	 else
-		 destructiveness = (  realupdate - (conductancePrev - conductanceNew)) / realupdate ;
+		 destructiveness += (  realupdate - (conductancePrev - conductanceNew)) / realupdate ;
 	
 	}
 	}
