@@ -698,13 +698,22 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	conductanceNew = conductanceNewGp - conductanceNewGn + refConductance;
 			
 	if (realupdate == 0)
-        destructiveness = 0;
+destructiveness=0;
 	else{
 	if((conductanceNew - conductancePrev) >0)
+	{if((conductanceNew - conductancePrev) - realupdate)>0)
 	destructiveness = ( (conductanceNew - conductancePrev) - realupdate) / realupdate ;
+	 else
+		 destructiveness = (  realupdate - (conductanceNew - conductancePrev)) / realupdate ;
+	}
 	else
-	destructiveness = ( (conductancePrev - conductanceNew) - realupdate) / realupdate ;}
+	{
+	if((conductancePrev - conductanceNew) - realupdate)>0)
+	destructiveness = ( (conductancePrev - conductanceNew) - realupdate) / realupdate ;
+	 else
+		 destructiveness = (  realupdate - (conductancePrev - conductanceNew)) / realupdate ;
 	
+	}
 	
 	if((conductancePrev * conductanceNew) <0) polaritychange++;
 	conductance = conductanceNew;
@@ -927,9 +936,19 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 destructiveness=0;
 	else{
 	if((conductanceNew - conductancePrev) >0)
-	destructiveness = ( (conductanceNew - conductancePrev) - realupdate / realupdate );
+	{if((conductanceNew - conductancePrev) - realupdate)>0)
+	destructiveness = ( (conductanceNew - conductancePrev) - realupdate) / realupdate ;
+	 else
+		 destructiveness = (  realupdate - (conductanceNew - conductancePrev)) / realupdate ;
+	}
 	else
-	destructiveness = ( (conductancePrev - conductanceNew) - realupdate / realupdate );}
+	{
+	if((conductancePrev - conductanceNew) - realupdate)>0)
+	destructiveness = ( (conductancePrev - conductanceNew) - realupdate) / realupdate ;
+	 else
+		 destructiveness = (  realupdate - (conductancePrev - conductanceNew)) / realupdate ;
+	
+	}
 	if((conductancePrev * conductanceNew) <0) polaritychange++;
 	conductance = conductanceNew;
 
