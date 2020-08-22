@@ -2451,8 +2451,8 @@ cout<<"0.8<=w<=1"<<" : "<<possaturatedweight5<<", "<<  negsaturatedweight5<<endl
 		
 		
 cout<<"destructivenesscount"<<endl;
-cout<<"-1<=w<-0.8"<<" : "<<(possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100 : 0 <<", "<<(negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100 : 0<<", "<<(nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100 : 0<<endl;
-cout<<"-0.8<=w<-0.6"<<" : "<<(possaturatedweightm4 > 0)? dnm4/possaturatedweightm4*100: 0<<", "<< (negsaturatedweightm4 > 0)? dnm4n/negsaturatedweightm4*100 : 0<<", "<<(nonsaturatedweightm4 > 0)? dnm42/nonsaturatedweightm4*100 : 0<<endl;
+cout<<"-1<=w<-0.8"<<" : "<<((possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100 : 0) <<", "<<(negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100 : 0<<", "<<(nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100 : 0<<endl;
+cout<<"-0.8<=w<-0.6"<<" : "<<((possaturatedweightm4 > 0)? dnm4/possaturatedweightm4*100: 0)<<", "<< (negsaturatedweightm4 > 0)? dnm4n/negsaturatedweightm4*100 : 0<<", "<<(nonsaturatedweightm4 > 0)? dnm42/nonsaturatedweightm4*100 : 0<<endl;
 cout<<"-0.6<=w<-0.4"<<" : "<<(possaturatedweightm3 > 0)? dnm3/possaturatedweightm3*100: 0<<<", "<< (negsaturatedweightm3 > 0)? dnm3n/negsaturatedweightm3*100 : 0<<", "<<(nonsaturatedweightm3 > 0)? dnm32/nonsaturatedweightm3*100 : 0<<endl;
 cout<<"-0.4<=w<-0.2"<<" : "<<(possaturatedweightm2 > 0)? dnm2/possaturatedweightm2*100: 0<<<", "<<  (negsaturatedweightm2 > 0)? dnm2n/negsaturatedweightm2*100 : 0<<", "<<(nonsaturatedweightm2 > 0)? dnm22/nonsaturatedweightm2*100 : 0<<endl;
 cout<<"-0.2<=w<0"<<" : "<<(possaturatedweightm1 > 0)? dnm1/possaturatedweightm1*100: 0<<<", "<<  (negsaturatedweightm1 > 0)? dnm1n/negsaturatedweightm1*100 : 0<<", "<<(nonsaturatedweightm1 > 0)? dnm12/nonsaturatedweightm1*100 : 0<<endl;
