@@ -349,9 +349,9 @@ param_gn=-1;
 	learningrate[1][1] = 0.2;
 	learningrate[1][2] = 0.2;
 	learningrate[1][3] = 0.2;
-			newUpdateRate=2;
+			newUpdateRate=3;
 
-	nnewUpdateRate=2;
+	nnewUpdateRate=3;
 		RefreshRate = 3000;
 		        ReverseUpdate = 1;
 
@@ -361,63 +361,66 @@ param_gn=-1;
 break;
 case 1:
 param_gp=1;
-param_gn=-9;
-					learningrate[0][0] =0.2;
+param_gn=-3;
+
+			learningrate[0][0] =0.2;
 	learningrate[0][1] = 0.2;
-	learningrate[0][2] = 0.10;
-	learningrate[0][3] = 0.15;
+	learningrate[0][2] = 0.2;
+	learningrate[0][3] = 0.2;
 		
 	learningrate[1][0] = 0.2;
 	learningrate[1][1] = 0.2;
-	learningrate[1][2] = 0.10;
-	learningrate[1][3] = 0.15;
-					newUpdateRate=200;
+	learningrate[1][2] = 0.2;
+	learningrate[1][3] = 0.2;
+			newUpdateRate=3;
 
-	nnewUpdateRate=200;
-		RefreshRate = 4000;
+	nnewUpdateRate=3;
+		RefreshRate = 3000;
 		        ReverseUpdate = 1;
 
-	FullRefresh= 1;
+	FullRefresh= 0;
 break;
 case 2:
-param_gp=2;
+param_gp=1;
 param_gn=-5;
-						learningrate[0][0] =0.4;
-	learningrate[0][1] = 0.4;
-	learningrate[0][2] = 0.33333;
-	learningrate[0][3] = 0.4;
-		
-	learningrate[1][0] = 0.4;
-	learningrate[1][1] = 0.4;
-	learningrate[1][2] = 0.33333;
-	learningrate[1][3] = 0.4;
-							newUpdateRate=12;
 
-	nnewUpdateRate=4;
+			learningrate[0][0] =0.2;
+	learningrate[0][1] = 0.2;
+	learningrate[0][2] = 0.2;
+	learningrate[0][3] = 0.2;
+		
+	learningrate[1][0] = 0.2;
+	learningrate[1][1] = 0.2;
+	learningrate[1][2] = 0.2;
+	learningrate[1][3] = 0.2;
+			newUpdateRate=3;
+
+	nnewUpdateRate=3;
 		RefreshRate = 3000;
 		        ReverseUpdate = 1;
 
 	FullRefresh= 0;
 break;
 case 3:
-param_gp=3;
-param_gn=-5;
-						learningrate[0][0] =0.4;
-	learningrate[0][1] = 0.4;
-	learningrate[0][2] = 0.33333;
-	learningrate[0][3] = 0.4;
+param_gp=1;
+param_gn=-7;
+
+			learningrate[0][0] =0.2;
+	learningrate[0][1] = 0.2;
+	learningrate[0][2] = 0.2;
+	learningrate[0][3] = 0.2;
 		
-	learningrate[1][0] = 0.4;
-	learningrate[1][1] = 0.4;
-	learningrate[1][2] = 0.33333;
-	learningrate[1][3] = 0.4;
-							newUpdateRate=12;
+	learningrate[1][0] = 0.2;
+	learningrate[1][1] = 0.2;
+	learningrate[1][2] = 0.2;
+	learningrate[1][3] = 0.2;
+			newUpdateRate=3;
 
-	nnewUpdateRate=4;
-		RefreshRate = 100;
-		        ReverseUpdate = 0;
+	nnewUpdateRate=3;
+		RefreshRate = 3000;
+		        ReverseUpdate = 1;
 
-	FullRefresh= 1;
+	FullRefresh= 0;
 break;
 case 4:
 param_gp=1;
