@@ -2530,7 +2530,7 @@ double a71, a72, a73;
 double a81, a82, a83;
 double a91, a92, a93;
 double a101, a102, a103;
-a11= (possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100/8000 : 0;
+/* a11= (possaturatedweightm5 > 0)? dnm5/possaturatedweightm5*100/8000 : 0;
 a12= (negsaturatedweightm5 > 0)? dnm5n/negsaturatedweightm5*100/8000 : 0;
 a13 = (nonsaturatedweightm5 > 0)? dnm52/nonsaturatedweightm5*100/8000 : 0;
 a21 = (possaturatedweightm4 > 0)? dnm4/possaturatedweightm4*100/8000: 0;
@@ -2559,7 +2559,38 @@ a92 = (negsaturatedweight4 > 0)? dn4n/negsaturatedweight4*100/8000:0;
 a93 = (nonsaturatedweight4 > 0)? dn42/nonsaturatedweight4*100/8000 : 0;
 a101 = (possaturatedweight5 > 0)? dn5/possaturatedweight5*100/8000:0;
 a102 = (negsaturatedweight5 > 0)? dn5n/negsaturatedweight5*100/8000:0;
-a103 = (nonsaturatedweight5 > 0)? dn12/nonsaturatedweight5*100/8000 : 0;		
+a103 = (nonsaturatedweight5 > 0)? dn12/nonsaturatedweight5*100/8000 : 0;	 */	
+		a11= (possaturatedweightm5 > 0)? dnm5/8000 : 0;
+a12= (negsaturatedweightm5 > 0)? dnm5n/8000 : 0;
+a13 = (nonsaturatedweightm5 > 0)? dnm52/8000 : 0;
+a21 = (possaturatedweightm4 > 0)? dnm4/8000: 0;
+a22 = (negsaturatedweightm4 > 0)? dnm4n/8000 : 0;
+a23 = (nonsaturatedweightm4 > 0)? dnm42/8000 : 0;
+a31 = (possaturatedweightm3 > 0)? dnm3/8000: 0;
+a32 = (negsaturatedweightm3 > 0)? dnm3n/8000 : 0;
+a33 = (nonsaturatedweightm3 > 0)? dnm32/8000 : 0;
+a41 = (possaturatedweightm2 > 0)? dnm2/8000: 0;
+a42 = (negsaturatedweightm2 > 0)? dnm2n/8000 : 0;
+a43 = (nonsaturatedweightm2 > 0)? dnm22/8000 : 0;
+a51= (possaturatedweightm1 > 0)? dnm1/8000: 0;
+a52 = (negsaturatedweightm1 > 0)? dnm1n/8000 : 0;
+a53 = (nonsaturatedweightm1 > 0)? dnm12/8000 : 0;
+a61 = (possaturatedweight1 > 0)? dn1/8000:0;
+a62 = (negsaturatedweight1 > 0)? dn1n/8000:0;
+a63 = (nonsaturatedweight1 > 0)? dn12/8000 : 0;
+a71 = (possaturatedweight2 > 0)? dn2/8000:0;
+a72 = (negsaturatedweight2 > 0)? dn2n/8000:0;
+a73 = (nonsaturatedweight2 > 0)? dn22/8000 : 0;
+a81 = (possaturatedweight3 > 0)? dn3/8000:0;
+a82 = (negsaturatedweight3 > 0)? dn3n/8000:0;
+a83 = (nonsaturatedweight3 > 0)? dn32/8000 : 0;
+a91 = (possaturatedweight4 > 0)? dn4/8000:0;
+a92 = (negsaturatedweight4 > 0)? dn4n/8000:0;
+a93 = (nonsaturatedweight4 > 0)? dn42/8000 : 0;
+a101 = (possaturatedweight5 > 0)? dn5/8000:0;
+a102 = (negsaturatedweight5 > 0)? dn5n/8000:0;
+a103 = (nonsaturatedweight5 > 0)? dn12/8000 : 0;	
+		
 cout<<"saturated weight count"<<endl;
 		cout<<"-1<=w<-0.8"<<" : "<<possaturatedweightm5<<", "<< negsaturatedweightm5<<endl;
 cout<<"-0.8<=w<-0.6"<<" : "<<", "<<possaturatedweightm4<<", "<< negsaturatedweightm4<<", "<<nonsaturatedweightm4<<endl;
@@ -2587,7 +2618,7 @@ cout<<"0.8<=w<=1"<<" : "<<a101<<", "<< a102<<", "<<a103<<endl;
 		
 
 		ofstream read;
-		string filename="finalrefreshprob";
+		string filename="lastrefreshprob";
 		read.open(filename+ ".csv",std::ios_base::app);
 		read << "epoch"<<", "<<epochcount<<endl;
 		read <<"IH"<<", "<< countGpweightrange/countGprange <<", "<<"HO"<<", "<<weightlocationspecifierGn/countGnrange<<endl;
@@ -2604,7 +2635,7 @@ read<<"0.8<=w<=1"<<" : "<<", "<<possaturatedweight5<<", "<<  negsaturatedweight5
 
 
 				ofstream readx;
-		string filenamey="finalrefreshdestruct";
+		string filenamey="lastrefreshdestruct";
 		readx.open(filenamey+ ".csv",std::ios_base::app);
 		readx << "epoch"<<", "<<epochcount<<endl;
 readx<<"-1<=w<-0.8"<<" : "<<", "<<a11 <<", "<<a12<<", "<<a13<<endl;
