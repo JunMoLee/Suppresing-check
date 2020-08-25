@@ -2018,7 +2018,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 	} // end of weight tracking code
 // momentum tracker 
 		
-		/* weight infromation tracking */
+				/* weight infromation tracking */
 	// deltaweight, polarity stabilization, momentum existence confirmation 
 	double positiveweightmomentumIH=0;
 	double positiveweightmomentumIH2=0;
@@ -2160,6 +2160,69 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		double dnm32=0;
 		double dnm42=0;
 		double dnm52=0;
+		double possatpsm5=0;
+		double possatpsm4=0;
+		double possatpsm3=0;
+		double possatpsm2=0;
+		double possatpsm1=0;
+		double possatps1=0;
+		double possatps2=0;
+		double possatps3=0;
+		double possatps4=0;
+		double possatps5=0;
+		double possatnsm5=0;
+		double possatnsm4=0;
+		double possatnsm3=0;
+		double possatnsm2=0;
+		double possatnsm1=0;
+		double possatns1=0;
+		double possatns2=0;
+		double possatns3=0;
+		double possatns4=0;
+		double possatns5=0;
+		double possatnonm5=0;
+		double possatnonm4=0;
+		double possatnonm3=0;
+		double possatnonm2=0;
+		double possatnonm1=0;
+		double possatnon1=0;
+		double possatnon2=0;
+		double possatnon3=0;
+		double possatnon4=0;
+		double possatnon5=0;
+			
+		double negsatpsm5=0;
+		double negsatpsm4=0;
+		double negsatpsm3=0;
+		double negsatpsm2=0;
+		double negsatpsm1=0;
+		double negsatps1=0;
+		double negsatps2=0;
+		double negsatps3=0;
+		double negsatps4=0;
+		double negsatps5=0;
+			
+		double negsatnsm5=0;
+		double negsatnsm4=0;
+		double negsatnsm3=0;
+		double negsatnsm2=0;
+		double negsatnsm1=0;
+		double negsatns1=0;
+		double negsatns2=0;
+		double negsatns3=0;
+		double negsatns4=0;
+		double negsatns5=0;
+			
+		double negsatnonm5=0;
+		double negsatnonm4=0;
+		double negsatnonm3=0;
+		double negsatnonm2=0;
+		double negsatnonm1=0;
+		double negsatnon1=0;
+		double negsatnon2=0;
+		double negsatnon3=0;
+		double negsatnon4=0;
+		double negsatnon5=0;
 		
 			double countGprange =0;
 		double countGpweightrange=0;
@@ -2255,40 +2318,60 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					
 				if((-1<=satweight)&&(satweight<-0.8))
 				{negsaturatedweightm5++;
+				 possatnsm5 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnsm5 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				dnm5n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				else if((-0.8<=satweight)&&(satweight<-0.6))
 				{negsaturatedweightm4++;
+				  possatnsm4 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnsm4 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				dnm4n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 		
 				else if((-0.6<=satweight)&&(satweight<-0.4))
 				{negsaturatedweightm3++;
+				  possatnsm3 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnsm3 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				dnm3n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((-0.4<=satweight)&&(satweight<-0.2))
 				{negsaturatedweightm2++;
+				  possatnsm2 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnsm2 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				dnm2n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((-0.2<=satweight)&&(satweight<0))
 				{negsaturatedweightm1++;
+				  possatnsm1 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnsm1 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				dnm1n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0<=satweight)&&(satweight<0.2))
 				{negsaturatedweight1++;
+				  possatns1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatns1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				dn1n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				else if((0.2<=satweight)&&(satweight<0.4))
 				{negsaturatedweight2++;
+				  possatns2= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatns2 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				dn2n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.4<=satweight)&&(satweight<0.6))
 				{negsaturatedweight3++;
+				   possatns3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatns3 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn3n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.6<=satweight)&&(satweight<0.8))
 				{negsaturatedweight4++;
+				   possatns4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatns4 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn4n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.8<=satweight)&&(satweight<=1))
 				{negsaturatedweight5++;
+				   possatns5= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatns5 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn5n+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 		
 				}
@@ -2297,42 +2380,62 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					
 				if((-1<=satweight)&&(satweight<-0.8))
 				{possaturatedweightm5++;
+				   possatpsm5= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatpsm5 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm5+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 					
 				else if((-0.8<=satweight)&&(satweight<-0.6))
 				{possaturatedweightm4++;
+				    possatpsm4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatpsm4 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm4+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 		
 				else if((-0.6<=satweight)&&(satweight<-0.4))
 				{possaturatedweightm3++;
+				 possatpsm3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatpsm3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm3+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((-0.4<=satweight)&&(satweight<-0.2))
 				{possaturatedweightm2++;
+				 possatpsm2= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatpsm2 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm2+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((-0.2<=satweight)&&(satweight<0))
 				{possaturatedweightm1++;
+				 possatpsm1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatpsm1 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm1+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 					
 				else if((0<=satweight)&&(satweight<0.2))
 				{possaturatedweight1++;
+				 possatps1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatps1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn1+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 					
 				else if((0.2<=satweight)&&(satweight<0.4))
 				{possaturatedweight2++;
+				  possatps2= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatps2= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn2+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.4<=satweight)&&(satweight<0.6))
 				{possaturatedweight3++;
+				  possatps3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatps3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn3+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.6<=satweight)&&(satweight<0.8))
 				{possaturatedweight4++;
+				  possatps4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatps4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn4+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.8<=satweight)&&(satweight<=1))
 				{possaturatedweight5++;
+				  possatps5= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatps5= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn5+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				}
@@ -2341,42 +2444,62 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				{
 				if((-1<=normalweight)&&(normalweight<-0.8))
 				{nonsaturatedweightm5++;
+				  possatnonm5= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnonm5= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm52+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 					
 				else if((-0.8<=normalweight)&&(normalweight<-0.6))
 				{nonsaturatedweightm4++;
+				possatnonm4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnonm4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm42+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 		
 				else if((-0.6<=normalweight)&&(normalweight<-0.4))
 				{nonsaturatedweightm3++;
+				 possatnonm3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnonm3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm32+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((-0.4<=normalweight)&&(normalweight<-0.2))
 				{nonsaturatedweightm2++;
+				 				possatnonm2= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnonm2= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm22+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((-0.2<=normalweight)&&(normalweight<0))
 				{nonsaturatedweightm1++;
+				 				possatnonm1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnonm1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dnm12+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 					
 				else if((0<=normalweight)&&(normalweight<0.2))
 				{nonsaturatedweight1++;
+				 				possatnon1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnon1= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn12+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 					
 				else if((0.2<=normalweight)&&(normalweight<0.4))
 				{nonsaturatedweight2++;
+				 			possatnon2= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnon2= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn22+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.4<=normalweight)&&(normalweight<0.6))
 				{nonsaturatedweight3++;
+				 possatnon3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnon3= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn32+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.6<=normalweight)&&(normalweight<0.8))
 				{nonsaturatedweight4++;
+				 possatnon4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnon4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn42+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				
 				else if((0.8<=normalweight)&&(normalweight<=1))
 				{nonsaturatedweight5++;
+				 possatnon5= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
+				 negsatnon5= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
 				 dn52+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->destructiveness;}
 				}
 				static_cast<AnalogNVM*>(arrayIH->cell[m][n])->ResetCounter();
@@ -2391,42 +2514,63 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				double normalweight = weight2[m][n];
 				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsatcount){
 					
+					
 				if((-1<=satweight)&&(satweight<-0.8))
 				{negsaturatedweightm5++;
+				 possatnsm5 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnsm5 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				dnm5n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				else if((-0.8<=satweight)&&(satweight<-0.6))
 				{negsaturatedweightm4++;
+				  possatnsm4 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnsm4 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				dnm4n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 		
 				else if((-0.6<=satweight)&&(satweight<-0.4))
 				{negsaturatedweightm3++;
+				  possatnsm3 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnsm3 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				dnm3n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((-0.4<=satweight)&&(satweight<-0.2))
 				{negsaturatedweightm2++;
+				  possatnsm2 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnsm2 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				dnm2n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((-0.2<=satweight)&&(satweight<0))
 				{negsaturatedweightm1++;
+				  possatnsm1 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnsm1 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				dnm1n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0<=satweight)&&(satweight<0.2))
 				{negsaturatedweight1++;
+				  possatns1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatns1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				dn1n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				else if((0.2<=satweight)&&(satweight<0.4))
 				{negsaturatedweight2++;
+				  possatns2= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatns2 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				dn2n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.4<=satweight)&&(satweight<0.6))
 				{negsaturatedweight3++;
+				   possatns3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatns3 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn3n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.6<=satweight)&&(satweight<0.8))
 				{negsaturatedweight4++;
+				   possatns4= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatns4 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn4n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.8<=satweight)&&(satweight<=1))
 				{negsaturatedweight5++;
+				   possatns5= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatns5 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn5n+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 		
 				}
@@ -2435,86 +2579,126 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 					
 				if((-1<=satweight)&&(satweight<-0.8))
 				{possaturatedweightm5++;
+				   possatpsm5= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatpsm5 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm5+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 					
 				else if((-0.8<=satweight)&&(satweight<-0.6))
 				{possaturatedweightm4++;
+				    possatpsm4= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatpsm4 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm4+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 		
 				else if((-0.6<=satweight)&&(satweight<-0.4))
 				{possaturatedweightm3++;
+				 possatpsm3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatpsm3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm3+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((-0.4<=satweight)&&(satweight<-0.2))
 				{possaturatedweightm2++;
+				 possatpsm2= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatpsm2 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm2+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((-0.2<=satweight)&&(satweight<0))
 				{possaturatedweightm1++;
+				 possatpsm1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatpsm1 = static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm1+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 					
 				else if((0<=satweight)&&(satweight<0.2))
 				{possaturatedweight1++;
+				 possatps1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatps1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn1+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 					
 				else if((0.2<=satweight)&&(satweight<0.4))
 				{possaturatedweight2++;
+				  possatps2= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatps2= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn2+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.4<=satweight)&&(satweight<0.6))
 				{possaturatedweight3++;
+				  possatps3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatps3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn3+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.6<=satweight)&&(satweight<0.8))
 				{possaturatedweight4++;
+				  possatps4= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatps4= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn4+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.8<=satweight)&&(satweight<=1))
 				{possaturatedweight5++;
+				  possatps5= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatps5= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn5+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				}
 				
-								if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possatcount+static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsatcount == 0)
+				if(static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possatcount+static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsatcount == 0)
 				{
-									if((-1<=normalweight)&&(normalweight<-0.8))
+				if((-1<=normalweight)&&(normalweight<-0.8))
 				{nonsaturatedweightm5++;
+				  possatnonm5= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnonm5= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm52+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 					
 				else if((-0.8<=normalweight)&&(normalweight<-0.6))
 				{nonsaturatedweightm4++;
+				possatnonm4= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnonm4= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm42+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 		
 				else if((-0.6<=normalweight)&&(normalweight<-0.4))
 				{nonsaturatedweightm3++;
+				 possatnonm3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnonm3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm32+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((-0.4<=normalweight)&&(normalweight<-0.2))
 				{nonsaturatedweightm2++;
+				 				possatnonm2= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnonm2= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm22+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((-0.2<=normalweight)&&(normalweight<0))
 				{nonsaturatedweightm1++;
+				 				possatnonm1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnonm1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dnm12+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 					
 				else if((0<=normalweight)&&(normalweight<0.2))
 				{nonsaturatedweight1++;
+				 				possatnon1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnon1= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn12+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 					
 				else if((0.2<=normalweight)&&(normalweight<0.4))
 				{nonsaturatedweight2++;
+				 			possatnon2= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnon2= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn22+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.4<=normalweight)&&(normalweight<0.6))
 				{nonsaturatedweight3++;
+				 possatnon3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnon3= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn32+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.6<=normalweight)&&(normalweight<0.8))
 				{nonsaturatedweight4++;
+				 possatnon4= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnon4= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn42+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				
 				else if((0.8<=normalweight)&&(normalweight<=1))
 				{nonsaturatedweight5++;
+				 possatnon5= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->possat;
+				 negsatnon5= static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negsat;
 				 dn52+=static_cast<AnalogNVM*>(arrayHO->cell[m][n])->destructiveness;}
 				}
 				static_cast<AnalogNVM*>(arrayHO->cell[m][n])->ResetCounter();
@@ -2605,7 +2789,7 @@ cout<<"0.8<=w<=1"<<" : "<<", "<<possaturatedweight5<<", "<<  negsaturatedweight5
 		
 		
 cout<<"destructivenesscount"<<endl;
-cout<<"-1<=w<-0.8"<<" : "<<a11 <<", "<<a12<<", "<<a13<<endl;
+cout<<"-1<=w<-0.8"<<" : "<<a11 <<", "<<a12<<", "<<a13<<", "<<endl;
 cout<<"-0.8<=w<-0.6"<<" : "<<a21<<", "<< a22<<", "<<a23<<endl;
 cout<<"-0.6<=w<-0.4"<<" : "<<a31<<", "<< a32<<", "<<a33<<endl;
 cout<<"-0.4<=w<-0.2"<<" : "<<a41<<", "<<  a42<<", "<<a43<<endl;
@@ -2616,9 +2800,20 @@ cout<<"0.4<=w<0.6"<<" : "<<a81<<", "<< a82<<", "<<a83<<endl;
 cout<<"0.6<=w<0.8"<<" : "<<a91<<", "<< a92<<", "<<a93<<endl;
 cout<<"0.8<=w<=1"<<" : "<<a101<<", "<< a102<<", "<<a103<<endl;
 		
+cout<<"possatnegsatcount"<<endl;
+cout<<possatpsm5<<", "<<negsatpsm5<<", "<<possatnsm5<<", "<<negsatnsm5<<", "<<possatnonm5<<", "<<negsatnonm5<<endl;
+cout<<possatpsm4<<", "<<negsatpsm4<<", "<<possatnsm4<<", "<<negsatnsm4<<", "<<possatnonm4<<", "<<negsatnonm4<<endl;
+cout<<possatpsm3<<", "<<negsatpsm3<<", "<<possatnsm3<<", "<<negsatnsm3<<", "<<possatnonm3<<", "<<negsatnonm3<<endl;
+cout<<possatpsm2<<", "<<negsatpsm2<<", "<<possatnsm2<<", "<<negsatnsm2<<", "<<possatnonm2<<", "<<negsatnonm2<<endl;
+cout<<possatpsm1<<", "<<negsatpsm1<<", "<<possatnsm1<<", "<<negsatnsm1<<", "<<possatnonm1<<", "<<negsatnonm1<<endl;
+cout<<possatps1<<", "<<negsatps1<<", "<<possatns1<<", "<<negsatns1<<", "<<possatnon1<<", "<<negsatnon1<<endl;
+cout<<possatps2<<", "<<negsatps2<<", "<<possatns2<<", "<<negsatns2<<", "<<possatnon2<<", "<<negsatnon2<<endl;
+cout<<possatps3<<", "<<negsatps3<<", "<<possatns3<<", "<<negsatns3<<", "<<possatnon3<<", "<<negsatnon3<<endl;
+cout<<possatps4<<", "<<negsatps4<<", "<<possatns4<<", "<<negsatns4<<", "<<possatnon4<<", "<<negsatnon4<<endl;
+cout<<possatps5<<", "<<negsatps5<<", "<<possatns5<<", "<<negsatns5<<", "<<possatnon5<<", "<<negsatnon5<<endl;
 
 		ofstream read;
-		string filename="lastrefreshprob";
+		string filename="lastprob";
 		read.open(filename+ ".csv",std::ios_base::app);
 		read << "epoch"<<", "<<epochcount<<endl;
 		read <<"IH"<<", "<< countGpweightrange/countGprange <<", "<<"HO"<<", "<<weightlocationspecifierGn/countGnrange<<endl;
@@ -2635,7 +2830,7 @@ read<<"0.8<=w<=1"<<" : "<<", "<<possaturatedweight5<<", "<<  negsaturatedweight5
 
 
 				ofstream readx;
-		string filenamey="lastrefreshdestruct";
+		string filenamey="lastdestruct";
 		readx.open(filenamey+ ".csv",std::ios_base::app);
 		readx << "epoch"<<", "<<epochcount<<endl;
 readx<<"-1<=w<-0.8"<<" : "<<", "<<a11 <<", "<<a12<<", "<<a13<<endl;
@@ -2648,6 +2843,23 @@ readx<<"0.2<=w<0.4"<<" : "<<", "<<a71<<", "<<  a72<<", "<<a73<<endl;
 readx<<"0.4<=w<0.6"<<" : "<<", "<<a81<<", "<< a82<<", "<<a83<<endl;
 readx<<"0.6<=w<0.8"<<" : "<<", "<<a91<<", "<< a92<<", "<<a93<<endl;
 readx<<"0.8<=w<=1"<<" : "<<", "<<a101<<", "<< a102<<", "<<a103<<endl;
+
+			
+		ofstream ready;
+		string filenamez="lastsatcount";
+		ready.open(filenamez+ ".csv",std::ios_base::app);
+		ready << "epoch"<<", "<<epochcount<<endl;
+					cout<<"possatnegsatcount"<<endl;
+ready<<possatpsm5<<", "<<negsatpsm5<<", "<<possatnsm5<<", "<<negsatnsm5<<", "<<possatnonm5<<", "<<negsatnonm5<<endl;
+ready<<possatpsm4<<", "<<negsatpsm4<<", "<<possatnsm4<<", "<<negsatnsm4<<", "<<possatnonm4<<", "<<negsatnonm4<<endl;
+ready<<possatpsm3<<", "<<negsatpsm3<<", "<<possatnsm3<<", "<<negsatnsm3<<", "<<possatnonm3<<", "<<negsatnonm3<<endl;
+ready<<possatpsm2<<", "<<negsatpsm2<<", "<<possatnsm2<<", "<<negsatnsm2<<", "<<possatnonm2<<", "<<negsatnonm2<<endl;
+ready<<possatpsm1<<", "<<negsatpsm1<<", "<<possatnsm1<<", "<<negsatnsm1<<", "<<possatnonm1<<", "<<negsatnonm1<<endl;
+ready<<possatps1<<", "<<negsatps1<<", "<<possatns1<<", "<<negsatns1<<", "<<possatnon1<<", "<<negsatnon1<<endl;
+ready<<possatps2<<", "<<negsatps2<<", "<<possatns2<<", "<<negsatns2<<", "<<possatnon2<<", "<<negsatnon2<<endl;
+ready<<possatps3<<", "<<negsatps3<<", "<<possatns3<<", "<<negsatns3<<", "<<possatnon3<<", "<<negsatnon3<<endl;
+ready<<possatps4<<", "<<negsatps4<<", "<<possatns4<<", "<<negsatns4<<", "<<possatnon4<<", "<<negsatnon4<<endl;
+ready<<possatps5<<", "<<negsatps5<<", "<<possatns5<<", "<<negsatns5<<", "<<possatnon5<<", "<<negsatnon5<<endl;
 
 	
 
