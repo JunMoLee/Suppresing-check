@@ -143,7 +143,7 @@ int main() {
 	        /* open file */ 
 	
 		ofstream read;
-		read.open("SI_200824_NLsuppresscheck.csv", ios_base::app);                                                         
+		read.open("SI_200825_Finalrefresh.csv", ios_base::app);                                                         
 		vector <double> accuracy (125,0);
 	        
 	        /* define name for sum of accuaracy for every n epochs */ 
