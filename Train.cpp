@@ -3037,7 +3037,7 @@ ready<<possatps5<<", "<<negsatps5<<", "<<possatns5<<", "<<negsatns5<<", "<<possa
 		readr << "epoch"<<", "<<epochcount<<endl;
 					cout<<"stepcount"<<endl;
 		
-			readr<<"-1<=w<-0.8"<<" : "<<possteptm5<<", "<< negstepm5<<endl;
+			readr<<"-1<=w<-0.8"<<" : "<<posstepm5<<", "<< negstepm5<<endl;
 readr<<"-0.8<=w<-0.6"<<" : "<<", "<< possteptm4<<", "<< negstepm4<<endl;
 readr<<"-0.6<=w<-0.4"<<" : "<<", "<< possteptm3<<", "<< negstepm3<<endl;
 readr<<"-0.4<=w<-0.2"<<" : "<<", "<< possteptm2<<", "<< negstepm2<<endl;
