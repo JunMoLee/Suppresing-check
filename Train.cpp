@@ -3055,6 +3055,20 @@ readr<<"0.6<=w<0.8"<<" : "<<", "<< posstep4<<", "<< negstep4<<endl;
 readr<<"0.8<=w<=1"<<" : "<<", "<< posstep5<<", "<< negstep5<<endl;		
 		
 		
+				double activationsum = 0;
+		double activationaverage = 0;
+		double activationstd = 0;
+		for (int act = 0; act<100; act++){
+		activationsum += a1[act];}
+		activationaverage = activationsum/100;
+		for (int act = 0; act<100; act++){
+		activationstd += (a1[act] - activationaverage ) *  (a1[act] - activationaverage );
+		}
+		activationstd = activationstd / 100;
+		cout << "activation"<<endl;
+		cout<< activationaverage <<endl;
+		cout <<activationstd<<endl;
+		
 		
 		
 		
