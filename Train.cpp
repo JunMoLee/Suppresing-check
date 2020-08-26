@@ -2942,7 +2942,7 @@ cout<<"0.6<=w<0.8"<<" : "<<a91<<", "<< a92<<", "<<a93<<endl;
 cout<<"0.8<=w<=1"<<" : "<<a101<<", "<< a102<<", "<<a103<<endl;
 		
 		cout<<"stepcount"<<endl;
-		cout<<"-1<=w<-0.8"<<" : "<<possteptm5<<", "<< negstepm5<<endl;
+		cout<<"-1<=w<-0.8"<<" : "<<posstepm5<<", "<< negstepm5<<endl;
 cout<<"-0.8<=w<-0.6"<<" : "<<posstepm4<<", "<< negstepm4<<endl;
 cout<<"-0.6<=w<-0.4"<<" : "<<posstepm3<<", "<< negstepm3<<endl;
 cout<<"-0.4<=w<-0.2"<<" : "<<posstepm2<<", "<< negstepm2<<endl;
