@@ -2951,7 +2951,7 @@ cout<<"0<=w<-0.2"<<" : "<<posstep1<<", "<< negstep1<<endl;
 cout<<"0.2<=w<0.4"<<" : "<<posstep2<<", "<< negstep2<<endl;
 cout<<"0.4<=w<0.6"<<" : "<<posstep3<<", "<< negstepm3<<endl;
 cout<<"0.6<=w<0.8"<<" : "<<posstep4<<", "<< negstep4<<endl;
-cout<<"0.8<=w<=1"<<" : "<<posstep5<<", "<< negstep5<<endl;	
+cout<<"0.8<=w<=1"<<" : "<<posstep5<<", "<< negstep5<<endl;		
 		
 cout<<"possatnegsatcount"<<endl;
 cout<<possatpsm5<<", "<<negsatpsm5<<", "<<possatnsm5<<", "<<negsatnsm5<<", "<<possatnonm5<<", "<<negsatnonm5<<endl;
