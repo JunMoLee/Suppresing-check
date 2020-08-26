@@ -2835,7 +2835,7 @@ read<<"0.8<=w<=1"<<" : "<<", "<<possaturatedweight5<<", "<<  negsaturatedweight5
 
 
 				ofstream readx;
-		string filenamey="reallastprob";
+		string filenamey="reallastdestruct";
 		readx.open(filenamey+ ".csv",std::ios_base::app);
 		readx << "epoch"<<", "<<epochcount<<endl;
 readx<<"-1<=w<-0.8"<<" : "<<", "<<a11 <<", "<<a12<<", "<<a13<<endl;
