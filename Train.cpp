@@ -2943,15 +2943,15 @@ cout<<"0.8<=w<=1"<<" : "<<a101<<", "<< a102<<", "<<a103<<endl;
 		
 		cout<<"stepcount"<<endl;
 		cout<<"-1<=w<-0.8"<<" : "<<possteptm5<<", "<< negstepm5<<endl;
-cout<<"-0.8<=w<-0.6"<<" : "<<possteptm4<<", "<< negstepm4<<endl;
-cout<<"-0.6<=w<-0.4"<<" : "<<possteptm3<<", "<< negstepm3<<endl;
-cout<<"-0.4<=w<-0.2"<<" : "<<possteptm2<<", "<< negstepm2<<endl;
-cout<<"-0.2<=w<0"<<" : "<<possteptm1<<", "<< negstepm1<<endl;
-cout<<"0<=w<-0.2"<<" : "<<posstept1<<", "<< negstep1<<endl;
-cout<<"0.2<=w<0.4"<<" : "<<posstept2<<", "<< negstep2<<endl;
-cout<<"0.4<=w<0.6"<<" : "<<posstept3<<", "<< negstepm3<<endl;
-cout<<"0.6<=w<0.8"<<" : "<<posstept4<<", "<< negstep4<<endl;
-cout<<"0.8<=w<=1"<<" : "<<posstept5<<", "<< negstep5<<endl;	
+cout<<"-0.8<=w<-0.6"<<" : "<<posstepm4<<", "<< negstepm4<<endl;
+cout<<"-0.6<=w<-0.4"<<" : "<<posstepm3<<", "<< negstepm3<<endl;
+cout<<"-0.4<=w<-0.2"<<" : "<<posstepm2<<", "<< negstepm2<<endl;
+cout<<"-0.2<=w<0"<<" : "<<posstepm1<<", "<< negstepm1<<endl;
+cout<<"0<=w<-0.2"<<" : "<<posstep1<<", "<< negstep1<<endl;
+cout<<"0.2<=w<0.4"<<" : "<<posstep2<<", "<< negstep2<<endl;
+cout<<"0.4<=w<0.6"<<" : "<<posstep3<<", "<< negstepm3<<endl;
+cout<<"0.6<=w<0.8"<<" : "<<posstep4<<", "<< negstep4<<endl;
+cout<<"0.8<=w<=1"<<" : "<<posstep5<<", "<< negstep5<<endl;	
 		
 cout<<"possatnegsatcount"<<endl;
 cout<<possatpsm5<<", "<<negsatpsm5<<", "<<possatnsm5<<", "<<negsatnsm5<<", "<<possatnonm5<<", "<<negsatnonm5<<endl;
