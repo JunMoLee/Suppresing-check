@@ -3069,6 +3069,16 @@ readr<<"0.8<=w<=1"<<" : "<<", "<< posstep5<<", "<< negstep5<<endl;
 		cout<< activationaverage <<endl;
 		cout <<activationstd<<endl;
 		
+				
+					ofstream reade;
+		string filenamem="actcount";
+		reade.open(filenamem+ ".csv",std::ios_base::app);
+		reade << "epoch"<<", "<<epochcount<<endl;
+					cout<<"actcount"<<endl;	
+		
+			cout << "activation"<<endl;
+		reade << activationaverage <<endl;
+		reade <<activationstd<<endl;
 		
 		
 		
