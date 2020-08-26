@@ -2407,7 +2407,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 				
 				else if((0.6<=satweight)&&(satweight<0.8))
 				{negsaturatedweight4++;
-				 posstep4++=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
+				 posstep4+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep;
 				 negstep4+=static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep;
 				   possatns4= static_cast<AnalogNVM*>(arrayIH->cell[m][n])->possat;
 				 negsatns4 = static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negsat;
