@@ -272,6 +272,7 @@ negstep=0;
 momentumunitsum=0;
 momentumcyclecounter=0;	
 destructiveness=0;
+	nonzeroupdate=0;
 }
 
 std::vector<double> eNVM::weightanalyzer(){
@@ -605,7 +606,7 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 			conductanceNewGn = (xPulse+numPulse) / maxNumLevelnLTP * (nmaxConductance - nminConductance) + nminConductance;
 		}
 	}
-
+if(numPulse) nonzeroupdate++;
 	/* Cycle-to-cycle variation */
 	extern std::mt19937 gen;
 	if (GpGnCell == true) {
@@ -852,7 +853,7 @@ void RealDevice::newWrite(double deltaWeightNormalized, double weight, double mi
 	}
 	
 	
-	
+	if(numPulse) nonzeroupdate++;
 	
 
 	/* Cycle-to-cycle variation */
