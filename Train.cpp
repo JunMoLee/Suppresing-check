@@ -3032,7 +3032,7 @@ cout<<"0.8<=w<=1"<<" : "<<a101<<", "<< a102<<", "<<a103<<endl;
 		cout<<"stepcount"<<endl;
 		cout<<"-1<=w<-0.8"<<" : "<<nonzerostepm5<<", "<< 0<<endl;
 cout<<"-0.8<=w<-0.6"<<" : "<<nonzerostepm4<<", "<<0<<endl;
-cout<<"-0.6<=w<-0.4"<<" : "<nonzerostepm3<<", "<<0<<endl;
+cout<<"-0.6<=w<-0.4"<<" : "<<nonzerostepm3<<", "<<0<<endl;
 cout<<"-0.4<=w<-0.2"<<" : "<<nonzerostepm2<<", "<<0<<endl;
 cout<<"-0.2<=w<0"<<" : "<<nonzerostepm1<<", "<< 0<<endl;
 cout<<"0<=w<-0.2"<<" : "<<nonzerostep1<<", "<< 0<<endl;
