@@ -139,10 +139,12 @@ public:
 	 double negativesaturatedweight;
 	 int possatcount=0;
 	 int negsatcount=0;
+	
 	/* polarity, location  tracker */
 	int previouslocation=0;
 	int previouspolarity=0;
 	int polaritychange=0;
+	double nonzeroupdate=0;
 	
 	/* momentum cycle */ 
 	int momentumcyclecounter = 0; 
