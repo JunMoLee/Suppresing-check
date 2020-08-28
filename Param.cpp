@@ -41,7 +41,7 @@
 #include <cmath>
 
 Param::Param() {
-	.............
+	
 	
 	/* Algorithm parameters */
 	numTrainImagesPerEpoch = 7999;	// # of training images per epoch
