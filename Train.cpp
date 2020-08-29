@@ -3136,7 +3136,22 @@ readr<<"0.4<=w<0.6"<<" : "<<", "<<nonzerostep3<<", "<< 0<<endl;
 readr<<"0.6<=w<0.8"<<" : "<<", "<< nonzerostep4<<", "<<0<<endl;
 readr<<"0.8<=w<=1"<<" : "<<", "<< nonzerostep5<<", "<< 0<<endl;
 		
-
+		double b1 =  a11+ a12+a13 + a21+a22+a23;
+		double b2 = a31+a32+a33+a41+a42+a43;
+		double b3 = a51+a52+a53+a61+a62+a63;
+		double b4 = a71+a72+a73+a81+a82+a83;
+		double b5 = a91+a92+a93+a101+a102+a103;
+					ofstream readr;
+		string filenameu="ULTIMATE";
+		readu.open(filenameu+ ".csv",std::ios_base::app);
+		readu <<"destructiveness"<<", "<< b1<< ", "<<b2<<", "<<b3<<", "<<b4<<", "<<b5<<", ";
+		readu <<"cellnumber"<<", "<<possaturatedweightm5 + negsaturatedweightm5 + nonsaturatedweightm5 + possaturatedweightm4 + negsaturatedweightm4 + nonsaturatedweightm4;
+		readu <<", "<<possaturatedweightm3 + negsaturatedweightm3 + nonsaturatedweightm3 + possaturatedweightm2 + negsaturatedweightm2 + nonsaturatedweightm2;
+		readu<<", "<<possaturatedweightm1 + negsaturatedweightm1 + nonsaturatedweightm1 + possaturatedweight1 + negsaturatedweight1 + nonsaturatedweight1;
+		readu<<", "<<possaturatedweight2 + negsaturatedweight2 + nonsaturatedweight2 + possaturatedweight3 + negsaturatedweight3 + nonsaturatedweight3;
+		readu<<", "<<possaturatedweight4+ negsaturatedweight4 + nonsaturatedweight4 + possaturatedweight5 + negsaturatedweight5 + nonsaturatedweight5<<", ";
+		readu<<"destructiveness/update"<<b1/(nonzerostepm5+nonzerostepm4)<<", "<<b2/(nonzerostepm3+nonzerostepm2)<<", "<<b3/(nonzerostepm1+nonzerostep1)<<", "<<b4/(nonzerostep2+nonzerostep3)<<", "<<b5/(nonzerostep4+nonzerostep5)<<endl;
+					
 
 		
 		
