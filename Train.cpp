@@ -3142,7 +3142,7 @@ readr<<"0.8<=w<=1"<<" : "<<", "<< nonzerostep5<<", "<< 0<<endl;
 		double b4 = a71+a72+a73+a81+a82+a83;
 		double b5 = a91+a92+a93+a101+a102+a103;
 					ofstream readu;
-		string filenameu="ultimaterefrsh";
+		string filenameu="mylastrefresh";
 		readu.open(filenameu+ ".csv",std::ios_base::app);
 		readu <<"destructiveness"<<", "<< b1<< ", "<<b2<<", "<<b3<<", "<<b4<<", "<<b5<<", ";
 		readu <<"cellnumber"<<", "<<possaturatedweightm5 + negsaturatedweightm5 + nonsaturatedweightm5 + possaturatedweightm4 + negsaturatedweightm4 + nonsaturatedweightm4;
@@ -3150,7 +3150,7 @@ readr<<"0.8<=w<=1"<<" : "<<", "<< nonzerostep5<<", "<< 0<<endl;
 		readu<<", "<<possaturatedweightm1 + negsaturatedweightm1 + nonsaturatedweightm1 + possaturatedweight1 + negsaturatedweight1 + nonsaturatedweight1;
 		readu<<", "<<possaturatedweight2 + negsaturatedweight2 + nonsaturatedweight2 + possaturatedweight3 + negsaturatedweight3 + nonsaturatedweight3;
 		readu<<", "<<possaturatedweight4+ negsaturatedweight4 + nonsaturatedweight4 + possaturatedweight5 + negsaturatedweight5 + nonsaturatedweight5<<", ";
-		readu<<"destructiveness/update"<<b1/(nonzerostepm5+nonzerostepm4)<<", "<<b2/(nonzerostepm3+nonzerostepm2)<<", "<<b3/(nonzerostepm1+nonzerostep1)<<", "<<b4/(nonzerostep2+nonzerostep3)<<", "<<b5/(nonzerostep4+nonzerostep5)<<endl;
+		readu<<"destructiveness/update"<<", "<<b1/(nonzerostepm5+nonzerostepm4)<<", "<<b2/(nonzerostepm3+nonzerostepm2)<<", "<<b3/(nonzerostepm1+nonzerostep1)<<", "<<b4/(nonzerostep2+nonzerostep3)<<", "<<b5/(nonzerostep4+nonzerostep5)<<endl;
 					
 
 		
