@@ -3002,7 +3002,7 @@ a92 = (negsaturatedweight4 > 0)? dn4n/8000:0;
 a93 = (nonsaturatedweight4 > 0)? dn42/8000 : 0;
 a101 = (possaturatedweight5 > 0)? dn5/8000:0;
 a102 = (negsaturatedweight5 > 0)? dn5n/8000:0;
-a103 = (nonsaturatedweight5 > 0)? dn12/8000 : 0;	
+a103 = (nonsaturatedweight5 > 0)? dn52/8000 : 0;	
 		
 cout<<"saturated weight count"<<endl;
 		cout<<"-1<=w<-0.8"<<" : "<<possaturatedweightm5<<", "<< negsaturatedweightm5<<", "<<nonsaturatedweightm5<<endl;
@@ -3087,7 +3087,7 @@ readx<<"0.8<=w<=1"<<" : "<<", "<<a101<<", "<< a102<<", "<<a103<<endl;
 
 			
 		ofstream ready;
-		string filenamez="LASTsatcount";
+		string filenamez="REALLASTsatcount";
 		ready.open(filenamez+ ".csv",std::ios_base::app);
 		ready << "epoch"<<", "<<epochcount<<endl;
 					cout<<"possatnegsatcount"<<endl;
@@ -3104,7 +3104,7 @@ ready<<possatps5<<", "<<negsatps5<<", "<<possatns5<<", "<<negsatns5<<", "<<possa
 		
 		
 				ofstream readz;
-		string filenamet="LASTlocationcount";
+		string filenamet="REALLASTlocationcount";
 		readz.open(filenamet+ ".csv",std::ios_base::app);
 		readz << "epoch"<<", "<<epochcount<<endl;
 					cout<<"possatnegsatcount"<<endl;
@@ -3120,7 +3120,7 @@ ready<<possatps5<<", "<<negsatps5<<", "<<possatns5<<", "<<negsatns5<<", "<<possa
 		
 		
 					ofstream readr;
-		string filenameq="LASTstepcount";
+		string filenameq="REALLASTstepcount";
 		readr.open(filenameq+ ".csv",std::ios_base::app);
 		readr << "epoch"<<", "<<epochcount<<endl;
 					cout<<"stepcount"<<endl;
