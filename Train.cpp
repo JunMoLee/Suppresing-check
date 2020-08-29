@@ -2017,7 +2017,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 
 	} // end of weight tracking code
 // momentum tracker 
-			 for (int m=0; m<param->nHide; m++) {
+		/*	 for (int m=0; m<param->nHide; m++) {
 			for (int n=0; n<param->nInput;n++){
 				cout<<( static_cast<AnalogNVM*>(arrayIH->cell[m][n])->posstep + static_cast<AnalogNVM*>(arrayIH->cell[m][n])->negstep) /static_cast<AnalogNVM*>(arrayIH->cell[m][n])->nonzeroupdate<<", ";
 			}
@@ -2028,7 +2028,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 		                cout<< (static_cast<AnalogNVM*>(arrayHO->cell[m][n])->posstep + static_cast<AnalogNVM*>(arrayHO->cell[m][n])->negstep )/static_cast<AnalogNVM*>(arrayHO->cell[m][n])->nonzeroupdate<<", ";
 			}
 						 cout<<endl;
-					 }
+					 } */
 		
 		/* weight infromation tracking */
 	// deltaweight, polarity stabilization, momentum existence confirmation 
