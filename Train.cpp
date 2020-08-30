@@ -3153,6 +3153,63 @@ readr<<"0.8<=w<=1"<<" : "<<", "<< nonzerostep5<<", "<< 0<<endl;
 		readu<<"destructiveness/update"<<", "<<b1/(nonzerostepm5+nonzerostepm4)<<", "<<b2/(nonzerostepm3+nonzerostepm2)<<", "<<b3/(nonzerostepm1+nonzerostep1)<<", "<<b4/(nonzerostep2+nonzerostep3)<<", "<<b5/(nonzerostep4+nonzerostep5)<<endl;
 					
 
+		double actover=0;
+double weightover=0;
+double actunder=0;
+double weightover2=0;
+
+		    for (int m=0; m<param->nHide; m++) {
+			if ((a1[m] > 0.8) || (a1[m] <0.001))
+		         {actover++;
+			      for (int n=0; n<param->nInput;n++){
+				
+				     if((weight1[m][n]<-0.6) || (weight1[m][n]>0.6))
+				     {weightover++;}
+			    }
+			 }
+		      }
+		
+		
+		    for (int m=0; m<param->nOutput; m++) {
+			if ((a2[m] > 0.8) || (a2[m] <0.001))
+		         {actover++;
+			      for (int n=0; n<param->nHide;n++){
+				
+				     if((weight2[m][n]<-0.6) || (weight2[m][n]>0.6))
+				     {weightover++;}
+			    }
+			 }
+		      }
+				      
+				    for (int m=0; m<param->nHide; m++) {
+			if ((a1[m] > 0.3) && (a1[m] <0.7))
+		         {actunder++;
+			      for (int n=0; n<param->nInput;n++){
+				
+				     if((weight1[m][n]<-0.6) || (weight1[m][n]>0.6))
+				     {weightover2++;}
+			    }
+			 }
+		      }
+		
+		
+		    for (int m=0; m<param->nOutput; m++) {
+			if ((a2[m] > 0.3)&& (a2[m] <0.7))
+		         {actunder++;
+			      for (int n=0; n<param->nHide;n++){
+				
+				     if((weight2[m][n]<-0.6) || (weight2[m][n]>0.6))
+				     {weightover2++;}
+			    }
+			 }
+		      }
+	 cout<<"actover"<<", "<<actover<<", "<<"weightover"<<", "<<weightover<<", "<<"ratio"<<", "<<weightover/actover<<", "<<"actunder"<<", "<<actunder<<", "<<"weightoverifunder"<<", "<<weightover2<<", "<<"ratio"<<", "<<weightover2/actunder<<endl;	      
+		ofstream readaa;
+		string filenamemn="actprob";
+		readaa.open(filenamemn+ ".csv",std::ios_base::app);
+		readaa<<"actover"<<", "<<actover<<", "<<"weightover"<<", "<<weightover<<", "<<"ratio"<<", "<<weightover/actover<<", "<<"actunder"<<", "<<actunder<<", "<<"weightoverifunder"<<", "<<weightover2<<", "<<"ratio"<<", "<<weightover2/actunder<<endl;
+		
+	
 		
 		
 		
